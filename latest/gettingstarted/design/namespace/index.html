@@ -6,7 +6,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.52" />
 <title>Namespace :: Crunchy Data PostgreSQL Operator Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/latest/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/latest/css/nucleus.css" rel="stylesheet">
@@ -21,7 +21,7 @@
 <script src="https://crunchydata.github.io/postgres-operator/latest/js/main.js"></script>
 <script src="https://crunchydata.github.io/postgres-operator/latest/js/toc.js"></script>
 <script type="text/javascript">
-      var baseurl = "https:\/\/crunchydata.github.io\/postgres-operator\/latest\/";
+      var baseurl = "https:\/\/crunchydata.github.io\/postgres-operator\/latest";
 </script>
 <meta name="description" content="">
 
@@ -46,22 +46,17 @@
   <span class="navbar-text">
       <nav class="shortcuts">
               <li class="" role="">
-                  <a href="https://crunchydata.github.io/postgres-operator/latest/"  rel="noopener">
-                    <label>Overview</label>
-                  </a>
-              </li>
-              <li class="" role="">
-                  <a href="https://github.com/CrunchyData/postgres-operator"  rel="noopener">
+                  <a href="https://github.com/CrunchyData/postgres-operator" target="_blank" rel="noopener">
                     <i class='fab fa-github'></i> <label>Source</label>
                   </a>
               </li>
               <li class="" role="">
-                  <a href="https://kubernetes.io/docs/"  rel="noopener">
+                  <a href="https://kubernetes.io/docs/" target="_blank" rel="noopener">
                     <i class='fas fa-bookmark'></i> <label>Kubernetes</label>
                   </a>
               </li>
               <li class="" role="">
-                  <a href="https://github.com/CrunchyData/postgres-operator/blob/master/LICENSE.md"  rel="noopener">
+                  <a href="https://github.com/CrunchyData/postgres-operator/blob/master/LICENSE.md" target="_blank" rel="noopener">
                     <i class='fas fa-file-contract'></i> <label>License</label>
                   </a>
               </li>
@@ -82,7 +77,7 @@
         <link href="https://crunchydata.github.io/postgres-operator/latest/css/auto-complete.css" rel="stylesheet">
         <script type="text/javascript">
           
-              var baseurl = "https:\/\/crunchydata.github.io\/postgres-operator\/latest\/";
+              var baseurl = "https:\/\/crunchydata.github.io\/postgres-operator\/latest";
           
         </script>
         <script type="text/javascript" src="https://crunchydata.github.io/postgres-operator/latest/js/search.js"></script>
@@ -94,12 +89,12 @@
         <b>Available Formats</b>
         <nav class="downloads">
                 <li class="" role="">
-                    <a href="https://crunchydata.github.io/postgres-operator/latest/pdf/postgres_operator.pdf"  rel="noopener">
+                    <a href="https://crunchydata.github.io/postgres-operator/latest/pdf/postgres_operator.pdf" target="_blank" rel="noopener">
                       <i class='fas fa-file-pdf'></i> <label>PDF</label>
                     </a>
                 </li>
                 <li class="" role="">
-                    <a href="https://crunchydata.github.io/postgres-operator/latest/epub/postgres_operator.epub"  rel="noopener">
+                    <a href="https://crunchydata.github.io/postgres-operator/latest/epub/postgres_operator.epub" target="_blank" rel="noopener">
                       <i class='fas fa-book'></i> <label>EPUB</label>
                     </a>
                 </li>
@@ -127,6 +122,13 @@
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/designoverview/">
             Design
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="/gettingstarted/design/custom-config/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/custom-config/">
+            Custom Configuration
           </a>
         </div>
     </li>
@@ -185,6 +187,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="/configuration/compatibility/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/configuration/compatibility/">
+            Compatibility Requirements
+          </a>
+        </div>
+    </li>
       <li data-nav-id="/configuration/configuration/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/configuration/configuration/">
@@ -196,22 +205,6 @@
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/configuration/pgo-yaml-configuration/">
             PGO YAML
-          </a>
-        </div>
-    </li>
-        </ul>
-    </li>
-    <li data-nav-id="/design/" class="dd-item haschildren
-        ">
-      <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/design/">Design</a><i class="fas fa-angle-right fa-lg category-icon"></i>
-
-      </div>
-        <ul>
-      <li data-nav-id="/design/custom-config/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/design/custom-config/">
-            Custom Configuration
           </a>
         </div>
     </li>
@@ -667,6 +660,7 @@
   - 
    Design</option> 
       <option value="/gettingstarted/design/designoverview/" >-- Design</option>
+      <option value="/gettingstarted/design/custom-config/" >-- Custom Configuration</option>
       <option value="/gettingstarted/design/namespace/"  selected>-- Namespace</option>
       <option value="/gettingstarted/design/olm/" >-- OLM</option>
   
@@ -676,8 +670,6 @@
    Installation</option>
     <option value="/configuration/" >
    Configuration</option>
-    <option value="/design/" >
-   Design</option>
     <option value="/operatorcli/" >
    Operator Command Line Utility</option>
     <option value="/security/" >
@@ -883,7 +875,7 @@ will be rejected.</p>
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/designoverview/" title="Design"> <i class="fa fa-chevron-left"></i><label>Design</label></a>
+<a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/custom-config/" title="Custom Configuration"> <i class="fa fa-chevron-left"></i><label>Custom Configuration</label></a>
     <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/olm/" title="OLM" style="margin-right: 0px;"><label>OLM</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 

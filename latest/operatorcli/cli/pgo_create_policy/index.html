@@ -6,7 +6,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.52" />
 <title>pgo_create_policy :: Crunchy Data PostgreSQL Operator Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/latest/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/latest/css/nucleus.css" rel="stylesheet">
@@ -21,7 +21,7 @@
 <script src="https://crunchydata.github.io/postgres-operator/latest/js/main.js"></script>
 <script src="https://crunchydata.github.io/postgres-operator/latest/js/toc.js"></script>
 <script type="text/javascript">
-      var baseurl = "https:\/\/crunchydata.github.io\/postgres-operator\/latest\/";
+      var baseurl = "https:\/\/crunchydata.github.io\/postgres-operator\/latest";
 </script>
 <meta name="description" content="">
 
@@ -46,22 +46,17 @@
   <span class="navbar-text">
       <nav class="shortcuts">
               <li class="" role="">
-                  <a href="https://crunchydata.github.io/postgres-operator/latest/"  rel="noopener">
-                    <label>Overview</label>
-                  </a>
-              </li>
-              <li class="" role="">
-                  <a href="https://github.com/CrunchyData/postgres-operator"  rel="noopener">
+                  <a href="https://github.com/CrunchyData/postgres-operator" target="_blank" rel="noopener">
                     <i class='fab fa-github'></i> <label>Source</label>
                   </a>
               </li>
               <li class="" role="">
-                  <a href="https://kubernetes.io/docs/"  rel="noopener">
+                  <a href="https://kubernetes.io/docs/" target="_blank" rel="noopener">
                     <i class='fas fa-bookmark'></i> <label>Kubernetes</label>
                   </a>
               </li>
               <li class="" role="">
-                  <a href="https://github.com/CrunchyData/postgres-operator/blob/master/LICENSE.md"  rel="noopener">
+                  <a href="https://github.com/CrunchyData/postgres-operator/blob/master/LICENSE.md" target="_blank" rel="noopener">
                     <i class='fas fa-file-contract'></i> <label>License</label>
                   </a>
               </li>
@@ -82,7 +77,7 @@
         <link href="https://crunchydata.github.io/postgres-operator/latest/css/auto-complete.css" rel="stylesheet">
         <script type="text/javascript">
           
-              var baseurl = "https:\/\/crunchydata.github.io\/postgres-operator\/latest\/";
+              var baseurl = "https:\/\/crunchydata.github.io\/postgres-operator\/latest";
           
         </script>
         <script type="text/javascript" src="https://crunchydata.github.io/postgres-operator/latest/js/search.js"></script>
@@ -94,12 +89,12 @@
         <b>Available Formats</b>
         <nav class="downloads">
                 <li class="" role="">
-                    <a href="https://crunchydata.github.io/postgres-operator/latest/pdf/postgres_operator.pdf"  rel="noopener">
+                    <a href="https://crunchydata.github.io/postgres-operator/latest/pdf/postgres_operator.pdf" target="_blank" rel="noopener">
                       <i class='fas fa-file-pdf'></i> <label>PDF</label>
                     </a>
                 </li>
                 <li class="" role="">
-                    <a href="https://crunchydata.github.io/postgres-operator/latest/epub/postgres_operator.epub"  rel="noopener">
+                    <a href="https://crunchydata.github.io/postgres-operator/latest/epub/postgres_operator.epub" target="_blank" rel="noopener">
                       <i class='fas fa-book'></i> <label>EPUB</label>
                     </a>
                 </li>
@@ -125,6 +120,13 @@
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/designoverview/">
             Design
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="/gettingstarted/design/custom-config/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/custom-config/">
+            Custom Configuration
           </a>
         </div>
     </li>
@@ -183,6 +185,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="/configuration/compatibility/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/configuration/compatibility/">
+            Compatibility Requirements
+          </a>
+        </div>
+    </li>
       <li data-nav-id="/configuration/configuration/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/configuration/configuration/">
@@ -194,22 +203,6 @@
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/configuration/pgo-yaml-configuration/">
             PGO YAML
-          </a>
-        </div>
-    </li>
-        </ul>
-    </li>
-    <li data-nav-id="/design/" class="dd-item haschildren
-        ">
-      <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/design/">Design</a><i class="fas fa-angle-right fa-lg category-icon"></i>
-
-      </div>
-        <ul>
-      <li data-nav-id="/design/custom-config/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/design/custom-config/">
-            Custom Configuration
           </a>
         </div>
     </li>
@@ -667,14 +660,63 @@
    Installation</option>
     <option value="/configuration/" >
    Configuration</option>
-    <option value="/design/" >
-   Design</option>
     <option value="/operatorcli/" >
    Operator Command Line Utility</option> 
       <option value="/operatorcli/pgo-overview/" >- Operator CLI Overview</option>
     <option value="/operatorcli/cli/" >
   - 
    Operator CLI</option> 
+      <option value="/operatorcli/cli/pgo/" >-- pgo</option>
+      <option value="/operatorcli/cli/pgo_apply/" >-- pgo_apply</option>
+      <option value="/operatorcli/cli/pgo_backup/" >-- pgo_backup</option>
+      <option value="/operatorcli/cli/pgo_cat/" >-- pgo_cat</option>
+      <option value="/operatorcli/cli/pgo_clidoc/" >-- pgo_clidoc</option>
+      <option value="/operatorcli/cli/pgo_create/" >-- pgo_create</option>
+      <option value="/operatorcli/cli/pgo_create_cluster/" >-- pgo_create_cluster</option>
+      <option value="/operatorcli/cli/pgo_create_pgbouncer/" >-- pgo_create_pgbouncer</option>
+      <option value="/operatorcli/cli/pgo_create_pgpool/" >-- pgo_create_pgpool</option>
+      <option value="/operatorcli/cli/pgo_create_policy/"  selected>-- pgo_create_policy</option>
+      <option value="/operatorcli/cli/pgo_create_schedule/" >-- pgo_create_schedule</option>
+      <option value="/operatorcli/cli/pgo_create_user/" >-- pgo_create_user</option>
+      <option value="/operatorcli/cli/pgo_delete/" >-- pgo_delete</option>
+      <option value="/operatorcli/cli/pgo_delete_backup/" >-- pgo_delete_backup</option>
+      <option value="/operatorcli/cli/pgo_delete_benchmark/" >-- pgo_delete_benchmark</option>
+      <option value="/operatorcli/cli/pgo_delete_cluster/" >-- pgo_delete_cluster</option>
+      <option value="/operatorcli/cli/pgo_delete_label/" >-- pgo_delete_label</option>
+      <option value="/operatorcli/cli/pgo_delete_pgbouncer/" >-- pgo_delete_pgbouncer</option>
+      <option value="/operatorcli/cli/pgo_delete_pgpool/" >-- pgo_delete_pgpool</option>
+      <option value="/operatorcli/cli/pgo_delete_policy/" >-- pgo_delete_policy</option>
+      <option value="/operatorcli/cli/pgo_delete_schedule/" >-- pgo_delete_schedule</option>
+      <option value="/operatorcli/cli/pgo_delete_upgrade/" >-- pgo_delete_upgrade</option>
+      <option value="/operatorcli/cli/pgo_delete_user/" >-- pgo_delete_user</option>
+      <option value="/operatorcli/cli/pgo_df/" >-- pgo_df</option>
+      <option value="/operatorcli/cli/pgo_failover/" >-- pgo_failover</option>
+      <option value="/operatorcli/cli/pgo_label/" >-- pgo_label</option>
+      <option value="/operatorcli/cli/pgo_load/" >-- pgo_load</option>
+      <option value="/operatorcli/cli/pgo_ls/" >-- pgo_ls</option>
+      <option value="/operatorcli/cli/pgo_reload/" >-- pgo_reload</option>
+      <option value="/operatorcli/cli/pgo_restore/" >-- pgo_restore</option>
+      <option value="/operatorcli/cli/pgo_scale/" >-- pgo_scale</option>
+      <option value="/operatorcli/cli/pgo_scaledown/" >-- pgo_scaledown</option>
+      <option value="/operatorcli/cli/pgo_show/" >-- pgo_show</option>
+      <option value="/operatorcli/cli/pgo_show_backup/" >-- pgo_show_backup</option>
+      <option value="/operatorcli/cli/pgo_show_benchmark/" >-- pgo_show_benchmark</option>
+      <option value="/operatorcli/cli/pgo_show_cluster/" >-- pgo_show_cluster</option>
+      <option value="/operatorcli/cli/pgo_show_config/" >-- pgo_show_config</option>
+      <option value="/operatorcli/cli/pgo_show_namespace/" >-- pgo_show_namespace</option>
+      <option value="/operatorcli/cli/pgo_show_policy/" >-- pgo_show_policy</option>
+      <option value="/operatorcli/cli/pgo_show_pvc/" >-- pgo_show_pvc</option>
+      <option value="/operatorcli/cli/pgo_show_schedule/" >-- pgo_show_schedule</option>
+      <option value="/operatorcli/cli/pgo_show_upgrade/" >-- pgo_show_upgrade</option>
+      <option value="/operatorcli/cli/pgo_show_user/" >-- pgo_show_user</option>
+      <option value="/operatorcli/cli/pgo_show_workflow/" >-- pgo_show_workflow</option>
+      <option value="/operatorcli/cli/pgo_status/" >-- pgo_status</option>
+      <option value="/operatorcli/cli/pgo_test/" >-- pgo_test</option>
+      <option value="/operatorcli/cli/pgo_update/" >-- pgo_update</option>
+      <option value="/operatorcli/cli/pgo_update_cluster/" >-- pgo_update_cluster</option>
+      <option value="/operatorcli/cli/pgo_upgrade/" >-- pgo_upgrade</option>
+      <option value="/operatorcli/cli/pgo_user/" >-- pgo_user</option>
+      <option value="/operatorcli/cli/pgo_version/" >-- pgo_version</option>
   
   
     <option value="/security/" >

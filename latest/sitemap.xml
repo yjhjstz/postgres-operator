@@ -7,6 +7,10 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/designoverview/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/installation/</loc>
   </url>
   
@@ -15,19 +19,11 @@
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/design/custom-config/</loc>
-  </url>
-  
-  <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/design/</loc>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/custom-config/</loc>
   </url>
   
   <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/</loc>
-  </url>
-  
-  <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/designoverview/</loc>
   </url>
   
   <url>
@@ -64,6 +60,10 @@
   
   <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/prereq/prerequisites/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/configuration/compatibility/</loc>
   </url>
   
   <url>

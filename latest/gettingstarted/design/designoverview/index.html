@@ -6,7 +6,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.52" />
 <title>Design :: Crunchy Data PostgreSQL Operator Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/latest/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/latest/css/nucleus.css" rel="stylesheet">
@@ -21,7 +21,7 @@
 <script src="https://crunchydata.github.io/postgres-operator/latest/js/main.js"></script>
 <script src="https://crunchydata.github.io/postgres-operator/latest/js/toc.js"></script>
 <script type="text/javascript">
-      var baseurl = "https:\/\/crunchydata.github.io\/postgres-operator\/latest\/";
+      var baseurl = "https:\/\/crunchydata.github.io\/postgres-operator\/latest";
 </script>
 <meta name="description" content="">
 
@@ -46,22 +46,17 @@
   <span class="navbar-text">
       <nav class="shortcuts">
               <li class="" role="">
-                  <a href="https://crunchydata.github.io/postgres-operator/latest/"  rel="noopener">
-                    <label>Overview</label>
-                  </a>
-              </li>
-              <li class="" role="">
-                  <a href="https://github.com/CrunchyData/postgres-operator"  rel="noopener">
+                  <a href="https://github.com/CrunchyData/postgres-operator" target="_blank" rel="noopener">
                     <i class='fab fa-github'></i> <label>Source</label>
                   </a>
               </li>
               <li class="" role="">
-                  <a href="https://kubernetes.io/docs/"  rel="noopener">
+                  <a href="https://kubernetes.io/docs/" target="_blank" rel="noopener">
                     <i class='fas fa-bookmark'></i> <label>Kubernetes</label>
                   </a>
               </li>
               <li class="" role="">
-                  <a href="https://github.com/CrunchyData/postgres-operator/blob/master/LICENSE.md"  rel="noopener">
+                  <a href="https://github.com/CrunchyData/postgres-operator/blob/master/LICENSE.md" target="_blank" rel="noopener">
                     <i class='fas fa-file-contract'></i> <label>License</label>
                   </a>
               </li>
@@ -82,7 +77,7 @@
         <link href="https://crunchydata.github.io/postgres-operator/latest/css/auto-complete.css" rel="stylesheet">
         <script type="text/javascript">
           
-              var baseurl = "https:\/\/crunchydata.github.io\/postgres-operator\/latest\/";
+              var baseurl = "https:\/\/crunchydata.github.io\/postgres-operator\/latest";
           
         </script>
         <script type="text/javascript" src="https://crunchydata.github.io/postgres-operator/latest/js/search.js"></script>
@@ -94,12 +89,12 @@
         <b>Available Formats</b>
         <nav class="downloads">
                 <li class="" role="">
-                    <a href="https://crunchydata.github.io/postgres-operator/latest/pdf/postgres_operator.pdf"  rel="noopener">
+                    <a href="https://crunchydata.github.io/postgres-operator/latest/pdf/postgres_operator.pdf" target="_blank" rel="noopener">
                       <i class='fas fa-file-pdf'></i> <label>PDF</label>
                     </a>
                 </li>
                 <li class="" role="">
-                    <a href="https://crunchydata.github.io/postgres-operator/latest/epub/postgres_operator.epub"  rel="noopener">
+                    <a href="https://crunchydata.github.io/postgres-operator/latest/epub/postgres_operator.epub" target="_blank" rel="noopener">
                       <i class='fas fa-book'></i> <label>EPUB</label>
                     </a>
                 </li>
@@ -127,6 +122,13 @@
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/designoverview/">
             Design
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="/gettingstarted/design/custom-config/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/custom-config/">
+            Custom Configuration
           </a>
         </div>
     </li>
@@ -185,6 +187,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="/configuration/compatibility/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/configuration/compatibility/">
+            Compatibility Requirements
+          </a>
+        </div>
+    </li>
       <li data-nav-id="/configuration/configuration/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/configuration/configuration/">
@@ -196,22 +205,6 @@
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/configuration/pgo-yaml-configuration/">
             PGO YAML
-          </a>
-        </div>
-    </li>
-        </ul>
-    </li>
-    <li data-nav-id="/design/" class="dd-item haschildren
-        ">
-      <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/design/">Design</a><i class="fas fa-angle-right fa-lg category-icon"></i>
-
-      </div>
-        <ul>
-      <li data-nav-id="/design/custom-config/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/design/custom-config/">
-            Custom Configuration
           </a>
         </div>
     </li>
@@ -667,6 +660,7 @@
   - 
    Design</option> 
       <option value="/gettingstarted/design/designoverview/"  selected>-- Design</option>
+      <option value="/gettingstarted/design/custom-config/" >-- Custom Configuration</option>
       <option value="/gettingstarted/design/namespace/" >-- Namespace</option>
       <option value="/gettingstarted/design/olm/" >-- OLM</option>
   
@@ -676,8 +670,6 @@
    Installation</option>
     <option value="/configuration/" >
    Configuration</option>
-    <option value="/design/" >
-   Design</option>
     <option value="/operatorcli/" >
    Operator Command Line Utility</option>
     <option value="/security/" >
@@ -934,6 +926,63 @@ on PG 9.<sup>6</sup>&frasl;<sub>9</sub>.5 systems, the command you will use is <
 <li>when performing a pgBackRest restore, the <strong>node-label</strong> flag can be utilized to target a specific node for both the pgBackRest restore job and the new (i.e. restored) primary deployment that is then created for the cluster.  If a node label is not specified, the restore job will not target any specific node, and the restored primary deployment will inherit any node label&rsquo;s defined for the original primary deployment.</li>
 </ul>
 
+<h3 id="pgbackrest-aws-s3-support">pgbackrest AWS S3 Support</h3>
+
+<p>The Operator supports the use AWS S3 storage buckets for the pgbackrest repository in any pgbackrest-enabled cluster.  When S3 support is enabled for a cluster, all archives will automatically be pushed to a pre-configured S3 storage bucket, and that same bucket can then be utilized for the creation of any backups as well as when performing restores.  Please note that once a storage type has been selected for a cluster during cluster creation (specifically <code>local</code>, <code>s3</code>, or <em>both</em>, as described in detail below), it cannot be changed.</p>
+
+<p>The Operator allows for the configuration of a single storage bucket, which can then be utilized across multiple clusters.  Once S3 support has been enabled for a cluster, pgbackrest will create a <code>backrestrepo</code> directory in the root of the configured S3 storage bucket (if it does not already exist), and subdirectories will then be created under the <code>backrestrepo</code> directory for each cluster created with S3 storage enabled.</p>
+
+<h4 id="s3-configuration">S3 Configuration</h4>
+
+<p>In order to enable S3 storage, you must provide the required AWS S3 configuration information prior to deploying the Operator.  First, you will need to add the proper S3 bucket name, AWS S3 endpoint and AWS S3 region to the <code>Cluster</code> section of the <code>pgo.yaml</code> configuration file (additional information regarding the configuration of the <code>pgo.yaml</code> file can be found <a href="https://crunchydata.github.io/postgres-operator/latest/configuration/pgo-yaml-configuration/">here</a>)  :</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">Cluster<span style="color:#111">:</span>
+  BackrestS3Bucket<span style="color:#111">:</span> containers-dev-pgbackrest
+  BackrestS3Endpoint<span style="color:#111">:</span> s3.amazonaws.com
+  BackrestS3Region<span style="color:#111">:</span> us-east-<span style="color:#ae81ff">1</span></code></pre></div>
+<p>You will then need to specify the proper credentials for authenticating into the S3 bucket specified by adding a <strong>key</strong> and <strong>key secret</strong> to the <code>$PGOROOT/pgo-backrest-repo/aws-s3-credentials.yaml</code> configuration file:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
+aws-s3-key<span style="color:#111">:</span> ABCDEFGHIJKLMNOPQRST
+aws-s3-key-secret<span style="color:#111">:</span> ABCDEFG/HIJKLMNOPQSTU/VWXYZABCDEFGHIJKLM</code></pre></div>
+<p>Once the above configuration details have been provided, you can deploy the Operator per the <a href="https://crunchydata.github.io/postgres-operator/latest/installation/operator-install/">PGO installation instructions</a>.</p>
+
+<h4 id="enabling-s3-storage-in-a-cluster">Enabling S3 Storage in a Cluster</h4>
+
+<p>With S3 storage properly configured within your PGO installation, you can now select either local storage, S3 storage, or <em>both</em> when creating a new cluster.  The type of storage selected upon creation of the cluster will determine the type of storage that can subsequently be used when performing pgbackrest backups and restores.  A storage type is specified using the <code>--pgbackrest-storage-type</code> flag, and can be one of the following values:</p>
+
+<ul>
+<li><code>local</code> - pgbackrest will use volumes local to the container (e.g. Persistent Volumes) for storing archives, creating backups and locating backups for restores.  This is the default value for the <code>--pgbackrest-storage-type</code> flag.</li>
+<li><code>s3</code> - pgbackrest will use the pre-configured AWS S3 storage bucket for storing archives, creating backups and locating backups for restores</li>
+<li><code>local,s3</code> (both) - pgbackrest will use both volumes local to the container (e.g. persistent volumes), as well as the pre-configured AWS S3 storage bucket, for storing archives.  Also allows the use of local and/or S3 storage when performing backups and restores.</li>
+</ul>
+
+<p>For instance, the following command enables both <code>local</code> and <code>s3</code> storage in a new cluster:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pgo create cluster mycluster --pgbackrest --pgbackrest-storage-type<span style="color:#f92672">=</span>local,s3 -n pgouser1</code></pre></div>
+<p>As described above, this will result in pgbackrest pushing archives to both local and S3 storage, while also allowing both local and S3 storage to be utilized for backups and restores.  However, you could also enable S3 storage only when creating the cluster:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pgo create cluster mycluster --pgbackrest --pgbackrest-storage-type<span style="color:#f92672">=</span>s3 -n pgouser1</code></pre></div>
+<p>Now all archives for the cluster will be pushed to S3 storage only, and local storage will not be utilized for storing archives (nor can local storage be utilized for backups and restores).</p>
+
+<h4 id="using-s3-to-backup-restore">Using S3 to Backup &amp; Restore</h4>
+
+<p>As described above, once S3 storage has been enabled for a cluster, it can also be used when backing up or restoring a cluster.  Here a both local and S3 storage is selected when performing a backup:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pgo backup mycluster --backup-type<span style="color:#f92672">=</span>pgbackrest --pgbackrest-storage-type<span style="color:#f92672">=</span>local,s3 -n pgouser1</code></pre></div>
+<p>This results in pgbackrest creating a backup in a local volume (e.g. a persistent volume), while also creating an additional backup in the configured S3 storage bucket.  However, a backup can be created using S3 storage only:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pgo backup mycluster --backup-type<span style="color:#f92672">=</span>pgbackrest --pgbackrest-storage-type<span style="color:#f92672">=</span>s3 -n pgouser1</code></pre></div>
+<p>Now pgbackrest will only create a backup in the S3 storage bucket only.</p>
+
+<p>When performing a restore, either <code>local</code> or <code>s3</code> must be selected (selecting both for a restore will result in an error).  For instance, the following command specifies S3 storage for the restore:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pgo restore mycluster --pgbackrest-storage-type<span style="color:#f92672">=</span>s3 -n pgouser1</code></pre></div>
+<p>This will result in a full restore utilizing the backups and archives stored in the configured S3 storage bucket.</p>
+
+<p><em>Please note that because <code>local</code> is the default storage type for the <code>backup</code> and <code>restore</code> commands, <code>s3</code> must be explicitly set using the <code>--pgbackrest-storage-type</code> flag when performing backups and restores on clusters where only S3 storage is enabled.</em></p>
+
+<h4 id="aws-certificate-authority">AWS Certificate Authority</h4>
+
+<p>The Operator installation includes a default certificate bundle that is utilized by default to establish trust between pgbackrest and the AWS S3 endpoint used for S3 storage.  Please modify or replace this certificate bundle as needed prior to deploying the Operator if another certificate authority is needed to properly establish trust between pgbackrest and your S3 endpoint.</p>
+
+<p>The certificate bundle can be found here: <code>$PGOROOT/pgo-backrest-repo/aws-s3-ca.crt</code>.</p>
+
+<p>When modifying or replacing the certificate bundle, please be sure to maintain the same path and filename.</p>
+
 <h2 id="pgo-scheduler">PGO Scheduler</h2>
 
 <p>The Operator includes a cronlike scheduler application called <code>pgo-scheduler</code>.  Its purpose
@@ -1106,7 +1155,7 @@ provisioned in desired zones in order to achieve the desired topology requiremen
         <div class="chevrons">
     <div id="navigation">
 <a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/" title="Design"> <i class="fa fa-chevron-left"></i><label>Design</label></a>
-    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/namespace/" title="Namespace" style="margin-right: 0px;"><label>Namespace</label><i class="fa fa-chevron-right"></i></a></div>
+    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/custom-config/" title="Custom Configuration" style="margin-right: 0px;"><label>Custom Configuration</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>

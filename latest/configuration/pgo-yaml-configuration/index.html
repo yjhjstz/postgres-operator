@@ -6,7 +6,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.52" />
 <title>PGO YAML :: Crunchy Data PostgreSQL Operator Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/latest/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/latest/css/nucleus.css" rel="stylesheet">
@@ -21,7 +21,7 @@
 <script src="https://crunchydata.github.io/postgres-operator/latest/js/main.js"></script>
 <script src="https://crunchydata.github.io/postgres-operator/latest/js/toc.js"></script>
 <script type="text/javascript">
-      var baseurl = "https:\/\/crunchydata.github.io\/postgres-operator\/latest\/";
+      var baseurl = "https:\/\/crunchydata.github.io\/postgres-operator\/latest";
 </script>
 <meta name="description" content="">
 
@@ -46,22 +46,17 @@
   <span class="navbar-text">
       <nav class="shortcuts">
               <li class="" role="">
-                  <a href="https://crunchydata.github.io/postgres-operator/latest/"  rel="noopener">
-                    <label>Overview</label>
-                  </a>
-              </li>
-              <li class="" role="">
-                  <a href="https://github.com/CrunchyData/postgres-operator"  rel="noopener">
+                  <a href="https://github.com/CrunchyData/postgres-operator" target="_blank" rel="noopener">
                     <i class='fab fa-github'></i> <label>Source</label>
                   </a>
               </li>
               <li class="" role="">
-                  <a href="https://kubernetes.io/docs/"  rel="noopener">
+                  <a href="https://kubernetes.io/docs/" target="_blank" rel="noopener">
                     <i class='fas fa-bookmark'></i> <label>Kubernetes</label>
                   </a>
               </li>
               <li class="" role="">
-                  <a href="https://github.com/CrunchyData/postgres-operator/blob/master/LICENSE.md"  rel="noopener">
+                  <a href="https://github.com/CrunchyData/postgres-operator/blob/master/LICENSE.md" target="_blank" rel="noopener">
                     <i class='fas fa-file-contract'></i> <label>License</label>
                   </a>
               </li>
@@ -82,7 +77,7 @@
         <link href="https://crunchydata.github.io/postgres-operator/latest/css/auto-complete.css" rel="stylesheet">
         <script type="text/javascript">
           
-              var baseurl = "https:\/\/crunchydata.github.io\/postgres-operator\/latest\/";
+              var baseurl = "https:\/\/crunchydata.github.io\/postgres-operator\/latest";
           
         </script>
         <script type="text/javascript" src="https://crunchydata.github.io/postgres-operator/latest/js/search.js"></script>
@@ -94,12 +89,12 @@
         <b>Available Formats</b>
         <nav class="downloads">
                 <li class="" role="">
-                    <a href="https://crunchydata.github.io/postgres-operator/latest/pdf/postgres_operator.pdf"  rel="noopener">
+                    <a href="https://crunchydata.github.io/postgres-operator/latest/pdf/postgres_operator.pdf" target="_blank" rel="noopener">
                       <i class='fas fa-file-pdf'></i> <label>PDF</label>
                     </a>
                 </li>
                 <li class="" role="">
-                    <a href="https://crunchydata.github.io/postgres-operator/latest/epub/postgres_operator.epub"  rel="noopener">
+                    <a href="https://crunchydata.github.io/postgres-operator/latest/epub/postgres_operator.epub" target="_blank" rel="noopener">
                       <i class='fas fa-book'></i> <label>EPUB</label>
                     </a>
                 </li>
@@ -125,6 +120,13 @@
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/designoverview/">
             Design
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="/gettingstarted/design/custom-config/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/custom-config/">
+            Custom Configuration
           </a>
         </div>
     </li>
@@ -184,6 +186,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="/configuration/compatibility/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/configuration/compatibility/">
+            Compatibility Requirements
+          </a>
+        </div>
+    </li>
       <li data-nav-id="/configuration/configuration/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/configuration/configuration/">
@@ -195,22 +204,6 @@
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/configuration/pgo-yaml-configuration/">
             PGO YAML
-          </a>
-        </div>
-    </li>
-        </ul>
-    </li>
-    <li data-nav-id="/design/" class="dd-item haschildren
-        ">
-      <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/design/">Design</a><i class="fas fa-angle-right fa-lg category-icon"></i>
-
-      </div>
-        <ul>
-      <li data-nav-id="/design/custom-config/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/design/custom-config/">
-            Custom Configuration
           </a>
         </div>
     </li>
@@ -666,11 +659,10 @@
    Installation</option>
     <option value="/configuration/" >
    Configuration</option> 
+      <option value="/configuration/compatibility/" >- Compatibility Requirements</option>
       <option value="/configuration/configuration/" >- Configuration Resources</option>
       <option value="/configuration/pgo-yaml-configuration/"  selected>- PGO YAML</option>
   
-    <option value="/design/" >
-   Design</option>
     <option value="/operatorcli/" >
    Operator Command Line Utility</option>
     <option value="/security/" >
@@ -779,7 +771,7 @@
 
 <tr>
 <td>CCPImageTag</td>
-<td>newly created containers will be based on this image version (e.g. centos7-11.2-2.3.1), unless you override it using the &ndash;ccp-image-tag command line flag</td>
+<td>newly created containers will be based on this image version (e.g. centos7-11.2-2.4.0-rc2-1), unless you override it using the &ndash;ccp-image-tag command line flag</td>
 </tr>
 
 <tr>
@@ -1130,7 +1122,7 @@ non-valid configuration is found, the apiserver will abort.  These Storage value
 
 <p>The operator will create new PVCs using this naming convention: <em>dbname</em> where <em>dbname</em> is the database name you have specified.  For example, if you run:</p>
 
-<pre><code>pgo create cluster example1
+<pre><code>pgo create cluster example1 -n pgouser1
 </code></pre>
 
 <p>It will result in a PVC being created named <em>example1</em> and in the case of a backup job, the pvc is named <em>example1-backup</em></p>
@@ -1138,7 +1130,7 @@ non-valid configuration is found, the apiserver will abort.  These Storage value
 <p>Note, when Storage Type is <em>create</em>, you can specify a storage configuration setting of <em>MatchLabels</em>, when set, this will cause a <em>selector</em> of <em>key=value</em> to be added into the PVC, this will let you target specific PV(s) to be matched for this cluster. Note, if a PV does not match the claim request, then the cluster will not start.  Users
 that want to use this feature have to place labels on their PV resources as part of PG cluster creation before creating the PG cluster.  For example, users would add a label like this to their PV before they create the PG cluster:</p>
 
-<pre><code>kubectl label pv somepv myzone=somezone
+<pre><code>kubectl label pv somepv myzone=somezone -n pgouser1
 </code></pre>
 
 <p>If you do not specify <em>MatchLabels</em> in the storage configuration, then no match filter is added and any available PV will be used to satisfy the PVC request.  This option does not apply to <em>dynamic</em> storage types.</p>
@@ -1155,7 +1147,7 @@ n-number of NFS storage configurations and supports spreading a PG cluster acros
 
 <p>You can also override the default value using the <code>--resources-config</code> command flag when creating a new cluster:</p>
 
-<pre><code>pgo create cluster testcluster --resources-config=large
+<pre><code>pgo create cluster testcluster --resources-config=large -n pgouser1
 </code></pre>
 
 <p>Note, if you try to allocate more resources than your
@@ -1171,17 +1163,17 @@ Events:</p>
 
 <h2 id="overriding-storage-configuration-defaults">Overriding Storage Configuration Defaults</h2>
 
-<pre><code>pgo create cluster testcluster --storage-config=bigdisk
+<pre><code>pgo create cluster testcluster --storage-config=bigdisk -n pgouser1
 </code></pre>
 
 <p>That example will create a cluster and specify a storage configuration of <em>bigdisk</em> to be used for the primary database storage. The replica storage will default to the value of ReplicaStorage as specified in <em>pgo.yaml</em>.</p>
 
-<pre><code>pgo create cluster testcluster2 --storage-config=fastdisk --replica-storage-config=slowdisk
+<pre><code>pgo create cluster testcluster2 --storage-config=fastdisk --replica-storage-config=slowdisk -n pgouser1
 </code></pre>
 
 <p>That example will create a cluster and specify a storage configuration of <em>fastdisk</em> to be used for the primary database storage, while the replica storage will use the storage configuration <em>slowdisk</em>.</p>
 
-<pre><code>pgo backup testcluster --storage-config=offsitestorage
+<pre><code>pgo backup testcluster --storage-config=offsitestorage -n pgouser1
 </code></pre>
 
 <p>That example will create a backup and use the <em>offsitestorage</em> storage configuration for persisting the backup.</p>
@@ -1199,7 +1191,7 @@ a storage configuration for your backups, you essentially have moved your backup
         <div class="chevrons">
     <div id="navigation">
 <a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/configuration/configuration/" title="Configuration Resources"> <i class="fa fa-chevron-left"></i><label>Configuration Resources</label></a>
-    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/design/" title="Design" style="margin-right: 0px;"><label>Design</label><i class="fa fa-chevron-right"></i></a></div>
+    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/" title="Operator Command Line Utility" style="margin-right: 0px;"><label>Operator Command Line Utility</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
