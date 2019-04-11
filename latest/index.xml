@@ -70,6 +70,16 @@ Syntax Use the following syntax to run pgo commands from your terminal window:</
     
     <item>
       <title>Prerequisites</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/prereq/prerequisites/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/prereq/prerequisites/</guid>
+      <description>Prerequisites The following is required prior to installing Crunchy PostgreSQL Operator using Ansible:
+ postgres-operator-playbooks source code for the target version Ansible 2.4.6+  Kubernetes Installs  Kubernetes v1.11+ Cluster admin privileges in Kubernetes kubectl configured to communicate with Kubernetes  OpenShift Installs  OpenShift v3.09+ Cluster admin privileges in OpenShift oc configured to communicate with OpenShift  Installing from a Windows Host If the Crunchy PostgreSQL Operator is being installed from a Windows host the following are required:</description>
+    </item>
+    
+    <item>
+      <title>Prerequisites</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/prereq/prerequisites/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -101,6 +111,18 @@ The server components of the Operator include Role Based Access Control resource
     </item>
     
     <item>
+      <title>Installing Ansible</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installation/installing-ansible/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installation/installing-ansible/</guid>
+      <description>Installing Ansible on Linux, MacOS or Windows Ubuntu Subsystem To install Ansible on Linux or MacOS, see the official documentation provided by Ansible.
+Install Google Cloud SDK (Optional) If Crunchy PostgreSQL Operator is going to be installed in a Google Kubernetes Environment the Google Cloud SDK is required.
+To install the Google Cloud SDK on Linux or MacOS, see the official Google Cloud documentation.
+When installing the Google Cloud SDK on the Windows Ubuntu Subsystem, run the following commands to install:</description>
+    </item>
+    
+    <item>
       <title>PGO YAML</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/configuration/pgo-yaml-configuration/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -109,6 +131,55 @@ The server components of the Operator include Role Based Access Control resource
       <description>pgo.yaml Configuration The pgo.yaml file contains many different configuration settings as described in this section of the documentation.
 The pgo.yaml file is broken into major sections as described below:
 Cluster    Setting Definition     BasicAuth if set to true will enable Basic Authentication   PrimaryNodeLabel newly created primary deployments will specify this node label if specified, unless you override it using the &amp;ndash;node-label command line flag, if not set, no node label is specifed   ReplicaNodeLabel newly created replica deployments will specify this node label if specified, unless you override it using the &amp;ndash;node-label command line flag, if not set, no node label is specifed   CCPImagePrefix newly created containers will be based on this image prefix (e.</description>
+    </item>
+    
+    <item>
+      <title>Installing Metrics Stack</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installation/installing-metrics/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installation/installing-metrics/</guid>
+      <description>Installing The following assumes the proper prerequisites are satisfied we can now install the Grafana and Prometheus services.
+Installing on Linux On a Linux host with Ansible installed we can run the following command to install the Metrics stack:
+The following command should be run from the directory where the postgres-operator-playbooks project is located:
+ansible-playbook -i /path/to/inventory main.yml --tags=install-metrics Installing on MacOS On a MacOS host with Ansible installed we can run the following command to install the Metrics stack:</description>
+    </item>
+    
+    <item>
+      <title>Installing PostgreSQL Operator</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installation/installing-operator/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installation/installing-operator/</guid>
+      <description>Installing The following assumes the proper prerequisites are satisfied we can now install the PostgreSQL Operator.
+Installing on Linux On a Linux host with Ansible installed we can run the following command to install the PostgreSQL Operator:
+The following command should be run from the directory where the postgres-operator-playbooks project is located:
+ansible-playbook -i /path/to/inventory main.yml --tags=install --ask-become-pass Installing on MacOS On a MacOS host with Ansible installed we can run the following command to install the PostgreSQL Operator.</description>
+    </item>
+    
+    <item>
+      <title>Uninstalling Metrics Stack</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/uninstall/uninstalling-metrics/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/uninstall/uninstalling-metrics/</guid>
+      <description> Uninstalling the Metrics Stack The following assumes the proper prerequisites are satisfied we can now deprovision the PostgreSQL Operator.
+First, it is recommended to use the playbooks tagged with the same version of the Metrics stack currently deployed.
+With the correct playbooks acquired and prerequisites satisfied, simply run the following command:
+ansible-playbook -i /path/to/inventory main.yml --tags=deprovision-metrics</description>
+    </item>
+    
+    <item>
+      <title>Uninstalling PostgreSQL Operator</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/uninstall/uninstalling-operator/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/uninstall/uninstalling-operator/</guid>
+      <description> Uninstalling PostgreSQL Operator The following assumes the proper prerequisites are satisfied we can now deprovision the PostgreSQL Operator.
+First, it is recommended to use the playbooks tagged with the same version of the PostgreSQL Operator currently deployed.
+With the correct playbooks acquired and prerequisites satisfied, simply run the following command:
+ansible-playbook -i /path/to/inventory main.yml --tags=deprovision Deleting pgo Client To remove the pgo client, simply run the following command:
+rm /usr/local/bin/pgo  </description>
     </item>
     
     <item>

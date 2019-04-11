@@ -3,7 +3,15 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/prereq/</loc>
   </url>
   
   <url>
@@ -12,6 +20,10 @@
   
   <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/installation/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installation/</loc>
   </url>
   
   <url>
@@ -24,6 +36,10 @@
   
   <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/uninstall/</loc>
   </url>
   
   <url>
@@ -59,6 +75,10 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/prereq/prerequisites/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/prereq/prerequisites/</loc>
   </url>
   
@@ -71,7 +91,27 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installation/installing-ansible/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/configuration/pgo-yaml-configuration/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installation/installing-metrics/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installation/installing-operator/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/uninstall/uninstalling-metrics/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/uninstall/uninstalling-operator/</loc>
   </url>
   
   <url>

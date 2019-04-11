@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Installation on Crunchy Data PostgreSQL Operator Documentation</title>
+    <link>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installation/</link>
+    <description>Recent content in Installation on Crunchy Data PostgreSQL Operator Documentation</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installation/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Installing Ansible</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installation/installing-ansible/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installation/installing-ansible/</guid>
+      <description>Installing Ansible on Linux, MacOS or Windows Ubuntu Subsystem To install Ansible on Linux or MacOS, see the official documentation provided by Ansible.
+Install Google Cloud SDK (Optional) If Crunchy PostgreSQL Operator is going to be installed in a Google Kubernetes Environment the Google Cloud SDK is required.
+To install the Google Cloud SDK on Linux or MacOS, see the official Google Cloud documentation.
+When installing the Google Cloud SDK on the Windows Ubuntu Subsystem, run the following commands to install:</description>
+    </item>
+    
+    <item>
+      <title>Installing Metrics Stack</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installation/installing-metrics/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installation/installing-metrics/</guid>
+      <description>Installing The following assumes the proper prerequisites are satisfied we can now install the Grafana and Prometheus services.
+Installing on Linux On a Linux host with Ansible installed we can run the following command to install the Metrics stack:
+The following command should be run from the directory where the postgres-operator-playbooks project is located:
+ansible-playbook -i /path/to/inventory main.yml --tags=install-metrics Installing on MacOS On a MacOS host with Ansible installed we can run the following command to install the Metrics stack:</description>
+    </item>
+    
+    <item>
+      <title>Installing PostgreSQL Operator</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installation/installing-operator/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installation/installing-operator/</guid>
+      <description>Installing The following assumes the proper prerequisites are satisfied we can now install the PostgreSQL Operator.
+Installing on Linux On a Linux host with Ansible installed we can run the following command to install the PostgreSQL Operator:
+The following command should be run from the directory where the postgres-operator-playbooks project is located:
+ansible-playbook -i /path/to/inventory main.yml --tags=install --ask-become-pass Installing on MacOS On a MacOS host with Ansible installed we can run the following command to install the PostgreSQL Operator.</description>
+    </item>
+    
+  </channel>
+</rss>

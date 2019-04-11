@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Uninstall on Crunchy Data PostgreSQL Operator Documentation</title>
+    <link>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/uninstall/</link>
+    <description>Recent content in Uninstall on Crunchy Data PostgreSQL Operator Documentation</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/uninstall/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Uninstalling Metrics Stack</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/uninstall/uninstalling-metrics/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/uninstall/uninstalling-metrics/</guid>
+      <description> Uninstalling the Metrics Stack The following assumes the proper prerequisites are satisfied we can now deprovision the PostgreSQL Operator.
+First, it is recommended to use the playbooks tagged with the same version of the Metrics stack currently deployed.
+With the correct playbooks acquired and prerequisites satisfied, simply run the following command:
+ansible-playbook -i /path/to/inventory main.yml --tags=deprovision-metrics</description>
+    </item>
+    
+    <item>
+      <title>Uninstalling PostgreSQL Operator</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/uninstall/uninstalling-operator/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/uninstall/uninstalling-operator/</guid>
+      <description> Uninstalling PostgreSQL Operator The following assumes the proper prerequisites are satisfied we can now deprovision the PostgreSQL Operator.
+First, it is recommended to use the playbooks tagged with the same version of the PostgreSQL Operator currently deployed.
+With the correct playbooks acquired and prerequisites satisfied, simply run the following command:
+ansible-playbook -i /path/to/inventory main.yml --tags=deprovision Deleting pgo Client To remove the pgo client, simply run the following command:
+rm /usr/local/bin/pgo  </description>
+    </item>
+    
+  </channel>
+</rss>
