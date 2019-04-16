@@ -7,7 +7,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.52" />
-<title>Configuration :: Crunchy Data PostgreSQL Operator Documentation</title>
+<title>Custom SSL Configuration :: Crunchy Data PostgreSQL Operator Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/latest/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/latest/css/nucleus.css" rel="stylesheet">
 <link href="https://crunchydata.github.io/postgres-operator/latest/theme-flex/style.css" rel="stylesheet">
@@ -29,7 +29,7 @@
 
     
   </head>
-  <body data-url="/configuration/">
+  <body data-url="/gettingstarted/design/custom-config-ssl/">
     
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
   
@@ -102,17 +102,19 @@
         <hr>
 
       <b>Navigation</b>
-    <li data-nav-id="/gettingstarted/" class="dd-item haschildren
+    <li data-nav-id="/gettingstarted/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/">Getting Started</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/">Getting Started</a>
+            <i class="fas fa-angle-down fa-lg category-icon"></i>
 
       </div>
         <ul>
-    <li data-nav-id="/gettingstarted/design/" class="dd-item haschildren
+    <li data-nav-id="/gettingstarted/design/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/">Design</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/">Design</a>
+            <i class="fas fa-angle-down fa-lg category-icon"></i>
 
       </div>
         <ul>
@@ -130,7 +132,7 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="/gettingstarted/design/custom-config-ssl/" class="dd-item">
+      <li data-nav-id="/gettingstarted/design/custom-config-ssl/" class="dd-item active">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/custom-config-ssl/">
             Custom SSL Configuration
@@ -270,11 +272,10 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/configuration/" class="dd-item parent active haschildren
+    <li data-nav-id="/configuration/" class="dd-item haschildren
         ">
       <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/configuration/">Configuration</a>
-            <i class="fas fa-angle-down fa-lg category-icon"></i>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/configuration/">Configuration</a><i class="fas fa-angle-right fa-lg category-icon"></i>
 
       </div>
         <ul>
@@ -746,15 +747,22 @@
         <select onchange="javascript:location.href = this.value;">
           
     <option value="/gettingstarted/" >
-   Getting Started</option>
+   Getting Started</option> 
+    <option value="/gettingstarted/design/" >
+  - 
+   Design</option> 
+      <option value="/gettingstarted/design/designoverview/" >-- Design</option>
+      <option value="/gettingstarted/design/custom-config/" >-- Custom Configuration</option>
+      <option value="/gettingstarted/design/custom-config-ssl/"  selected>-- Custom SSL Configuration</option>
+      <option value="/gettingstarted/design/namespace/" >-- Namespace</option>
+      <option value="/gettingstarted/design/olm/" >-- OLM</option>
+  
+      <option value="/gettingstarted/prereq/prerequisites/" >- Prerequisites</option>
+  
     <option value="/installation/" >
    Installation</option>
-    <option value="/configuration/"  selected>
-   Configuration</option> 
-      <option value="/configuration/compatibility/" >- Compatibility Requirements</option>
-      <option value="/configuration/configuration/" >- Configuration Resources</option>
-      <option value="/configuration/pgo-yaml-configuration/" >- PGO YAML</option>
-  
+    <option value="/configuration/" >
+   Configuration</option>
     <option value="/operatorcli/" >
    Operator Command Line Utility</option>
     <option value="/security/" >
@@ -781,7 +789,7 @@
             <i class="fa fa-info-circle"></i>
             
           </a>
-          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/develop/hugo/content/Configuration/_index.md" target="blank">
+          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/develop/hugo/content/gettingstarted/Design/custom-config-ssl.md" target="blank">
             <i class="fa fa-code-fork"></i>
             
           </a>
@@ -798,7 +806,17 @@
 
 
 
- <a href='https://crunchydata.github.io/postgres-operator/latest/'>Crunchy Data Postgres Operator</a> > Configuration
+
+
+
+
+
+
+ <a href='https://crunchydata.github.io/postgres-operator/latest/'>Crunchy Data Postgres Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/gettingstarted/'>Getting Started</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/'>Design</a> > Custom SSL Configuration
+
+ 
+
+ 
 
  
 
@@ -812,57 +830,121 @@
     
     <div id="body-inner">
 
-    <h1>Configuration</h1>
+    <h1>Custom SSL Configuration</h1>
 
     
 
     
+    
 
+<h2 id="custom-postgres-ssl-configurations">Custom Postgres SSL Configurations</h2>
 
+<p>The Crunchy Data Postgres Operator can create clusters that use SSL authentication by
+utilizing custom configmaps.</p>
 
-<div class="extra-pagination inner">
-<nav class="pagination" role="navigation">
-	
-	<span class="page-number"> 1  1</span>
-	
-</nav>
+<h4 id="configuration-files-for-ssl-authentication">Configuration Files for SSL Authentication</h4>
 
-</div>
+<p>Users and administrators can specify a
+custom set of Postgres configuration files to be used when creating
+a new Postgres cluster. This example uses the files below-</p>
 
-
-   <ul>
-    <li><a href="https://crunchydata.github.io/postgres-operator/latest/configuration/compatibility/">Compatibility Requirements</a></li>
+<ul>
+<li>postgresql.conf</li>
+<li>pg_hba.conf</li>
+<li>pg_ident.conf</li>
 </ul>
 
+<p>along with generated security certificates, to setup a custom SSL configuration.</p>
 
-   <ul>
-    <li><a href="https://crunchydata.github.io/postgres-operator/latest/configuration/configuration/">Configuration Resources</a></li>
-</ul>
+<h4 id="config-files-purpose">Config Files Purpose</h4>
 
+<p>The <em>postgresql.conf</em> file is the main Postgresql configuration file that allows
+the definition of a wide variety of tuning parameters and features.</p>
 
-   <ul>
-    <li><a href="https://crunchydata.github.io/postgres-operator/latest/configuration/pgo-yaml-configuration/">PGO YAML</a></li>
-</ul>
+<p>The <em>pg_hba.conf</em> file is the way Postgresql secures client access.</p>
 
+<p>The <em>pg_ident.conf</em> is the ident map file and defines user name maps.</p>
 
+<h4 id="configmap-creation">ConfigMap Creation</h4>
 
-<div style="margin-bottom:2rem"></div>
+<p>This example shows how you can configure PostgreSQL to use SSL for client authentication.</p>
 
-<nav class="pagination" role="navigation">
-	
-	<span class="page-number"> 1  1</span>
-	
-</nav>
+<p>The example requires SSL certificates and keys to be created. Included in the examples directory is the script called by create.sh to create self-signed certificates (server and client) for the example:</p>
 
+<pre><code>$PGOROOT/examples/ssl-creator.sh. 
+</code></pre>
 
+<p>Additionally, this script requires the certstrap utility to be installed. An install script is provided to install the correct version for the example if not already installed.</p>
+
+<p>The relevant configuration files are located in the configs directory and will configure the clsuter to use SSL client authentication. These, along with the client certificate for the user &lsquo;testuser&rsquo; and a server certificate for &lsquo;pgo-custom-ssl-container&rsquo;, will make up the necessary configuration items to be stored in the &lsquo;pgo-custom-ssl-config&rsquo; configmap.</p>
+
+<h4 id="example-steps">Example Steps</h4>
+
+<p>Run the script as follow:</p>
+
+<pre><code>cd $PGOROOT/examples/custom-config-ssl
+./create.sh
+</code></pre>
+
+<p>This will generate a configmap named &lsquo;pgo-custom-ssl-config&rsquo;.</p>
+
+<p>Once this configmap is created, run</p>
+
+<pre><code>pgo create cluster customsslcluster --custom-config pgo-custom-ssl-config -n ${PGO_NAMESPACE}
+</code></pre>
+
+<p>A required step to make this example work is to define in your /etc/hosts file an entry that maps &lsquo;pgo-custom-ssl-container&rsquo; to the service cluster IP address for the container created above.</p>
+
+<p>For instance, if your service has an address as follows:</p>
+
+<pre><code>${PGO_CMD} get service -n ${PGO_NAMESPACE}
+NAME                    CLUSTER-IP       EXTERNAL-IP   PORT(S)                   AGE
+customsslcluster        172.30.211.108   &lt;none&gt;        5432/TCP
+</code></pre>
+
+<p>Then your /etc/hosts file needs an entry like this:</p>
+
+<pre><code>172.30.211.108 pgo-custom-ssl-container
+</code></pre>
+
+<p>For production Kubernetes and OpenShift installations, it will likely be preferred for DNS names to resolve to the PostgreSQL service name and generate server certificates using the DNS names instead of the example name pgo-custom-ssl-container.</p>
+
+<p>If as a client it’s required to confirm the identity of the server, verify-full can be specified for ssl-mode in the connection string. This will check if the server and the server certificate have the same name. Additionally, the proper connection parameters must be specified in the connection string for the certificate information required to trust and verify the identity of the server (sslrootcert and sslcrl), and to authenticate the client using a certificate (sslcert and sslkey):</p>
+
+<pre><code>psql &quot;postgresql://testuser@pgo-custom-ssl-container:5432/userdb?sslmode=verify-full&amp;sslrootcert=/home/pgo/odev/src/github.com/crunchydata/postgres-operator/examples/custom-config-ssl/certs/ca.crt&amp;sslcrl=/home/pgo/odev/src/github.com/crunchydata/postgres-operator/examples/custom-config-ssl/certs/ca.crl&amp;sslcert=/home/pgo/odev/src/github.com/crunchydata/postgres-operator/examples/custom-config-ssl/certs/client.crt&amp;sslkey=/home/pgo/odev/src/github.com/crunchydata/postgres-operator/examples/custom-config-ssl/certs/client.key&quot;
+</code></pre>
+
+<p>To connect via IP, sslmode can be changed to require. This will verify the server by checking the certificate chain up to the trusted certificate authority, but will not verify that the hostname matches the certificate, as occurs with verify-full. The same connection parameters as above can be then provided for the client and server certificate information.
+i</p>
+
+<pre><code>psql &quot;postgresql://testuser@IP_OF_PGSQL:5432/userdb?sslmode=require&amp;sslrootcert=/home/pgo/odev/src/github.com/crunchydata/postgres-operator/examples/custom-config-ssl/certs/ca.crt&amp;sslcrl=/home/pgo/odev/src/github.com/crunchydata/postgres-operator/examples/custom-config-ssl/certs/ca.crl&amp;sslcert=/home/pgo/odev/src/github.com/crunchydata/postgres-operator/examples/custom-config-ssl/certs/client.crt&amp;sslkey=/home/pgo/odev/src/github.com/crunchydata/postgres-operator/examples/custom-config-ssl/certs/client.key&quot;
+</code></pre>
+
+<p>You should see a connection that looks like the following:</p>
+
+<pre><code>psql (11.2)
+SSL connection (protocol: TLSv1.2, cipher: ECDHE-RSA-AES256-GCM-SHA384, bits: 256, compression: off)
+Type &quot;help&quot; for help.
+
+userdb=&gt;
+</code></pre>
+
+<h4 id="important-notes">Important Notes</h4>
+
+<p>Because SSL will be required for connections, certain features of the Operator will not function as expected. These include the following:</p>
+
+<pre><code>pgo test
+pgo load
+pgo apply
+</code></pre>
 
 
 
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/installation/developer-setup/" title="Developer Setup"> <i class="fa fa-chevron-left"></i><label>Developer Setup</label></a>
-    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/configuration/compatibility/" title="Compatibility Requirements" style="margin-right: 0px;"><label>Compatibility Requirements</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/custom-config/" title="Custom Configuration"> <i class="fa fa-chevron-left"></i><label>Custom Configuration</label></a>
+    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/namespace/" title="Namespace" style="margin-right: 0px;"><label>Namespace</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>

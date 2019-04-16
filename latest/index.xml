@@ -33,6 +33,18 @@ For example, within the Primary Deployment, the metrics container is completely 
     </item>
     
     <item>
+      <title>Custom SSL Configuration</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/custom-config-ssl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/custom-config-ssl/</guid>
+      <description>Custom Postgres SSL Configurations The Crunchy Data Postgres Operator can create clusters that use SSL authentication by utilizing custom configmaps.
+Configuration Files for SSL Authentication Users and administrators can specify a custom set of Postgres configuration files to be used when creating a new Postgres cluster. This example uses the files below-
+ postgresql.conf pg_hba.conf pg_ident.conf  along with generated security certificates, to setup a custom SSL configuration.
+Config Files Purpose The postgresql.</description>
+    </item>
+    
+    <item>
       <title>Namespace</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/namespace/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
