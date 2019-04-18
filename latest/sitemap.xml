@@ -169,6 +169,10 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_benchmark/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_cat/</loc>
   </url>
   

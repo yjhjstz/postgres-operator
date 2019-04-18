@@ -7,7 +7,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.52" />
-<title>pgo_show_user :: Crunchy Data PostgreSQL Operator Documentation</title>
+<title>pgo_benchmark :: Crunchy Data PostgreSQL Operator Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/latest/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/latest/css/nucleus.css" rel="stylesheet">
 <link href="https://crunchydata.github.io/postgres-operator/latest/theme-flex/style.css" rel="stylesheet">
@@ -29,7 +29,7 @@
 
     
   </head>
-  <body data-url="/operatorcli/cli/pgo_show_user/">
+  <body data-url="/operatorcli/cli/pgo_benchmark/">
     
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
   
@@ -344,7 +344,7 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="/operatorcli/cli/pgo_benchmark/" class="dd-item">
+      <li data-nav-id="/operatorcli/cli/pgo_benchmark/" class="dd-item active">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_benchmark/">
             pgo_benchmark
@@ -624,7 +624,7 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="/operatorcli/cli/pgo_show_user/" class="dd-item active">
+      <li data-nav-id="/operatorcli/cli/pgo_show_user/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_user/">
             pgo_show_user
@@ -768,7 +768,7 @@
       <option value="/operatorcli/cli/pgo/" >-- pgo</option>
       <option value="/operatorcli/cli/pgo_apply/" >-- pgo_apply</option>
       <option value="/operatorcli/cli/pgo_backup/" >-- pgo_backup</option>
-      <option value="/operatorcli/cli/pgo_benchmark/" >-- pgo_benchmark</option>
+      <option value="/operatorcli/cli/pgo_benchmark/"  selected>-- pgo_benchmark</option>
       <option value="/operatorcli/cli/pgo_cat/" >-- pgo_cat</option>
       <option value="/operatorcli/cli/pgo_clidoc/" >-- pgo_clidoc</option>
       <option value="/operatorcli/cli/pgo_create/" >-- pgo_create</option>
@@ -808,7 +808,7 @@
       <option value="/operatorcli/cli/pgo_show_pvc/" >-- pgo_show_pvc</option>
       <option value="/operatorcli/cli/pgo_show_schedule/" >-- pgo_show_schedule</option>
       <option value="/operatorcli/cli/pgo_show_upgrade/" >-- pgo_show_upgrade</option>
-      <option value="/operatorcli/cli/pgo_show_user/"  selected>-- pgo_show_user</option>
+      <option value="/operatorcli/cli/pgo_show_user/" >-- pgo_show_user</option>
       <option value="/operatorcli/cli/pgo_show_workflow/" >-- pgo_show_workflow</option>
       <option value="/operatorcli/cli/pgo_status/" >-- pgo_status</option>
       <option value="/operatorcli/cli/pgo_test/" >-- pgo_test</option>
@@ -843,7 +843,7 @@
             <i class="fa fa-info-circle"></i>
             
           </a>
-          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/develop/hugo/content/operatorcli/cli/pgo_show_user.md" target="blank">
+          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/develop/hugo/content/operatorcli/cli/pgo_benchmark.md" target="blank">
             <i class="fa fa-code-fork"></i>
             
           </a>
@@ -866,7 +866,7 @@
 
 
 
- <a href='https://crunchydata.github.io/postgres-operator/latest/'>Crunchy Data Postgres Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/operatorcli/'>Operator Command Line Utility</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/'>Operator CLI</a> > pgo_show_user
+ <a href='https://crunchydata.github.io/postgres-operator/latest/'>Crunchy Data Postgres Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/operatorcli/'>Operator Command Line Utility</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/'>Operator CLI</a> > pgo_benchmark
 
  
 
@@ -884,32 +884,38 @@
     
     <div id="body-inner">
 
-    <h1>pgo_show_user</h1>
+    <h1>pgo_benchmark</h1>
 
     
 
     
     
 
-<h2 id="pgo-show-user">pgo show user</h2>
+<h2 id="pgo-benchmark">pgo benchmark</h2>
 
-<p>Show user information</p>
+<p>Perform a pgBench benchmark against clusters</p>
 
 <h3 id="synopsis">Synopsis</h3>
 
-<p>Show users on a cluster. For example:</p>
+<p>Benchmark run pgBench against PostgreSQL clusters, for example:</p>
 
-<pre><code>pgo show user mycluster
-</code></pre>
+<p>pgo benchmark mycluster</p>
 
-<pre><code>pgo show user [flags]
+<pre><code>pgo benchmark [flags]
 </code></pre>
 
 <h3 id="options">Options</h3>
 
-<pre><code>      --expired string    Shows passwords that will expire in X days.
-  -h, --help              help for user
-  -s, --selector string   The selector to use for cluster filtering.
+<pre><code>  -b, --benchmark-opts string   The extra flags passed to pgBench during the benchmark.
+  -c, --clients int             The number of clients to be used in the benchmark. (default 1)
+  -d, --database string         The database where the benchmark should be run. (default &quot;postgres&quot;)
+  -h, --help                    help for benchmark
+  -i, --init-opts string        The extra flags passed to pgBench during the initialization of the benchmark.
+  -j, --jobs int                The number of worker threads to use for the benchmark. (default 1)
+  -p, --policy string           The name of the policy specifying custom transaction SQL for advanced benchmarking.
+      --scale int               The number to scale the amount of rows generated for the benchmark. (default 1)
+  -s, --selector string         The selector to use for cluster filtering.
+  -t, --transactions int        The number of transaction each client should run in the benchmark. (default 1)
 </code></pre>
 
 <h3 id="options-inherited-from-parent-commands">Options inherited from parent commands</h3>
@@ -925,7 +931,7 @@
 <h3 id="see-also">SEE ALSO</h3>
 
 <ul>
-<li><a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show/">pgo show</a>     - Show the description of a cluster</li>
+<li><a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo/">pgo</a>   - The pgo command line interface.</li>
 </ul>
 
 <h6 id="auto-generated-by-spf13-cobra-on-17-apr-2019">Auto generated by spf13/cobra on 17-Apr-2019</h6>
@@ -935,8 +941,8 @@
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_upgrade/" title="pgo_show_upgrade"> <i class="fa fa-chevron-left"></i><label>pgo_show_upgrade</label></a>
-    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_workflow/" title="pgo_show_workflow" style="margin-right: 0px;"><label>pgo_show_workflow</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_backup/" title="pgo_backup"> <i class="fa fa-chevron-left"></i><label>pgo_backup</label></a>
+    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_cat/" title="pgo_cat" style="margin-right: 0px;"><label>pgo_cat</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
