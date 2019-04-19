@@ -1522,6 +1522,15 @@ type instead of the default ClusterIP service type.</p>
 </tbody>
 </table>
 
+<h2 id="pgo-global-environment-variables">pgo Global Environment Variables</h2>
+
+<p><em>pgo</em> will pick up these settings if set in your environment:</p>
+
+<p>| Name | Description | NOTES |
+|PGOUSERNAME |The username (role) used for auth on the operator apiserver. | Requires that PGOUSERPASS be set. |
+|PGOUSERPASS |The password for used for auth on the operator apiserver. | Requires that PGOUSERNAME be set. |
+|PGOUSER |The path the the pgorole file. | Will be ignored if either PGOUSERNAME or PGOUSERPASS are set. |</p>
+
 
 
     
