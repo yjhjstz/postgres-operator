@@ -1184,7 +1184,7 @@ should contain all configurable variables the playbooks offer.</p>
 </tr>
 
 <tr>
-<td><code>pgo_namespace</code></td>
+<td><code>pgo_operator_namespace</code></td>
 <td></td>
 <td>Set to configure the namespace where Operator will be deployed.</td>
 </tr>
@@ -1280,7 +1280,7 @@ should contain all configurable variables the playbooks offer.</p>
 </tr>
 
 <tr>
-<td><code>target_namespaces</code></td>
+<td><code>namespace</code></td>
 <td></td>
 <td>Set to a comma delimited string of all the namespaces Operator will manage.</td>
 </tr>
@@ -1353,7 +1353,7 @@ can configure the <code>primary_storage=storage1</code> variable in the inventor
 </div>
 
 
-<h2 id="understanding-pgo-namespace-target-namespaces">Understanding <code>pgo_namespace</code> &amp; <code>target_namespaces</code></h2>
+<h2 id="understanding-pgo-operator-namespace-namespace">Understanding <code>pgo_operator_namespace</code> &amp; <code>namespace</code></h2>
 
 <p>The Crunchy PostgreSQL Operator can be configured to be deployed and manage a single
 namespace or manage several namespaces.  The following are examples of different types
@@ -1363,14 +1363,14 @@ of deployment models configurable in the <code>inventory</code> file.</p>
 
 <p>To deploy the Crunchy PostgreSQL Operator to work with a single namespace (in this example
 our namespace is named <code>pgo</code>), configure the following <code>inventory</code> settings:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#75af00">pgo_namespace</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;pgo&#39;</span>
-<span style="color:#75af00">target_namespaces</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;pgo&#39;</span></code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#75af00">pgo_operator_namespace</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;pgo&#39;</span>
+<span style="color:#75af00">namespace</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;pgo&#39;</span></code></pre></div>
 <h3 id="multiple-namespaces">Multiple Namespaces</h3>
 
 <p>To deploy the Crunchy PostgreSQL Operator to work with multiple namespaces (in this example
 our namespaces are named <code>pgo</code>, <code>pgouser1</code> and <code>pgouser2</code>), configure the following <code>inventory</code> settings:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#75af00">pgo_namespace</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;pgo&#39;</span>
-<span style="color:#75af00">target_namespaces</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;pgouser1,pgouser2&#39;</span></code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#75af00">pgo_operator_namespace</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;pgo&#39;</span>
+<span style="color:#75af00">namespace</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;pgouser1,pgouser2&#39;</span></code></pre></div>
 <h2 id="deploying-multiple-operators">Deploying Multiple Operators</h2>
 
 <p>The 4.0 release of the Crunchy PostgreSQL Operator allows for multiple operator deployments in the same cluster.<br />
@@ -1379,18 +1379,18 @@ for each deployment of the operator.</p>
 
 <p>For each operator deployment the following inventory variables should be configured uniquely for each install.</p>
 
-<p>For example, operator could be deployed twice by changing the <code>pgo_namespace</code> and <code>target_namespaces</code> for those
+<p>For example, operator could be deployed twice by changing the <code>pgo_operator_namespace</code> and <code>namespace</code> for those
 deployments:</p>
 
 <p>Inventory A would deploy operator to the <code>pgo</code> namespace and it would manage the <code>pgo</code> target namespace.</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-init" data-lang="init"># Inventory A
-pgo_namespace=&#39;pgo&#39;
-target_namespaces=&#39;pgo&#39;
+pgo_operator_namespace=&#39;pgo&#39;
+namespace=&#39;pgo&#39;
 ...</code></pre></div>
 <p>Inventory B would deploy operator to the <code>pgo2</code> namespace and it would manage the <code>pgo2</code> and <code>pgo3</code> target namespaces.</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-init" data-lang="init"># Inventory B
-pgo_namespace=&#39;pgo2&#39;
-target_namespaces=&#39;pgo2,pgo3&#39;
+pgo_operator_namespace=&#39;pgo2&#39;
+namespace=&#39;pgo2,pgo3&#39;
 ...</code></pre></div>
 <p>Each install of the operator will create a corresponding directory in <code>$HOME/.pgo/&lt;PGO NAMESPACE&gt;</code> which will contain
 the TLS and <code>pgouser</code> client credentials.</p>
