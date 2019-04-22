@@ -87,7 +87,7 @@ Syntax Use the following syntax to run pgo commands from your terminal window:</
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/prereq/prerequisites/</guid>
       <description>Prerequisites The following is required prior to installing Crunchy PostgreSQL Operator using Ansible:
- postgres-operator-playbooks source code for the target version Ansible 2.4.6+  Kubernetes Installs  Kubernetes v1.11+ Cluster admin privileges in Kubernetes kubectl configured to communicate with Kubernetes  OpenShift Installs  OpenShift v3.09+ Cluster admin privileges in OpenShift oc configured to communicate with OpenShift  Installing from a Windows Host If the Crunchy PostgreSQL Operator is being installed from a Windows host the following are required:</description>
+ postgres-operator playbooks source code for the target version Ansible 2.4.6+  Kubernetes Installs  Kubernetes v1.11+ Cluster admin privileges in Kubernetes kubectl configured to communicate with Kubernetes  OpenShift Installs  OpenShift v3.09+ Cluster admin privileges in OpenShift oc configured to communicate with OpenShift  Installing from a Windows Host If the Crunchy PostgreSQL Operator is being installed from a Windows host the following are required:</description>
     </item>
     
     <item>
@@ -164,9 +164,8 @@ ansible-playbook -i /path/to/inventory main.yml --tags=install-metrics Installin
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installation/installing-operator/</guid>
       <description>Installing The following assumes the proper prerequisites are satisfied we can now install the PostgreSQL Operator.
-Installing on Linux On a Linux host with Ansible installed we can run the following command to install the PostgreSQL Operator:
-The following command should be run from the directory where the postgres-operator-playbooks project is located:
-ansible-playbook -i /path/to/inventory main.yml --tags=install --ask-become-pass Installing on MacOS On a MacOS host with Ansible installed we can run the following command to install the PostgreSQL Operator.</description>
+The commands should be run in the directory where the Crunchy PostgreSQL Operator playbooks is stored. See the ansible directory in the Crunchy PostgreSQL Operator project for the inventory file, main playbook and ansible roles.
+Installing on Linux On a Linux host with Ansible installed we can run the following command to install the PostgreSQL Operator:</description>
     </item>
     
     <item>
@@ -192,6 +191,17 @@ First, it is recommended to use the playbooks tagged with the same version of th
 With the correct playbooks acquired and prerequisites satisfied, simply run the following command:
 ansible-playbook -i /path/to/inventory main.yml --tags=deprovision Deleting pgo Client To remove the pgo client, simply run the following command:
 rm /usr/local/bin/pgo  </description>
+    </item>
+    
+    <item>
+      <title>Updating PostgreSQL Operator</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installation/updating-operator/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installation/updating-operator/</guid>
+      <description>Updating Updating the Crunchy PostgreSQL Operator is essential to the lifecycle management of the service. Using the update flag will:
+ Update and redeploy the operator deployment Recreate configuration maps used by operator Remove any deprecated objects Allow administrators to change settings configured in the inventory  The following assumes the proper prerequisites are satisfied we can now update the PostgreSQL Operator.
+The commands should be run in the directory where the Crunchy PostgreSQL Operator playbooks is stored.</description>
     </item>
     
     <item>

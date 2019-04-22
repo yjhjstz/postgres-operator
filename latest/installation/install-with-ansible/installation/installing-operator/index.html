@@ -223,6 +223,13 @@
           </a>
         </div>
     </li>
+      <li data-nav-id="/installation/install-with-ansible/installation/updating-operator/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installation/updating-operator/">
+            Updating PostgreSQL Operator
+          </a>
+        </div>
+    </li>
         </ul>
     </li>
     <li data-nav-id="/installation/install-with-ansible/uninstall/" class="dd-item haschildren
@@ -770,6 +777,7 @@
       <option value="/installation/install-with-ansible/installation/installing-ansible/" >--- Installing Ansible</option>
       <option value="/installation/install-with-ansible/installation/installing-metrics/" >--- Installing Metrics Stack</option>
       <option value="/installation/install-with-ansible/installation/installing-operator/"  selected>--- Installing PostgreSQL Operator</option>
+      <option value="/installation/install-with-ansible/installation/updating-operator/" >--- Updating PostgreSQL Operator</option>
   
     <option value="/installation/install-with-ansible/uninstall/" >
   -- 
@@ -867,29 +875,24 @@
 <p>The following assumes the proper <a href="https://crunchydata.github.io/postgres-operator/latest/getting-started/prerequisites">prerequisites are satisfied</a>
 we can now install the PostgreSQL Operator.</p>
 
+<p>The commands should be run in the directory where the Crunchy PostgreSQL Operator
+playbooks is stored.  See the <code>ansible</code> directory in the Crunchy PostgreSQL Operator
+project for the inventory file, main playbook and ansible roles.</p>
+
 <h2 id="installing-on-linux">Installing on Linux</h2>
 
 <p>On a Linux host with Ansible installed we can run the following command to install
 the PostgreSQL Operator:</p>
-
-<p>The following command should be run from the directory where the
-<code>postgres-operator-playbooks</code> project is located:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ansible-playbook -i /path/to/inventory main.yml --tags<span style="color:#f92672">=</span>install --ask-become-pass</code></pre></div>
 <h2 id="installing-on-macos">Installing on MacOS</h2>
 
 <p>On a MacOS host with Ansible installed we can run the following command to install
 the PostgreSQL Operator.</p>
-
-<p>The following command should be run from the directory where the
-<code>postgres-operator-playbooks</code> project is located:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ansible-playbook -i /path/to/inventory main.yml --tags<span style="color:#f92672">=</span>install --ask-become-pass</code></pre></div>
 <h2 id="installing-on-windows-ubuntu-subsystem">Installing on Windows Ubuntu Subsystem</h2>
 
 <p>On a Windows host with an Ubuntu subsystem we can run the following commands to install
 the PostgreSQL Operator.</p>
-
-<p>The following command should be run from the directory where the
-<code>postgres-operator-playbooks</code> project is located:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ansible-playbook -i /path/to/inventory main.yml --tags<span style="color:#f92672">=</span>install --ask-become-pass</code></pre></div>
 <h2 id="verifying-the-installation">Verifying the Installation</h2>
 
@@ -941,7 +944,7 @@ PostgreSQL Operator has been installed successfully.</p>
         <div class="chevrons">
     <div id="navigation">
 <a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installation/installing-metrics/" title="Installing Metrics Stack"> <i class="fa fa-chevron-left"></i><label>Installing Metrics Stack</label></a>
-    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/uninstall/" title="Uninstall" style="margin-right: 0px;"><label>Uninstall</label><i class="fa fa-chevron-right"></i></a></div>
+    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installation/updating-operator/" title="Updating PostgreSQL Operator" style="margin-right: 0px;"><label>Updating PostgreSQL Operator</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
