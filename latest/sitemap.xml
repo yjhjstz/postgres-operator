@@ -15,19 +15,11 @@
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/prereq/</loc>
-  </url>
-  
-  <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/designoverview/</loc>
   </url>
   
   <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/installation/</loc>
-  </url>
-  
-  <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installation/</loc>
   </url>
   
   <url>
@@ -44,10 +36,6 @@
   
   <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/</loc>
-  </url>
-  
-  <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/uninstall/</loc>
   </url>
   
   <url>
@@ -83,11 +71,23 @@
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/prereq/prerequisites/</loc>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/prerequisites/</loc>
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/prereq/prerequisites/</loc>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installing-ansible/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/prereq/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installing-operator/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installing-metrics/</loc>
   </url>
   
   <url>
@@ -99,7 +99,7 @@
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installation/installing-ansible/</loc>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/updating-operator/</loc>
   </url>
   
   <url>
@@ -107,23 +107,11 @@
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installation/installing-metrics/</loc>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/uninstalling-operator/</loc>
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installation/installing-operator/</loc>
-  </url>
-  
-  <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/uninstall/uninstalling-metrics/</loc>
-  </url>
-  
-  <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/uninstall/uninstalling-operator/</loc>
-  </url>
-  
-  <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installation/updating-operator/</loc>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/uninstalling-metrics/</loc>
   </url>
   
   <url>
