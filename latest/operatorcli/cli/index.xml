@@ -108,7 +108,7 @@ pgo create cluster mycluster  pgo create cluster [flags]  Options  --autofail If
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_pgbouncer/</guid>
       <description>pgo create pgbouncer Create a pgbouncer
 Synopsis Create a pgbouncer. For example:
-pgo create pgbouncer mycluster  pgo create pgbouncer [flags]  Options  -h, --help help for pgbouncer --pgbouncer-pass string Password for the pgbouncer user of the crunchy-pgboucer deployment.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. -n, --namespace string The namespace to use for pgo requests.</description>
+pgo create pgbouncer mycluster  pgo create pgbouncer [flags]  Options  -h, --help help for pgbouncer --pgbouncer-pass string Password for the pgbouncer user of the crunchy-pgboucer deployment. -s, --selector string The selector to use for cluster filtering.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true.</description>
     </item>
     
     <item>

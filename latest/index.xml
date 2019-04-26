@@ -11,6 +11,28 @@
     
     
     <item>
+      <title>Compatibility Requirements</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/configuration/compatibility/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/configuration/compatibility/</guid>
+      <description>Container Dependencies The Operator depends on the Crunchy Containers and there are version dependencies between the two projects.
+   Operator Release Container Release     4.0.0 2.4.0   3.5.2 2.3.1    Features sometimes are added into the underlying Crunchy Containers to support upstream features in the Operator thus dictating a dependency between the two projects at a specific version level.
+Operating Systems The Operator is developed on both Centos 7 and RHEL 7 operating systems.</description>
+    </item>
+    
+    <item>
+      <title>Configuration Resources</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/configuration/configuration/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/configuration/configuration/</guid>
+      <description>The operator is template-driven; this makes it simple to configure both the client and the operator.
+conf Directory The Operator is configured with a collection of files found in the conf directory. These configuration files are deployed to your Kubernetes cluster when the Operator is deployed. Changes made to any of these configuration files currently require a redeployment of the Operator on the Kubernetes cluster.
+The server components of the Operator include Role Based Access Control resources which need to be created a single time by a Kubernetes cluster-admin user.</description>
+    </item>
+    
+    <item>
       <title>Design</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/designoverview/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -19,6 +41,17 @@
       <description>Provisioning So, what does the Postgres Operator actually deploy when you create a cluster?
 On this diagram, objects with dashed lines are components that are optionally deployed as part of a PostgreSQL Cluster by the operator. Objects with solid lines are the fundamental and required components.
 For example, within the Primary Deployment, the metrics container is completely optional. That component can be deployed using either the operator configuration or command line arguments if you want to cause metrics to be collected from the Postgres container.</description>
+    </item>
+    
+    <item>
+      <title>PGO YAML</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/configuration/pgo-yaml-configuration/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/configuration/pgo-yaml-configuration/</guid>
+      <description>pgo.yaml Configuration The pgo.yaml file contains many different configuration settings as described in this section of the documentation.
+The pgo.yaml file is broken into major sections as described below:
+Cluster    Setting Definition     BasicAuth if set to true will enable Basic Authentication   PrimaryNodeLabel newly created primary deployments will specify this node label if specified, unless you override it using the &amp;ndash;node-label command line flag, if not set, no node label is specifed   ReplicaNodeLabel newly created replica deployments will specify this node label if specified, unless you override it using the &amp;ndash;node-label command line flag, if not set, no node label is specifed   CCPImagePrefix newly created containers will be based on this image prefix (e.</description>
     </item>
     
     <item>
@@ -56,6 +89,18 @@ The .bashrc NAMESPACE environment variable a user sets determines which namespac
     </item>
     
     <item>
+      <title>Operator CLI Overview</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/pgo-overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/pgo-overview/</guid>
+      <description>The command line tool, pgo, is used to interact with the Postgres Operator.
+Most users will work with the Operator using the pgo CLI tool. That tool is downloaded from the GitHub Releases page for the Operator (https://github.com/crunchydata/postgres-operator/releases).
+The pgo client is provided in Mac, Windows, and Linux binary formats, download the appropriate client to your local laptop or workstation to work with a remote Operator.
+Syntax Use the following syntax to run pgo commands from your terminal window:</description>
+    </item>
+    
+    <item>
       <title>OLM</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/olm/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -66,18 +111,6 @@ The Postgres Operator supports the different deployment models as documented her
 https://github.com/operator-framework/operator-lifecycle-manager/blob/master/Documentation/design/operatorgroups.md
 Operator Hub The Operator shows up on the Redhat Operator Hub at the following location:
 https://www.operatorhub.io/operator/postgres-operator.v3.5.0</description>
-    </item>
-    
-    <item>
-      <title>Operator CLI Overview</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/pgo-overview/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/pgo-overview/</guid>
-      <description>The command line tool, pgo, is used to interact with the Postgres Operator.
-Most users will work with the Operator using the pgo CLI tool. That tool is downloaded from the GitHub Releases page for the Operator (https://github.com/crunchydata/postgres-operator/releases).
-The pgo client is provided in Mac, Windows, and Linux binary formats, download the appropriate client to your local laptop or workstation to work with a remote Operator.
-Syntax Use the following syntax to run pgo commands from your terminal window:</description>
     </item>
     
     <item>
@@ -125,28 +158,6 @@ Installing on Linux On a Linux host with Ansible installed we can run the follow
     </item>
     
     <item>
-      <title>Compatibility Requirements</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/configuration/compatibility/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/configuration/compatibility/</guid>
-      <description>Container Dependencies The Operator depends on the Crunchy Containers and there are version dependencies between the two projects.
-   Operator Release Container Release     4.0.0 2.4.0   3.5.2 2.3.1    Features sometimes are added into the underlying Crunchy Containers to support upstream features in the Operator thus dictating a dependency between the two projects at a specific version level.
-Operating Systems The Operator is developed on both Centos 7 and RHEL 7 operating systems.</description>
-    </item>
-    
-    <item>
-      <title>Configuration Resources</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/configuration/configuration/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/configuration/configuration/</guid>
-      <description>The operator is template-driven; this makes it simple to configure both the client and the operator.
-conf Directory The Operator is configured with a collection of files found in the conf directory. These configuration files are deployed to your Kubernetes cluster when the Operator is deployed. Changes made to any of these configuration files currently require a redeployment of the Operator on the Kubernetes cluster.
-The server components of the Operator include Role Based Access Control resources which need to be created a single time by a Kubernetes cluster-admin user.</description>
-    </item>
-    
-    <item>
       <title>Updating PostgreSQL Operator</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/updating-operator/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -155,17 +166,6 @@ The server components of the Operator include Role Based Access Control resource
       <description>Updating Updating the Crunchy PostgreSQL Operator is essential to the lifecycle management of the service. Using the update flag will:
  Update and redeploy the operator deployment Recreate configuration maps used by operator Remove any deprecated objects Allow administrators to change settings configured in the inventory  The following assumes the proper prerequisites are satisfied we can now update the PostgreSQL Operator.
 The commands should be run in the directory where the Crunchy PostgreSQL Operator playbooks is stored.</description>
-    </item>
-    
-    <item>
-      <title>PGO YAML</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/configuration/pgo-yaml-configuration/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/configuration/pgo-yaml-configuration/</guid>
-      <description>pgo.yaml Configuration The pgo.yaml file contains many different configuration settings as described in this section of the documentation.
-The pgo.yaml file is broken into major sections as described below:
-Cluster    Setting Definition     BasicAuth if set to true will enable Basic Authentication   PrimaryNodeLabel newly created primary deployments will specify this node label if specified, unless you override it using the &amp;ndash;node-label command line flag, if not set, no node label is specifed   ReplicaNodeLabel newly created replica deployments will specify this node label if specified, unless you override it using the &amp;ndash;node-label command line flag, if not set, no node label is specifed   CCPImagePrefix newly created containers will be based on this image prefix (e.</description>
     </item>
     
     <item>
@@ -346,7 +346,7 @@ pgo create cluster mycluster  pgo create cluster [flags]  Options  --autofail If
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_pgbouncer/</guid>
       <description>pgo create pgbouncer Create a pgbouncer
 Synopsis Create a pgbouncer. For example:
-pgo create pgbouncer mycluster  pgo create pgbouncer [flags]  Options  -h, --help help for pgbouncer --pgbouncer-pass string Password for the pgbouncer user of the crunchy-pgboucer deployment.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. -n, --namespace string The namespace to use for pgo requests.</description>
+pgo create pgbouncer mycluster  pgo create pgbouncer [flags]  Options  -h, --help help for pgbouncer --pgbouncer-pass string Password for the pgbouncer user of the crunchy-pgboucer deployment. -s, --selector string The selector to use for cluster filtering.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true.</description>
     </item>
     
     <item>

@@ -3,11 +3,19 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/configuration/compatibility/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/</loc>
   </url>
   
   <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/installation/install-pgo-client/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/configuration/configuration/</loc>
   </url>
   
   <url>
@@ -23,6 +31,10 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/configuration/pgo-yaml-configuration/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/configuration/</loc>
   </url>
   
@@ -31,19 +43,15 @@
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/custom-config-ssl/</loc>
-  </url>
-  
-  <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/</loc>
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/namespace/</loc>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/custom-config-ssl/</loc>
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/olm/</loc>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/namespace/</loc>
   </url>
   
   <url>
@@ -52,6 +60,10 @@
   
   <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/operatorcli/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/olm/</loc>
   </url>
   
   <url>
@@ -91,19 +103,7 @@
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/configuration/compatibility/</loc>
-  </url>
-  
-  <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/configuration/configuration/</loc>
-  </url>
-  
-  <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/updating-operator/</loc>
-  </url>
-  
-  <url>
-    <loc>https://crunchydata.github.io/postgres-operator/latest/configuration/pgo-yaml-configuration/</loc>
   </url>
   
   <url>
