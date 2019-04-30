@@ -202,7 +202,7 @@
       <li data-nav-id="/installation/install-with-ansible/installing-metrics/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installing-metrics/">
-            Installing Metrics Stack
+            Installing Metrics Infrastructure
           </a>
         </div>
     </li>
@@ -743,7 +743,7 @@
       <option value="/installation/install-with-ansible/prerequisites/"  selected>-- Prerequisites</option>
       <option value="/installation/install-with-ansible/installing-ansible/" >-- Installing Ansible</option>
       <option value="/installation/install-with-ansible/installing-operator/" >-- Installing PostgreSQL Operator</option>
-      <option value="/installation/install-with-ansible/installing-metrics/" >-- Installing Metrics Stack</option>
+      <option value="/installation/install-with-ansible/installing-metrics/" >-- Installing Metrics Infrastructure</option>
       <option value="/installation/install-with-ansible/updating-operator/" >-- Updating PostgreSQL Operator</option>
       <option value="/installation/install-with-ansible/uninstalling-operator/" >-- Uninstalling PostgreSQL Operator</option>
       <option value="/installation/install-with-ansible/uninstalling-metrics/" >-- Uninstalling Metrics Stack</option>
@@ -877,6 +877,38 @@ can install:</p>
 <li>Create required namespaces</li>
 </ul>
 
+<h2 id="obtaining-operator-ansible-role">Obtaining Operator Ansible Role</h2>
+
+<p>There are two ways to obtain the Crunchy PostgreSQL Operator Roles:</p>
+
+<ul>
+<li>Cloning the <a href="https://github.com/CrunchyData/postgres-operator">postgres-operator project</a></li>
+<li><code>postgres-operator-playbooks</code> RPM provided for Crunchy customers via the <a href="https://access.crunchydata.com/">Crunchy Access Portal</a>.</li>
+</ul>
+
+<h3 id="github-installation">GitHub Installation</h3>
+
+<p>All necessary files (inventory, main playbook and roles) can be found in the <code>ansible</code>
+directory in the  <a href="https://github.com/CrunchyData/postgres-operator">postgres-operator project</a>.</p>
+
+<h3 id="rpm-installation-using-yum">RPM Installation using Yum</h3>
+
+<p>Available to Crunchy customers is an RPM containing all the necessary Ansible roles
+and files required for installation using Ansible.  The RPM can be found in Crunchy&rsquo;s
+yum repository.  For information on setting up <code>yum</code> to use the Crunchy repoistory,
+see the <a href="https://access.crunchydata.com/">Crunchy Access Portal</a>.</p>
+
+<p>To install the Crunchy PostgreSQL Operator Ansible roles using <code>yum</code>, run the following
+command on a RHEL or CentOS host:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo yum install postgres-operator-playbooks</code></pre></div>
+<ul>
+<li>Ansible roles can be found in: <code>/usr/share/ansible/roles/crunchydata</code></li>
+<li>Ansible playbooks/inventory files can be found in: <code>/usr/share/ansible/postgres-operator/playbooks</code></li>
+</ul>
+
+<p>Once installed users should take a copy of the <code>inventory</code> file included in the installation
+using the following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cp /usr/share/ansible/postgres-operator/playbooks/inventory <span style="color:#d88200">${</span><span style="color:#111">HOME</span><span style="color:#111">?</span><span style="color:#d88200">}</span></code></pre></div>
 <h2 id="configuring-the-inventory-file">Configuring the Inventory File</h2>
 
 <p>The <code>inventory</code> file included with the PostgreSQL Operator Playbooks allows installers
@@ -922,13 +954,13 @@ should contain all configurable variables the playbooks offer.</p>
 <tr>
 <td><code>auto_failover</code></td>
 <td>false</td>
-<td>Set to true enable auto failover capabilities on all newly created clusters.</td>
+<td>Set to true enable auto failover capabilities on all newly created cluster requests.  This can be disabled by the client.</td>
 </tr>
 
 <tr>
 <td><code>backrest</code></td>
 <td>false</td>
-<td>Set to true enable pgBackRest capabilities on all newly created clusters.</td>
+<td>Set to true enable pgBackRest capabilities on all newly created cluster request.  This can be disabled by the client.</td>
 </tr>
 
 <tr>
@@ -970,7 +1002,7 @@ should contain all configurable variables the playbooks offer.</p>
 <tr>
 <td><code>badger</code></td>
 <td>false</td>
-<td>Set to true enable pgBadger capabilities on all newly created clusters.</td>
+<td>Set to true enable pgBadger capabilities on all newly created clusters.  This can be disabled by the client.</td>
 </tr>
 
 <tr>
@@ -1084,7 +1116,7 @@ should contain all configurable variables the playbooks offer.</p>
 <tr>
 <td><code>metrics</code></td>
 <td>false</td>
-<td>Set to true enable performance metrics on all newly created clusters.</td>
+<td>Set to true enable performance metrics on all newly created clusters.  This can be disabled by the client.</td>
 </tr>
 
 <tr>
@@ -1196,12 +1228,6 @@ should contain all configurable variables the playbooks offer.</p>
 </tr>
 
 <tr>
-<td><code>grafana_volume_size</code></td>
-<td></td>
-<td>Set to the size of persistent volume to create for Grafana.</td>
-</tr>
-
-<tr>
 <td><code>replica_storage</code></td>
 <td>storage3</td>
 <td>Set to configure which storage definition to use when creating volumes used by PostgreSQL replicas on all newly created clusters.</td>
@@ -1261,13 +1287,52 @@ should contain all configurable variables the playbooks offer.</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl config current-context</code></pre></div></div>
 
 
+<h3 id="minimal-variable-requirements">Minimal Variable Requirements</h3>
+
+<p>The following variables should be configured at a minimum to deploy the Crunchy
+PostgreSQL Operator:</p>
+
+<ul>
+<li><code>backrest_storage</code></li>
+<li><code>ccp_image_prefix</code></li>
+<li><code>ccp_image_tag</code></li>
+<li><code>kubernetes_context</code></li>
+<li><code>namespace</code></li>
+<li><code>openshift_host</code></li>
+<li><code>openshift_password</code></li>
+<li><code>openshift_skip_tls_verify</code></li>
+<li><code>openshift_token</code></li>
+<li><code>openshift_user</code></li>
+<li><code>pgo_admin_username</code></li>
+<li><code>pgo_admin_password</code></li>
+<li><code>pgo_client_install</code></li>
+<li><code>pgo_image_prefix</code></li>
+<li><code>pgo_image_tag</code></li>
+<li><code>pgo_operator_namespace</code></li>
+<li><code>pgo_tls_no_verify</code></li>
+<li><code>primary_storage</code></li>
+<li><code>replica_storage</code></li>
+<li><code>storage&lt;ID&gt;_access_mode</code></li>
+<li><code>storage&lt;ID&gt;_class</code></li>
+<li><code>storage&lt;ID&gt;_fs_group</code></li>
+<li><code>storage&lt;ID&gt;_size</code></li>
+<li><code>storage&lt;ID&gt;_supplemental_groups</code></li>
+<li><code>storage&lt;ID&gt;_type</code></li>
+</ul>
+
+<div class="notices tip" ><p>Users should remove or comment out the <code>kubernetes</code> or <code>openshift</code> variables if they&rsquo;re not being used
+from the inventory file.  Both sets of variables cannot be used at the same time.</p>
+</div>
+
+
 <h2 id="storage">Storage</h2>
 
 <p>Kubernetes and OpenShift offer support for a variety of storage types.  The Crunchy
 PostgreSQL Operator must be configured to utilize the storage options available by
 configuring the <code>storage</code> options included in the inventory file.</p>
 
-<div class="notices tip" ><p>At this time the Crunchy PostgreSQL Operator Playbooks only support storage classes.</p>
+<div class="notices tip" ><p>At this time the Crunchy PostgreSQL Operator Playbooks only support storage classes.<br />
+For more information on storage classes see the <a href="https://kubernetes.io/docs/concepts/storage/storage-classes/">official Kubernetes documentation</a>.</p>
 </div>
 
 
@@ -1370,7 +1435,7 @@ over time.  The collectors included by the operator are:</p>
 <li>PostgreSQL Exporter - PostgreSQL metrics</li>
 </ul>
 
-<p>The operator, however, does not install the neccessary timeseries database (Prometheus) for storing the collected
+<p>The operator, however, does not install the necessary timeseries database (Prometheus) for storing the collected
 metrics or the front end visualization (Grafana) of those metrics.</p>
 
 <p>Included in these playbooks are roles for deploying Granfana and/or Prometheus.  See the <code>inventory</code> file

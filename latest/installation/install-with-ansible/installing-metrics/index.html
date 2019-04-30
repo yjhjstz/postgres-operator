@@ -7,7 +7,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.52" />
-<title>Installing Metrics Stack :: Crunchy Data PostgreSQL Operator Documentation</title>
+<title>Installing Metrics Infrastructure :: Crunchy Data PostgreSQL Operator Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/latest/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/latest/css/nucleus.css" rel="stylesheet">
 <link href="https://crunchydata.github.io/postgres-operator/latest/theme-flex/style.css" rel="stylesheet">
@@ -202,7 +202,7 @@
       <li data-nav-id="/installation/install-with-ansible/installing-metrics/" class="dd-item active">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installing-metrics/">
-            Installing Metrics Stack
+            Installing Metrics Infrastructure
           </a>
         </div>
     </li>
@@ -743,7 +743,7 @@
       <option value="/installation/install-with-ansible/prerequisites/" >-- Prerequisites</option>
       <option value="/installation/install-with-ansible/installing-ansible/" >-- Installing Ansible</option>
       <option value="/installation/install-with-ansible/installing-operator/" >-- Installing PostgreSQL Operator</option>
-      <option value="/installation/install-with-ansible/installing-metrics/"  selected>-- Installing Metrics Stack</option>
+      <option value="/installation/install-with-ansible/installing-metrics/"  selected>-- Installing Metrics Infrastructure</option>
       <option value="/installation/install-with-ansible/updating-operator/" >-- Updating PostgreSQL Operator</option>
       <option value="/installation/install-with-ansible/uninstalling-operator/" >-- Uninstalling PostgreSQL Operator</option>
       <option value="/installation/install-with-ansible/uninstalling-metrics/" >-- Uninstalling Metrics Stack</option>
@@ -805,7 +805,7 @@
 
 
 
- <a href='https://crunchydata.github.io/postgres-operator/latest/'>Crunchy Data Postgres Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/installation/'>Installation</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/'>Install Operator Using Ansible</a> > Installing Metrics Stack
+ <a href='https://crunchydata.github.io/postgres-operator/latest/'>Crunchy Data Postgres Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/installation/'>Installation</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/'>Install Operator Using Ansible</a> > Installing Metrics Infrastructure
 
  
 
@@ -823,7 +823,7 @@
     
     <div id="body-inner">
 
-    <h1>Installing Metrics Stack</h1>
+    <h1>Installing Metrics Infrastructure</h1>
 
     
 
@@ -832,18 +832,172 @@
 
 <h1 id="installing">Installing</h1>
 
+<p>PostgreSQL clusters created by the Crunchy PostgreSQL Operator can optionally be
+configured to serve performance metrics via Prometheus Exporters.  The metric exporters
+included in the database pod serve realtime metrics for the database container.  In
+order to store and view this data, Grafana and Prometheus are required.  The Crunchy
+PostgreSQL Operator does not create this infrastructure, however, they can be installed
+using the provided Ansible roles.</p>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
 <p>The following assumes the proper <a href="https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/prereq/prerequisites/">prerequisites are satisfied</a>
 we can now install the PostgreSQL Operator.</p>
 
-<p>The commands should be run in the directory where the Crunchy PostgreSQL Operator
-playbooks is stored.  See the <code>ansible</code> directory in the Crunchy PostgreSQL Operator
+<p>At a minimum, the following inventory variables should be configured to install the
+metrics infrastructure:</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>ccp_image_prefix</code></td>
+<td>crunchydata</td>
+<td>Configures the image prefix used when creating containers from Crunchy Container Suite.</td>
+</tr>
+
+<tr>
+<td><code>ccp_image_tag</code></td>
+<td></td>
+<td>Configures the image tag (version) used when creating containers from Crunchy Container Suite.</td>
+</tr>
+
+<tr>
+<td><code>grafana_admin_username</code></td>
+<td>admin</td>
+<td>Set to configure the login username for the Grafana administrator.</td>
+</tr>
+
+<tr>
+<td><code>grafana_admin_password</code></td>
+<td></td>
+<td>Set to configure the login password for the Grafana administrator.</td>
+</tr>
+
+<tr>
+<td><code>grafana_install</code></td>
+<td>true</td>
+<td>Set to true to install Crunchy Grafana to visualize metrics.</td>
+</tr>
+
+<tr>
+<td><code>grafana_storage_access_mode</code></td>
+<td></td>
+<td>Set to the access mode used by the configured storage class for Grafana persistent volumes.</td>
+</tr>
+
+<tr>
+<td><code>grafana_storage_class_name</code></td>
+<td></td>
+<td>Set to the name of the storage class used when creating Grafana persistent volumes.</td>
+</tr>
+
+<tr>
+<td><code>grafana_volume_size</code></td>
+<td></td>
+<td>Set to the size of persistent volume to create for Grafana.</td>
+</tr>
+
+<tr>
+<td><code>kubernetes_context</code></td>
+<td></td>
+<td>When deploying to Kubernetes, set to configure the context name of the kubeconfig to be used for authentication.</td>
+</tr>
+
+<tr>
+<td><code>metrics</code></td>
+<td>false</td>
+<td>Set to true enable performance metrics on all newly created clusters.  This can be disabled by the client.</td>
+</tr>
+
+<tr>
+<td><code>metrics_namespace</code></td>
+<td>metrics</td>
+<td>Configures the target namespace when deploying Grafana and/or Prometheus</td>
+</tr>
+
+<tr>
+<td><code>openshift_host</code></td>
+<td></td>
+<td>When deploying to OpenShift, set to configure the hostname of the OpenShift cluster to connect to.</td>
+</tr>
+
+<tr>
+<td><code>openshift_password</code></td>
+<td></td>
+<td>When deploying to OpenShift, set to configure the password used for login.</td>
+</tr>
+
+<tr>
+<td><code>openshift_skip_tls_verify</code></td>
+<td></td>
+<td>When deploying to Openshift, set to ignore the integrity of TLS certificates for the OpenShift cluster.</td>
+</tr>
+
+<tr>
+<td><code>openshift_token</code></td>
+<td></td>
+<td>When deploying to OpenShift, set to configure the token used for login (when not using username/password authentication).</td>
+</tr>
+
+<tr>
+<td><code>openshift_user</code></td>
+<td></td>
+<td>When deploying to OpenShift, set to configure the username used for login.</td>
+</tr>
+
+<tr>
+<td><code>prometheus_install</code></td>
+<td>true</td>
+<td>Set to true to install Crunchy Prometheus timeseries database.</td>
+</tr>
+
+<tr>
+<td><code>prometheus_storage_access_mode</code></td>
+<td></td>
+<td>Set to the access mode used by the configured storage class for Prometheus persistent volumes.</td>
+</tr>
+
+<tr>
+<td><code>prometheus_storage_class_name</code></td>
+<td></td>
+<td>Set to the name of the storage class used when creating Prometheus persistent volumes.</td>
+</tr>
+</tbody>
+</table>
+
+<div class="notices tip" ><p>Administrators can choose to install Grafana, Prometheus or both by configuring the
+<code>grafana_install</code> and <code>prometheus_install</code> variables in the inventory files.</p>
+</div>
+
+
+<p>The following commands should be run in the directory where the Crunchy PostgreSQL Operator
+playbooks are located.  See the <code>ansible</code> directory in the Crunchy PostgreSQL Operator
 project for the inventory file, main playbook and ansible roles.</p>
+
+<div class="notices tip" ><p>At this time the Crunchy PostgreSQL Operator Playbooks only support storage classes.
+For more information on storage classes see the <a href="https://kubernetes.io/docs/concepts/storage/storage-classes/">official Kubernetes documentation</a>.</p>
+</div>
+
 
 <h2 id="installing-on-linux">Installing on Linux</h2>
 
 <p>On a Linux host with Ansible installed we can run the following command to install
 the Metrics stack:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ansible-playbook -i /path/to/inventory --tags<span style="color:#f92672">=</span>install-metrics main.yml</code></pre></div>
+<p>If the Crunchy PostgreSQL Operator playbooks were installed using <code>yum</code>, use the
+following commands:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">export</span> <span style="color:#111">ANSIBLE_ROLES_PATH</span><span style="color:#f92672">=</span>/usr/share/ansible/roles/crunchydata
+
+ansible-playbook -i /path/to/inventory --tags<span style="color:#f92672">=</span>install-metrics --ask-become-pass <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>    /usr/share/ansible/postgres-operator/playbooks/main.yml</code></pre></div>
 <h2 id="installing-on-macos">Installing on MacOS</h2>
 
 <p>On a MacOS host with Ansible installed we can run the following command to install
@@ -876,6 +1030,11 @@ kubectl port-forward &lt;GRAFANA_POD_NAME&gt; -n &lt;METRICS_NAMESPACE&gt; <span
 oc port-forward &lt;GRAFANA_POD_NAME&gt; -n &lt;METRICS_NAMESPACE&gt; <span style="color:#ae81ff">3000</span>:3000</code></pre></div>
 <p>In a browser navigate to <code>https://127.0.0.1:3000</code> to access the Grafana dashboard.</p>
 
+<div class="notices tip" ><p>No metrics will be scraped if no exporters are available.  To create a PostgreSQL
+cluster with metric exporters run the following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pgo create cluster &lt;NAME OF CLUSTER&gt; --metrics --namespace<span style="color:#f92672">=</span>&lt;NAMESPACE&gt;</code></pre></div></div>
+
+
 <h2 id="verify-prometheus">Verify Prometheus</h2>
 
 <p>In a separate terminal we need to setup a port forward to the Crunchy Prometheus deployment
@@ -886,6 +1045,11 @@ kubectl port-forward &lt;PROMETHEUS_POD_NAME&gt; -n &lt;METRICS_NAMESPACE&gt; <s
 <span style="color:#75715e"># If deployed to OpenShift</span>
 oc port-forward &lt;PROMETHEUS_POD_NAME&gt; -n &lt;METRICS_NAMESPACE&gt; <span style="color:#ae81ff">9090</span>:9090</code></pre></div>
 <p>In a browser navigate to <code>https://127.0.0.1:9090</code> to access the Prometheus dashboard.</p>
+
+<div class="notices tip" ><p>No metrics will be scraped if no exporters are available.  To create a PostgreSQL
+cluster with metric exporters run the following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pgo create cluster &lt;NAME OF CLUSTER&gt; --metrics --namespace<span style="color:#f92672">=</span>&lt;NAMESPACE&gt;</code></pre></div></div>
+
 
 
 

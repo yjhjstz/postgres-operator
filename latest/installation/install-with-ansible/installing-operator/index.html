@@ -202,7 +202,7 @@
       <li data-nav-id="/installation/install-with-ansible/installing-metrics/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installing-metrics/">
-            Installing Metrics Stack
+            Installing Metrics Infrastructure
           </a>
         </div>
     </li>
@@ -743,7 +743,7 @@
       <option value="/installation/install-with-ansible/prerequisites/" >-- Prerequisites</option>
       <option value="/installation/install-with-ansible/installing-ansible/" >-- Installing Ansible</option>
       <option value="/installation/install-with-ansible/installing-operator/"  selected>-- Installing PostgreSQL Operator</option>
-      <option value="/installation/install-with-ansible/installing-metrics/" >-- Installing Metrics Stack</option>
+      <option value="/installation/install-with-ansible/installing-metrics/" >-- Installing Metrics Infrastructure</option>
       <option value="/installation/install-with-ansible/updating-operator/" >-- Updating PostgreSQL Operator</option>
       <option value="/installation/install-with-ansible/uninstalling-operator/" >-- Uninstalling PostgreSQL Operator</option>
       <option value="/installation/install-with-ansible/uninstalling-metrics/" >-- Uninstalling Metrics Stack</option>
@@ -844,6 +844,12 @@ project for the inventory file, main playbook and ansible roles.</p>
 <p>On a Linux host with Ansible installed we can run the following command to install
 the PostgreSQL Operator:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ansible-playbook -i /path/to/inventory --tags<span style="color:#f92672">=</span>install --ask-become-pass main.yml</code></pre></div>
+<p>If the Crunchy PostgreSQL Operator playbooks were installed using <code>yum</code>, use the
+following commands:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">export</span> <span style="color:#111">ANSIBLE_ROLES_PATH</span><span style="color:#f92672">=</span>/usr/share/ansible/roles/crunchydata
+
+ansible-playbook -i /path/to/inventory --tags<span style="color:#f92672">=</span>install --ask-become-pass <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>    /usr/share/ansible/postgres-operator/playbooks/main.yml</code></pre></div>
 <h2 id="installing-on-macos">Installing on MacOS</h2>
 
 <p>On a MacOS host with Ansible installed we can run the following command to install
@@ -904,7 +910,7 @@ PostgreSQL Operator has been installed successfully.</p>
         <div class="chevrons">
     <div id="navigation">
 <a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installing-ansible/" title="Installing Ansible"> <i class="fa fa-chevron-left"></i><label>Installing Ansible</label></a>
-    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installing-metrics/" title="Installing Metrics Stack" style="margin-right: 0px;"><label>Installing Metrics Stack</label><i class="fa fa-chevron-right"></i></a></div>
+    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installing-metrics/" title="Installing Metrics Infrastructure" style="margin-right: 0px;"><label>Installing Metrics Infrastructure</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>

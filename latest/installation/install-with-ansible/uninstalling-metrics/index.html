@@ -202,7 +202,7 @@
       <li data-nav-id="/installation/install-with-ansible/installing-metrics/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installing-metrics/">
-            Installing Metrics Stack
+            Installing Metrics Infrastructure
           </a>
         </div>
     </li>
@@ -743,7 +743,7 @@
       <option value="/installation/install-with-ansible/prerequisites/" >-- Prerequisites</option>
       <option value="/installation/install-with-ansible/installing-ansible/" >-- Installing Ansible</option>
       <option value="/installation/install-with-ansible/installing-operator/" >-- Installing PostgreSQL Operator</option>
-      <option value="/installation/install-with-ansible/installing-metrics/" >-- Installing Metrics Stack</option>
+      <option value="/installation/install-with-ansible/installing-metrics/" >-- Installing Metrics Infrastructure</option>
       <option value="/installation/install-with-ansible/updating-operator/" >-- Updating PostgreSQL Operator</option>
       <option value="/installation/install-with-ansible/uninstalling-operator/" >-- Uninstalling PostgreSQL Operator</option>
       <option value="/installation/install-with-ansible/uninstalling-metrics/"  selected>-- Uninstalling Metrics Stack</option>
@@ -841,6 +841,12 @@ of the Metrics stack currently deployed.</p>
 <p>With the correct playbooks acquired and prerequisites satisfied, simply run
 the following command:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ansible-playbook -i /path/to/inventory --tags<span style="color:#f92672">=</span>deprovision-metrics main.yml</code></pre></div>
+<p>If the Crunchy PostgreSQL Operator playbooks were installed using <code>yum</code>, use the
+following commands:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">export</span> <span style="color:#111">ANSIBLE_ROLES_PATH</span><span style="color:#f92672">=</span>/usr/share/ansible/roles/crunchydata
+
+ansible-playbook -i /path/to/inventory --tags<span style="color:#f92672">=</span>deprovision-metrics <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>    /usr/share/ansible/postgres-operator/playbooks/main.yml</code></pre></div>
 
 
     

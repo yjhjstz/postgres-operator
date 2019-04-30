@@ -17,7 +17,7 @@
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/configuration/compatibility/</guid>
       <description>Container Dependencies The Operator depends on the Crunchy Containers and there are version dependencies between the two projects.
-   Operator Release Container Release     4.0.0 2.4.0   3.5.2 2.3.1    Features sometimes are added into the underlying Crunchy Containers to support upstream features in the Operator thus dictating a dependency between the two projects at a specific version level.
+   Operator Release Container Release     4.0.0-rc8 2.4.0-rc6   3.5.2 2.3.1    Features sometimes are added into the underlying Crunchy Containers to support upstream features in the Operator thus dictating a dependency between the two projects at a specific version level.
 Operating Systems The Operator is developed on both Centos 7 and RHEL 7 operating systems.</description>
     </item>
     
@@ -147,14 +147,13 @@ Installing on Linux On a Linux host with Ansible installed we can run the follow
     </item>
     
     <item>
-      <title>Installing Metrics Stack</title>
+      <title>Installing Metrics Infrastructure</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installing-metrics/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/installing-metrics/</guid>
-      <description>Installing The following assumes the proper prerequisites are satisfied we can now install the PostgreSQL Operator.
-The commands should be run in the directory where the Crunchy PostgreSQL Operator playbooks is stored. See the ansible directory in the Crunchy PostgreSQL Operator project for the inventory file, main playbook and ansible roles.
-Installing on Linux On a Linux host with Ansible installed we can run the following command to install the Metrics stack:</description>
+      <description>Installing PostgreSQL clusters created by the Crunchy PostgreSQL Operator can optionally be configured to serve performance metrics via Prometheus Exporters. The metric exporters included in the database pod serve realtime metrics for the database container. In order to store and view this data, Grafana and Prometheus are required. The Crunchy PostgreSQL Operator does not create this infrastructure, however, they can be installed using the provided Ansible roles.
+Prerequisites The following assumes the proper prerequisites are satisfied we can now install the PostgreSQL Operator.</description>
     </item>
     
     <item>
@@ -174,11 +173,10 @@ The commands should be run in the directory where the Crunchy PostgreSQL Operato
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/uninstalling-operator/</guid>
-      <description> Uninstalling PostgreSQL Operator The following assumes the proper prerequisites are satisfied we can now deprovision the PostgreSQL Operator.
+      <description>Uninstalling PostgreSQL Operator The following assumes the proper prerequisites are satisfied we can now deprovision the PostgreSQL Operator.
 First, it is recommended to use the playbooks tagged with the same version of the PostgreSQL Operator currently deployed.
 With the correct playbooks acquired and prerequisites satisfied, simply run the following command:
-ansible-playbook -i /path/to/inventory --tags=deprovision main.yml Deleting pgo Client To remove the pgo client, simply run the following command:
-rm /usr/local/bin/pgo  </description>
+ansible-playbook -i /path/to/inventory --tags=deprovision main.yml If the Crunchy PostgreSQL Operator playbooks were installed using yum, use the following commands:</description>
     </item>
     
     <item>
@@ -190,7 +188,7 @@ rm /usr/local/bin/pgo  </description>
       <description>Uninstalling the Metrics Stack The following assumes the proper prerequisites are satisfied we can now deprovision the PostgreSQL Operator Metrics Infrastructure.
 First, it is recommended to use the playbooks tagged with the same version of the Metrics stack currently deployed.
 With the correct playbooks acquired and prerequisites satisfied, simply run the following command:
-ansible-playbook -i /path/to/inventory --tags=deprovision-metrics main.</description>
+ansible-playbook -i /path/to/inventory --tags=deprovision-metrics main.yml If the Crunchy PostgreSQL Operator playbooks were installed using yum, use the following commands:</description>
     </item>
     
     <item>
