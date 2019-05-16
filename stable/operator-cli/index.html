@@ -6,7 +6,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="generator" content="Hugo 0.53" />
+<meta name="generator" content="Hugo 0.52" />
 <title>Operator CLI :: Crunchy Data PostgreSQL Operator Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/stable/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/stable/css/nucleus.css" rel="stylesheet">
@@ -21,7 +21,7 @@
 <script src="https://crunchydata.github.io/postgres-operator/stable/js/main.js"></script>
 <script src="https://crunchydata.github.io/postgres-operator/stable/js/toc.js"></script>
 <script type="text/javascript">
-      var baseurl = "https:\/\/crunchydata.github.io\/postgres-operator\/stable\/";
+      var baseurl = "https:\/\/crunchydata.github.io\/postgres-operator\/stable";
 </script>
 <meta name="description" content="">
 
@@ -46,17 +46,17 @@
   <span class="navbar-text">
       <nav class="shortcuts">
               <li class="" role="">
-                  <a href="https://github.com/CrunchyData/postgres-operator"  rel="noopener">
+                  <a href="https://github.com/CrunchyData/postgres-operator" target="_blank" rel="noopener">
                     <i class='fab fa-github'></i> <label>Source</label>
                   </a>
               </li>
               <li class="" role="">
-                  <a href="https://kubernetes.io/docs/"  rel="noopener">
+                  <a href="https://kubernetes.io/docs/" target="_blank" rel="noopener">
                     <i class='fas fa-bookmark'></i> <label>Kubernetes</label>
                   </a>
               </li>
               <li class="" role="">
-                  <a href="https://github.com/CrunchyData/postgres-operator/blob/master/LICENSE.md"  rel="noopener">
+                  <a href="https://github.com/CrunchyData/postgres-operator/blob/master/LICENSE.md" target="_blank" rel="noopener">
                     <i class='fas fa-file-contract'></i> <label>License</label>
                   </a>
               </li>
@@ -77,7 +77,7 @@
         <link href="https://crunchydata.github.io/postgres-operator/stable/css/auto-complete.css" rel="stylesheet">
         <script type="text/javascript">
           
-              var baseurl = "https:\/\/crunchydata.github.io\/postgres-operator\/stable\/";
+              var baseurl = "https:\/\/crunchydata.github.io\/postgres-operator\/stable";
           
         </script>
         <script type="text/javascript" src="https://crunchydata.github.io/postgres-operator/stable/js/search.js"></script>
@@ -86,6 +86,20 @@
       <hr>
       <a class="baselink" href="https://crunchydata.github.io/postgres-operator/stable/">Crunchy Data PostgreSQL Operator Documentation</a>
       <hr>
+        <b>Available Formats</b>
+        <nav class="downloads">
+                <li class="" role="">
+                    <a href="https://crunchydata.github.io/postgres-operator/stable/pdf/postgres_operator.pdf" target="_blank" rel="noopener">
+                      <i class='fas fa-file-pdf'></i> <label>PDF</label>
+                    </a>
+                </li>
+                <li class="" role="">
+                    <a href="https://crunchydata.github.io/postgres-operator/stable/epub/postgres_operator.epub" target="_blank" rel="noopener">
+                      <i class='fas fa-book'></i> <label>EPUB</label>
+                    </a>
+                </li>
+        </nav>
+        <hr>
 
       <b>Navigation</b>
     <li data-nav-id="/installation/" class="dd-item
@@ -1054,6 +1068,29 @@ against the target cluster prior to creating this schedule.</p>
 <pre><code>pgo create schedule --selector=pg-cluster=mycluster --schedule=&quot;0 1 * * *&quot; \
      --schedule-type=policy --policy=mypolicy --database=userdb \
      --secret=mycluster-testuser-secret
+</code></pre>
+
+<h3 id="benchmark-clusters">Benchmark Clusters</h3>
+
+<h4 id="create-a-benchmark-via-cluster-name">Create a Benchmark via Cluster Name</h4>
+
+<pre><code>pgo benchmark mycluster
+</code></pre>
+
+<h4 id="create-a-benchmark-via-selector">Create a Benchmark via Selector</h4>
+
+<pre><code>pgo benchmark --selector=pg-cluster=mycluster
+</code></pre>
+
+<h4 id="create-a-benchmark-with-a-custom-transactions">Create a Benchmark with a custom transactions</h4>
+
+<pre><code>pgo create policy --in-file=/tmp/transactions.sql mytransactions
+pgo benchmark mycluster --policy=mytransactions
+</code></pre>
+
+<h4 id="create-a-benchmark-with-custom-parameters">Create a Benchmark with custom parameters</h4>
+
+<pre><code>pgo benchmark mycluster --clients=10 --jobs=2 --scale=10 --transactions=100
 </code></pre>
 
 <h3 id="complex-deployments">Complex Deployments</h3>
