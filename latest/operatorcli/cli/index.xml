@@ -97,7 +97,7 @@ pgo create cluster pgo create pgbouncer pgo create pgpool pgo create policy pgo 
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_cluster/</guid>
       <description>pgo create cluster Create a PostgreSQL cluster
 Synopsis Create a PostgreSQL cluster consisting of a primary and a number of replica backends. For example:
-pgo create cluster mycluster  pgo create cluster [flags]  Options  --autofail If set, will cause autofailover to be enabled on this cluster. -x, --backup-path string The backup archive path to restore from. -p, --backup-pvc string The backup archive PVC to restore from. --ccp-image string The CCPImage name to use for cluster creation.</description>
+pgo create cluster mycluster  pgo create cluster [flags]  Options  --autofail If set, will cause autofailover to be enabled on this cluster. --ccp-image string The CCPImage name to use for cluster creation. If specified, overrides the value crunchy-postgres. -c, --ccp-image-tag string The CCPImageTag to use for cluster creation.</description>
     </item>
     
     <item>
@@ -196,7 +196,7 @@ pgo delete benchmark mycluster pgo delete benchmark --selector=env=test  pgo del
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_cluster/</guid>
       <description>pgo delete cluster Delete a PostgreSQL cluster
 Synopsis Delete a PostgreSQL cluster. For example:
-pgo delete cluster all pgo delete cluster mycluster  pgo delete cluster [flags]  Options  -b, --delete-backups Causes the backups for this cluster to be removed permanently. -d, --delete-data Causes the data for this cluster to be removed permanently. -h, --help help for cluster --no-prompt No command line confirmation. -s, --selector string The selector to use for cluster filtering.</description>
+pgo delete cluster --all pgo delete cluster mycluster  pgo delete cluster [flags]  Options  --all all resources. -b, --delete-backups Causes the backups for this cluster to be removed permanently. -d, --delete-data Causes the data for this cluster to be removed permanently. -h, --help help for cluster --no-prompt No command line confirmation. -s, --selector string The selector to use for cluster filtering.</description>
     </item>
     
     <item>
@@ -240,7 +240,7 @@ pgo delete pgpool mycluster  pgo delete pgpool [flags]  Options  -h, --help help
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_policy/</guid>
       <description>pgo delete policy Delete a SQL policy
 Synopsis Delete a policy. For example:
-pgo delete policy mypolicy  pgo delete policy [flags]  Options  -h, --help help for policy --no-prompt No command line confirmation.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. -n, --namespace string The namespace to use for pgo requests. --pgo-ca-cert string The CA Certificate file path for authenticating to the PostgreSQL Operator apiserver.</description>
+pgo delete policy mypolicy  pgo delete policy [flags]  Options  --all all resources. -h, --help help for policy --no-prompt No command line confirmation.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. -n, --namespace string The namespace to use for pgo requests. --pgo-ca-cert string The CA Certificate file path for authenticating to the PostgreSQL Operator apiserver.</description>
     </item>
     
     <item>
@@ -350,7 +350,7 @@ pgo reload mycluster  pgo reload [flags]  Options  -h, --help help for reload --
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_restore/</guid>
       <description>pgo restore Perform a restore from previous backup
 Synopsis RESTORE performs a restore to a new PostgreSQL cluster. This includes stopping the database and recreating a new primary with the restored data. Valid backup types to restore from are pgbackrest and pgdump. For example:
-pgo restore mycluster  pgo restore [flags]  Options  --backup-opts string The restore options for pgbackrest or pgdump. --backup-pvc string The PVC containing the pgdump directory to restore from.</description>
+pgo restore mycluster  pgo restore [flags]  Options  --backup-opts string The restore options for pgbackrest or pgdump. --backup-path string The path for the directory containing the pg_basebackup backup to be utilized for the restore.</description>
     </item>
     
     <item>
@@ -416,7 +416,7 @@ pgo show benchmark mycluster pgo show benchmark --selector=pg-cluster=mycluster 
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_cluster/</guid>
       <description>pgo show cluster Show cluster information
 Synopsis Show a PostgreSQL cluster. For example:
-pgo show cluster all pgo show cluster mycluster  pgo show cluster [flags]  Options  --ccp-image-tag string Filter the results based on the image tag of the cluster. -h, --help help for cluster -o, --output string The output format. Currently, json is the only supported value. -s, --selector string The selector to use for cluster filtering.</description>
+pgo show cluster --all pgo show cluster mycluster  pgo show cluster [flags]  Options  --all show all resources. --ccp-image-tag string Filter the results based on the image tag of the cluster. -h, --help help for cluster -o, --output string The output format. Currently, json is the only supported value. -s, --selector string The selector to use for cluster filtering.</description>
     </item>
     
     <item>
@@ -449,7 +449,7 @@ pgo show namespace  pgo show namespace [flags]  Options  -h, --help help for nam
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_policy/</guid>
       <description>pgo show policy Show policy information
 Synopsis Show policy information. For example:
-pgo show policy policy1  pgo show policy [flags]  Options  -h, --help help for policy  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. -n, --namespace string The namespace to use for pgo requests. --pgo-ca-cert string The CA Certificate file path for authenticating to the PostgreSQL Operator apiserver.</description>
+pgo show policy --all pgo show policy policy1  pgo show policy [flags]  Options  --all show all resources. -h, --help help for policy  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. -n, --namespace string The namespace to use for pgo requests. --pgo-ca-cert string The CA Certificate file path for authenticating to the PostgreSQL Operator apiserver.</description>
     </item>
     
     <item>
@@ -460,7 +460,7 @@ pgo show policy policy1  pgo show policy [flags]  Options  -h, --help help for p
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_pvc/</guid>
       <description>pgo show pvc Show PVC information
 Synopsis Show PVC information. For example:
-pgo show pvc mycluster pgo show pvc mycluster-backup pgo show pvc mycluster-xlog pgo show pvc a2-backup --pvc-root=a2-backups/2019-01-12-17-09-42  pgo show pvc [flags]  Options  -h, --help help for pvc --node-label string The node label (key=value) to use --pvc-root string The PVC directory to list.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver.</description>
+pgo show pvc mycluster pgo show pvc --all pgo show pvc mycluster-backup pgo show pvc mycluster-xlog pgo show pvc a2-backup --pvc-root=a2-backups/2019-01-12-17-09-42  pgo show pvc [flags]  Options  --all show all resources. -h, --help help for pvc --node-label string The node label (key=value) to use --pvc-root string The PVC directory to list.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver.</description>
     </item>
     
     <item>
