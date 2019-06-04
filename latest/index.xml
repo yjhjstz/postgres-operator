@@ -762,7 +762,7 @@ pgo status  pgo status [flags]  Options  -h, --help help for status -o, --output
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_test/</guid>
       <description>pgo test Test cluster connectivity
 Synopsis TEST allows you to test the connectivity for a cluster. For example:
-pgo test mycluster pgo test --selector=env=research pgo test all  pgo test [flags]  Options  -h, --help help for test -o, --output string The output format. Currently, json is the only supported value. -s, --selector string The selector to use for cluster filtering.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver.</description>
+pgo test mycluster pgo test --selector=env=research pgo test --all  pgo test [flags]  Options  --all test all resources. -h, --help help for test -o, --output string The output format. Currently, json is the only supported value. -s, --selector string The selector to use for cluster filtering.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver.</description>
     </item>
     
     <item>
