@@ -836,16 +836,18 @@ of the PostgreSQL Operator currently deployed.</p>
 
 <p>With the correct playbooks acquired and prerequisites satisfied, simply run
 the following command:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ansible-playbook -i /path/to/inventory --tags<span style="color:#f92672">=</span>deprovision main.yml</code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ansible-playbook -i /path/to/inventory --tags<span style="color:#f92672">=</span>deprovision --ask-become-pass main.yml</code></pre></div>
 <p>If the Crunchy PostgreSQL Operator playbooks were installed using <code>yum</code>, use the
 following commands:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">export</span> <span style="color:#111">ANSIBLE_ROLES_PATH</span><span style="color:#f92672">=</span>/usr/share/ansible/roles/crunchydata
 
-ansible-playbook -i /path/to/inventory --tags<span style="color:#f92672">=</span>deprovision <span style="color:#8045ff">\
+ansible-playbook -i /path/to/inventory --tags<span style="color:#f92672">=</span>deprovision --ask-become-pass <span style="color:#8045ff">\
 </span><span style="color:#8045ff"></span>    /usr/share/ansible/postgres-operator/playbooks/main.yml</code></pre></div>
 <h2 id="deleting-pgo-client">Deleting <code>pgo</code> Client</h2>
 
-<p>To remove the <code>pgo</code> client, simply run the following command:</p>
+<p>If variable <code>pgo_client_install</code> is set to <code>true</code> in the <code>inventory</code> file, the <code>pgo</code> client will also be uninstalled when deprovisioning.</p>
+
+<p>Otherwise, the <code>pgo</code> client can be manually uninstalled by running the following command:</p>
 
 <pre><code>rm /usr/local/bin/pgo
 </code></pre>
