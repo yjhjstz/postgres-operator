@@ -804,56 +804,15 @@
 
     
 
+<p>If you are new to the Crunchy PostgreSQL Operator and interested in installing the Crunchy PostgreSQL Operator in your environment, please start here:
+ - <a href="https://access.crunchydata.com/documentation/postgres-operator/4.0.0/installation/operator-install/">Installation via Bash</a>
+ - <a href="https://access.crunchydata.com/documentation/postgres-operator/4.0.0/installation/install-with-ansible/">Installation via Ansible</a></p>
 
+<p>If you have the Crunchy PostgreSQL Operator installed in your environment, and are interested in installation of the client interface, please start here:
+- <a href="https://access.crunchydata.com/documentation/postgres-operator/4.0.0/installation/install-pgo-client/">PGO Client Install</a></p>
 
-<p>Operator users typically will just need to install the <em>pgo</em> client
-in order to work with an already deployed Postgres Operator.</p>
-
-<p>For installing the Operator on the Kubernetes server, see
-the <a href="https://crunchydata.github.io/postgres-operator/stable/installation/">Installation Guide</a>.</p>
-
-<h3 id="pgo-client-installation">pgo Client Installation</h3>
-
-<p>The <em>pgo</em> binary is pre-compiled and available to download from the projects
-github repository <a href="https://github.com/crunchydata/postgres-operator">Releases</a>  page.</p>
-
-<p>Add the <em>pgo</em> binary to your PATH and make it executable.</p>
-
-<p>Next, create a <em>.pgouser</em> file in your $HOME directory or
-set the PGOUSER environment variable to point to a <em>.pgouser</em>
-file location:</p>
-
-<pre><code>export PGOUSER=/somepath/.pgouser
-</code></pre>
-
-<p>Alternatively, if you create a <em>.pgouser</em> file in your $HOME, the <em>pgo</em>
-client will find the file there.</p>
-
-<p>Set the name of the Kubernetes namespace that you want to
-access, on a Linux host you would enter:</p>
-
-<pre><code>export PGO_NAMESPACE=pgouser1
-</code></pre>
-
-<p>Set the URL of the Operator REST API, in this example the Operator is running
-on a host with IP address 192.168.0.120, see your administrator for
-the correct IP address, on a Linux host you would enter:</p>
-
-<pre><code>export PGO_APISERVER_URL=https://192.168.0.120:8443
-</code></pre>
-
-<p>Next, add the TLS keys required for the <em>pgo</em> client to connect to the
-Operator REST API, see your administrator for access to these keys, on a Linux host you would enter:</p>
-
-<pre><code>export PGO_CA_CERT=/somepath/someserver.crt
-export PGO_CLIENT_CERT=/somepath/someserver.crt
-export PGO_CLIENT_KEY=/somepath/someserver.key
-</code></pre>
-
-<p>Lastly, test out the connection:</p>
-
-<pre><code>pgo version
-</code></pre>
+<p>If you have the Crunchy PostgreSQL and Client Interface installed in your environment and are interested in guidance on the use of the Crunchy PostgreSQL Operator, please start here:
+- <a href="https://access.crunchydata.com/documentation/postgres-operator/4.0.0/operatorcli/pgo-overview/">PGO CLI Overview</a></p>
 
 
 
