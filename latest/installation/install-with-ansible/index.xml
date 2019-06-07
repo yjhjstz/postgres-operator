@@ -60,8 +60,7 @@ Prerequisites The following assumes the proper prerequisites are satisfied we ca
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/updating-operator/</guid>
       <description>Updating Updating the Crunchy PostgreSQL Operator is essential to the lifecycle management of the service. Using the update flag will:
- Update and redeploy the operator deployment Recreate configuration maps used by operator Remove any deprecated objects Allow administrators to change settings configured in the inventory  The following assumes the proper prerequisites are satisfied we can now update the PostgreSQL Operator.
-The commands should be run in the directory where the Crunchy PostgreSQL Operator playbooks is stored.</description>
+ Update and redeploy the operator deployment Recreate configuration maps used by operator Remove any deprecated objects Allow administrators to change settings configured in the inventory Reinstall the pgo client if a new version is specified  The following assumes the proper prerequisites are satisfied we can now update the PostgreSQL Operator.</description>
     </item>
     
     <item>
@@ -73,7 +72,7 @@ The commands should be run in the directory where the Crunchy PostgreSQL Operato
       <description>Uninstalling PostgreSQL Operator The following assumes the proper prerequisites are satisfied we can now deprovision the PostgreSQL Operator.
 First, it is recommended to use the playbooks tagged with the same version of the PostgreSQL Operator currently deployed.
 With the correct playbooks acquired and prerequisites satisfied, simply run the following command:
-ansible-playbook -i /path/to/inventory --tags=deprovision main.yml If the Crunchy PostgreSQL Operator playbooks were installed using yum, use the following commands:</description>
+ansible-playbook -i /path/to/inventory --tags=deprovision --ask-become-pass main.yml If the Crunchy PostgreSQL Operator playbooks were installed using yum, use the following commands:</description>
     </item>
     
     <item>
