@@ -875,11 +875,10 @@ can install:</p>
 
 <h2 id="obtaining-operator-ansible-role">Obtaining Operator Ansible Role</h2>
 
-<p>There are two ways to obtain the Crunchy PostgreSQL Operator Roles:</p>
+<p>The Crunchy PostgreSQL Operator Roles are available here:</p>
 
 <ul>
-<li>Cloning the <a href="https://github.com/CrunchyData/postgres-operator">postgres-operator project</a></li>
-<li><code>postgres-operator-playbooks</code> RPM provided for Crunchy customers via the <a href="https://access.crunchydata.com/">Crunchy Access Portal</a>.</li>
+<li>Clone the <a href="https://github.com/CrunchyData/postgres-operator">postgres-operator project</a></li>
 </ul>
 
 <h3 id="github-installation">GitHub Installation</h3>
@@ -887,24 +886,6 @@ can install:</p>
 <p>All necessary files (inventory, main playbook and roles) can be found in the <code>ansible</code>
 directory in the  <a href="https://github.com/CrunchyData/postgres-operator">postgres-operator project</a>.</p>
 
-<h3 id="rpm-installation-using-yum">RPM Installation using Yum</h3>
-
-<p>Available to Crunchy customers is an RPM containing all the necessary Ansible roles
-and files required for installation using Ansible.  The RPM can be found in Crunchy&rsquo;s
-yum repository.  For information on setting up <code>yum</code> to use the Crunchy repoistory,
-see the <a href="https://access.crunchydata.com/">Crunchy Access Portal</a>.</p>
-
-<p>To install the Crunchy PostgreSQL Operator Ansible roles using <code>yum</code>, run the following
-command on a RHEL or CentOS host:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo yum install postgres-operator-playbooks</code></pre></div>
-<ul>
-<li>Ansible roles can be found in: <code>/usr/share/ansible/roles/crunchydata</code></li>
-<li>Ansible playbooks/inventory files can be found in: <code>/usr/share/ansible/postgres-operator/playbooks</code></li>
-</ul>
-
-<p>Once installed users should take a copy of the <code>inventory</code> file included in the installation
-using the following command:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cp /usr/share/ansible/postgres-operator/playbooks/inventory <span style="color:#d88200">${</span><span style="color:#111">HOME</span><span style="color:#111">?</span><span style="color:#d88200">}</span></code></pre></div>
 <h2 id="configuring-the-inventory-file">Configuring the Inventory File</h2>
 
 <p>The <code>inventory</code> file included with the PostgreSQL Operator Playbooks allows installers
@@ -1355,7 +1336,7 @@ database in a new PostgreSQL cluster is provisioned in the same zone as the node
 containing the PostgreSQL primary pod that will be using it.</p>
 
 <p>For instructions on setting up storage classes for multi-zone environments, see
-the <a href="https://access.crunchydata.com/documentation/postgres-operator/4.0.0/gettingstarted/design/designoverview/">PostgreSQL Operator Documentation</a>.</p>
+the <a href="https://crunchydata.github.io/postgres-operator/4.0.0/gettingstarted/design/designoverview/">PostgreSQL Operator Documentation</a>.</p>
 
 <h3 id="examples">Examples</h3>
 
