@@ -197,7 +197,8 @@ ansible-playbook -i /path/to/inventory --tags=deprovision-metrics main.yml If th
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/installation/operator-install/</guid>
       <description>A full installation of the Operator includes the following steps:
- create a project structure configure your environment variables configure Operator templates create security resources deploy the operator install pgo CLI (end user command tool)  Operator end-users are only required to install the pgo CLI client on their host and can skip the server-side installation steps. pgo CLI clients are provided on the Github Releases page for Linux, Mac, and Windows clients.</description>
+ create a project structure configure your environment variables configure Operator templates create security resources deploy the operator install pgo CLI (end user command tool)  Operator end-users are only required to install the pgo CLI client on their host and can skip the server-side installation steps. pgo CLI clients are provided for Linux, Mac, and Windows clients.
+The Operator can be deployed by multiple methods including:</description>
     </item>
     
     <item>
