@@ -825,7 +825,6 @@
 
 <ul>
 <li>show</li>
-<li>get</li>
 <li>create</li>
 <li>delete</li>
 </ul>
@@ -1177,7 +1176,7 @@ pgo apply mypolicy --selector=name=mycluster
 
 <p>To see what namespaces exist and if you have access to them, enter:</p>
 
-<pre><code>pgo show namespaces -n pgouser1
+<pre><code>pgo show namespace -n pgouser1
 </code></pre>
 
 <h4 id="perform-a-pgdump-backup">Perform a pgdump backup</h4>
@@ -1247,7 +1246,7 @@ before you do a restore.</p>
 
 <p>Once the pgbasebackup restore is complete, a new PVC will be available with a randomly generated ID that contains the restored database, e.g. PVC  <strong>mycluster-ieqe</strong> in the output below:</p>
 
-<pre><code>$ pgo show pvc all
+<pre><code>$ pgo show pvc --all
 All Operator Labeled PVCs
         mycluster
         mycluster-backup
@@ -1364,7 +1363,7 @@ into your Postgres cluster pod as follows:</p>
 <p>Note: backend metric storage such as Prometheus and front end
 visualization software such as Grafana are not created automatically
 by the PostgreSQL Operator.  For instructions on installing Grafana and
-Prometheus in your environment, see the <a href="https://access.crunchydata.com/documentation/crunchy-containers/2.4.0/examples/metrics/metrics/">Crunchy Container Suite documentation</a>.</p>
+Prometheus in your environment, see the <a href="https://access.crunchydata.com/documentation/crunchy-containers/2.4.1/examples/metrics/metrics/">Crunchy Container Suite documentation</a>.</p>
 
 <h3 id="scheduled-tasks">Scheduled Tasks</h3>
 

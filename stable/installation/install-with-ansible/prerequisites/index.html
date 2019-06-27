@@ -1266,13 +1266,8 @@ should contain all configurable variables the playbooks offer.</p>
 </tbody>
 </table>
 
-<div class="notices tip" >
-To retrieve the `kubernetes_context` value for Kubernetes installs, run the following command:
-
-```bash
-kubectl config current-context
-```
-</div>
+<div class="notices tip" ><p>To retrieve the <code>kubernetes_context</code> value for Kubernetes installs, run the following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl config current-context</code></pre></div></div>
 
 <h3 id="minimal-variable-requirements">Minimal Variable Requirements</h3>
 
@@ -1307,10 +1302,8 @@ PostgreSQL Operator:</p>
 <li><code>storage&lt;ID&gt;_type</code></li>
 </ul>
 
-<div class="notices tip" >
-Users should remove or comment out the `kubernetes` or `openshift` variables if they're not being used 
-from the inventory file.  Both sets of variables cannot be used at the same time.
-</div>
+<div class="notices tip" >Users should remove or comment out the <code>kubernetes</code> or <code>openshift</code> variables if they&rsquo;re not being used
+from the inventory file.  Both sets of variables cannot be used at the same time.</div>
 
 <h2 id="storage">Storage</h2>
 
@@ -1318,10 +1311,8 @@ from the inventory file.  Both sets of variables cannot be used at the same time
 PostgreSQL Operator must be configured to utilize the storage options available by
 configuring the <code>storage</code> options included in the inventory file.</p>
 
-<div class="notices tip" >
-At this time the Crunchy PostgreSQL Operator Playbooks only support storage classes.  
-For more information on storage classes see the [official Kubernetes documentation](https://kubernetes.io/docs/concepts/storage/storage-classes/).
-</div>
+<div class="notices tip" >At this time the Crunchy PostgreSQL Operator Playbooks only support storage classes.<br />
+For more information on storage classes see the <a href="https://kubernetes.io/docs/concepts/storage/storage-classes/">official Kubernetes documentation</a>.</div>
 
 <h3 id="considerations-for-multi-zone-cloud-environments">Considerations for Multi-Zone Cloud Environments</h3>
 
@@ -1365,9 +1356,7 @@ to be used by the Operator by setting the following variables in the <code>inven
 <p>To assign this storage definition to all <code>primary</code> pods created by the Operator, we
 can configure the <code>primary_storage=storage1</code> variable in the inventory file.</p>
 
-<div class="notices tip" >
-To utitlize mutli-zone deployments, see _Considerations for Multi-Zone Cloud Environments_ above.
-</div>
+<div class="notices tip" >To utitlize mutli-zone deployments, see <em>Considerations for Multi-Zone Cloud Environments</em> above.</div>
 
 <h2 id="understanding-pgo-operator-namespace-namespace">Understanding <code>pgo_operator_namespace</code> &amp; <code>namespace</code></h2>
 
@@ -1428,9 +1417,7 @@ metrics or the front end visualization (Grafana) of those metrics.</p>
 <p>Included in these playbooks are roles for deploying Granfana and/or Prometheus.  See the <code>inventory</code> file
 for options to install the metrics stack.</p>
 
-<div class="notices tip" >
-At this time the Crunchy PostgreSQL Operator Playbooks only support storage classes.
-</div>
+<div class="notices tip" >At this time the Crunchy PostgreSQL Operator Playbooks only support storage classes.</div>
 
 
 

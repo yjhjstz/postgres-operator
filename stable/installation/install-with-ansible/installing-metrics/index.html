@@ -969,19 +969,15 @@ metrics infrastructure:</p>
 </tbody>
 </table>
 
-<div class="notices tip" >
-Administrators can choose to install Grafana, Prometheus or both by configuring the 
-`grafana_install` and `prometheus_install` variables in the inventory files.
-</div>
+<div class="notices tip" >Administrators can choose to install Grafana, Prometheus or both by configuring the
+<code>grafana_install</code> and <code>prometheus_install</code> variables in the inventory files.</div>
 
 <p>The following commands should be run in the directory where the Crunchy PostgreSQL Operator
 playbooks are located.  See the <code>ansible</code> directory in the Crunchy PostgreSQL Operator
 project for the inventory file, main playbook and ansible roles.</p>
 
-<div class="notices tip" >
-At this time the Crunchy PostgreSQL Operator Playbooks only support storage classes.
-For more information on storage classes see the [official Kubernetes documentation](https://kubernetes.io/docs/concepts/storage/storage-classes/).
-</div>
+<div class="notices tip" >At this time the Crunchy PostgreSQL Operator Playbooks only support storage classes.
+For more information on storage classes see the <a href="https://kubernetes.io/docs/concepts/storage/storage-classes/">official Kubernetes documentation</a>.</div>
 
 <h2 id="installing-on-linux">Installing on Linux</h2>
 
@@ -1026,14 +1022,9 @@ kubectl port-forward &lt;GRAFANA_POD_NAME&gt; -n &lt;METRICS_NAMESPACE&gt; <span
 oc port-forward &lt;GRAFANA_POD_NAME&gt; -n &lt;METRICS_NAMESPACE&gt; <span style="color:#ae81ff">3000</span>:3000</code></pre></div>
 <p>In a browser navigate to <code>https://127.0.0.1:3000</code> to access the Grafana dashboard.</p>
 
-<div class="notices tip" >
-No metrics will be scraped if no exporters are available.  To create a PostgreSQL
-cluster with metric exporters run the following command:
-
-```bash
-pgo create cluster <NAME OF CLUSTER> --metrics --namespace=<NAMESPACE>
-```
-</div>
+<div class="notices tip" ><p>No metrics will be scraped if no exporters are available.  To create a PostgreSQL
+cluster with metric exporters run the following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pgo create cluster &lt;NAME OF CLUSTER&gt; --metrics --namespace<span style="color:#f92672">=</span>&lt;NAMESPACE&gt;</code></pre></div></div>
 
 <h2 id="verify-prometheus">Verify Prometheus</h2>
 
@@ -1046,14 +1037,9 @@ kubectl port-forward &lt;PROMETHEUS_POD_NAME&gt; -n &lt;METRICS_NAMESPACE&gt; <s
 oc port-forward &lt;PROMETHEUS_POD_NAME&gt; -n &lt;METRICS_NAMESPACE&gt; <span style="color:#ae81ff">9090</span>:9090</code></pre></div>
 <p>In a browser navigate to <code>https://127.0.0.1:9090</code> to access the Prometheus dashboard.</p>
 
-<div class="notices tip" >
-No metrics will be scraped if no exporters are available.  To create a PostgreSQL 
-cluster with metric exporters run the following command:
-
-```bash
-pgo create cluster <NAME OF CLUSTER> --metrics --namespace=<NAMESPACE>
-```
-</div>
+<div class="notices tip" ><p>No metrics will be scraped if no exporters are available.  To create a PostgreSQL
+cluster with metric exporters run the following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pgo create cluster &lt;NAME OF CLUSTER&gt; --metrics --namespace<span style="color:#f92672">=</span>&lt;NAMESPACE&gt;</code></pre></div></div>
 
 
 

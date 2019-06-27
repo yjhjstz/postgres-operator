@@ -841,7 +841,7 @@
 cd $HOME/odev/src/github.com/crunchydata
 git clone https://github.com/CrunchyData/postgres-operator.git
 cd postgres-operator
-git checkout 4.0.0
+git checkout 4.0.1
 </code></pre>
 
 <p>This creates a directory structure under your HOME directory name <em>odev</em> and clones the current Operator version to that structure.</p>
@@ -855,12 +855,11 @@ source $HOME/.bashrc
 </code></pre>
 
 <p>For various scripts used by the Operator, the <em>expenv</em> utility is required, download this utility from the Github Releases page, and place it into your PATH (e.g. $HOME/odev/bin).
-<div class="notices tip" >There is also a Makefile target that includes is <em>expenv</em> and several other dependencies that are only needed if you plan on building from source:</p>
+<div class="notices tip" ><p>There is also a Makefile target that includes is <em>expenv</em> and several other dependencies that are only needed if you plan on building from source:</p></p>
 
-<pre><code>make setup
+<p><pre><code>make setup
 </code></pre>
-
-<p></div></p>
+</div></p>
 
 <h2 id="default-installation-namespace-creation">Default Installation - Namespace Creation</h2>
 
@@ -1092,8 +1091,7 @@ with a remote Operator.</p>
 <pre><code>pgo version --pgo-ca-cert=$PGOROOT/conf/postgres-operator/server.crt --pgo-client-cert=$PGOROOT/conf/postgres-operator/server.crt --pgo-client-key=$PGOROOT/conf/postgres-operator/server.key
 </code></pre>
 
-<div class="notices tip" > if you are running the Operator on Google Cloud, you would open up another terminal and run *kubectl port-forward ...* to forward the Operator pod port 8443 to your localhost where you can access the Operator API from your local workstation.
-</div>
+<div class="notices tip" >if you are running the Operator on Google Cloud, you would open up another terminal and run <em>kubectl port-forward &hellip;</em> to forward the Operator pod port 8443 to your localhost where you can access the Operator API from your local workstation.</div>
 
 <p>At this point, you can test connectivity between your laptop or workstation and the Postgres Operator deployed on a Kubernetes cluster as follows:</p>
 
