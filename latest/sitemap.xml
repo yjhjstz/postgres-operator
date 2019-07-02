@@ -51,6 +51,10 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/eventing/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/namespace/</loc>
   </url>
   

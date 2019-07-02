@@ -133,6 +133,13 @@
           </a>
         </div>
     </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/eventing/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/eventing/">
+            Eventing
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/namespace/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/namespace/">
@@ -808,9 +815,9 @@
     
     
 
-<p>The command line tool, pgo, is used to interact with the Postgres Operator.</p>
+<p>The command line tool, <code>pgo</code>, is used to interact with the Postgres Operator.</p>
 
-<p>Most users will work with the Operator using the <em>pgo</em> CLI tool.  That tool is downloaded from the GitHub Releases page for the Operator (<a href="https://github.com/crunchydata/postgres-operator/releases">https://github.com/crunchydata/postgres-operator/releases</a>).</p>
+<p>Most users will work with the Operator using the <em>pgo</em> CLI tool.  That tool is downloaded from the <a href="https://github.com/crunchydata/postgres-operator/releases">GitHub Releases page for the Operator</a>.</p>
 
 <p>The <em>pgo</em> client is provided in Mac, Windows, and Linux binary formats, download the appropriate client to your local laptop or workstation to work with a remote Operator.</p>
 
@@ -866,133 +873,133 @@
 <tbody>
 <tr>
 <td align="left">apply</td>
-<td align="left">pgo apply mypolicy  &ndash;selector=name=mycluster</td>
-<td align="left">Apply a SQL policy on a Postgres cluster(s) that have a label matching service-name=mycluster</td>
+<td align="left"><code>pgo apply mypolicy --selector=name=mycluster</code></td>
+<td align="left">Apply a SQL policy on a Postgres cluster(s) that have a label matching <code>service-name=mycluster</code></td>
 </tr>
 
 <tr>
 <td align="left">backup</td>
-<td align="left">pgo backup mycluster</td>
+<td align="left"><code>pgo backup mycluster</code></td>
 <td align="left">Perform a backup on a Postgres cluster(s)</td>
 </tr>
 
 <tr>
 <td align="left">create</td>
-<td align="left">pgo create cluster mycluster</td>
+<td align="left"><code>pgo create cluster mycluster</code></td>
 <td align="left">Create an Operator resource type (e.g. cluster, policy, schedule, user)</td>
 </tr>
 
 <tr>
 <td align="left">delete</td>
-<td align="left">pgo delete cluster mycluster</td>
+<td align="left"><code>pgo delete cluster mycluster</code></td>
 <td align="left">Delete an Operator resource type (e.g. cluster, policy, user, schedule)</td>
 </tr>
 
 <tr>
 <td align="left">ls</td>
-<td align="left">pgo ls mycluster</td>
-<td align="left">Perform a Linux <em>ls</em> command on the cluster.</td>
+<td align="left"><code>pgo ls mycluster filepath</code></td>
+<td align="left">Perform a Linux <code>ls</code> command on the cluster.</td>
 </tr>
 
 <tr>
 <td align="left">cat</td>
-<td align="left">pgo cat mycluster</td>
-<td align="left">Perform a Linux <em>ls</em> command on the cluster.</td>
+<td align="left"><code>pgo cat mycluster filepath</code></td>
+<td align="left">Perform a Linux <code>cat</code> command on the cluster.</td>
 </tr>
 
 <tr>
 <td align="left">df</td>
-<td align="left">pgo df mycluster</td>
+<td align="left"><code>pgo df mycluster</code></td>
 <td align="left">Display the disk status/capacity of a Postgres cluster.</td>
 </tr>
 
 <tr>
 <td align="left">failover</td>
-<td align="left">pgo failover mycluster</td>
+<td align="left"><code>pgo failover mycluster</code></td>
 <td align="left">Perform a manual failover of a Postgres cluster.</td>
 </tr>
 
 <tr>
 <td align="left">help</td>
-<td align="left">pgo help</td>
-<td align="left">Display general <em>pgo</em> help information.</td>
+<td align="left"><code>pgo help</code></td>
+<td align="left">Display general <code>pgo</code> help information.</td>
 </tr>
 
 <tr>
 <td align="left">label</td>
-<td align="left">pgo label mycluster &ndash;label=environment=prod</td>
+<td align="left"><code>pgo label mycluster --label=environment=prod</code></td>
 <td align="left">Create a metadata label for a Postgres cluster(s).</td>
 </tr>
 
 <tr>
 <td align="left">load</td>
-<td align="left">pgo load &ndash;load-config=load.json &ndash;selector=name=mycluster</td>
+<td align="left"><code>pgo load --load-config=load.json --selector=name=mycluster</code></td>
 <td align="left">Perform a data load into a Postgres cluster(s).</td>
 </tr>
 
 <tr>
 <td align="left">reload</td>
-<td align="left">pgo reload mycluster</td>
-<td align="left">Perform a pg_ctl reload command on a Postgres cluster(s).</td>
+<td align="left"><code>pgo reload mycluster</code></td>
+<td align="left">Perform a <code>pg_ctl</code> reload command on a Postgres cluster(s).</td>
 </tr>
 
 <tr>
 <td align="left">restore</td>
-<td align="left">pgo restore mycluster</td>
-<td align="left">Perform a pgbackrest or pgdump restore on a Postgres cluster.</td>
+<td align="left"><code>pgo restore mycluster</code></td>
+<td align="left">Perform a <code>pgbackrest</code> or <code>pgdump</code> restore on a Postgres cluster.</td>
 </tr>
 
 <tr>
 <td align="left">scale</td>
-<td align="left">pgo scale mycluster</td>
+<td align="left"><code>pgo scale mycluster</code></td>
 <td align="left">Create a Postgres replica(s) for a given Postgres cluster.</td>
 </tr>
 
 <tr>
 <td align="left">scaledown</td>
-<td align="left">pgo scaledown mycluster &ndash;query</td>
+<td align="left"><code>pgo scaledown mycluster --query</code></td>
 <td align="left">Delete a replica from a Postgres cluster.</td>
 </tr>
 
 <tr>
 <td align="left">show</td>
-<td align="left">pgo show cluster mycluster</td>
+<td align="left"><code>pgo show cluster mycluster</code></td>
 <td align="left">Display Operator resource information (e.g. cluster, user, policy, schedule).</td>
 </tr>
 
 <tr>
 <td align="left">status</td>
-<td align="left">pgo status</td>
+<td align="left"><code>pgo status</code></td>
 <td align="left">Display Operator status.</td>
 </tr>
 
 <tr>
 <td align="left">test</td>
-<td align="left">pgo test mycluster</td>
+<td align="left"><code>pgo test mycluster</code></td>
 <td align="left">Perform a SQL test on a Postgres cluster(s).</td>
 </tr>
 
 <tr>
 <td align="left">update</td>
-<td align="left">pgo update cluster &ndash;label=autofail=false</td>
+<td align="left"><code>pgo update cluster --label=autofail=false</code></td>
 <td align="left">Update a Postgres cluster(s).</td>
 </tr>
 
 <tr>
 <td align="left">upgrade</td>
-<td align="left">pgo upgrade mycluster</td>
+<td align="left"><code>pgo upgrade mycluster</code></td>
 <td align="left">Perform a minor upgrade to a Postgres cluster(s).</td>
 </tr>
 
 <tr>
 <td align="left">user</td>
-<td align="left">pgo user &ndash;selector=name=mycluster &ndash;update-passwords</td>
+<td align="left"><code>pgo user --selector=name=mycluster --update-passwords</code></td>
 <td align="left">Perform Postgres user maintenance on a Postgres cluster(s).</td>
 </tr>
 
 <tr>
 <td align="left">version</td>
-<td align="left">pgo version</td>
+<td align="left"><code>pgo version</code></td>
 <td align="left">Display Operator version information.</td>
 </tr>
 </tbody>
@@ -1039,7 +1046,7 @@ cluster as follows:</p>
 
 <p>To view the Postgres logs, you can enter commands such as:</p>
 
-<pre><code>pgo ls mycluster -n pgouser1 /pgdata/mycluster/pg_log 
+<pre><code>pgo ls mycluster -n pgouser1 /pgdata/mycluster/pg_log
 pgo cat mycluster -n pgouser1 /pgdata/mycluster/pg_log/postgresql-Mon.log | tail -3
 </code></pre>
 
@@ -1070,6 +1077,11 @@ command as follows:</p>
 if you specify the following:</p>
 
 <pre><code>pgo create cluster mycluster --pgbackrest=false -n pgouser1
+</code></pre>
+
+<p>You can show the current backups on a cluster with the following:</p>
+
+<pre><code>pgo show backup mycluster -n pgouser1
 </code></pre>
 
 <h4 id="scaledown-a-cluster">Scaledown a Cluster</h4>
@@ -1186,7 +1198,7 @@ pgo backup mycluster --backup-type=pgdump --backup-opts=&quot;--dump-all --verbo
 pgo backup mycluster --backup-type=pgdump --backup-opts=&quot;--schema=myschema&quot; -n pgouser1
 </code></pre>
 
-<p>Note: To run pgdump_all instead of pgdump, pass &lsquo;&ndash;dump-all&rsquo; flag in &ndash;backup-opts as shown above. All &ndash;backup-opts should be space delimited.</p>
+<p>Note: To run <code>pgdump_all</code> instead of <code>pgdump</code>, pass <code>--dump-all</code> flag in <code>--backup-opts</code> as shown above. All <code>--backup-opts</code> should be space delimited.</p>
 
 <h4 id="perform-a-pgbackrest-restore">Perform a pgbackrest restore</h4>
 
@@ -1211,14 +1223,14 @@ pgo backup mycluster --backup-type=pgdump --backup-opts=&quot;--schema=myschema&
 <p>Here are some steps to test PITR:</p>
 
 <ul>
-<li>pgo create cluster mycluster</li>
-<li>create a table on the new cluster called <em>beforebackup</em></li>
+<li><code>pgo create cluster mycluster</code></li>
+<li>Create a table on the new cluster called <em>beforebackup</em></li>
 <li>pgo backup mycluster -n pgouser1</li>
 <li>create a table on the cluster called <em>afterbackup</em></li>
-<li>execute <em>select now()</em> on the database to get the time, use this timestamp minus a couple of minutes when you perform the restore</li>
-<li>pgo restore mycluster &ndash;pitr-target=&ldquo;2019-01-14 00:02:14.921404+00&rdquo; &ndash;backup-opts=&ldquo;&ndash;type=time &ndash;log-level-console=info&rdquo; -n pgouser1</li>
-<li>wait for the database to be restored</li>
-<li>execute <em>\d</em> in the database and you should see the database state prior to where the <em>afterbackup</em> table was created</li>
+<li>Execute <em>select now()</em> on the database to get the time, use this timestamp minus a couple of minutes when you perform the restore</li>
+<li><code>pgo restore mycluster --pitr-target=&quot;2019-01-14 00:02:14.921404+00&quot; --backup-opts=&quot;--type=time --log-level-console=info&quot; -n pgouser1</code></li>
+<li>Wait for the database to be restored</li>
+<li>Execute <em>\d</em> in the database and you should see the database state prior to where the <em>afterbackup</em> table was created</li>
 </ul>
 
 <p>See the Design section of the Operator documentation for things to consider
@@ -1429,7 +1441,7 @@ pgo benchmark mycluster --policy=mytransactions -n pgouser1
 
 <p>You can view benchmarks by entering:</p>
 
-<pre><code>pgo show benchmark -n pgouser1
+<pre><code>pgo show benchmark -n pgouser1 mycluster
 </code></pre>
 
 <h3 id="complex-deployments">Complex Deployments</h3>
@@ -1498,33 +1510,33 @@ type instead of the default ClusterIP service type.</p>
 
 <tbody>
 <tr>
-<td align="left">n</td>
+<td align="left"><code>-n</code></td>
 <td align="left">namespace targeted for the command</td>
 </tr>
 
 <tr>
-<td align="left">apiserver-url</td>
-<td align="left">URL of the Operator REST API service, override with CO_APISERVER_URL environment variable</td>
+<td align="left"><code>--apiserver-url</code></td>
+<td align="left">URL of the Operator REST API service, override with <code>CO_APISERVER_URL</code> environment variable</td>
 </tr>
 
 <tr>
-<td align="left">debug</td>
-<td align="left">enable debug messages</td>
+<td align="left"><code>--debug</code></td>
+<td align="left">Enable debug messages</td>
 </tr>
 
 <tr>
-<td align="left">pgo-ca-cert</td>
-<td align="left">The CA Certificate file path for authenticating to the PostgreSQL Operator apiserver. Override with PGO_CA_CERT environment variable</td>
+<td align="left"><code>--pgo-ca-cert</code></td>
+<td align="left">The CA Certificate file path for authenticating to the PostgreSQL Operator apiserver. Override with <code>PGO_CA_CERT</code> environment variable</td>
 </tr>
 
 <tr>
-<td align="left">pgo-client-cert</td>
-<td align="left">The Client Certificate file path for authenticating to the PostgreSQL Operator apiserver.  Override with PGO_CLIENT_CERT environment variable</td>
+<td align="left"><code>--pgo-client-cert</code></td>
+<td align="left">The Client Certificate file path for authenticating to the PostgreSQL Operator apiserver.  Override with <code>PGO_CLIENT_CERT</code> environment variable</td>
 </tr>
 
 <tr>
-<td align="left">pgo-client-key</td>
-<td align="left">The Client Key file path for authenticating to the PostgreSQL Operator apiserver.  Override with PGO_CLIENT_KEY environment variable</td>
+<td align="left"><code>--pgo-client-key</code></td>
+<td align="left">The Client Key file path for authenticating to the PostgreSQL Operator apiserver.  Override with <code>PGO_CLIENT_KEY</code> environment variable</td>
 </tr>
 </tbody>
 </table>
@@ -1533,10 +1545,35 @@ type instead of the default ClusterIP service type.</p>
 
 <p><em>pgo</em> will pick up these settings if set in your environment:</p>
 
-<p>| Name | Description | NOTES |
-|PGOUSERNAME |The username (role) used for auth on the operator apiserver. | Requires that PGOUSERPASS be set. |
-|PGOUSERPASS |The password for used for auth on the operator apiserver. | Requires that PGOUSERNAME be set. |
-|PGOUSER |The path the the pgorole file. | Will be ignored if either PGOUSERNAME or PGOUSERPASS are set. |</p>
+<table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Description</th>
+<th align="left">NOTES</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>PGOUSERNAME</code></td>
+<td align="left">The username (role) used for auth on the operator apiserver.</td>
+<td align="left">Requires that <code>PGOUSERPASS</code> be set.</td>
+</tr>
+
+<tr>
+<td align="left"><code>PGOUSERPASS</code></td>
+<td align="left">The password for used for auth on the operator apiserver.</td>
+<td align="left">Requires that <code>PGOUSERNAME</code> be set.</td>
+</tr>
+
+<tr>
+<td align="left"><code>PGOUSER</code></td>
+<td align="left">The path to the pgorole file.</td>
+<td align="left">Will be ignored if either <code>PGOUSERNAME</code> or <code>PGOUSERPASS</code> are set.</td>
+</tr>
+</tbody>
+</table>
 
 
 

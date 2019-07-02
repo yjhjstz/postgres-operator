@@ -17,7 +17,7 @@
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/pgo-overview/</guid>
       <description>The command line tool, pgo, is used to interact with the Postgres Operator.
-Most users will work with the Operator using the pgo CLI tool. That tool is downloaded from the GitHub Releases page for the Operator (https://github.com/crunchydata/postgres-operator/releases).
+Most users will work with the Operator using the pgo CLI tool. That tool is downloaded from the GitHub Releases page for the Operator.
 The pgo client is provided in Mac, Windows, and Linux binary formats, download the appropriate client to your local laptop or workstation to work with a remote Operator.
 Syntax Use the following syntax to run pgo commands from your terminal window:</description>
     </item>

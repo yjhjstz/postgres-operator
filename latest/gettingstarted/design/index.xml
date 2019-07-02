@@ -45,6 +45,17 @@ Config Files Purpose The postgresql.</description>
     </item>
     
     <item>
+      <title>Eventing</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/eventing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/eventing/</guid>
+      <description>Operator Eventing The Operator creates events from the various life-cycle events going on within the Operator logic and driven by pgo users as they interact with the Operator and as Postgres clusters come and go or get updated.
+Event Watching There is a pgo CLI command:
+pgo watch alltopic  This command connects to the event stream and listens on a topic for event real-time. The command will not complete until the pgo user enters ctrl-C.</description>
+    </item>
+    
+    <item>
       <title>Namespace</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/namespace/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

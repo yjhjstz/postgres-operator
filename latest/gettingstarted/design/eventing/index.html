@@ -7,7 +7,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.55.6" />
-<title>Installation :: Crunchy Data PostgreSQL Operator Documentation</title>
+<title>Eventing :: Crunchy Data PostgreSQL Operator Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/latest/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/latest/css/nucleus.css" rel="stylesheet">
 <link href="https://crunchydata.github.io/postgres-operator/latest/theme-flex/style.css" rel="stylesheet">
@@ -29,7 +29,7 @@
 
     
   </head>
-  <body data-url="/installation/">
+  <body data-url="/gettingstarted/design/eventing/">
     
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
   
@@ -98,17 +98,19 @@
         <hr>
 
       <b>Navigation</b>
-    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/" class="dd-item haschildren
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/">Getting Started</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/">Getting Started</a>
+            <i class="fas fa-angle-down fa-lg category-icon"></i>
 
       </div>
         <ul>
-    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/" class="dd-item haschildren
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/">Design</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/">Design</a>
+            <i class="fas fa-angle-down fa-lg category-icon"></i>
 
       </div>
         <ul>
@@ -133,7 +135,7 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/eventing/" class="dd-item">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/eventing/" class="dd-item active">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/eventing/">
             Eventing
@@ -165,11 +167,10 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/" class="dd-item parent active haschildren
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/" class="dd-item haschildren
         ">
       <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/installation/">Installation</a>
-            <i class="fas fa-angle-down fa-lg category-icon"></i>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/installation/">Installation</a><i class="fas fa-angle-right fa-lg category-icon"></i>
 
       </div>
         <ul>
@@ -736,18 +737,23 @@
         <select onchange="javascript:location.href = this.value;">
           
     <option value="/gettingstarted/" >
-   Getting Started</option>
-    <option value="/installation/"  selected>
-   Installation</option> 
-    <option value="/installation/install-with-ansible/" >
+   Getting Started</option> 
+    <option value="/gettingstarted/design/" >
   - 
-   Install Operator Using Ansible</option>
-    <option value="/installation/install-pgo-client/" >
-  - 
-   Install `pgo` Client</option>
-      <option value="/installation/operator-install/" >- Install Operator Using Bash</option>
-      <option value="/installation/developer-setup/" >- Developer Setup</option>
+   Design</option> 
+      <option value="/gettingstarted/design/designoverview/" >-- Design</option>
+      <option value="/gettingstarted/design/custom-config/" >-- Custom Configuration</option>
+      <option value="/gettingstarted/design/custom-config-ssl/" >-- Custom SSL Configuration</option>
+      <option value="/gettingstarted/design/eventing/"  selected>-- Eventing</option>
+      <option value="/gettingstarted/design/namespace/" >-- Namespace</option>
+      <option value="/gettingstarted/design/olm/" >-- OLM</option>
   
+    <option value="/gettingstarted/prereq/" >
+  - 
+   Prerequisites</option>
+  
+    <option value="/installation/" >
+   Installation</option>
     <option value="/configuration/" >
    Configuration</option>
     <option value="/operatorcli/" >
@@ -776,7 +782,7 @@
             <i class="fa fa-info-circle"></i>
             
           </a>
-          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/develop/hugo/content/Installation/_index.md" target="blank">
+          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/develop/hugo/content/gettingstarted/Design/eventing.md" target="blank">
             <i class="fa fa-code-fork"></i>
             
           </a>
@@ -793,7 +799,17 @@
 
 
 
- <a href='https://crunchydata.github.io/postgres-operator/latest/'>Crunchy Data Postgres Operator</a> > Installation
+
+
+
+
+
+
+ <a href='https://crunchydata.github.io/postgres-operator/latest/'>Crunchy Data Postgres Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/gettingstarted/'>Getting Started</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/'>Design</a> > Eventing
+
+ 
+
+ 
 
  
 
@@ -807,52 +823,98 @@
     
     <div id="body-inner">
 
-    <h1>Installation</h1>
+    <h1>Eventing</h1>
 
     
 
     
+    
 
+<h2 id="operator-eventing">Operator Eventing</h2>
 
+<p>The Operator creates events from the various life-cycle
+events going on within the Operator logic and driven
+by pgo users as they interact with the Operator and as
+Postgres clusters come and go or get updated.</p>
 
-<div class="extra-pagination inner">
-<nav class="pagination" role="navigation">
-	
-	<span class="page-number"> 1  1</span>
-	
-</nav>
+<h2 id="event-watching">Event Watching</h2>
 
-</div>
+<p>There is a pgo CLI command:</p>
 
+<pre><code>pgo watch alltopic 
+</code></pre>
 
-   <ul>
-    <li><a href="https://crunchydata.github.io/postgres-operator/latest/installation/operator-install/">Install Operator Using Bash</a></li>
-</ul>
+<p>This command connects to the event stream and listens
+on a topic for event real-time.  The command will not
+complete until the pgo user enters ctrl-C.</p>
 
+<p>This command will connect to localhost:14150 (default) to reach the
+event stream.  If you have the correct priviledges
+to connect to the Operator pod, you can port forward
+as follows to form a connection to the event stream:</p>
 
-   <ul>
-    <li><a href="https://crunchydata.github.io/postgres-operator/latest/installation/developer-setup/">Developer Setup</a></li>
-</ul>
+<pre><code>kubectl port-forward postgres-operator-XXXXXX 14150:4150 -n pgo
+</code></pre>
 
+<h2 id="event-topics">Event Topics</h2>
 
+<p>The following topics exist that hold the various Operator
+generated events:</p>
 
-<div style="margin-bottom:2rem"></div>
+<pre><code>alltopic
+clustertopic
+backuptopic
+loadtopic
+postgresusertopic
+policytopic
+pgpooltopic
+pgbouncertopic
+pgotopic
+pgousertopic
+</code></pre>
 
-<nav class="pagination" role="navigation">
-	
-	<span class="page-number"> 1  1</span>
-	
-</nav>
+<h2 id="event-types">Event Types</h2>
 
+<p>The various event types are found in the source code at
+<a href="https://github.com/CrunchyData/postgres-operator/blob/master/events/eventtype.go">https://github.com/CrunchyData/postgres-operator/blob/master/events/eventtype.go</a></p>
 
+<h2 id="event-testing">Event Testing</h2>
+
+<p>To test the event logic, you can run the test case for
+events as follows:</p>
+
+<pre><code># create a connection locally to the event stream
+kubectl port-forward postgres-operator-XXXXXX 14150:4150 -n pgo
+
+# specify the event address
+export EVENT_ADDR=localhost:14150
+
+# run the test using foomatic as the name of the test cluster
+# and pgouser1 as the name of the namespace to test against
+cd testing/events
+go test -run TestEventCreate -v --kubeconfig=/home/&lt;yourhomedir&gt;/.kube/config -clustername=foomatic -namespace=pgouser1
+</code></pre>
+
+<h2 id="event-deployment">Event Deployment</h2>
+
+<p>The Operator events are published and subscribed via the NSQ
+project software (<a href="https://nsq.io/">https://nsq.io/</a>).  NSQ is found in the pgo-event
+container which is part of the postgres-operator deployment.</p>
+
+<p>You can see the pgo-event logs by issuing the elog bash function
+found in the examples/envs.sh script.</p>
+
+<p>NSQ looks for events currently at port 4150.  The Operator sends
+events to the NSQ address as defined in the EVENT_ADDR environment
+variable.</p>
 
 
 
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/prereq/" title="Prerequisites"> <i class="fa fa-chevron-left"></i><label>Prerequisites</label></a>
-    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/" title="Install Operator Using Ansible" style="margin-right: 0px;"><label>Install Operator Using Ansible</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/custom-config-ssl/" title="Custom SSL Configuration"> <i class="fa fa-chevron-left"></i><label>Custom SSL Configuration</label></a>
+    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/namespace/" title="Namespace" style="margin-right: 0px;"><label>Namespace</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
