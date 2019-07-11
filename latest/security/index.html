@@ -915,52 +915,41 @@ on the same Kube cluster.</p>
 
 <h2 id="operator-rbac">Operator RBAC</h2>
 
-<p>The <em>conf/postgresql-operator/pgorole</em> file is read at start up time when the operator is deployed to the Kubernetes cluster.  This file defines the Operator roles whereby Operator API users can be authorized.</p>
+<p>Operator roles are defined as Secrets starting in version 4.1 of the
+Operator.  Likewise, Operator users are also defined as Secrets.</p>
 
-<p>The <em>conf/postgresql-operator/pgouser</em> file is read at start up time also and contains username, password, role, and namespace information as follows:</p>
+<p>The bootstrap Operator credential is created when you run:</p>
 
-<pre><code>username:password:pgoadmin:
-pgouser1:password:pgoadmin:pgouser1
-pgouser2:password:pgoadmin:pgouser2
-pgouser3:password:pgoadmin:pgouser1,pgouser2
-readonlyuser:password:pgoreader:
+<pre><code>make installrbac
 </code></pre>
 
-<p>The format of the pgouser server file is:</p>
+<p>This creates an Operator role and user with the following
+names:</p>
 
-<pre><code>&lt;username&gt;:&lt;password&gt;:&lt;role&gt;:&lt;namespace,namespace&gt;
+<pre><code>pgoadmin
 </code></pre>
 
-<p>The namespace is a comma separated list of namespaces that
-user has access to.  If you do not specify a namespace, then
-all namespaces is assumed, meaning this user can access any
-namespace that the Operator is watching.</p>
+<p>The roles and user Secrets are created in the PGO_OPERATOR_NAMESPACE.</p>
 
-<p>A user creates a <em>.pgouser</em> file in their $HOME directory to identify
-themselves to the Operator.  An entry in .pgouser will need to match
-entries in the <em>conf/postgresql-operator/pgouser</em> file.  A sample
-<em>.pgouser</em> file contains the following:</p>
+<p>The default roles, role name, user name, and password are defined in the following script and should be modified for a production environment:</p>
 
-<pre><code>username:password
+<pre><code>deploy/install-bootstrap-creds.sh
 </code></pre>
 
-<p>The format of the .pgouser client file is:</p>
+<p>These Secrets (pgouser/pgorole) control access to the Operator API.</p>
 
-<pre><code>&lt;username&gt;:&lt;password&gt;
+<h3 id="managing-operator-roles">Managing Operator Roles</h3>
+
+<p>After installation, users can create additional Operator roles
+as follows:</p>
+
+<pre><code>pgo create pgorole somerole --permissions=&quot;Cat,Ls&quot;
 </code></pre>
 
-<p>The users pgouser file can also be located at:
-<em>/etc/pgo/pgouser</em> or it can be found at a path specified by the
-PGOUSER environment variable.</p>
+<p>The above command creates a role named <em>somerole</em> with permissions to
+execute the <em>cat</em> and <em>ls</em> API commands.  Permissions are comma separated.</p>
 
-<p>If the user tries to access a namespace that they are not
-configured for within the server side <em>pgouser</em> file then they
-will get an error message as follows:</p>
-
-<pre><code>Error: user [pgouser1] is not allowed access to namespace [pgouser2]
-</code></pre>
-
-<p>The following list shows the current complete list of possible pgo permissions that you can specify within the <em>pgorole</em> file when creating roles:</p>
+<p>The full set of permissions that can be used in a role are as follows:</p>
 
 <table>
 <thead>
@@ -1012,6 +1001,16 @@ will get an error message as follows:</p>
 </tr>
 
 <tr>
+<td>CreatePgouser</td>
+<td>allow <em>pgo create pgouser</em></td>
+</tr>
+
+<tr>
+<td>CreatePgorole</td>
+<td>allow <em>pgo create pgorole</em></td>
+</tr>
+
+<tr>
 <td>CreatePgpool</td>
 <td>allow <em>pgo create pgpool</em></td>
 </tr>
@@ -1054,6 +1053,16 @@ will get an error message as follows:</p>
 <tr>
 <td>DeletePgbouncer</td>
 <td>allow <em>pgo delete pgbouncer</em></td>
+</tr>
+
+<tr>
+<td>DeletePgouser</td>
+<td>allow <em>pgo delete pgouser</em></td>
+</tr>
+
+<tr>
+<td>DeletePgorole</td>
+<td>allow <em>pgo delete pgorole</em></td>
 </tr>
 
 <tr>
@@ -1142,6 +1151,16 @@ will get an error message as follows:</p>
 </tr>
 
 <tr>
+<td>ShowPgouser</td>
+<td>allow <em>pgo show pgouser</em></td>
+</tr>
+
+<tr>
+<td>ShowPgorole</td>
+<td>allow <em>pgo show pgorole</em></td>
+</tr>
+
+<tr>
 <td>ShowPVC</td>
 <td>allow <em>pgo show pvc</em></td>
 </tr>
@@ -1182,6 +1201,16 @@ will get an error message as follows:</p>
 </tr>
 
 <tr>
+<td>UpdatePgouser</td>
+<td>allow <em>pgo update pgouser</em></td>
+</tr>
+
+<tr>
+<td>UpdatePgorole</td>
+<td>allow <em>pgo update pgorole</em></td>
+</tr>
+
+<tr>
 <td>User</td>
 <td>allow <em>pgo user</em></td>
 </tr>
@@ -1193,20 +1222,59 @@ will get an error message as follows:</p>
 </tbody>
 </table>
 
+<p>Roles can be viewed with the following command:</p>
+
+<pre><code>pgo show pgorole --all
+</code></pre>
+
+<p>Roles can be removed with the following command:</p>
+
+<pre><code>pgo delete pgorole somerole
+</code></pre>
+
+<p>Roles can be updated with the following command:</p>
+
+<pre><code>pgo update pgorole somerole --permissions=&quot;Cat,Ls,ShowPolicy&quot;
+</code></pre>
+
+<h3 id="managing-operator-users">Managing Operator Users</h3>
+
+<p>After installation, users can create additional Operator users
+as follows:</p>
+
+<pre><code>pgo create pgouser someuser --pgouser-namespaces=&quot;pgouser1,pgouser2&quot; --pgouser-password=somepassword --pgouser-roles=&quot;somerole,someotherrole&quot;
+</code></pre>
+
+<p>Mutliple roles and namespaces can be associated with a user by
+specifying a comma separated list of values.</p>
+
+<p>The namespace is a comma separated list of namespaces that
+user has access to.  If you specify the flag &ldquo;&ndash;all-namespaces&rdquo;, then
+all namespaces is assumed, meaning this user can access any
+namespace that the Operator is watching.</p>
+
+<p>A user creates a <em>.pgouser</em> file in their $HOME directory to identify
+themselves to the Operator.  A sample <em>.pgouser</em> file contains the following:</p>
+
+<pre><code>pgoadmin:examplepassword
+</code></pre>
+
+<p>The format of the .pgouser client file is:</p>
+
+<pre><code>&lt;username&gt;:&lt;password&gt;
+</code></pre>
+
+<p>If the user tries to access a namespace that they are not
+configured for they will get an error message as follows:</p>
+
+<pre><code>Error: user [pgouser1] is not allowed access to namespace [pgouser2]
+</code></pre>
+
 <p>If the user is unauthorized for a pgo command, the user will
 get back this response:</p>
 
 <pre><code>Error:  Authentication Failed: 401 
 </code></pre>
-
-<h2 id="making-security-changes">Making Security Changes</h2>
-
-<p>The Operator today requires you to make Operator user security changes in the pgouser and pgorole files, and for those changes to take effect you are required to re-deploy the Operator:</p>
-
-<pre><code>make deployoperator
-</code></pre>
-
-<p>This will recreate the <em>pgo-config</em> ConfigMap that stores these files and is mounted by the Operator during its initialization.</p>
 
 <h2 id="api-security">API Security</h2>
 
