@@ -856,67 +856,19 @@
 
 <tr>
 <td>Cluster Roles (cluster-roles.yaml)</td>
-<td>pgopclusterrole</td>
-</tr>
-
-<tr>
-<td></td>
-<td>pgopclusterrolecrd</td>
+<td>pgo-cluster-role</td>
 </tr>
 
 <tr>
 <td>Cluster Role Bindings (cluster-roles-bindings.yaml)</td>
-<td>pgopclusterbinding</td>
-</tr>
-
-<tr>
-<td></td>
-<td>pgopclusterbindingcrd</td>
-</tr>
-
-<tr>
-<td>Service Account (service-accounts.yaml)</td>
-<td>postgres-operator</td>
-</tr>
-
-<tr>
-<td></td>
-<td>pgo-backrest</td>
-</tr>
-
-<tr>
-<td>Roles (rbac.yaml)</td>
-<td>pgo-role</td>
-</tr>
-
-<tr>
-<td></td>
-<td>pgo-backrest-role</td>
-</tr>
-
-<tr>
-<td>Role Bindings  (rbac.yaml)</td>
-<td>pgo-backrest-role-binding</td>
-</tr>
-
-<tr>
-<td></td>
-<td>pgo-role-binding</td>
+<td>pgo-cluster-role</td>
 </tr>
 </tbody>
 </table>
 
-<p>Note that the cluster role bindings have a naming convention of
-pgopclusterbinding-$PGO_OPERATOR_NAMESPACE and
-pgopclusterbindingcrd-$PGO_OPERATOR_NAMESPACE.  The PGO_OPERATOR_NAMESPACE
-environment variable is added to make each cluster role binding
-name unique and to support more than a single Operator being deployed
-on the same Kube cluster.</p>
-
 <h2 id="operator-rbac">Operator RBAC</h2>
 
-<p>Operator roles are defined as Secrets starting in version 4.1 of the
-Operator.  Likewise, Operator users are also defined as Secrets.</p>
+<p>Operator user roles (pgouser) are defined as Secrets starting in version 4.1 of the Operator.  Likewise, Operator users (pgouser) are also defined as Secrets.</p>
 
 <p>The bootstrap Operator credential is created when you run:</p>
 
@@ -937,6 +889,76 @@ names:</p>
 </code></pre>
 
 <p>These Secrets (pgouser/pgorole) control access to the Operator API.</p>
+
+<h2 id="target-namespaces">Target Namespaces</h2>
+
+<p>Starting in Operator version 4.1, targeted namespaces are created
+by the Operator itself instead as configuration or user actions
+dictate.</p>
+
+<p>Targeted namespaces are namespaces which are configured for the
+Operator to deploy Postgres clusters into and manage.</p>
+
+<p>Targeted namespaces are those which have the following labels:</p>
+
+<pre><code>vendor=crunchydata
+pgo-installation-name=devtest
+</code></pre>
+
+<p>In the above example, <em>devtest</em> is the default name for an Operator
+installation.  This value is specified using the PGO_INSTALLATION_NAME
+environment variable, when installing the Operator, you will
+need to set this environment variable to be unique across your Kube
+cluster.  This setting determines what namespaces an Operator
+installation can access.</p>
+
+<p>Users can create a new Namespace as follows:
+    pgo create namespace mynamespace</p>
+
+<p>If you want to create the Namespace prior to the Operator using
+them, you can do the following:
+    kubectl create namespace mynamespace
+    pgo update namespace mynamespace</p>
+
+<p>The <em>update namespace</em> command will apply the required Operator RBAC
+rules to that namespace.</p>
+
+<p>When you configure the Operator, you can still specify the NAMESPACE
+environment variable with a list of namespaces, if they exist and
+have the correct labels, the Operator will recognize and watch
+those namespaces.  If the NAMESPACE environment variable has names
+that are not on your Kube system, the Operator will create the namespaces
+at boot up time.</p>
+
+<p>Part of the workflow of the Operator creating namespaces includes applying
+the RBAC rules required for those namespaces.  The RBAC objects created
+in each targeted namespace include:</p>
+
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Definition</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Roles</td>
+<td>pgo-backrest-role</td>
+</tr>
+
+<tr>
+<td>Role Bindings</td>
+<td>pgo-backrest-role-binding</td>
+</tr>
+
+<tr>
+<td>Service Accounts</td>
+<td>pgo-backrest</td>
+</tr>
+</tbody>
+</table>
 
 <h3 id="managing-operator-roles">Managing Operator Roles</h3>
 
@@ -996,6 +1018,11 @@ execute the <em>cat</em> and <em>ls</em> API commands.  Permissions are comma se
 </tr>
 
 <tr>
+<td>CreateNamespace</td>
+<td>allow <em>pgo create namespace</em></td>
+</tr>
+
+<tr>
 <td>CreatePgbouncer</td>
 <td>allow <em>pgo create pgbouncer</em></td>
 </tr>
@@ -1048,6 +1075,11 @@ execute the <em>cat</em> and <em>ls</em> API commands.  Permissions are comma se
 <tr>
 <td>DeleteCluster</td>
 <td>allow <em>pgo delete cluster</em></td>
+</tr>
+
+<tr>
+<td>DeleteNamespace</td>
+<td>allow <em>pgo delete namespace</em></td>
 </tr>
 
 <tr>
@@ -1198,6 +1230,11 @@ execute the <em>cat</em> and <em>ls</em> API commands.  Permissions are comma se
 <tr>
 <td>UpdateCluster</td>
 <td>allow <em>pgo update cluster</em></td>
+</tr>
+
+<tr>
+<td>UpdateNamespace</td>
+<td>allow <em>pgo update namespace</em></td>
 </tr>
 
 <tr>

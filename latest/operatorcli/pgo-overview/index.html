@@ -886,13 +886,13 @@
 <tr>
 <td align="left">create</td>
 <td align="left"><code>pgo create cluster mycluster</code></td>
-<td align="left">Create an Operator resource type (e.g. cluster, policy, schedule, user)</td>
+<td align="left">Create an Operator resource type (e.g. cluster, policy, schedule, user, namespace, pgouser, pgorole)</td>
 </tr>
 
 <tr>
 <td align="left">delete</td>
 <td align="left"><code>pgo delete cluster mycluster</code></td>
-<td align="left">Delete an Operator resource type (e.g. cluster, policy, user, schedule)</td>
+<td align="left">Delete an Operator resource type (e.g. cluster, policy, user, schedule, namespace, pgouser, pgorole)</td>
 </tr>
 
 <tr>
@@ -964,7 +964,7 @@
 <tr>
 <td align="left">show</td>
 <td align="left"><code>pgo show cluster mycluster</code></td>
-<td align="left">Display Operator resource information (e.g. cluster, user, policy, schedule).</td>
+<td align="left">Display Operator resource information (e.g. cluster, user, policy, schedule, namespace, pgouser, pgorole).</td>
 </tr>
 
 <tr>
@@ -982,7 +982,7 @@
 <tr>
 <td align="left">update</td>
 <td align="left"><code>pgo update cluster mycluster --autofail=false</code></td>
-<td align="left">Update a Postgres cluster(s).</td>
+<td align="left">Update a Postgres cluster(s), pgouser, pgorole, or namespace.</td>
 </tr>
 
 <tr>
@@ -1483,6 +1483,59 @@ will schedule the Pod.</p>
 
 <p>This command will cause the Postgres Service to be of a specific
 type instead of the default ClusterIP service type.</p>
+
+<h4 id="namespace-operations">Namespace Operations</h4>
+
+<p>Create an Operator namespace where Postgres clusters can be created
+and managed by the Operator:</p>
+
+<pre><code>pgo create namespace mynamespace
+</code></pre>
+
+<p>Update a Namespace to be able to be used by the Operator:</p>
+
+<pre><code>pgo update namespace somenamespace
+</code></pre>
+
+<p>Delete a Namespace:</p>
+
+<pre><code>pgo delete namespace mynamespace
+</code></pre>
+
+<h4 id="pgo-user-operations">PGO User Operations</h4>
+
+<p>PGO users are users defined for authenticating to the PGO REST API.  You
+can manage those users with the following commands:</p>
+
+<pre><code>pgo create pgouser someuser --pgouser-namespaces=&quot;pgouser1,pgouser2&quot; --pgouser-password=&quot;somepassword&quot; --pgouser-roles=&quot;pgoadmin&quot;
+pgo create pgouser otheruser --all-namespaces --pgouser-password=&quot;somepassword&quot; --pgouser-roles=&quot;pgoadmin&quot;
+</code></pre>
+
+<p>Update a user:</p>
+
+<pre><code>pgo update pgouser someuser --pgouser-namespaces=&quot;pgouser1,pgouser2&quot; --pgouser-password=&quot;somepassword&quot; --pgouser-roles=&quot;pgoadmin&quot;
+pgo update pgouser otheruser --all-namespaces --pgouser-password=&quot;somepassword&quot; --pgouser-roles=&quot;pgoadmin&quot;
+</code></pre>
+
+<p>Delete a PGO user:</p>
+
+<pre><code>pgo delete pgouser someuser
+</code></pre>
+
+<p>PGO roles are also managed as follows:</p>
+
+<pre><code>pgo create pgorole somerole --permissions=&quot;Cat,Ls&quot;
+</code></pre>
+
+<p>Delete a PGO role with:</p>
+
+<pre><code>pgo delete pgorole somerole
+</code></pre>
+
+<p>Update a PGO role with:</p>
+
+<pre><code>pgo update pgorole somerole --permissions=&quot;Cat,Ls&quot;
+</code></pre>
 
 <h4 id="miscellaneous">Miscellaneous</h4>
 
