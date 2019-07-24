@@ -185,7 +185,19 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_namespace/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_pgbouncer/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_pgorole/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_pgouser/</loc>
   </url>
   
   <url>
@@ -225,7 +237,19 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_namespace/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_pgbouncer/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_pgorole/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_pgouser/</loc>
   </url>
   
   <url>
@@ -309,6 +333,14 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_pgorole/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_pgouser/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_policy/</loc>
   </url>
   
@@ -349,6 +381,18 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_update_namespace/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_update_pgorole/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_update_pgouser/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_upgrade/</loc>
   </url>
   
@@ -358,6 +402,10 @@
   
   <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_version/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_watch/</loc>
   </url>
   
 </urlset>
