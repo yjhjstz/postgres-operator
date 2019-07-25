@@ -726,6 +726,13 @@
           </a>
         </div>
     </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_update_user/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_update_user/">
+            pgo_update_user
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_upgrade/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_upgrade/">
@@ -1169,7 +1176,7 @@ is exclusively used for this Postgres cluster</p></li>
   BackrestS3Bucket<span style="color:#111">:</span> containers-dev-pgbackrest
   BackrestS3Endpoint<span style="color:#111">:</span> s3.amazonaws.com
   BackrestS3Region<span style="color:#111">:</span> us-east-<span style="color:#ae81ff">1</span></code></pre></div>
-<p>You will then need to specify the proper credentials for authenticating into the S3 bucket specified by adding a <strong>key</strong> and <strong>key secret</strong> to the <code>$PGOROOT/pgo-backrest-repo/aws-s3-credentials.yaml</code> configuration file:</p>
+<p>You will then need to specify the proper credentials for authenticating into the S3 bucket specified by adding a <strong>key</strong> and <strong>key secret</strong> to the <code>$PGOROOT/conf/pgo-backrest-repo/aws-s3-credentials.yaml</code> configuration file:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
 aws-s3-key<span style="color:#111">:</span> ABCDEFGHIJKLMNOPQRST
 aws-s3-key-secret<span style="color:#111">:</span> ABCDEFG/HIJKLMNOPQSTU/VWXYZABCDEFGHIJKLM</code></pre></div>
@@ -1186,9 +1193,9 @@ aws-s3-key-secret<span style="color:#111">:</span> ABCDEFG/HIJKLMNOPQSTU/VWXYZAB
 </ul>
 
 <p>For instance, the following command enables both <code>local</code> and <code>s3</code> storage in a new cluster:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pgo create cluster mycluster --pgbackrest --pgbackrest-storage-type<span style="color:#f92672">=</span>local,s3 -n pgouser1</code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pgo create cluster mycluster --pgbackrest-storage-type<span style="color:#f92672">=</span>local,s3 -n pgouser1</code></pre></div>
 <p>As described above, this will result in pgbackrest pushing archives to both local and S3 storage, while also allowing both local and S3 storage to be utilized for backups and restores.  However, you could also enable S3 storage only when creating the cluster:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pgo create cluster mycluster --pgbackrest --pgbackrest-storage-type<span style="color:#f92672">=</span>s3 -n pgouser1</code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pgo create cluster mycluster --pgbackrest-storage-type<span style="color:#f92672">=</span>s3 -n pgouser1</code></pre></div>
 <p>Now all archives for the cluster will be pushed to S3 storage only, and local storage will not be utilized for storing archives (nor can local storage be utilized for backups and restores).</p>
 
 <h4 id="using-s3-to-backup-restore">Using S3 to Backup &amp; Restore</h4>

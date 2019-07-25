@@ -7,7 +7,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.55.6" />
-<title>pgo_watch :: Crunchy Data PostgreSQL Operator Documentation</title>
+<title>pgo_update_user :: Crunchy Data PostgreSQL Operator Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/latest/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/latest/css/nucleus.css" rel="stylesheet">
 <link href="https://crunchydata.github.io/postgres-operator/latest/theme-flex/style.css" rel="stylesheet">
@@ -29,7 +29,7 @@
 
     
   </head>
-  <body data-url="/operatorcli/cli/pgo_watch/">
+  <body data-url="/operatorcli/cli/pgo_update_user/">
     
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
   
@@ -726,7 +726,7 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_update_user/" class="dd-item">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_update_user/" class="dd-item active">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_update_user/">
             pgo_update_user
@@ -754,7 +754,7 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_watch/" class="dd-item active">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_watch/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_watch/">
             pgo_watch
@@ -899,11 +899,11 @@
       <option value="/operatorcli/cli/pgo_update_namespace/" >-- pgo_update_namespace</option>
       <option value="/operatorcli/cli/pgo_update_pgorole/" >-- pgo_update_pgorole</option>
       <option value="/operatorcli/cli/pgo_update_pgouser/" >-- pgo_update_pgouser</option>
-      <option value="/operatorcli/cli/pgo_update_user/" >-- pgo_update_user</option>
+      <option value="/operatorcli/cli/pgo_update_user/"  selected>-- pgo_update_user</option>
       <option value="/operatorcli/cli/pgo_upgrade/" >-- pgo_upgrade</option>
       <option value="/operatorcli/cli/pgo_user/" >-- pgo_user</option>
       <option value="/operatorcli/cli/pgo_version/" >-- pgo_version</option>
-      <option value="/operatorcli/cli/pgo_watch/"  selected>-- pgo_watch</option>
+      <option value="/operatorcli/cli/pgo_watch/" >-- pgo_watch</option>
   
   
     <option value="/security/" >
@@ -930,7 +930,7 @@
             <i class="fa fa-info-circle"></i>
             
           </a>
-          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/develop/hugo/content/operatorcli/cli/pgo_watch.md" target="blank">
+          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/develop/hugo/content/operatorcli/cli/pgo_update_user.md" target="blank">
             <i class="fa fa-code-fork"></i>
             
           </a>
@@ -953,7 +953,7 @@
 
 
 
- <a href='https://crunchydata.github.io/postgres-operator/latest/'>Crunchy Data Postgres Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/operatorcli/'>Operator Command Line Utility</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/'>Operator CLI</a> > pgo_watch
+ <a href='https://crunchydata.github.io/postgres-operator/latest/'>Crunchy Data Postgres Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/operatorcli/'>Operator Command Line Utility</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/'>Operator CLI</a> > pgo_update_user
 
  
 
@@ -971,30 +971,39 @@
     
     <div id="body-inner">
 
-    <h1>pgo_watch</h1>
+    <h1>pgo_update_user</h1>
 
     
 
     
     
 
-<h2 id="pgo-watch">pgo watch</h2>
+<h2 id="pgo-update-user">pgo update user</h2>
 
-<p>Print watch information for the PostgreSQL Operator</p>
+<p>Update a postgres user</p>
 
 <h3 id="synopsis">Synopsis</h3>
 
-<p>WATCH allows you to watch event information for the postgres-operator. For example:
-        pgo watch &ndash;pgo-event-address=localhost:14150  alltopic
-        pgo watch alltopic</p>
+<p>UPDATE allows you to update a pgo user. For example:
+        //change a password
+        pgo update user mycluster &ndash;username=someuser &ndash;password=foo &ndash;update-passwords &ndash;expired=200
+        //expire password for a user
+        pgo update user mycluster &ndash;username=someuser &ndash;expire-user</p>
 
-<pre><code>pgo watch [flags]
+<pre><code>pgo update user [flags]
 </code></pre>
 
 <h3 id="options">Options</h3>
 
-<pre><code>  -h, --help                       help for watch
-  -a, --pgo-event-address string   The address (host:port) where the event stream is. (default &quot;localhost:14150&quot;)
+<pre><code>      --all                   all clusters.
+      --expire-user           Performs expiring a user if set to true.
+      --expired string        required flag when updating passwords that will expire in X days using --update-passwords flag.
+  -h, --help                  help for user
+      --password string       Specifies the user password when updating a user password or creating a new user.
+      --password-length int   If no password is supplied, this is the length of the auto generated password (default 22)
+  -s, --selector string       The selector to use for cluster filtering.
+      --username string       Updates the postgres user on selective clusters.
+      --valid-days int        Sets passwords for new users to X days. (default 30)
 </code></pre>
 
 <h3 id="options-inherited-from-parent-commands">Options inherited from parent commands</h3>
@@ -1010,7 +1019,7 @@
 <h3 id="see-also">SEE ALSO</h3>
 
 <ul>
-<li><a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo/">pgo</a>   - The pgo command line interface.</li>
+<li><a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_update/">pgo update</a>     - Update a pgouser, pgorole, or cluster</li>
 </ul>
 
 <h6 id="auto-generated-by-spf13-cobra-on-24-jul-2019">Auto generated by spf13/cobra on 24-Jul-2019</h6>
@@ -1020,8 +1029,8 @@
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_version/" title="pgo_version"> <i class="fa fa-chevron-left"></i><label>pgo_version</label></a>
-    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/security/" title="Security" style="margin-right: 0px;"><label>Security</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_update_pgouser/" title="pgo_update_pgouser"> <i class="fa fa-chevron-left"></i><label>pgo_update_pgouser</label></a>
+    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_upgrade/" title="pgo_upgrade" style="margin-right: 0px;"><label>pgo_upgrade</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>

@@ -724,6 +724,13 @@
           </a>
         </div>
     </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_update_user/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_update_user/">
+            pgo_update_user
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_upgrade/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_upgrade/">
@@ -897,7 +904,7 @@
 <pre><code>make installrbac
 </code></pre>
 
-<p>This script creates the following RBAC resources on your Kubernetes cluster:</p>
+<p>This script creates the following RBAC cluster-wide resources on your Kubernetes cluster:</p>
 
 <table>
 <thead>
@@ -939,7 +946,7 @@
 </tr>
 
 <tr>
-<td>Cluster Roles (cluster-roles.yaml)</td>
+<td>Cluster Roles (cluster-roles.yaml) (cluster-roles-readonly.yaml)</td>
 <td>pgo-cluster-role</td>
 </tr>
 
@@ -949,6 +956,91 @@
 </tr>
 </tbody>
 </table>
+
+<p>The above cluster role/binding is necessary to list and watch
+namespaces at a minimum (cluster-roles-readonly.yaml).  This role lets
+the Operator watch namespaces and run the following pgo CLI command:
+    pgo show namespace &ndash;all</p>
+
+<p>The default cluster role (cluster-roles.yaml) includes the permission to create and delete namespaces using the following pgo CLI commands:
+    pgo create namespace mynamespace
+    pgo update namespace mynamespace
+    pgo delete namespace mynamespace</p>
+
+<p>If you do not allow create/update of namespaces, you can manually
+create Operator target namespaces using the following script:
+    deploy/add-targeted-namespace.sh</p>
+
+<p>This script creates the following RBAC namespace resources in the Operator
+namespace (e.g. pgo namespace):</p>
+
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Definition</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Roles (roles.yaml)</td>
+<td>pgo-role</td>
+</tr>
+
+<tr>
+<td>Role Bindings (role-bindings.yaml)</td>
+<td>pgo-role</td>
+</tr>
+
+<tr>
+<td>Service Account (service-accounts.yaml)</td>
+<td>postgres-operator</td>
+</tr>
+</tbody>
+</table>
+
+<p>Targeted namespaces (e.g. pgouser1, pgouser2), used by the Operator to run Postgres clusters, include the following RBAC resources:</p>
+
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Definition</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Roles (roles.yaml)</td>
+<td>pgo-backrest-role</td>
+</tr>
+
+<tr>
+<td></td>
+<td>pgo-target-role</td>
+</tr>
+
+<tr>
+<td>Role Bindings (role-bindings.yaml)</td>
+<td>pgo-backrest-role-binding</td>
+</tr>
+
+<tr>
+<td></td>
+<td>pgo-target-role-binding</td>
+</tr>
+
+<tr>
+<td>Service Account (service-accounts.yaml)</td>
+<td>pgo-backrest</td>
+</tr>
+</tbody>
+</table>
+
+<p>These target namespace RBAC resources are created either dynamically
+using the <em>pgo create namespace</em> command or via the manual namespace
+setup script.</p>
 
 <h2 id="operator-rbac">Operator RBAC</h2>
 
@@ -1007,42 +1099,19 @@ them, you can do the following:
 <p>The <em>update namespace</em> command will apply the required Operator RBAC
 rules to that namespace.</p>
 
+<p>You can manually create a targeted namespace by running
+the <em>deploy/add-targeted-namespace.sh</em> script.  That script
+will create the namespace, add the required labels, and apply
+the necessary RBAC resources into that namespaces.  This can
+be used for installations that do not want to install the
+cluster role/bindings which enable dynamic namespace creation.</p>
+
 <p>When you configure the Operator, you can still specify the NAMESPACE
 environment variable with a list of namespaces, if they exist and
 have the correct labels, the Operator will recognize and watch
 those namespaces.  If the NAMESPACE environment variable has names
 that are not on your Kube system, the Operator will create the namespaces
 at boot up time.</p>
-
-<p>Part of the workflow of the Operator creating namespaces includes applying
-the RBAC rules required for those namespaces.  The RBAC objects created
-in each targeted namespace include:</p>
-
-<table>
-<thead>
-<tr>
-<th>Setting</th>
-<th>Definition</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>Roles</td>
-<td>pgo-backrest-role</td>
-</tr>
-
-<tr>
-<td>Role Bindings</td>
-<td>pgo-backrest-role-binding</td>
-</tr>
-
-<tr>
-<td>Service Accounts</td>
-<td>pgo-backrest</td>
-</tr>
-</tbody>
-</table>
 
 <h3 id="managing-operator-roles">Managing Operator Roles</h3>
 
