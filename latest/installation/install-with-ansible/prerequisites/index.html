@@ -930,7 +930,7 @@
 
 <ul>
 <li><a href="https://github.com/CrunchyData/postgres-operator/">postgres-operator playbooks</a> source code for the target version</li>
-<li>Ansible 2.4.6+</li>
+<li>Ansible 2.5+</li>
 </ul>
 
 <h2 id="kubernetes-installs">Kubernetes Installs</h2>
@@ -1070,7 +1070,7 @@ should contain all configurable variables the playbooks offer.</p>
 
 <tr>
 <td><code>backrest_storage</code></td>
-<td>storage1</td>
+<td>storageos</td>
 <td>Set to configure which storage definition to use when creating volumes used by pgBackRest on all newly created clusters.</td>
 </tr>
 
@@ -1237,6 +1237,12 @@ should contain all configurable variables the playbooks offer.</p>
 </tr>
 
 <tr>
+<td><code>pgo_installation_name</code></td>
+<td></td>
+<td>The name of the PGO installation.</td>
+</tr>
+
+<tr>
 <td><code>pgo_admin_username</code></td>
 <td>admin</td>
 <td>Configures the pgo administrator username.</td>
@@ -1286,7 +1292,7 @@ should contain all configurable variables the playbooks offer.</p>
 
 <tr>
 <td><code>primary_storage</code></td>
-<td>storage2</td>
+<td>storageos</td>
 <td>Set to configure which storage definition to use when creating volumes used by PostgreSQL primaries on all newly created clusters.</td>
 </tr>
 
@@ -1310,7 +1316,7 @@ should contain all configurable variables the playbooks offer.</p>
 
 <tr>
 <td><code>replica_storage</code></td>
-<td>storage3</td>
+<td>storageos</td>
 <td>Set to configure which storage definition to use when creating volumes used by PostgreSQL replicas on all newly created clusters.</td>
 </tr>
 
@@ -1325,42 +1331,6 @@ should contain all configurable variables the playbooks offer.</p>
 <td>ClusterIP</td>
 <td>Set to configure the type of Kubernetes service provisioned on all newly created clusters.</td>
 </tr>
-
-<tr>
-<td><code>storage&lt;ID&gt;_access_mode</code></td>
-<td></td>
-<td>Set to configure the access mode of the volumes created when using this storage definition.</td>
-</tr>
-
-<tr>
-<td><code>storage&lt;ID&gt;_class</code></td>
-<td></td>
-<td>Set to configure the storage class name used when creating dynamic volumes.</td>
-</tr>
-
-<tr>
-<td><code>storage&lt;ID&gt;_fs_group</code></td>
-<td></td>
-<td>Set to configure any filesystem groups that should be added to security contexts on newly created clusters.</td>
-</tr>
-
-<tr>
-<td><code>storage&lt;ID&gt;_size</code></td>
-<td></td>
-<td>Set to configure the size of the volumes created when using this storage definition.</td>
-</tr>
-
-<tr>
-<td><code>storage&lt;ID&gt;_supplemental_groups</code></td>
-<td></td>
-<td>Set to configure any supplemental groups that should be added to security contexts on newly created clusters.</td>
-</tr>
-
-<tr>
-<td><code>storage&lt;ID&gt;_type</code></td>
-<td></td>
-<td>Set to either <code>create</code> or <code>dynamic</code> to configure the operator to create persistent volumes or have them created dynamically by a storage class.</td>
-</tr>
 </tbody>
 </table>
 
@@ -1373,44 +1343,154 @@ should contain all configurable variables the playbooks offer.</p>
 PostgreSQL Operator:</p>
 
 <ul>
-<li><code>backrest_storage</code></li>
-<li><code>ccp_image_prefix</code></li>
-<li><code>ccp_image_tag</code></li>
 <li><code>kubernetes_context</code></li>
-<li><code>namespace</code></li>
-<li><code>openshift_host</code></li>
-<li><code>openshift_password</code></li>
-<li><code>openshift_skip_tls_verify</code></li>
-<li><code>openshift_token</code></li>
 <li><code>openshift_user</code></li>
+<li><code>openshift_password</code></li>
+<li><code>openshift_token</code></li>
+<li><code>openshift_host</code></li>
+<li><code>openshift_skip_tls_verify</code></li>
+<li><code>pgo_installation_name</code></li>
 <li><code>pgo_admin_username</code></li>
 <li><code>pgo_admin_password</code></li>
-<li><code>pgo_client_install</code></li>
+<li><code>pgo_admin_role_name</code></li>
+<li><code>pgo_admin_perms</code></li>
+<li><code>pgo_operator_namespace</code></li>
+<li><code>namespace</code></li>
 <li><code>pgo_image_prefix</code></li>
 <li><code>pgo_image_tag</code></li>
-<li><code>pgo_operator_namespace</code></li>
+<li><code>ccp_image_prefix</code></li>
+<li><code>ccp_image_tag</code></li>
+<li><code>pgo_client_version</code></li>
 <li><code>pgo_tls_no_verify</code></li>
+<li><code>auto_failover</code></li>
+<li><code>backrest</code></li>
+<li><code>badger</code></li>
+<li><code>metrics</code></li>
+<li><code>archive_mode</code></li>
+<li><code>archive_timeout</code></li>
+<li><code>auto_failover_sleep_secs</code></li>
+<li><code>db_password_age_days</code></li>
+<li><code>db_password_length</code></li>
+<li><code>db_port</code></li>
+<li><code>db_replicas</code></li>
+<li><code>db_user</code></li>
 <li><code>primary_storage</code></li>
 <li><code>replica_storage</code></li>
-<li><code>storage&lt;ID&gt;_access_mode</code></li>
-<li><code>storage&lt;ID&gt;_class</code></li>
-<li><code>storage&lt;ID&gt;_fs_group</code></li>
-<li><code>storage&lt;ID&gt;_size</code></li>
-<li><code>storage&lt;ID&gt;_supplemental_groups</code></li>
-<li><code>storage&lt;ID&gt;_type</code></li>
+<li><code>backrest_storage</code></li>
+<li><code>backup_storage</code></li>
 </ul>
+
+<p>Additionally, <code>storage</code> variables will need to be defined to provide the Crunchy PGO with any required storage configuration.  Guidance for defining <code>storage</code> variables can be found in the next section.</p>
 
 <div class="notices tip" >Users should remove or comment out the <code>kubernetes</code> or <code>openshift</code> variables if they&rsquo;re not being used
 from the inventory file.  Both sets of variables cannot be used at the same time.</div>
 
 <h2 id="storage">Storage</h2>
 
-<p>Kubernetes and OpenShift offer support for a variety of storage types.  The Crunchy
-PostgreSQL Operator must be configured to utilize the storage options available by
-configuring the <code>storage</code> options included in the inventory file.</p>
+<p>Kubernetes and OpenShift offer support for a wide variety of different storage types, and by default, the <code>inventory</code> is
+pre-populated with storage configurations for some of these storage types.  However, the storage types defined
+in the <code>inventory</code> can be modified or removed as needed, while additional storage configurations can also be
+added to meet the specific storage requirements for your PG clusters.</p>
 
-<div class="notices tip" >At this time the Crunchy PostgreSQL Operator Playbooks only support storage classes.<br />
-For more information on storage classes see the <a href="https://kubernetes.io/docs/concepts/storage/storage-classes/">official Kubernetes documentation</a>.</div>
+<p>The following <code>storage</code> variables are utilized to add or modify operator storage configurations in the <code>inventory</code>:</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>storage&lt;ID&gt;_name</code></td>
+<td>Yes</td>
+<td>Set to specify a name for the storage configuration.</td>
+</tr>
+
+<tr>
+<td><code>storage&lt;ID&gt;_access_mode</code></td>
+<td>Yes</td>
+<td>Set to configure the access mode of the volumes created when using this storage definition.</td>
+</tr>
+
+<tr>
+<td><code>storage&lt;ID&gt;_size</code></td>
+<td>Yes</td>
+<td>Set to configure the size of the volumes created when using this storage definition.</td>
+</tr>
+
+<tr>
+<td><code>storage&lt;ID&gt;_class</code></td>
+<td>Required when using the <code>dynamic</code> storage type</td>
+<td>Set to configure the storage class name used when creating dynamic volumes.</td>
+</tr>
+
+<tr>
+<td><code>storage&lt;ID&gt;_fs_group</code></td>
+<td>Required when using a storage class</td>
+<td>Set to configure any filesystem groups that should be added to security contexts on newly created clusters.</td>
+</tr>
+
+<tr>
+<td><code>storage&lt;ID&gt;_supplemental_groups</code></td>
+<td>Required when using NFS storage</td>
+<td>Set to configure any supplemental groups that should be added to security contexts on newly created clusters.</td>
+</tr>
+
+<tr>
+<td><code>storage&lt;ID&gt;_type</code></td>
+<td>Yes</td>
+<td>Set to either <code>create</code> or <code>dynamic</code> to configure the operator to create persistent volumes or have them created dynamically by a storage class.</td>
+</tr>
+</tbody>
+</table>
+
+<p>The <code>ID</code> portion of <code>storage</code> prefix for each variable name above should be an integer that is used to group the various <code>storage</code> variables into a single storage configuration.  For instance, the following shows a single storage configuration for NFS storage:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#75af00">storage3_name</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;nfsstorage&#39;</span>
+<span style="color:#75af00">storage3_access_mode</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;ReadWriteMany&#39;</span>
+<span style="color:#75af00">storage3_size</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;1G&#39;</span>
+<span style="color:#75af00">storage3_type</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;create&#39;</span>
+<span style="color:#75af00">storage3_supplemental_groups</span><span style="color:#f92672">=</span><span style="color:#d88200">65534</span></code></pre></div>
+<p>As this example storage configuration shows, integer <code>3</code> is used as the ID for each of the <code>storage</code> variables, which together form a single storage configuration called <code>nfsstorage</code>.  This approach allows different storage configurations to be created by defining the proper <code>storage</code> variables with a unique ID for each required storage configuration.</p>
+
+<p>Additionally, once all storage configurations have been defined in the <code>inventory</code>, they can then be used to specify the default storage configuration that should be utilized for the various PG pods created by the operator.  This is done using the following variables, which are also defined in the <code>inventory</code>:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#75af00">backrest_storage</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;nfsstorage&#39;</span>
+<span style="color:#75af00">backup_storage</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;nfsstorage&#39;</span>
+<span style="color:#75af00">primary_storage</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;nfsstorage&#39;</span>
+<span style="color:#75af00">replica_storage</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;nfsstorage&#39;</span></code></pre></div>
+<p>With the configuration shown above, the <code>nfsstorage</code> storage configuration would be used by default for the various containers created for a PG cluster (i.e. containers for the primary DB, replica DB&rsquo;s, backups and/or <code>pgBackRest</code>).</p>
+
+<h3 id="examples">Examples</h3>
+
+<p>The following are additional examples of storage configurations for various storage types.</p>
+
+<h4 id="generic-storage-class">Generic Storage Class</h4>
+
+<p>The following example defines a storageTo setup storage1 to use the storage class <code>fast</code></p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#75af00">storage5_name</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;storageos&#39;</span>
+<span style="color:#75af00">storage5_access_mode</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;ReadWriteOnce&#39;</span>
+<span style="color:#75af00">storage5_size</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;300M&#39;</span>
+<span style="color:#75af00">storage5_type</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;dynamic&#39;</span>
+<span style="color:#75af00">storage5_class</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;fast&#39;</span>
+<span style="color:#75af00">storage5_fs_group</span><span style="color:#f92672">=</span><span style="color:#d88200">26</span></code></pre></div>
+<p>To assign this storage definition to all <code>primary</code> pods created by the Operator, we
+can configure the <code>primary_storage=storageos</code> variable in the inventory file.</p>
+
+<h4 id="gke">GKE</h4>
+
+<p>The storage class provided by Google Kubernetes Environment (GKE) can be configured
+to be used by the Operator by setting the following variables in the <code>inventory</code> file:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#75af00">storage8_name</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;gce&#39;</span>
+<span style="color:#75af00">storage8_access_mode</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;ReadWriteOnce&#39;</span>
+<span style="color:#75af00">storage8_size</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;300M&#39;</span>
+<span style="color:#75af00">storage8_type</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;dynamic&#39;</span>
+<span style="color:#75af00">storage8_class</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;standard&#39;</span>
+<span style="color:#75af00">storage8_fs_group</span><span style="color:#f92672">=</span><span style="color:#d88200">26</span></code></pre></div>
+<p>To assign this storage definition to all <code>primary</code> pods created by the Operator, we
+can configure the <code>primary_storage=gce</code> variable in the inventory file.</p>
 
 <h3 id="considerations-for-multi-zone-cloud-environments">Considerations for Multi-Zone Cloud Environments</h3>
 
@@ -1427,34 +1507,70 @@ containing the PostgreSQL primary pod that will be using it.</p>
 <p>For instructions on setting up storage classes for multi-zone environments, see
 the <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/designoverview/">PostgreSQL Operator Documentation</a>.</p>
 
-<h3 id="examples">Examples</h3>
+<h2 id="resource-configuration">Resource Configuration</h2>
 
-<p>The following are examples on configuring the storage variables for different types
-of storage classes.</p>
+<p>Kubernetes and OpenShift allow specific resource requirements to be specified for the various containers deployed inside of a pod.
+This includes defining the required resources for each container, i.e. how much memory and CPU each container will need, while also
+allowing resource limits to be defined, i.e. the maximum amount of memory and CPU a container will be allowed to consume.
+In support of this capability, the Crunchy PGO allows any required resource configurations to be defined in the <code>inventory</code>, which
+can the be utilized by the operator to set any desired resource requirements/limits for the various containers that will
+be deployed by the Crunchy PGO when creating and managing PG clusters.</p>
 
-<h4 id="generic-storage-class">Generic Storage Class</h4>
+<p>The following <code>resource</code> variables are utilized to add or modify operator resource configurations in the <code>inventory</code>:</p>
 
-<p>To setup storage1 to use the storage class <code>fast</code></p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#75af00">storage1_access_mode</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;ReadWriteOnce&#39;</span>
-<span style="color:#75af00">storage1_size</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;10G&#39;</span>
-<span style="color:#75af00">storage1_type</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;dynamic&#39;</span>
-<span style="color:#75af00">storage1_class</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;fast&#39;</span></code></pre></div>
-<p>To assign this storage definition to all <code>primary</code> pods created by the Operator, we
-can configure the <code>primary_storage=storage1</code> variable in the inventory file.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
 
-<h4 id="gke">GKE</h4>
+<tbody>
+<tr>
+<td><code>resource&lt;ID&gt;_requests_memory</code></td>
+<td>Yes</td>
+<td>The amount of memory required by the container.</td>
+</tr>
 
-<p>The storage class provided by Google Kubernetes Environment (GKE) can be configured
-to be used by the Operator by setting the following variables in the <code>inventory</code> file:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#75af00">storage1_access_mode</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;ReadWriteOnce&#39;</span>
-<span style="color:#75af00">storage1_size</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;10G&#39;</span>
-<span style="color:#75af00">storage1_type</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;dynamic&#39;</span>
-<span style="color:#75af00">storage1_class</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;standard&#39;</span>
-<span style="color:#75af00">storage1_fs_group</span><span style="color:#f92672">=</span><span style="color:#d88200">26</span></code></pre></div>
-<p>To assign this storage definition to all <code>primary</code> pods created by the Operator, we
-can configure the <code>primary_storage=storage1</code> variable in the inventory file.</p>
+<tr>
+<td><code>resource&lt;ID&gt;_requests_cpu</code></td>
+<td>Yes</td>
+<td>The amount of CPU required by the container.</td>
+</tr>
 
-<div class="notices tip" >To utitlize mutli-zone deployments, see <em>Considerations for Multi-Zone Cloud Environments</em> above.</div>
+<tr>
+<td><code>resource&lt;ID&gt;_limits_memory</code></td>
+<td>Yes</td>
+<td>The maximum amount of memory that can be consumed by the container.</td>
+</tr>
+
+<tr>
+<td><code>resource&lt;ID&gt;_limits_cpu</code></td>
+<td>Yes</td>
+<td>The maximum amount of CPU that can be consumed by the container.</td>
+</tr>
+</tbody>
+</table>
+
+<p>The <code>ID</code> portion of <code>resource</code> prefix for each variable name above should be an integer that is used to group the various <code>resource</code> variables into a single resource configuration.  For instance, the following shows a single resource configuration called <code>small</code>:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#75af00">resource1_name</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;small&#39;</span>
+<span style="color:#75af00">resource1_requests_memory</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;512Mi&#39;</span>
+<span style="color:#75af00">resource1_requests_cpu</span><span style="color:#f92672">=</span><span style="color:#d88200">0.1</span>
+<span style="color:#75af00">resource1_limits_memory</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;512Mi&#39;</span>
+<span style="color:#75af00">resource1_limits_cpu</span><span style="color:#f92672">=</span><span style="color:#d88200">0.1</span></code></pre></div>
+<p>As this example resource configuration shows, integer <code>1</code> is used as the ID for each of the <code>resource</code> variables, which together form a single resource configuration called <code>small</code>.  This approach allows different resource configurations to be created by defining the proper <code>resource</code> variables with a unique ID for each required resource configuration.</p>
+
+<p>Additionally, once all resource configurations have been defined in the <code>inventory</code>, they can then be used to specify the default resource configurations that should be utilized for the various PG containers created by the operator.  This is done using the following variables, which are also defined in the  <code>inventory</code>:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#75af00">default_container_resources</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;small&#39;</span>
+<span style="color:#75af00">default_load_resources</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;small&#39;</span>
+<span style="color:#75af00">default_lspvc_resources</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;small&#39;</span>
+<span style="color:#75af00">default_rmdata_resources</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;small&#39;</span>
+<span style="color:#75af00">default_backup_resources</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;small&#39;</span>
+<span style="color:#75af00">default_pgbouncer_resources</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;small&#39;</span>
+<span style="color:#75af00">default_pgpool_resources</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;small&#39;</span></code></pre></div>
+<p>With the configuration shown above, the <code>large</code> resource configuration would be used by default for all database containers, while the <code>small</code> resource configuration would then be utilized by default for the various other containers created for a PG cluster.</p>
 
 <h2 id="understanding-pgo-operator-namespace-namespace">Understanding <code>pgo_operator_namespace</code> &amp; <code>namespace</code></h2>
 
