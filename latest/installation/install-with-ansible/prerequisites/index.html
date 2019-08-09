@@ -1095,7 +1095,7 @@ should contain all configurable variables the playbooks offer.</p>
 <tr>
 <td><code>cleanup</code></td>
 <td>false</td>
-<td>Set to configure the playbooks to delete all objects when deprovisioning Operator.  Note: this will delete all objects related to the Operator (including clusters provisioned).</td>
+<td>Set to configure the playbooks to delete all objects when uninstalling the Operator.  Note: this will delete all objects related to the Operator (including clusters provisioned).</td>
 </tr>
 
 <tr>
@@ -1330,6 +1330,30 @@ should contain all configurable variables the playbooks offer.</p>
 <td><code>service_type</code></td>
 <td>ClusterIP</td>
 <td>Set to configure the type of Kubernetes service provisioned on all newly created clusters.</td>
+</tr>
+
+<tr>
+<td><code>delete_operator_namespace</code></td>
+<td>false</td>
+<td>Set to configure whether or not the PGO operator namespace (defined using variable <code>pgo_operator_namespace</code>) is deleted when uninstalling the PGO.</td>
+</tr>
+
+<tr>
+<td><code>delete_watched_namespaces</code></td>
+<td>false</td>
+<td>Set to configure whether or not the PGO watched namespaces (defined using variable <code>namespace</code>) are deleted when uninstalling the PGO.</td>
+</tr>
+
+<tr>
+<td><code>delete_metrics_namespace</code></td>
+<td>false</td>
+<td>Set to configure whether or not the metrics namespace (defined using variable <code>metrics_namespace</code>) is deleted when uninstalling the metrics infrastructure</td>
+</tr>
+
+<tr>
+<td><code>pgo_cluster_admin</code></td>
+<td>false</td>
+<td>Determines whether or not the <code>cluster-admin</code> role is assigned to the PGO service account. Must be <code>true</code> to enable PGO namespace &amp; role creation when installing in OpenShift.</td>
 </tr>
 </tbody>
 </table>

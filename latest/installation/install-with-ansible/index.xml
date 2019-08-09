@@ -69,10 +69,10 @@ Prerequisites The following assumes the proper prerequisites are satisfied we ca
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/uninstalling-operator/</guid>
-      <description>Uninstalling PostgreSQL Operator The following assumes the proper prerequisites are satisfied we can now deprovision the PostgreSQL Operator.
+      <description>Uninstalling PostgreSQL Operator The following assumes the proper prerequisites are satisfied we can now uninstall the PostgreSQL Operator.
 First, it is recommended to use the playbooks tagged with the same version of the PostgreSQL Operator currently deployed.
 With the correct playbooks acquired and prerequisites satisfied, simply run the following command:
-ansible-playbook -i /path/to/inventory --tags=deprovision --ask-become-pass main.yml If the Crunchy PostgreSQL Operator playbooks were installed using yum, use the following commands:</description>
+ansible-playbook -i /path/to/inventory --tags=uninstall --ask-become-pass main.yml If the Crunchy PostgreSQL Operator playbooks were installed using yum, use the following commands:</description>
     </item>
     
     <item>
@@ -81,10 +81,10 @@ ansible-playbook -i /path/to/inventory --tags=deprovision --ask-become-pass main
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/uninstalling-metrics/</guid>
-      <description>Uninstalling the Metrics Stack The following assumes the proper prerequisites are satisfied we can now deprovision the PostgreSQL Operator Metrics Infrastructure.
+      <description>Uninstalling the Metrics Stack The following assumes the proper prerequisites are satisfied we can now uninstall the PostgreSQL Operator Metrics Infrastructure.
 First, it is recommended to use the playbooks tagged with the same version of the Metrics stack currently deployed.
 With the correct playbooks acquired and prerequisites satisfied, simply run the following command:
-ansible-playbook -i /path/to/inventory --tags=deprovision-metrics main.yml If the Crunchy PostgreSQL Operator playbooks were installed using yum, use the following commands:</description>
+ansible-playbook -i /path/to/inventory --tags=uninstall-metrics main.yml If the Crunchy PostgreSQL Operator playbooks were installed using yum, use the following commands:</description>
     </item>
     
   </channel>

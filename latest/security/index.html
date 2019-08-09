@@ -971,10 +971,11 @@ the Operator watch namespaces and run the following pgo CLI command:
 create Operator target namespaces using the following script:
     deploy/add-targeted-namespace.sh</p>
 
-<p>WARNING:  currently with version 4.1.0 of the Operator when running
-on OCP 3.11, you are REQUIRED to use the deploy/add-targeted-namespace.sh
-script to add new targeted namespaces.  This is a bug that will be
-fixed in a later version of the Operator.</p>
+<p>WARNING: Unless the <code>cluster-admin</code> role has been assigned to the PGO service account during
+installation (specifically using the <code>pgo_cluster_admin</code> variable, which is available for Ansible
+installs only), when running version 4.1.0 of the Operator on OCP 3.11, you are REQUIRED to use the
+<code>deploy/add-targeted-namespace.sh</code> script to add new targeted namespaces.  This is a bug that will
+be fixed in a later version of the Operator.</p>
 
 <p>This script creates the following RBAC namespace resources in the Operator
 namespace (e.g. pgo namespace):</p>
