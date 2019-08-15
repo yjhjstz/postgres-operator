@@ -1067,31 +1067,24 @@ Operator.</p>
 
 <p>The Operator implements its own RBAC (Role Based Access Controls) for authenticating Operator users access to the Operator REST API.</p>
 
-<p>There is a default set of Roles and Users defined respectively in the following files and can be copied into your home directory as such:</p>
+<p>A default admin user is created when the operator is deployed. Create a .pgouser in your home directory and insert the text from below:</p>
 
-<pre><code>./conf/postgres-operator/pgouser
-./conf/postgres-operator/pgorole
-
-cp ./conf/postgres-operator/pgouser $HOME/.pgouser
-cp ./conf/postgres-operator/pgorole $HOME/.pgorole
+<pre><code>pgoadmin:examplepassword
 </code></pre>
 
-<p>Or create a <em>.pgouser</em> file in your home directory with a credential known by the Operator (see your administrator for Operator credentials to use):</p>
+<p>The format of the .pgouser client file is:</p>
 
-<pre><code>    username:password
-or
-    pgouser1:password
-or
-    pgouser2:password
-or
-    pgouser3:password
-or
-    readonlyuser:password
+<pre><code>&lt;username&gt;:&lt;password&gt;
 </code></pre>
 
-<p>Each example above has different priviledges in the Operator.  You can create this file as follows:</p>
+<p>To create a unique administrator user on deployment of the operator edit this file and update the .pgouser file accordingly:</p>
 
-<pre><code>echo &quot;pgouser3:password&quot; &gt; $HOME/.pgouser
+<pre><code>$PGOROOT/deploy/install-bootstrap-creds.sh
+</code></pre>
+
+<p>After installation users can create optional Operator users as follows:</p>
+
+<pre><code>pgo create pgouser someuser --pgouser-namespaces=&quot;pgouser1,pgouser2&quot; --pgouser-password=somepassword --pgouser-roles=&quot;somerole,someotherrole&quot;
 </code></pre>
 
 <p>Note, you can also store the pgouser file in alternate locations, see the
