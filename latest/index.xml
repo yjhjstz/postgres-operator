@@ -915,7 +915,7 @@ pgo update pgorole [flags]  Options  -h, --help help for pgorole --no-prompt No 
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_update_pgouser/</guid>
       <description>pgo update pgouser Update a pgouser
-Synopsis UPDATE allows you to update a pgo user. For example: pgo update pgouser myuser &amp;ndash;change-password pgo update pgouser myuser &amp;ndash;change-password &amp;ndash;password=somepassword &amp;ndash;no-prompt
+Synopsis UPDATE allows you to update a pgo user. For example: pgo update pgouser myuser &amp;ndash;pgouser-roles=somerole pgo update pgouser myuser &amp;ndash;pgouser-password=somepassword &amp;ndash;pgouser-roles=somerole pgo update pgouser myuser &amp;ndash;pgouser-password=somepassword &amp;ndash;no-prompt
 pgo update pgouser [flags]  Options  --all-namespaces all namespaces. -h, --help help for pgouser --no-prompt No command line confirmation. --pgouser-namespaces string The namespaces to use for updating the pgouser roles. --pgouser-password string The password to use for updating the pgouser password.</description>
     </item>
     
