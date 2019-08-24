@@ -1551,6 +1551,34 @@ oc get secret pgo.tls -n $PGO_OPERATOR_NAMESPACE -o jsonpath='{.data.tls\.crt}' 
 <p>This server.key and server.crt can then be used to access the <em>pgo-apiserver</em>
 REST API from the pgo CLI on your client host.</p>
 
+<p>Should you desire to alter the default TLS settings for the Postgres Operator, you can set the
+following variables in bash:</p>
+
+<p>To disable TLS and make an unsecured connection on port 8080 instead of connecting securely over
+the default port, 8443, set:</p>
+
+<p>Bash environment variables</p>
+
+<pre><code>DISABLE_TLS=true
+PGO_APISERVER_PORT=8080     
+</code></pre>
+
+<p>Or inventory variables if using Ansible</p>
+
+<pre><code>pgo_disable_tls='false'
+pgo_apiserver_port=8443
+</code></pre>
+
+<p>To disable TLS verifcation, set the follwing as a Bash environment variable</p>
+
+<pre><code>export TLS_NO_VERIFY=false
+</code></pre>
+
+<p>Or the following in the inventory file is using Ansible</p>
+
+<pre><code>pgo_tls_no_verify='false'
+</code></pre>
+
 
 
 

@@ -999,10 +999,14 @@ found in the examples/envs.sh script.</p>
 events to the NSQ address as defined in the EVENT_ADDR environment
 variable.</p>
 
-<p>If you want to disable eventing, set the following environment
-variable in the Operator Deployment:
+<p>If you want to disable eventing when installing with Bash, set the following
+environment variable in the Operator Deployment:
     &ldquo;name&rdquo;: &ldquo;DISABLE_EVENTING&rdquo;
     &ldquo;value&rdquo;: &ldquo;true&rdquo;</p>
+
+<p>To disable eventing when installing with Ansible, add the following to
+your inventory file:
+    pgo_disable_eventing=&lsquo;true&rsquo;</p>
 
 
 

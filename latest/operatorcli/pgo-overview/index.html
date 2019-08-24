@@ -1390,7 +1390,7 @@ could be promoted to the primary.</p>
 <p>To support an automated failover, you can specify the <em>&ndash;autofail</em> flag
 on a Postgres cluster when you create it as follows:</p>
 
-<pre><code>pgo create cluster mycluster --autofail --replica-count=1 -n pgouser1
+<pre><code>pgo create cluster mycluster --autofail=true --replica-count=1 -n pgouser1
 </code></pre>
 
 <p>You can set the auto-fail flag on a Postgres cluster after it is created

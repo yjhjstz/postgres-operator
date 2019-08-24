@@ -1315,80 +1315,23 @@ should contain all configurable variables the playbooks offer.</p>
 <td>false</td>
 <td>Set to configure whether or not TLS should be enabled for the Crunchy PostgreSQL Operator apiserver.</td>
 </tr>
-
-<tr>
-<td><code>pgo_disable_eventing</code></td>
-<td>false</td>
-<td>Set to configure whether or not eventing should be enabled for the Crunchy PostgreSQL Operator installation.</td>
-</tr>
-
-<tr>
-<td><code>primary_storage</code></td>
-<td>storageos</td>
-<td>Set to configure which storage definition to use when creating volumes used by PostgreSQL primaries on all newly created clusters.</td>
-</tr>
-
-<tr>
-<td><code>prometheus_install</code></td>
-<td>true</td>
-<td>Set to true to install Crunchy Prometheus timeseries database.</td>
-</tr>
-
-<tr>
-<td><code>prometheus_storage_access_mode</code></td>
-<td></td>
-<td>Set to the access mode used by the configured storage class for Prometheus persistent volumes.</td>
-</tr>
-
-<tr>
-<td><code>prometheus_storage_class_name</code></td>
-<td></td>
-<td>Set to the name of the storage class used when creating Prometheus persistent volumes.</td>
-</tr>
-
-<tr>
-<td><code>replica_storage</code></td>
-<td>storageos</td>
-<td>Set to configure which storage definition to use when creating volumes used by PostgreSQL replicas on all newly created clusters.</td>
-</tr>
-
-<tr>
-<td><code>scheduler_timeout</code></td>
-<td>3600</td>
-<td>Set to a value in seconds to configure the <code>pgo-scheduler</code> timeout threshold when waiting for schedules to complete.</td>
-</tr>
-
-<tr>
-<td><code>service_type</code></td>
-<td>ClusterIP</td>
-<td>Set to configure the type of Kubernetes service provisioned on all newly created clusters.</td>
-</tr>
-
-<tr>
-<td><code>delete_operator_namespace</code></td>
-<td>false</td>
-<td>Set to configure whether or not the PGO operator namespace (defined using variable <code>pgo_operator_namespace</code>) is deleted when uninstalling the PGO.</td>
-</tr>
-
-<tr>
-<td><code>delete_watched_namespaces</code></td>
-<td>false</td>
-<td>Set to configure whether or not the PGO watched namespaces (defined using variable <code>namespace</code>) are deleted when uninstalling the PGO.</td>
-</tr>
-
-<tr>
-<td><code>delete_metrics_namespace</code></td>
-<td>false</td>
-<td>Set to configure whether or not the metrics namespace (defined using variable <code>metrics_namespace</code>) is deleted when uninstalling the metrics infrastructure</td>
-</tr>
-
-<tr>
-<td><code>pgo_cluster_admin</code></td>
-<td>false</td>
-<td>Determines whether or not the <code>cluster-admin</code> role is assigned to the PGO service account. Must be <code>true</code> to enable PGO namespace &amp; role creation when installing in OpenShift.</td>
-</tr>
 </tbody>
 </table>
+
+<p>| <code>pgo_apiserver_port</code>              | 8443        | Set to configure the port used by the Crunchy PostgreSQL Operator apiserver.<br />
+                                                            |
+| <code>pgo_disable_eventing</code>            | false       | Set to configure whether or not eventing should be enabled for the Crunchy PostgreSQL Operator installation.                                                                                                                  |
+| <code>primary_storage</code>                 | storageos   | Set to configure which storage definition to use when creating volumes used by PostgreSQL primaries on all newly created clusters.                                               |
+| <code>prometheus_install</code>              | true        | Set to true to install Crunchy Prometheus timeseries database.                                                                                                                   |
+| <code>prometheus_storage_access_mode</code>  |             | Set to the access mode used by the configured storage class for Prometheus persistent volumes.                                                                                   |
+| <code>prometheus_storage_class_name</code>   |             | Set to the name of the storage class used when creating Prometheus persistent volumes.                                                                                           |
+| <code>replica_storage</code>                 | storageos   | Set to configure which storage definition to use when creating volumes used by PostgreSQL replicas on all newly created clusters.                                                |
+| <code>scheduler_timeout</code>               | 3600        | Set to a value in seconds to configure the <code>pgo-scheduler</code> timeout threshold when waiting for schedules to complete.                                                             |
+| <code>service_type</code>                    | ClusterIP   | Set to configure the type of Kubernetes service provisioned on all newly created clusters.                                                                                       |
+| <code>delete_operator_namespace</code>       | false       | Set to configure whether or not the PGO operator namespace (defined using variable <code>pgo_operator_namespace</code>) is deleted when uninstalling the PGO.                             |
+| <code>delete_watched_namespaces</code>       | false       | Set to configure whether or not the PGO watched namespaces (defined using variable <code>namespace</code>) are deleted when uninstalling the PGO.                                         |
+| <code>delete_metrics_namespace</code>        | false       | Set to configure whether or not the metrics namespace (defined using variable <code>metrics_namespace</code>) is deleted when uninstalling the metrics infrastructure                     |
+| <code>pgo_cluster_admin</code>               | false       | Determines whether or not the <code>cluster-admin</code> role is assigned to the PGO service account. Must be <code>true</code> to enable PGO namespace &amp; role creation when installing in OpenShift.  |</p>
 
 <div class="notices tip" ><p>To retrieve the <code>kubernetes_context</code> value for Kubernetes installs, run the following command:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl config current-context</code></pre></div></div>

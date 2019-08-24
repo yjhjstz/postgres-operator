@@ -984,7 +984,8 @@ to configure local environment variables before using the <code>pgo</code> clien
 <p>To configure the environment variables used by <code>pgo</code> run the following command:</p>
 
 <p>Note: <code>&lt;PGO_NAMESPACE&gt;</code> should be replaced with the namespace the Crunchy PostgreSQL
-Operator was deployed to.</p>
+Operator was deployed to.
+Also, if TLS was disabled, or if the port was changed, update PGO_APISERVER_URL accordingly.</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat <span style="color:#d88200">&lt;&lt;EOF &gt;&gt; ~/.bashrc
 </span><span style="color:#d88200">export PGOUSER=&#34;${HOME?}/.pgo/&lt;PGO_NAMESPACE&gt;/pgouser&#34;
 </span><span style="color:#d88200">export PGO_CA_CERT=&#34;${HOME?}/.pgo/&lt;PGO_NAMESPACE&gt;/client.crt&#34;
@@ -1003,6 +1004,8 @@ kubectl port-forward &lt;OPERATOR_POD_NAME&gt; -n &lt;OPERATOR_NAMESPACE&gt; <sp
 
 <span style="color:#75715e"># If deployed to OpenShift</span>
 oc port-forward &lt;OPERATOR_POD_NAME&gt; -n &lt;OPERATOR_NAMESPACE&gt; <span style="color:#ae81ff">8443</span>:8443</code></pre></div>
+<p>Note: If a port other than 8443 was configured, update the above command accordingly.</p>
+
 <p>On a separate terminal verify the <code>pgo</code> can communicate with the Crunchy PostgreSQL
 Operator:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pgo version</code></pre></div>
