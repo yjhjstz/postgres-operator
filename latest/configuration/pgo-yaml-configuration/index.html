@@ -284,6 +284,85 @@
     </li>
         </ul>
     </li>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/overview/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/overview/">Design</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+
+      </div>
+        <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/overview/node-affinitiy-overview/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/overview/node-affinitiy-overview/">
+            Node Affinity in PostgreSQL Operator
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/overview/storage-overview/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/overview/storage-overview/">
+            Storage Overview
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/overview/custom-resource-definitions/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/overview/custom-resource-definitions/">
+            Custom Resource Definitions Overview
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/overview/scheduler-overview/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/overview/scheduler-overview/">
+            PGO Scheduler Overview
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/overview/backup-restore-overview/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/overview/backup-restore-overview/">
+            PostgreSQL Operator Backup and Restore Capability
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/overview/postgres-operator-overview/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/overview/postgres-operator-overview/">
+            PostgreSQL Operator Overview
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/overview/users-role-overview/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/overview/users-role-overview/">
+            PostgreSQL Operator User Roles Overview
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/overview/namespace-overview/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/overview/namespace-overview/">
+            PostgreSQL Operator Namespace Considerations Overview
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/overview/postgres-operator-containers-overview/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/overview/postgres-operator-containers-overview/">
+            
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/overview/failover-overview/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/overview/failover-overview/">
+            Failover in the PostgreSQL Operator Overview
+          </a>
+        </div>
+    </li>
+        </ul>
+    </li>
     <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/" class="dd-item haschildren
         ">
       <div>
@@ -764,12 +843,35 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/security/" class="dd-item
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/security/" class="dd-item haschildren
         ">
       <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/security/">Security</a>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/security/">RBAC Configuration</a><i class="fas fa-angle-right fa-lg category-icon"></i>
 
       </div>
+        <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/security/configure-postgres-operator-rbac/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/security/configure-postgres-operator-rbac/">
+            Configuration of PostgreSQL Operator RBAC
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/security/install-postgres-operator-rbac/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/security/install-postgres-operator-rbac/">
+            Installation of PostgreSQL Operator RBAC
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/security/api-encryption-configuration/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/security/api-encryption-configuration/">
+            PostgreSQL Operator API Encryption Configuration
+          </a>
+        </div>
+    </li>
+        </ul>
     </li>
     <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/" class="dd-item
         ">
@@ -836,10 +938,12 @@
       <option value="/configuration/configuration/" >- Configuration Resources</option>
       <option value="/configuration/pgo-yaml-configuration/"  selected>- PGO YAML</option>
   
+    <option value="/overview/" >
+   Design</option>
     <option value="/operatorcli/" >
    Operator Command Line Utility</option>
     <option value="/security/" >
-   Security</option>
+   RBAC Configuration</option>
     <option value="/upgrade/" >
    Upgrade</option>
     <option value="/contributing/" >
@@ -1364,7 +1468,7 @@ a storage configuration for your backups, you essentially have moved your backup
         <div class="chevrons">
     <div id="navigation">
 <a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/configuration/configuration/" title="Configuration Resources"> <i class="fa fa-chevron-left"></i><label>Configuration Resources</label></a>
-    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/" title="Operator Command Line Utility" style="margin-right: 0px;"><label>Operator Command Line Utility</label><i class="fa fa-chevron-right"></i></a></div>
+    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/overview/" title="Design" style="margin-right: 0px;"><label>Design</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>

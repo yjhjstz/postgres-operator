@@ -31,7 +31,15 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/overview/node-affinitiy-overview/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/configuration/pgo-yaml-configuration/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/overview/storage-overview/</loc>
   </url>
   
   <url>
@@ -47,7 +55,31 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/overview/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/overview/custom-resource-definitions/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/custom-config-ssl/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/overview/scheduler-overview/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/overview/backup-restore-overview/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/overview/postgres-operator-overview/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/overview/users-role-overview/</loc>
   </url>
   
   <url>
@@ -67,7 +99,23 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/overview/namespace-overview/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/security/configure-postgres-operator-rbac/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/security/install-postgres-operator-rbac/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/olm/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/security/api-encryption-configuration/</loc>
   </url>
   
   <url>
@@ -139,12 +187,21 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/overview/postgres-operator-containers-overview/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/overview/failover-overview/</loc>
   </url>
   
   <url>

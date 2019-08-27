@@ -44,6 +44,16 @@ For example, within the Primary Deployment, the metrics container is completely 
     </item>
     
     <item>
+      <title>Node Affinity in PostgreSQL Operator</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/overview/node-affinitiy-overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/overview/node-affinitiy-overview/</guid>
+      <description>Node Affinity in PostgreSQL Operator Kubernetes node affinity allows you to constrain which nodes your pod is eligible to be scheduled on, based on labels on the node.
+The PostgreSQL Operator provides users with the ability to add a node affinity section to a new Cluster Deployment. By adding a node affinity section to the Cluster Deployment, users can direct Kubernetes to attempt to schedule a primary PostgreSQL instance within a cluster on a specific Kubernetes node.</description>
+    </item>
+    
+    <item>
       <title>PGO YAML</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/configuration/pgo-yaml-configuration/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -52,6 +62,18 @@ For example, within the Primary Deployment, the metrics container is completely 
       <description>pgo.yaml Configuration The pgo.yaml file contains many different configuration settings as described in this section of the documentation.
 The pgo.yaml file is broken into major sections as described below:
 Cluster    Setting Definition     BasicAuth if set to true will enable Basic Authentication   PrimaryNodeLabel newly created primary deployments will specify this node label if specified, unless you override it using the &amp;ndash;node-label command line flag, if not set, no node label is specifed   ReplicaNodeLabel newly created replica deployments will specify this node label if specified, unless you override it using the &amp;ndash;node-label command line flag, if not set, no node label is specifed   CCPImagePrefix newly created containers will be based on this image prefix (e.</description>
+    </item>
+    
+    <item>
+      <title>Storage Overview</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/overview/storage-overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/overview/storage-overview/</guid>
+      <description>Storage and the PostgreSQL Operator The PostgreSQL Operator allows for a variety of different configurations of persistent storage that can be leveraged by the PostgreSQL instances or clusters it deploys.
+The PostgreSQL Operator works with several different storage types, HostPath, Network File System(NFS), and Dynamic storage.
+ Hostpath is the simplest storage and useful for single node testing.
+ NFS provides the ability to do single and multi-node testing.</description>
     </item>
     
     <item>
@@ -66,6 +88,17 @@ Cluster    Setting Definition     BasicAuth if set to true will enable Basic Aut
     </item>
     
     <item>
+      <title>Custom Resource Definitions Overview</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/overview/custom-resource-definitions/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/overview/custom-resource-definitions/</guid>
+      <description>PostgreSQL Operator Custom Resource Definitions The PostgreSQL Operator defines the following series of Kubernetes Custom Resource Definitions (CRDs):
+Each of these CRDs are used in the design of the PostgreSQL Operator to perform PostgreSQL related operations in order to enable with on-demand, PostgreSQL-as-a-Service workflows.
+Cluster (pgclusters) The Cluster or pgcluster CRD is used by the PostgreSQL Operator to define the PostgreSQL cluster definition and make new PostgreSQL cluster requests.</description>
+    </item>
+    
+    <item>
       <title>Custom SSL Configuration</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/custom-config-ssl/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -75,6 +108,49 @@ Cluster    Setting Definition     BasicAuth if set to true will enable Basic Aut
 Configuration Files for SSL Authentication Users and administrators can specify a custom set of Postgres configuration files to be used when creating a new Postgres cluster. This example uses the files below-
  postgresql.conf pg_hba.conf pg_ident.conf  along with generated security certificates, to setup a custom SSL configuration.
 Config Files Purpose The postgresql.</description>
+    </item>
+    
+    <item>
+      <title>PGO Scheduler Overview</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/overview/scheduler-overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/overview/scheduler-overview/</guid>
+      <description>PGO Scheduler The PostgreSQL Operator includes a cronlike scheduler application called pgo-scheduler. Its purpose is to run automated tasks such as PostgreSQL backups or SQL policies against PostgreSQL instances and clusters created by the PostgreSQL Operator.
+PGO Scheduler watches Kubernetes for configmaps with the label crunchy-scheduler=true in the same namespace the Operator is deployed. The configmaps are json objects that describe the schedule such as:
+ Cron like schedule such as: * * * * * Type of task: pgbackrest, pgbasebackup or policy  Schedules are removed automatically when the configmaps are deleted.</description>
+    </item>
+    
+    <item>
+      <title>PostgreSQL Operator Backup and Restore Capability</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/overview/backup-restore-overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/overview/backup-restore-overview/</guid>
+      <description>PostgreSQL Operator Backup and Restore Capability The PostgreSQL Operator provides users with the ability to manage PostgreSQL cluster backups through both native PostgreSQL backup functionality, as well as using pgbackrest, an open source backup and restore solution designed to scale up to the largest databases. By default, beginning with verison 4.0, the PostgreSQL Operator backup command performs a PostgreSQL pgbackrest backup.
+The three backup types that can be configured through the PostgreSQL Operator CLI are:</description>
+    </item>
+    
+    <item>
+      <title>PostgreSQL Operator Overview</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/overview/postgres-operator-overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/overview/postgres-operator-overview/</guid>
+      <description>PostgreSQL Operator Overview The PostgreSQL Operator extends Kubernetes to provide a higher- level abstraction enabling the rapid creation and management of PostgreSQL databases and clusters.
+The PostgreSQL Operator include the following components:
+ PostgreSQL Operator PostgreSQL Operator Containers PostgreSQL Operator PGO Client PostgreSQL Operator REST API Server PostgreSQL PGO Schedule  PostgreSQL Operator The PostgreSQL Operator makes use of Kubernetes “Custom Resource Definitions” or “CRDs” to extend Kubernetes with custom, PostgreSQL specific, Kubernetes objects such as “Database” and “Cluster”.</description>
+    </item>
+    
+    <item>
+      <title>PostgreSQL Operator User Roles Overview</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/overview/users-role-overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/overview/users-role-overview/</guid>
+      <description>User Roles in the PostgreSQL Operator The PostgreSQL Operator, when used in conjunction with the associated PostgreSQL Containers and Kubernetes, provides you with the ability to host your own open source, Kubernetes native PostgreSQL-as-a-Service infrastructure.
+In installing, configuring and operating the PostgreSQL Operator as a PostgreSQL-as-a-Service capability, the following user roles will be required:
+| Role | Applicable Component | Authorized Privileges and Functions Performed | |&amp;mdash;&amp;mdash;|&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;-|&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;ndash;| |Platform Admininistrator (Privileged User)|PostgreSQL Operator |The Platform Admininistrator is able to control all aspects of the PostgreSQL Operator functionality, including: provisioning and scaling clusters, adding PostgreSQL Administrators and PostgreSQL Users to clusters, setting PostgreSQL cluster security privileges, managing other PostgreSQL Operator users, and more.</description>
     </item>
     
     <item>
@@ -112,6 +188,40 @@ Syntax Use the following syntax to run pgo commands from your terminal window:</
     </item>
     
     <item>
+      <title>PostgreSQL Operator Namespace Considerations Overview</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/overview/namespace-overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/overview/namespace-overview/</guid>
+      <description>Kubernetes Namespaces and the PostgreSQL Operator In Kubernetes, namespaces provide the user the ability to divide cluster resources between multiple users (via resource quota).
+The PostgreSQL Operator makes use of the Kubernetes Namespace support in order to define the Namespace to which the PostgreSQL Operator will deploy PostgreSQL clusters, enabling users to more easily allocate Kubernetes resources to specific areas within their business (users, projects, departments).
+Namespaces Applied to Organizational Requirements Prior to version PostgreSQL Operator 4.</description>
+    </item>
+    
+    <item>
+      <title>Configuration of PostgreSQL Operator RBAC</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/security/configure-postgres-operator-rbac/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/security/configure-postgres-operator-rbac/</guid>
+      <description>PostreSQL Operator RBAC The conf/postgres-operator/pgorole file is read at start up time when the operator is deployed to the Kubernetes cluster. This file defines the PostgreSQL Operator roles whereby PostgreSQL Operator API users can be authorized.
+The conf/postgres-operator/pgouser file is read at start up time also and contains username, password, role, and namespace information as follows:
+username:password:pgoadmin: pgouser1:password:pgoadmin:pgouser1 pgouser2:password:pgoadmin:pgouser2 pgouser3:password:pgoadmin:pgouser1,pgouser2 readonlyuser:password:pgoreader:  The format of the pgouser server file is:</description>
+    </item>
+    
+    <item>
+      <title>Installation of PostgreSQL Operator RBAC</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/security/install-postgres-operator-rbac/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/security/install-postgres-operator-rbac/</guid>
+      <description>Installation of PostgreSQL Operator RBAC Please note, installation of the PostgreSQL Operator RBAC requires Kubernetes Cluster-Admin.
+The first step is to install the PostgreSQL Operator RBAC configuration. This can be accomplished by running:
+make installrbac  This script will install the PostreSQL Operator Custom Resource Definitions, CRD’s and creates the following RBAC resources on your Kubernetes cluster:
+   Setting Definition     Custom Resource Definitions (crd.</description>
+    </item>
+    
+    <item>
       <title>OLM</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/olm/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -122,6 +232,17 @@ The Postgres Operator supports the different deployment models as documented her
 https://github.com/operator-framework/operator-lifecycle-manager/blob/master/Documentation/design/operatorgroups.md
 Operator Hub The Operator shows up on the Redhat Operator Hub at the following location:
 https://www.operatorhub.io/operator/postgres-operator.v3.5.0</description>
+    </item>
+    
+    <item>
+      <title>PostgreSQL Operator API Encryption Configuration</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/security/api-encryption-configuration/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/security/api-encryption-configuration/</guid>
+      <description>Configuring Encryption of PostgreSQL Operator API Connection The PostgreSQL Operator REST API connection is encrypted with keys stored in the pgo.tls Secret.
+The pgo.tls Secret can be generated prior to starting the PostgreSQL Operator or you can let the PostgreSQL Operator generate the Secret for you if the Secret does not exist.
+Adjust the default keys to meet your security requirements using your own keys. The pgo.tls Secret is created when you run:</description>
     </item>
     
     <item>
@@ -255,6 +376,25 @@ If you have any question you can submit a Support - Question and Answer issue an
       <guid>https://crunchydata.github.io/postgres-operator/latest/contributing/pull-requests/</guid>
       <description>So you decided to submit an issue and work it. Great! Let&amp;rsquo;s get it merged in to the codebase. The following will go a long way to helping get the fix merged in quicker.
  Create a Pull Request from your Fork to the Develop branch. Update the checklists in the Pull Request Description. Reference which issues this Pull Request is resolving.  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/overview/postgres-operator-containers-overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/overview/postgres-operator-containers-overview/</guid>
+      <description>PostgreSQL Operator Containers Overview The PostgreSQL Operator orchestrates a series of PostgreSQL and PostgreSQL related containers containers that enable rapid deployment of PostgreSQL, including administration and monitoring tools in a Kubernetes environment. The PostgreSQL Operator supports PostgreSQL 9.5+ with multiple PostgreSQL cluster deployment strategies and a variety of PostgreSQL related extensions and tools enabling enterprise grade PostgreSQL-as-a-Service. A full list of the containers supported by the PostgreSQL Operator is provided below.</description>
+    </item>
+    
+    <item>
+      <title>Failover in the PostgreSQL Operator Overview</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/overview/failover-overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/overview/failover-overview/</guid>
+      <description>Failover in the PostgreSQL Operator There are a number of potential events that could cause a primary database instance or cluster to become unavailable during the course of normal operations, including:
+ A database storage (disk) failure or any other hardware failure The network on which the database resides becomes unreachable The host operating system becomes unstable and crashes A key database file becomes corrupted Total loss of data center  There may also be downtime events that are due to the normal case of operations, such as performing a minor upgrade, security patching of operating system, hardware upgrade, or other maintenance.</description>
     </item>
     
     <item>
