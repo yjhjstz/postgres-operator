@@ -286,7 +286,7 @@
     <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/overview/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/overview/">Design</a>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/overview/">Overview</a>
             <i class="fas fa-angle-down fa-lg category-icon"></i>
 
       </div>
@@ -340,24 +340,24 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/overview/namespace-overview/" class="dd-item">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/overview/failover-overview/" class="dd-item">
         <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/overview/namespace-overview/">
-            PostgreSQL Operator Namespace Considerations Overview
+          <a href="https://crunchydata.github.io/postgres-operator/latest/overview/failover-overview/">
+            Failover in the PostgreSQL Operator Overview
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/overview/postgres-operator-containers-overview/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/overview/postgres-operator-containers-overview/">
-            
+            PostgreSQL Operator Containers Overview
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/overview/failover-overview/" class="dd-item">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/overview/namespace-overview/" class="dd-item">
         <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/overview/failover-overview/">
-            Failover in the PostgreSQL Operator Overview
+          <a href="https://crunchydata.github.io/postgres-operator/latest/overview/namespace-overview/">
+            PostgreSQL Operator Namespace Considerations Overview
           </a>
         </div>
     </li>
@@ -935,7 +935,7 @@
     <option value="/configuration/" >
    Configuration</option>
     <option value="/overview/" >
-   Design</option> 
+   Overview</option> 
       <option value="/overview/node-affinitiy-overview/" >- Node Affinity in PostgreSQL Operator</option>
       <option value="/overview/storage-overview/" >- Storage Overview</option>
       <option value="/overview/custom-resource-definitions/" >- Custom Resource Definitions Overview</option>
@@ -943,9 +943,9 @@
       <option value="/overview/backup-restore-overview/" >- PostgreSQL Operator Backup and Restore Capability</option>
       <option value="/overview/postgres-operator-overview/"  selected>- PostgreSQL Operator Overview</option>
       <option value="/overview/users-role-overview/" >- PostgreSQL Operator User Roles Overview</option>
-      <option value="/overview/namespace-overview/" >- PostgreSQL Operator Namespace Considerations Overview</option>
-      <option value="/overview/postgres-operator-containers-overview/" >- </option>
       <option value="/overview/failover-overview/" >- Failover in the PostgreSQL Operator Overview</option>
+      <option value="/overview/postgres-operator-containers-overview/" >- PostgreSQL Operator Containers Overview</option>
+      <option value="/overview/namespace-overview/" >- PostgreSQL Operator Namespace Considerations Overview</option>
   
     <option value="/operatorcli/" >
    Operator Command Line Utility</option>
@@ -993,7 +993,7 @@
 
 
 
- <a href='https://crunchydata.github.io/postgres-operator/latest/'>Crunchy Data Postgres Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/overview/'>Design</a> > PostgreSQL Operator Overview
+ <a href='https://crunchydata.github.io/postgres-operator/latest/'>Crunchy Data Postgres Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/overview/'>Overview</a> > PostgreSQL Operator Overview
 
  
 
@@ -1027,8 +1027,12 @@
 <li>PostgreSQL Operator Containers</li>
 <li>PostgreSQL Operator PGO Client</li>
 <li>PostgreSQL Operator REST API Server</li>
-<li>PostgreSQL PGO Schedule</li>
+<li>PostgreSQL PGO Scheduler</li>
 </ul>
+
+<p>The following diagram provides an overview of the components of the PostgreSQL Operator:</p>
+
+<p><img src="https://crunchydata.github.io/postgres-operator/latest/Operator-Architecture.png" alt="Operator Architecture" /></p>
 
 <h4 id="postgresql-operator">PostgreSQL Operator</h4>
 

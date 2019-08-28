@@ -286,7 +286,7 @@
     <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/overview/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/overview/">Design</a>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/overview/">Overview</a>
             <i class="fas fa-angle-down fa-lg category-icon"></i>
 
       </div>
@@ -340,24 +340,24 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/overview/namespace-overview/" class="dd-item">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/overview/failover-overview/" class="dd-item">
         <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/overview/namespace-overview/">
-            PostgreSQL Operator Namespace Considerations Overview
+          <a href="https://crunchydata.github.io/postgres-operator/latest/overview/failover-overview/">
+            Failover in the PostgreSQL Operator Overview
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/overview/postgres-operator-containers-overview/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/overview/postgres-operator-containers-overview/">
-            
+            PostgreSQL Operator Containers Overview
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/overview/failover-overview/" class="dd-item">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/overview/namespace-overview/" class="dd-item">
         <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/overview/failover-overview/">
-            Failover in the PostgreSQL Operator Overview
+          <a href="https://crunchydata.github.io/postgres-operator/latest/overview/namespace-overview/">
+            PostgreSQL Operator Namespace Considerations Overview
           </a>
         </div>
     </li>
@@ -935,7 +935,7 @@
     <option value="/configuration/" >
    Configuration</option>
     <option value="/overview/" >
-   Design</option> 
+   Overview</option> 
       <option value="/overview/node-affinitiy-overview/" >- Node Affinity in PostgreSQL Operator</option>
       <option value="/overview/storage-overview/" >- Storage Overview</option>
       <option value="/overview/custom-resource-definitions/" >- Custom Resource Definitions Overview</option>
@@ -943,9 +943,9 @@
       <option value="/overview/backup-restore-overview/" >- PostgreSQL Operator Backup and Restore Capability</option>
       <option value="/overview/postgres-operator-overview/" >- PostgreSQL Operator Overview</option>
       <option value="/overview/users-role-overview/"  selected>- PostgreSQL Operator User Roles Overview</option>
-      <option value="/overview/namespace-overview/" >- PostgreSQL Operator Namespace Considerations Overview</option>
-      <option value="/overview/postgres-operator-containers-overview/" >- </option>
       <option value="/overview/failover-overview/" >- Failover in the PostgreSQL Operator Overview</option>
+      <option value="/overview/postgres-operator-containers-overview/" >- PostgreSQL Operator Containers Overview</option>
+      <option value="/overview/namespace-overview/" >- PostgreSQL Operator Namespace Considerations Overview</option>
   
     <option value="/operatorcli/" >
    Operator Command Line Utility</option>
@@ -993,7 +993,7 @@
 
 
 
- <a href='https://crunchydata.github.io/postgres-operator/latest/'>Crunchy Data Postgres Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/overview/'>Design</a> > PostgreSQL Operator User Roles Overview
+ <a href='https://crunchydata.github.io/postgres-operator/latest/'>Crunchy Data Postgres Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/overview/'>Overview</a> > PostgreSQL Operator User Roles Overview
 
  
 
@@ -1023,12 +1023,41 @@ native PostgreSQL-as-a-Service infrastructure.</p>
 
 <p>In installing, configuring and operating the PostgreSQL Operator as a PostgreSQL-as-a-Service capability, the following user roles will be required:</p>
 
-<p>| Role | Applicable Component | Authorized Privileges and Functions Performed |
-|&mdash;&mdash;|&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-|&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;|
-|Platform Admininistrator (Privileged User)|PostgreSQL Operator |The Platform Admininistrator is able to control all aspects of the PostgreSQL Operator functionality, including: provisioning and scaling clusters, adding PostgreSQL Administrators and PostgreSQL Users to clusters, setting PostgreSQL cluster security privileges, managing other PostgreSQL Operator users, and more. This user can have access to any database that is deployed and managed by the PostgreSQL Operator.|
-|Platform User|PostgreSQL Operator |The Platform User  has access to a limited subset of PostgreSQL Operator functionality that is defined by specific RBAC rules. A Platform Administrator manages the specific permissions for an Platform User specific permissions. A Platform User only receives a permission if its is explicitly granted to them.|
-|PostgreSQL Administrator(Privileged Account)|PostgreSQL Containers| The PostgreSQL Administrator is the equivalent of a PostgreSQL superuser (e.g. the &ldquo;postgres&rdquo; user) and can perform all the actions that a PostgreSQL superuser is permitted to do, which includes adding additional PostgreSQL Users, creating databases within the cluster.|
-|PostgreSQL User|PostgreSQL Containers|The PostgreSQL User has access to a PostgreSQL Instance or Cluster but must be granted explicit permissions to perform actions in PostgreSQL based upon their role membership.|</p>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Applicable Component</th>
+<th>Authorized Privileges and Functions Performed</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Platform Admininistrator (Privileged User)</td>
+<td>PostgreSQL Operator</td>
+<td>The Platform Admininistrator is able to control all aspects of the PostgreSQL Operator functionality, including: provisioning and scaling clusters, adding PostgreSQL Administrators and PostgreSQL Users to clusters, setting PostgreSQL cluster security privileges, managing other PostgreSQL Operator users, and more. This user can have access to any database that is deployed and managed by the PostgreSQL Operator.</td>
+</tr>
+
+<tr>
+<td>Platform User</td>
+<td>PostgreSQL Operator</td>
+<td>The Platform User  has access to a limited subset of PostgreSQL Operator functionality that is defined by specific RBAC rules. A Platform Administrator manages the specific permissions for an Platform User specific permissions. A Platform User only receives a permission if its is explicitly granted to them.</td>
+</tr>
+
+<tr>
+<td>PostgreSQL Administrator(Privileged Account)</td>
+<td>PostgreSQL Containers</td>
+<td>The PostgreSQL Administrator is the equivalent of a PostgreSQL superuser (e.g. the &ldquo;postgres&rdquo; user) and can perform all the actions that a PostgreSQL superuser is permitted to do, which includes adding additional PostgreSQL Users, creating databases within the cluster.</td>
+</tr>
+
+<tr>
+<td>PostgreSQL User</td>
+<td>PostgreSQL Containers</td>
+<td>The PostgreSQL User has access to a PostgreSQL Instance or Cluster but must be granted explicit permissions to perform actions in PostgreSQL based upon their role membership.</td>
+</tr>
+</tbody>
+</table>
 
 <p>As indicated in the above table, both the Operator Administrator and the PostgreSQL Administrators represent privilege users with components within the PostgreSQL Operator.</p>
 
@@ -1088,7 +1117,7 @@ access to the database “userdb” that is created for testing purposes.</p>
         <div class="chevrons">
     <div id="navigation">
 <a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/overview/postgres-operator-overview/" title="PostgreSQL Operator Overview"> <i class="fa fa-chevron-left"></i><label>PostgreSQL Operator Overview</label></a>
-    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/overview/namespace-overview/" title="PostgreSQL Operator Namespace Considerations Overview" style="margin-right: 0px;"><label>PostgreSQL Operator Namespace Considerations Overview</label><i class="fa fa-chevron-right"></i></a></div>
+    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/overview/failover-overview/" title="Failover in the PostgreSQL Operator Overview" style="margin-right: 0px;"><label>Failover in the PostgreSQL Operator Overview</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>

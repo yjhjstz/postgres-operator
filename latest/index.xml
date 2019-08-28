@@ -139,7 +139,8 @@ The three backup types that can be configured through the PostgreSQL Operator CL
       <guid>https://crunchydata.github.io/postgres-operator/latest/overview/postgres-operator-overview/</guid>
       <description>PostgreSQL Operator Overview The PostgreSQL Operator extends Kubernetes to provide a higher- level abstraction enabling the rapid creation and management of PostgreSQL databases and clusters.
 The PostgreSQL Operator include the following components:
- PostgreSQL Operator PostgreSQL Operator Containers PostgreSQL Operator PGO Client PostgreSQL Operator REST API Server PostgreSQL PGO Schedule  PostgreSQL Operator The PostgreSQL Operator makes use of Kubernetes “Custom Resource Definitions” or “CRDs” to extend Kubernetes with custom, PostgreSQL specific, Kubernetes objects such as “Database” and “Cluster”.</description>
+ PostgreSQL Operator PostgreSQL Operator Containers PostgreSQL Operator PGO Client PostgreSQL Operator REST API Server PostgreSQL PGO Scheduler  The following diagram provides an overview of the components of the PostgreSQL Operator:
+PostgreSQL Operator The PostgreSQL Operator makes use of Kubernetes “Custom Resource Definitions” or “CRDs” to extend Kubernetes with custom, PostgreSQL specific, Kubernetes objects such as “Database” and “Cluster”.</description>
     </item>
     
     <item>
@@ -150,7 +151,7 @@ The PostgreSQL Operator include the following components:
       <guid>https://crunchydata.github.io/postgres-operator/latest/overview/users-role-overview/</guid>
       <description>User Roles in the PostgreSQL Operator The PostgreSQL Operator, when used in conjunction with the associated PostgreSQL Containers and Kubernetes, provides you with the ability to host your own open source, Kubernetes native PostgreSQL-as-a-Service infrastructure.
 In installing, configuring and operating the PostgreSQL Operator as a PostgreSQL-as-a-Service capability, the following user roles will be required:
-| Role | Applicable Component | Authorized Privileges and Functions Performed | |&amp;mdash;&amp;mdash;|&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;-|&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;ndash;| |Platform Admininistrator (Privileged User)|PostgreSQL Operator |The Platform Admininistrator is able to control all aspects of the PostgreSQL Operator functionality, including: provisioning and scaling clusters, adding PostgreSQL Administrators and PostgreSQL Users to clusters, setting PostgreSQL cluster security privileges, managing other PostgreSQL Operator users, and more.</description>
+   Role Applicable Component Authorized Privileges and Functions Performed     Platform Admininistrator (Privileged User) PostgreSQL Operator The Platform Admininistrator is able to control all aspects of the PostgreSQL Operator functionality, including: provisioning and scaling clusters, adding PostgreSQL Administrators and PostgreSQL Users to clusters, setting PostgreSQL cluster security privileges, managing other PostgreSQL Operator users, and more.</description>
     </item>
     
     <item>
@@ -162,6 +163,16 @@ In installing, configuring and operating the PostgreSQL Operator as a PostgreSQL
       <description>Operator Eventing The Operator creates events from the various life-cycle events going on within the Operator logic and driven by pgo users as they interact with the Operator and as Postgres clusters come and go or get updated.
 Event Watching There is a pgo CLI command:
 pgo watch alltopic  This command connects to the event stream and listens on a topic for event real-time. The command will not complete until the pgo user enters ctrl-C.</description>
+    </item>
+    
+    <item>
+      <title>Failover in the PostgreSQL Operator Overview</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/overview/failover-overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/overview/failover-overview/</guid>
+      <description>Failover in the PostgreSQL Operator There are a number of potential events that could cause a primary database instance or cluster to become unavailable during the course of normal operations, including:
+ A database storage (disk) failure or any other hardware failure The network on which the database resides becomes unreachable The host operating system becomes unstable and crashes A key database file becomes corrupted Total loss of data center  There may also be downtime events that are due to the normal case of operations, such as performing a minor upgrade, security patching of operating system, hardware upgrade, or other maintenance.</description>
     </item>
     
     <item>
@@ -185,6 +196,15 @@ The .bashrc NAMESPACE environment variable a user sets determines which namespac
 Most users will work with the Operator using the pgo CLI tool. That tool is downloaded from the GitHub Releases page for the Operator.
 The pgo client is provided in Mac, Windows, and Linux binary formats, download the appropriate client to your local laptop or workstation to work with a remote Operator.
 Syntax Use the following syntax to run pgo commands from your terminal window:</description>
+    </item>
+    
+    <item>
+      <title>PostgreSQL Operator Containers Overview</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/overview/postgres-operator-containers-overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/overview/postgres-operator-containers-overview/</guid>
+      <description>PostgreSQL Operator Containers Overview The PostgreSQL Operator orchestrates a series of PostgreSQL and PostgreSQL related containers containers that enable rapid deployment of PostgreSQL, including administration and monitoring tools in a Kubernetes environment. The PostgreSQL Operator supports PostgreSQL 9.5+ with multiple PostgreSQL cluster deployment strategies and a variety of PostgreSQL related extensions and tools enabling enterprise grade PostgreSQL-as-a-Service. A full list of the containers supported by the PostgreSQL Operator is provided below.</description>
     </item>
     
     <item>
@@ -376,25 +396,6 @@ If you have any question you can submit a Support - Question and Answer issue an
       <guid>https://crunchydata.github.io/postgres-operator/latest/contributing/pull-requests/</guid>
       <description>So you decided to submit an issue and work it. Great! Let&amp;rsquo;s get it merged in to the codebase. The following will go a long way to helping get the fix merged in quicker.
  Create a Pull Request from your Fork to the Develop branch. Update the checklists in the Pull Request Description. Reference which issues this Pull Request is resolving.  </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/overview/postgres-operator-containers-overview/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/overview/postgres-operator-containers-overview/</guid>
-      <description>PostgreSQL Operator Containers Overview The PostgreSQL Operator orchestrates a series of PostgreSQL and PostgreSQL related containers containers that enable rapid deployment of PostgreSQL, including administration and monitoring tools in a Kubernetes environment. The PostgreSQL Operator supports PostgreSQL 9.5+ with multiple PostgreSQL cluster deployment strategies and a variety of PostgreSQL related extensions and tools enabling enterprise grade PostgreSQL-as-a-Service. A full list of the containers supported by the PostgreSQL Operator is provided below.</description>
-    </item>
-    
-    <item>
-      <title>Failover in the PostgreSQL Operator Overview</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/overview/failover-overview/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/overview/failover-overview/</guid>
-      <description>Failover in the PostgreSQL Operator There are a number of potential events that could cause a primary database instance or cluster to become unavailable during the course of normal operations, including:
- A database storage (disk) failure or any other hardware failure The network on which the database resides becomes unreachable The host operating system becomes unstable and crashes A key database file becomes corrupted Total loss of data center  There may also be downtime events that are due to the normal case of operations, such as performing a minor upgrade, security patching of operating system, hardware upgrade, or other maintenance.</description>
     </item>
     
     <item>
