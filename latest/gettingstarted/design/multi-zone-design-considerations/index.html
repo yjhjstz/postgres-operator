@@ -7,7 +7,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.55.6" />
-<title>Updating Documentation :: Crunchy Data PostgreSQL Operator Documentation</title>
+<title>Multi-Zone Cloud Considerations :: Crunchy Data PostgreSQL Operator Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/latest/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/latest/css/nucleus.css" rel="stylesheet">
 <link href="https://crunchydata.github.io/postgres-operator/latest/theme-flex/style.css" rel="stylesheet">
@@ -29,7 +29,7 @@
 
     
   </head>
-  <body data-url="/contributing/documentation-updates/">
+  <body data-url="/gettingstarted/design/multi-zone-design-considerations/">
     
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
   
@@ -98,17 +98,19 @@
         <hr>
 
       <b>Navigation</b>
-    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/" class="dd-item haschildren
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/">Getting Started</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/">Getting Started</a>
+            <i class="fas fa-angle-down fa-lg category-icon"></i>
 
       </div>
         <ul>
-    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/" class="dd-item haschildren
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/">Design</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/">Design</a>
+            <i class="fas fa-angle-down fa-lg category-icon"></i>
 
       </div>
         <ul>
@@ -133,7 +135,7 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/multi-zone-design-considerations/" class="dd-item">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/multi-zone-design-considerations/" class="dd-item active">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/multi-zone-design-considerations/">
             Multi-Zone Cloud Considerations
@@ -900,15 +902,14 @@
 
       </div>
     </li>
-    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/contributing/" class="dd-item parent haschildren
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/contributing/" class="dd-item haschildren
         ">
       <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/contributing/">Contributing</a>
-            <i class="fas fa-angle-down fa-lg category-icon"></i>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/contributing/">Contributing</a><i class="fas fa-angle-right fa-lg category-icon"></i>
 
       </div>
         <ul>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/contributing/documentation-updates/" class="dd-item active">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/contributing/documentation-updates/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/contributing/documentation-updates/">
             Updating Documentation
@@ -950,7 +951,24 @@
         <select onchange="javascript:location.href = this.value;">
           
     <option value="/gettingstarted/" >
-   Getting Started</option>
+   Getting Started</option> 
+    <option value="/gettingstarted/design/" >
+  - 
+   Design</option> 
+      <option value="/gettingstarted/design/designoverview/" >-- Design</option>
+      <option value="/gettingstarted/design/custom-config/" >-- Custom Configuration</option>
+      <option value="/gettingstarted/design/custom-config-ssl/" >-- Custom SSL Configuration</option>
+      <option value="/gettingstarted/design/multi-zone-design-considerations/"  selected>-- Multi-Zone Cloud Considerations</option>
+      <option value="/gettingstarted/design/direct-api-calls/" >-- Rest API</option>
+      <option value="/gettingstarted/design/backrest-s3-configuration/" >-- pgBackrest with S3</option>
+      <option value="/gettingstarted/design/eventing/" >-- Eventing</option>
+      <option value="/gettingstarted/design/namespace/" >-- Namespace</option>
+      <option value="/gettingstarted/design/olm/" >-- Operator Lifecycle Management Support</option>
+  
+    <option value="/gettingstarted/prereq/" >
+  - 
+   Prerequisites</option>
+  
     <option value="/installation/" >
    Installation</option>
     <option value="/configuration/" >
@@ -964,11 +982,7 @@
     <option value="/upgrade/" >
    Upgrade</option>
     <option value="/contributing/" >
-   Contributing</option> 
-      <option value="/contributing/documentation-updates/"  selected>- Updating Documentation</option>
-      <option value="/contributing/issues/" >- Submitting Issues</option>
-      <option value="/contributing/pull-requests/" >- Submitting Pull Requests</option>
-  
+   Contributing</option>
 
 
 
@@ -987,7 +1001,7 @@
             <i class="fa fa-info-circle"></i>
             
           </a>
-          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/develop/hugo/content/contributing/documentation-updates.md" target="blank">
+          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/develop/hugo/content/gettingstarted/Design/multi-zone-design-considerations.md" target="blank">
             <i class="fa fa-code-fork"></i>
             
           </a>
@@ -1007,7 +1021,12 @@
 
 
 
- <a href='https://crunchydata.github.io/postgres-operator/latest/'>Crunchy Data Postgres Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/contributing/'>Contributing</a> > Updating Documentation
+
+
+
+ <a href='https://crunchydata.github.io/postgres-operator/latest/'>Crunchy Data Postgres Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/gettingstarted/'>Getting Started</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/'>Design</a> > Multi-Zone Cloud Considerations
+
+ 
 
  
 
@@ -1023,47 +1042,137 @@
     
     <div id="body-inner">
 
-    <h1>Updating Documentation</h1>
+    <h1>Multi-Zone Cloud Considerations</h1>
 
     
 
     
     
 
-<h2 id="documentation">Documentation</h2>
+<h2 id="considerations-for-postgresql-operator-deployments-in-multi-zone-cloud-environments">Considerations for PostgreSQL Operator Deployments in Multi-Zone Cloud Environments</h2>
 
-<p>The <a href="https://crunchydata.github.io/postgres-operator/latest/">documentation website</a> is generated using <a href="https://gohugo.io/">Hugo</a>.</p>
+<h4 id="overview">Overview</h4>
 
-<h2 id="hosting-hugo-locally-optional">Hosting Hugo Locally (Optional)</h2>
+<p>When using the PostgreSQL Operator in a Kubernetes cluster consisting of nodes that span multiple zones, special consideration
+must be taken to ensure all pods and the associated volumes re scheduled and provisioned within the same zone.</p>
 
-<p>If you would like to build the documentation locally, view the
-<a href="https://gohugo.io/getting-started/installing/">official Installing Hugo</a> guide to set up Hugo locally.</p>
+<p>Given that a pod is unable mount a volume that is located in another zone, any volumes that are dynamically provisioned must
+be provisioned in a topology-aware manner according to the specific scheduling requirements for the pod.</p>
 
-<p>You can then start the server by running the following commands -</p>
+<p>This means that when a new PostgreSQL cluster is created, it is necessary to ensure that the volume containing the database
+files for the primary PostgreSQL database within the PostgreSQL clluster is provisioned in the same zone as the node containing the PostgreSQL primary pod that will be accesing the applicable volume.</p>
 
-<pre><code>cd $COROOT/hugo/
-hugo server
-</code></pre>
+<h4 id="dynamic-provisioning-of-volumes-default-behavoir">Dynamic Provisioning of Volumes: Default Behavoir</h4>
 
-<p>The local version of the Hugo server is accessible by default from
-<em>localhost:1313</em>. Once you&rsquo;ve run <em>hugo server</em>, that will let you interactively make changes to the documentation as desired and view the updates
-in real-time.</p>
+<p>By default, the Kubernetes scheduler will ensure any pods created that claim a specific volume via a PVC are scheduled on a
+node in the same zone as that volume.  This is part of the default Kubernetes <a href="https://kubernetes.io/docs/setup/multiple-zones/">multi-zone support</a>.</p>
 
-<h2 id="contributing-to-the-documentation">Contributing to the Documentation</h2>
+<p>However, when using Kubernetes <a href="https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/">dynamic provisioning</a>,
+volumes are not provisioned in a topology-aware manner.</p>
 
-<p>All documentation is in Markdown format and uses Hugo weights for positioning of the pages.</p>
+<p>More specifically, when using dynamnic provisioning, volumes wills not be provisioned according to the same scheduling
+requirements that will be placed on the pod that will be using it (e.g. it will not consider node selectors, resource
+requirements, pod affinity/anti-affinity, and various other scheduling requirements).  Rather, PVCs are immediately bound as
+soon as they are requested, which means volumes are provisioned without knowledge of these scheduling requirements.</p>
 
-<p>The current production release documentation is updated for every tagged major release.</p>
+<p>This behavior defined using the <code>volumeBindingMode</code> configuration applicable to the Storage Class being utilized to
+dynamically provision the volume.  By default,<code>volumeBindingMode</code> is set to <code>Immediate</code>.</p>
 
-<p>When you&rsquo;re ready to commit a change, please verify that the documentation generates locally.</p>
+<p>This default behavoir for dynamic provisioning can be seen in the Storage Class definition for a Google Cloud Engine Persistent Disk (GCE PD):</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: example-sc
+provisioner: kubernetes.io/gce-pd
+parameters:
+  type: pd-standard
+volumeBindingMode: Immediate</code></pre></div>
+<p>As indicated, <code>volumeBindingMode</code> indicates the default value of <code>Immediate</code>.</p>
+
+<h4 id="issues-with-dynamic-provisioning-of-volumes-in-postgresql-operator">Issues with Dynamic Provisioning of Volumes in PostgreSQL Operator</h4>
+
+<p>Unfortunately, the default setting for dynamic provisinoing of volumes in mulit-zone Kubernetes cluster environments results in undesired behavoir when using the PostgreSQL Operator.</p>
+
+<p>Within the PostgreSQL Operator, a <strong>node label</strong> is implemented as a <code>preferredDuringSchedulingIgnoredDuringExecution</code> node
+affinity rule, which is an affinity rule that Kubernetes will attempt to adhere to when scheduling any pods for the cluster,
+but <em>will not guarantee</em>. More information on node affinity rules can be found <a href="https://kubernetes.i/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity">here</a>).</p>
+
+<p>By using <code>Immediate</code> for the <code>volumeBindingMode</code> in a multi-zone cluster environment, the scheduler will ignore any requested
+<em>(but not mandatory)</em> scheduling requirements if necessary to ensure the pod can be scheduled. The scheduler will ultimately
+schedule the pod on a node in the same zone as the volume, even if another node was requested for scheduling that pod.</p>
+
+<p>As it relates to the PostgreSQL Operator specifically, a node label specified using the <code>--node-label</code> option when creating a
+cluster using the <code>pgo create cluster</code> command in order target a specific node (or nodes) for the deployment of that cluster.</p>
+
+<p>Therefore, if the volume ends up in a zone other than the zone containing the node (or nodes) defined by the node label, the
+node label will be ignored, and the pod will be scheduled according to the zone containing the volume.</p>
+
+<h4 id="configuring-volumes-to-be-topology-aware">Configuring Volumes to be Topology Aware</h4>
+
+<p>In order to overcome this default behavior, it is necessary to make the dynamically provisioned volumes topology aware.</p>
+
+<p>This is accomplished by setting the <code>volumeBindingMode</code> for the storage class to <code>WaitForFirstConsumer</code>, which delays the
+dynamic provisioning of a volume until a pod using it is created.</p>
+
+<p>In other words, the PVC is no longer bound as soon as it is requested, but rather waits for a pod utilizing it to be creating
+prior to binding.  This change ensures that volume can take into account the scheduling requirements for the pod, which in the
+case of a multi-zone cluster means ensuring the volume is provisioned in the same zone containing the node where the pod has
+be scheduled.  This also means the scheduler should no longer ignore a node label in order to follow a volume to another zone
+when scheduling a pod, since the volume will now follow the pod according to the pods specificscheduling requirements.</p>
+
+<p>The following is an example of the the same Storage Class defined above, only with <code>volumeBindingMode</code> now set to <code>WaitForFirstConsumer</code>:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: example-sc
+provisioner: kubernetes.io/gce-pd
+parameters:
+  type: pd-standard
+volumeBindingMode: WaitForFirstConsumer</code></pre></div>
+<h4 id="additional-solutions">Additional Solutions</h4>
+
+<p>If you are using a version of Kubernetes that does not support <code>WaitForFirstConsumer</code>, an alternate <em>(and now deprecated)</em>
+solution exists in the form of parameters that can be defined on the Storage Class definition to ensure volumes are
+provisioned in a specific zone (or zones).</p>
+
+<p>For instance, when defining a Storage Class for a GCE PD for use in Google Kubernetes Engine (GKE) cluster, the <strong>zone</strong>
+parameter can be used to ensure any volumes dynamically provisioned using that Storage Class are located in that specific
+zone.  The following is an example of a Storage Class for a GKE cluster that will provision volumes in the <strong>us-east1</strong> zone:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: example-sc
+provisioner: kubernetes.io/gce-pd
+parameters:
+  type: pd-standard
+  replication-type: none
+  zone: us-east1</code></pre></div>
+<p>Once storage classes have been defined for one or more zones, they can then be defined as one or more storage configurations
+within the pgo.yaml configuration file (as described in the <a href="https://crunchydata.github.io/postgres-operator/latest/configuration/pgo-yaml
+configuration">PGO YAML configuration guide</a>).</p>
+
+<p>From there those storage configurations can then be selected when creating a new cluster, as shown in the following example:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pgo create cluster mycluster --storage-config<span style="color:#f92672">=</span>example-sc</code></pre></div>
+<p>With this approach, the pod will once again be scheduled according to the zone in which the volume was provisioned.</p>
+
+<p>However, the zone parameters defined on the Storage Class bring consistency to scheduling by guaranteeing that the volume, and
+therefore also the pod using that volume, are scheduled in a specific zone as defined by the user, bringing consistency
+and predictability to volume provisioning and pod scheduling in multi-zone clusters.</p>
+
+<p>For more information regarding the specific parameters available for the Storage Classes being utilizing in your cloud
+environment, please see the
+<a href="https://kubernetes.io/docs/concepts/storage/storage-classes/">Kubernetes documentation for Storage Classes</a>.</p>
+
+<p>Lastly, while the above applies to the dynamic provisioning of volumes, it should be noted that volumes can also be manually
+provisioned in desired zones in order to achieve the desired topology requirements for any pods and their volumes.</p>
 
 
 
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/contributing/" title="Contributing"> <i class="fa fa-chevron-left"></i><label>Contributing</label></a>
-    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/contributing/issues/" title="Submitting Issues" style="margin-right: 0px;"><label>Submitting Issues</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/custom-config-ssl/" title="Custom SSL Configuration"> <i class="fa fa-chevron-left"></i><label>Custom SSL Configuration</label></a>
+    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/direct-api-calls/" title="Rest API" style="margin-right: 0px;"><label>Rest API</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>

@@ -7,7 +7,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.55.6" />
-<title>OLM :: Crunchy Data PostgreSQL Operator Documentation</title>
+<title>Operator Lifecycle Management Support :: Crunchy Data PostgreSQL Operator Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/latest/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/latest/css/nucleus.css" rel="stylesheet">
 <link href="https://crunchydata.github.io/postgres-operator/latest/theme-flex/style.css" rel="stylesheet">
@@ -135,6 +135,27 @@
           </a>
         </div>
     </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/multi-zone-design-considerations/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/multi-zone-design-considerations/">
+            Multi-Zone Cloud Considerations
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/direct-api-calls/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/direct-api-calls/">
+            Rest API
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/backrest-s3-configuration/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/backrest-s3-configuration/">
+            pgBackrest with S3
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/eventing/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/eventing/">
@@ -152,7 +173,7 @@
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/olm/" class="dd-item active">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/olm/">
-            OLM
+            Operator Lifecycle Management Support
           </a>
         </div>
     </li>
@@ -937,9 +958,12 @@
       <option value="/gettingstarted/design/designoverview/" >-- Design</option>
       <option value="/gettingstarted/design/custom-config/" >-- Custom Configuration</option>
       <option value="/gettingstarted/design/custom-config-ssl/" >-- Custom SSL Configuration</option>
+      <option value="/gettingstarted/design/multi-zone-design-considerations/" >-- Multi-Zone Cloud Considerations</option>
+      <option value="/gettingstarted/design/direct-api-calls/" >-- Rest API</option>
+      <option value="/gettingstarted/design/backrest-s3-configuration/" >-- pgBackrest with S3</option>
       <option value="/gettingstarted/design/eventing/" >-- Eventing</option>
       <option value="/gettingstarted/design/namespace/" >-- Namespace</option>
-      <option value="/gettingstarted/design/olm/"  selected>-- OLM</option>
+      <option value="/gettingstarted/design/olm/"  selected>-- Operator Lifecycle Management Support</option>
   
     <option value="/gettingstarted/prereq/" >
   - 
@@ -1000,7 +1024,7 @@
 
 
 
- <a href='https://crunchydata.github.io/postgres-operator/latest/'>Crunchy Data Postgres Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/gettingstarted/'>Getting Started</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/'>Design</a> > OLM
+ <a href='https://crunchydata.github.io/postgres-operator/latest/'>Crunchy Data Postgres Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/gettingstarted/'>Getting Started</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/'>Design</a> > Operator Lifecycle Management Support
 
  
 
@@ -1018,29 +1042,22 @@
     
     <div id="body-inner">
 
-    <h1>OLM</h1>
+    <h1>Operator Lifecycle Management Support</h1>
 
     
 
     
     
 
-<h2 id="operator-lifecycle-management">Operator Lifecycle Management</h2>
+<h2 id="operator-lifecycle-management-support">Operator Lifecycle Management Support</h2>
 
-<p>The Postgres Operator supports Redhats OLM (operator lifecycle manager)
-to a degree starting with pgo 4.0.</p>
+<p>The PostgreSQL Operator supports Red Hat OLM (Operator Lifecycle Manager)
+to a degree starting with the PostgreSQL Operator 4.0 release.</p>
 
-<p>The Postgres Operator supports the different deployment models
-as documented here:</p>
+<p>The PostgreSQL Operator supports the different deployment models
+as documented <a href="https://github.com/operator-framework/operator-lifecycle-manager/blob/master/Documentation/design/operatorgroups.md">here</a></p>
 
-<p><a href="https://github.com/operator-framework/operator-lifecycle-manager/blob/master/Documentation/design/operatorgroups.md">https://github.com/operator-framework/operator-lifecycle-manager/blob/master/Documentation/design/operatorgroups.md</a></p>
-
-<h2 id="operator-hub">Operator Hub</h2>
-
-<p>The Operator shows up on the Redhat Operator Hub at the following
-location:</p>
-
-<p><a href="https://www.operatorhub.io/operator/postgres-operator.v3.5.0">https://www.operatorhub.io/operator/postgres-operator.v3.5.0</a></p>
+<p>The PostgreSQL Operator is available for download in <a href="https://www.operatorhub.io/operator/postgres-operator.v3.5.0">OperatorHub.io</a></p>
 
 
 

@@ -135,6 +135,27 @@
           </a>
         </div>
     </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/multi-zone-design-considerations/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/multi-zone-design-considerations/">
+            Multi-Zone Cloud Considerations
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/direct-api-calls/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/direct-api-calls/">
+            Rest API
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/backrest-s3-configuration/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/backrest-s3-configuration/">
+            pgBackrest with S3
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/eventing/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/eventing/">
@@ -152,7 +173,7 @@
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/olm/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/olm/">
-            OLM
+            Operator Lifecycle Management Support
           </a>
         </div>
     </li>
@@ -937,9 +958,12 @@
       <option value="/gettingstarted/design/designoverview/" >-- Design</option>
       <option value="/gettingstarted/design/custom-config/" >-- Custom Configuration</option>
       <option value="/gettingstarted/design/custom-config-ssl/"  selected>-- Custom SSL Configuration</option>
+      <option value="/gettingstarted/design/multi-zone-design-considerations/" >-- Multi-Zone Cloud Considerations</option>
+      <option value="/gettingstarted/design/direct-api-calls/" >-- Rest API</option>
+      <option value="/gettingstarted/design/backrest-s3-configuration/" >-- pgBackrest with S3</option>
       <option value="/gettingstarted/design/eventing/" >-- Eventing</option>
       <option value="/gettingstarted/design/namespace/" >-- Namespace</option>
-      <option value="/gettingstarted/design/olm/" >-- OLM</option>
+      <option value="/gettingstarted/design/olm/" >-- Operator Lifecycle Management Support</option>
   
     <option value="/gettingstarted/prereq/" >
   - 
@@ -1025,16 +1049,14 @@
     
     
 
-<h2 id="custom-postgres-ssl-configurations">Custom Postgres SSL Configurations</h2>
+<h2 id="custom-postgresql-ssl-configurations">Custom PostgreSQL SSL Configurations</h2>
 
-<p>The Crunchy Data Postgres Operator can create clusters that use SSL authentication by
-utilizing custom configmaps.</p>
+<p>The PostgreSQL Operator can create clusters that use SSL authentication by utilizing custom configmaps.</p>
 
 <h4 id="configuration-files-for-ssl-authentication">Configuration Files for SSL Authentication</h4>
 
-<p>Users and administrators can specify a
-custom set of Postgres configuration files to be used when creating
-a new Postgres cluster. This example uses the files below-</p>
+<p>Users and administrators can specify a custom set of PostgreSQL configuration files to be used when creating
+a new PostgreSQL cluster. This example uses the files below-</p>
 
 <ul>
 <li>postgresql.conf</li>
@@ -1046,8 +1068,7 @@ a new Postgres cluster. This example uses the files below-</p>
 
 <h4 id="config-files-purpose">Config Files Purpose</h4>
 
-<p>The <em>postgresql.conf</em> file is the main Postgresql configuration file that allows
-the definition of a wide variety of tuning parameters and features.</p>
+<p>The <em>postgresql.conf</em> file is the main PostgreSQL configuration file that allows the definition of a wide variety of tuning parameters and features.</p>
 
 <p>The <em>pg_hba.conf</em> file is the way Postgresql secures client access.</p>
 
@@ -1132,7 +1153,7 @@ pgo apply
         <div class="chevrons">
     <div id="navigation">
 <a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/custom-config/" title="Custom Configuration"> <i class="fa fa-chevron-left"></i><label>Custom Configuration</label></a>
-    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/eventing/" title="Eventing" style="margin-right: 0px;"><label>Eventing</label><i class="fa fa-chevron-right"></i></a></div>
+    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/multi-zone-design-considerations/" title="Multi-Zone Cloud Considerations" style="margin-right: 0px;"><label>Multi-Zone Cloud Considerations</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>

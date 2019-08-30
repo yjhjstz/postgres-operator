@@ -67,6 +67,10 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/multi-zone-design-considerations/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/overview/scheduler-overview/</loc>
   </url>
   
@@ -80,6 +84,14 @@
   
   <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/overview/users-role-overview/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/direct-api-calls/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/backrest-s3-configuration/</loc>
   </url>
   
   <url>

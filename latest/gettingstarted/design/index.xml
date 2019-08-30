@@ -38,10 +38,42 @@ For example, within the Primary Deployment, the metrics container is completely 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/custom-config-ssl/</guid>
-      <description>Custom Postgres SSL Configurations The Crunchy Data Postgres Operator can create clusters that use SSL authentication by utilizing custom configmaps.
-Configuration Files for SSL Authentication Users and administrators can specify a custom set of Postgres configuration files to be used when creating a new Postgres cluster. This example uses the files below-
+      <description>Custom PostgreSQL SSL Configurations The PostgreSQL Operator can create clusters that use SSL authentication by utilizing custom configmaps.
+Configuration Files for SSL Authentication Users and administrators can specify a custom set of PostgreSQL configuration files to be used when creating a new PostgreSQL cluster. This example uses the files below-
  postgresql.conf pg_hba.conf pg_ident.conf  along with generated security certificates, to setup a custom SSL configuration.
 Config Files Purpose The postgresql.</description>
+    </item>
+    
+    <item>
+      <title>Multi-Zone Cloud Considerations</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/multi-zone-design-considerations/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/multi-zone-design-considerations/</guid>
+      <description>Considerations for PostgreSQL Operator Deployments in Multi-Zone Cloud Environments Overview When using the PostgreSQL Operator in a Kubernetes cluster consisting of nodes that span multiple zones, special consideration must be taken to ensure all pods and the associated volumes re scheduled and provisioned within the same zone.
+Given that a pod is unable mount a volume that is located in another zone, any volumes that are dynamically provisioned must be provisioned in a topology-aware manner according to the specific scheduling requirements for the pod.</description>
+    </item>
+    
+    <item>
+      <title>Rest API</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/direct-api-calls/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/direct-api-calls/</guid>
+      <description>Direct API Calls The API can also be accessed by interacting directly with the API server. This can be done by making curl calls to POST or GET information from the server. In order to make these calls you will need to provide certificates along with your request using the --cacert, --key, and --cert flags. Next you will need to provide the username and password for the RBAC along with a header that includes the content type and the --insecure flag.</description>
+    </item>
+    
+    <item>
+      <title>pgBackrest with S3</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/backrest-s3-configuration/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/backrest-s3-configuration/</guid>
+      <description>pgbackrest Configuration The PostgreSQL Operator integrates various features of the pgbackrest backup and restore project.
+The pgo-backrest-repo container acts as a pgBackRest remote repository for the Postgres cluster to use for storing archive files and backups.
+The following diagrams depicts some of the integration features:
+In this diagram, starting from left to right we see the following:
+ a user when they enter pgo backup mycluster &amp;ndash;backup-type=pgbackrest will cause a pgo-backrest container to be run as a Job, that container will execute a pgbackrest backup command in the pgBackRest repository container to perform the backup function.</description>
     </item>
     
     <item>
@@ -67,16 +99,14 @@ The .bashrc NAMESPACE environment variable a user sets determines which namespac
     </item>
     
     <item>
-      <title>OLM</title>
+      <title>Operator Lifecycle Management Support</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/olm/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/olm/</guid>
-      <description>Operator Lifecycle Management The Postgres Operator supports Redhats OLM (operator lifecycle manager) to a degree starting with pgo 4.0.
-The Postgres Operator supports the different deployment models as documented here:
-https://github.com/operator-framework/operator-lifecycle-manager/blob/master/Documentation/design/operatorgroups.md
-Operator Hub The Operator shows up on the Redhat Operator Hub at the following location:
-https://www.operatorhub.io/operator/postgres-operator.v3.5.0</description>
+      <description>Operator Lifecycle Management Support The PostgreSQL Operator supports Red Hat OLM (Operator Lifecycle Manager) to a degree starting with the PostgreSQL Operator 4.0 release.
+The PostgreSQL Operator supports the different deployment models as documented here
+The PostgreSQL Operator is available for download in OperatorHub.io</description>
     </item>
     
   </channel>
