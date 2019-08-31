@@ -15,6 +15,10 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/operatorcli/pgo-cli-overview/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/configuration/configuration/</loc>
   </url>
   
@@ -32,6 +36,10 @@
   
   <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/overview/node-affinitiy-overview/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/operatorcli/pgo-cli-global-variables/</loc>
   </url>
   
   <url>
@@ -56,6 +64,14 @@
   
   <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/overview/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/operatorcli/pgo-cli-global-flags/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/operatorcli/common-pgo-cli-operations/</loc>
   </url>
   
   <url>

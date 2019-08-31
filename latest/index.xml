@@ -22,6 +22,18 @@ Operating Systems The Operator is developed on both Centos 7 and RHEL 7 operatin
     </item>
     
     <item>
+      <title>PGO CLI Overview</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/pgo-cli-overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/pgo-cli-overview/</guid>
+      <description>PGO Command Line Interface (PGO CLI) One of the suppport methods of interacting with the PostgreSQL Operator is through the command line tool, pgo CLI.
+The PGO CLI is downloaded from the GitHub Releases page for the PostgreSQL Operator (https://github.com/crunchydata/postgres-operator/releases).
+The pgo client is provided in Mac, Windows, and Linux binary formats, download the appropriate client to your local laptop or workstation to work with a remote Operator.
+PGO CLI Syntax Use the following syntax to run pgo commands from your terminal window:</description>
+    </item>
+    
+    <item>
       <title>Configuration Resources</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/configuration/configuration/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -51,6 +63,16 @@ For example, within the Primary Deployment, the metrics container is completely 
       <guid>https://crunchydata.github.io/postgres-operator/latest/overview/node-affinitiy-overview/</guid>
       <description>Node Affinity in PostgreSQL Operator Kubernetes node affinity allows you to constrain which nodes your pod is eligible to be scheduled on, based on labels on the node.
 The PostgreSQL Operator provides users with the ability to add a node affinity section to a new Cluster Deployment. By adding a node affinity section to the Cluster Deployment, users can direct Kubernetes to attempt to schedule a primary PostgreSQL instance within a cluster on a specific Kubernetes node.</description>
+    </item>
+    
+    <item>
+      <title>PGO CLI Global Environment Variables</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/pgo-cli-global-variables/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/pgo-cli-global-variables/</guid>
+      <description>pgo CLI Global Environment Variables pgo will pick up these settings if set in your environment:
+   Name Description NOTES     PGOUSERNAME The username (role) used for auth on the operator apiserver. Requires that PGOUSERPASS be set.   PGOUSERPASS The password for used for auth on the operator apiserver. Requires that PGOUSERNAME be set.   PGOUSER The path the the pgorole file. Will be ignored if either PGOUSERNAME or PGOUSERPASS are set.</description>
     </item>
     
     <item>
@@ -85,6 +107,26 @@ The PostgreSQL Operator works with several different storage types, HostPath, Ne
       <description>Custom Postgres Configurations Users and administrators can specify a custom set of Postgres configuration files be used when creating a new Postgres cluster. The configuration files you can change include -
  postgresql.conf pg_hba.conf setup.sql  Different configurations for PostgreSQL might be defined for the following -
  OLTP types of databases OLAP types of databases High Memory Minimal Configuration for Development Project Specific configurations Special Security Requirements  Global ConfigMap If you create a configMap called pgo-custom-pg-config with any of the above files within it, new clusters will use those configuration files when setting up a new database instance.</description>
+    </item>
+    
+    <item>
+      <title>PGO CLI Global Flags</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/pgo-cli-global-flags/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/pgo-cli-global-flags/</guid>
+      <description>pgo CLI Global Flags pgo global command flags include:
+   Flag Description     n namespace targeted for the command   apiserver-url URL of the Operator REST API service, override with CO_APISERVER_URL environment variable   debug enable debug messages   pgo-ca-cert The CA Certificate file path for authenticating to the PostgreSQL Operator apiserver. Override with PGO_CA_CERT environment variable   pgo-client-cert The Client Certificate file path for authenticating to the PostgreSQL Operator apiserver.</description>
+    </item>
+    
+    <item>
+      <title>Common PGO CLI Operations</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/common-pgo-cli-operations/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/common-pgo-cli-operations/</guid>
+      <description>Common PGO CLI Operations In all the examples below, the user is specifying the pgouser1 namespace as the target of the operator. Replace this value with your own namespace value. You can specify a default namespace to be used by setting the PGO_NAMESPACE environment variable on the pgo client environment.
+PostgreSQL Cluster Operations Creating a Cluster A user will typically start using the PostgreSQL Operator by creating PostgreSQL cluster including a single PostgreSQL instance as follows:</description>
     </item>
     
     <item>
