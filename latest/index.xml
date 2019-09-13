@@ -568,7 +568,8 @@ pgo create cluster mycluster  pgo create cluster [flags]  Options  --autofail If
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_namespace/</guid>
       <description>pgo create namespace Create a namespace
 Synopsis Create a namespace. For example:
-pgo create namespace somenamespace  pgo create namespace [flags]  Options  -h, --help help for namespace  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. -n, --namespace string The namespace to use for pgo requests. --pgo-ca-cert string The CA Certificate file path for authenticating to the PostgreSQL Operator apiserver.</description>
+pgo create namespace somenamespace  pgo create namespace [flags]  Note: For Kubernetes versions prior to 1.12, this command will not function properly - use $PGOROOT/deploy/add_targted_namespace.sh script. For more details, see the Namespace Creation section under Installing Operator Using Bash in the documentation.`
+Options  -h, --help help for namespace  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver.</description>
     </item>
     
     <item>

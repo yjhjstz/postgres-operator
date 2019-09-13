@@ -1143,6 +1143,11 @@ for Kube events.  This value is set as follows:</p>
 <p>This means namespaces called <em>pgouser1</em> and <em>pgouser2</em> will be
 created as part of the default installation.</p>
 
+<div class="notices warning" ><p>In Kuberenetes versions prior to 1.12 (including Openshift up through 3.11), there is a limitation that requires an extra step during installation for the operator to function properly with watched namespaces. This limitation does not exist when using Kubernetes 1.12+. When a list of namespaces are provided through the NAMESPACE environment variable, the setupnamespaces.sh script handles the limitation properly in both the bash and ansible installation.</p>
+
+<p>However, if the user wishes to add a new watched namespace after installation, Where the user would normally use <em>pgo create namespace</em> to add the new namespace, they should instead run the add-targeted-namespace.sh script, regardless of installation method. Again, this is only required when running on a Kuberenetes distribution whose version is below 1.12. In Kubernetes version 1.12+ the <em>pgo create namespace</em> command works as expected.</p>
+</div>
+
 <p>The <em>PGO_OPERATOR_NAMESPACE</em> environment variable is a comma separated list
 of namespace values that the Operator itself will be deployed into.  For
 the installation example, this value is set as follows:</p>
@@ -1157,6 +1162,8 @@ be deployed into that namespace.</p>
 
 <pre><code>make setupnamespaces
 </code></pre>
+
+<p><strong>Note</strong>: The setupnamespaces target only creates the namespace(s) specified in PGO_OPERATOR_NAMESPACE environment variable</p>
 
 <p>The <a href="https://crunchydata.github.io/postgres-operator/latest/design">Design</a> section of this documentation talks further about
 the use of namespaces within the Operator.</p>
