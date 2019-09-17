@@ -1271,7 +1271,7 @@ kubectl port-forward &lt;GRAFANA_POD_NAME&gt; -n &lt;METRICS_NAMESPACE&gt; <span
 
 <span style="color:#75715e"># If deployed to OpenShift</span>
 oc port-forward &lt;GRAFANA_POD_NAME&gt; -n &lt;METRICS_NAMESPACE&gt; <span style="color:#ae81ff">3000</span>:3000</code></pre></div>
-<p>In a browser navigate to <code>https://127.0.0.1:3000</code> to access the Grafana dashboard.</p>
+<p>In a browser navigate to <code>http://127.0.0.1:3000</code> to access the Grafana dashboard.</p>
 
 <div class="notices tip" ><p>No metrics will be scraped if no exporters are available.  To create a PostgreSQL
 cluster with metric exporters run the following command:</p>

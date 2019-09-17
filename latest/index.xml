@@ -72,7 +72,7 @@ The PostgreSQL Operator provides users with the ability to add a node affinity s
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/pgo-cli-global-variables/</guid>
       <description>pgo CLI Global Environment Variables pgo will pick up these settings if set in your environment:
-   Name Description NOTES     PGOUSERNAME The username (role) used for auth on the operator apiserver. Requires that PGOUSERPASS be set.   PGOUSERPASS The password for used for auth on the operator apiserver. Requires that PGOUSERNAME be set.   PGOUSER The path the the pgorole file. Will be ignored if either PGOUSERNAME or PGOUSERPASS are set.</description>
+   Name Description NOTES     PGOUSERNAME The username (role) used for auth on the operator apiserver. Requires that PGOUSERPASS be set.   PGOUSERPASS The password for used for auth on the operator apiserver. Requires that PGOUSERNAME be set.   PGOUSER The path the the pgouser file. Will be ignored if either PGOUSERNAME or PGOUSERPASS are set.</description>
     </item>
     
     <item>
@@ -568,8 +568,7 @@ pgo create cluster mycluster  pgo create cluster [flags]  Options  --autofail If
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_namespace/</guid>
       <description>pgo create namespace Create a namespace
 Synopsis Create a namespace. For example:
-pgo create namespace somenamespace  pgo create namespace [flags]  Note: For Kubernetes versions prior to 1.12, this command will not function properly - use $PGOROOT/deploy/add_targted_namespace.sh script. For more details, see the Namespace Creation section under Installing Operator Using Bash in the documentation.`
-Options  -h, --help help for namespace  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver.</description>
+pgo create namespace somenamespace Note: For Kubernetes versions prior to 1.12, this command will not function properly - use $PGOROOT/deploy/add_targted_namespace.sh script. For more details, see the Namespace Creation section under Installing Operator Using Bash in the documentation.  pgo create namespace [flags]  Options  -h, --help help for namespace  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver.</description>
     </item>
     
     <item>
@@ -888,7 +887,7 @@ pgo restore mycluster  pgo restore [flags]  Options  --backup-opts string The re
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_scale/</guid>
       <description>pgo scale Scale a PostgreSQL cluster
 Synopsis The scale command allows you to adjust a Cluster&amp;rsquo;s replica configuration. For example:
-pgo scale mycluster --replica-count=1  pgo scale [flags]  Options  --ccp-image-tag string The CCPImageTag to use for cluster creation. If specified, overrides the .pgo.yaml setting. -h, --help help for scale --no-prompt No command line confirmation. --node-label string The node label (key) to use in placing the primary database. If not set, any node is used.</description>
+pgo scale mycluster --replica-count=1  pgo scale [flags]  Options  --ccp-image-tag string The CCPImageTag to use for cluster creation. If specified, overrides the .pgo.yaml setting. -h, --help help for scale --no-prompt No command line confirmation. --node-label string The node label (key) to use in placing the replica database. If not set, any node is used.</description>
     </item>
     
     <item>
@@ -921,7 +920,7 @@ pgo show backup mycluster pgo show backup mycluster --backup-type=pgbackrest pgo
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_backup/</guid>
       <description>pgo show backup Show backup information
 Synopsis Show backup information. For example:
-pgo show backup mycluser  pgo show backup [flags]  Options  --backup-type string The backup type output to list. Valid choices are pgbasebackup or pgbackrest (default). (default &amp;quot;pgbackrest&amp;quot;) -h, --help help for backup  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. -n, --namespace string The namespace to use for pgo requests.</description>
+pgo show backup mycluser  pgo show backup [flags]  Options  --backup-type string The backup type output to list. Valid choices are pgbasebackup or pgbackrest. (default &amp;quot;pgbackrest&amp;quot;) -h, --help help for backup  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. -n, --namespace string The namespace to use for pgo requests.</description>
     </item>
     
     <item>
