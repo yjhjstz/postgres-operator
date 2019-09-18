@@ -1074,6 +1074,111 @@
 <li><code>kubectl</code> or <code>oc</code> configured to communicate with Kubernetes</li>
 </ul>
 
+<h2 id="container-ports">Container Ports</h2>
+
+<p>The API server port is required to connect to the API server with the <code>pgo</code> cli. The <code>nsqd</code> and <code>nsqadmin</code> ports are required to connect to the event stream and listen for real-time events.</p>
+
+<table>
+<thead>
+<tr>
+<th>Container</th>
+<th>Port</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>API Server</td>
+<td>8443</td>
+</tr>
+
+<tr>
+<td>nsqadmin</td>
+<td>4151</td>
+</tr>
+
+<tr>
+<td>nsqd</td>
+<td>4150</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="service-ports">Service Ports</h2>
+
+<p>This is a list of service ports that are used in the PostgreSQL Operator. Verify that the ports are open and can be used.</p>
+
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Port</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>PostgreSQL</td>
+<td>5432</td>
+</tr>
+
+<tr>
+<td>pgpool</td>
+<td>5432</td>
+</tr>
+
+<tr>
+<td>pgbouncer</td>
+<td>5432</td>
+</tr>
+
+<tr>
+<td>pgbackrest</td>
+<td>2022</td>
+</tr>
+
+<tr>
+<td>node-exporter</td>
+<td>9100</td>
+</tr>
+
+<tr>
+<td>postgres-exporter</td>
+<td>9187</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="application-ports">Application Ports</h2>
+
+<p>This is a list of ports used by application containers that connect to the PostgreSQL Operator. If you are using one of these apps, verify that the service port for that app is open and can be used.</p>
+
+<table>
+<thead>
+<tr>
+<th>App</th>
+<th>Port</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>pgbadger</td>
+<td>10000</td>
+</tr>
+
+<tr>
+<td>Grafana</td>
+<td>3000</td>
+</tr>
+
+<tr>
+<td>Prometheus</td>
+<td>9090</td>
+</tr>
+</tbody>
+</table>
+
 
 
 
