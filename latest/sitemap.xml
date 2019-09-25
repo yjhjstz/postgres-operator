@@ -139,6 +139,10 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/tls/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/security/configure-postgres-operator-rbac/</loc>
   </url>
   
@@ -160,6 +164,22 @@
   
   <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/upgrade/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade35/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade35to4/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade40to41/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/upgrade/upgradeto35/</loc>
   </url>
   
   <url>

@@ -10,5 +10,49 @@
 	<atom:link href="https://crunchydata.github.io/postgres-operator/latest/upgrade/index.xml" rel="self" type="application/rss+xml" />
     
     
+    <item>
+      <title>Upgrade PGO 3.5 Minor Versions</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade35/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade35/</guid>
+      <description>Upgrading Postgres Operator 3.5 Minor Versions This procedure will give instructions on how to upgrade Postgres Operator 3.5 minor releases.
+As with any upgrade, please ensure you have taken recent backups of all relevant data! Prerequisites. You will need the following items to complete the upgrade:
+ The latest 3.5.X code for the Postgres Operator available The latest 3.5.X PGO client binary Finally, these instructions assume you are executing from $COROOT in a terminal window and that you are using the same user from your previous installation.</description>
+    </item>
+    
+    <item>
+      <title>Upgrade PGO 3.5 to 4</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade35to4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade35to4/</guid>
+      <description>Upgrading a Cluster from Version 3.5.x to PGO 4 This section will outline the procedure to upgrade a given cluster created using Postgres Operator 3.5.x to PGO version 4.1.
+As with any upgrade, please ensure you have taken recent backups of all relevant data! Prerequisites. You will need the following items to complete the upgrade:
+ The latest PGO 4.1 code for the Postgres Operator available The latest PGO 4.</description>
+    </item>
+    
+    <item>
+      <title>Upgrade PGO 4.0.1 to 4.1.0</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade40to41/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade40to41/</guid>
+      <description>Postgres Operator Upgrade Procedure from 4.0.1 to 4.1.0 This procedure will give instructions on how to upgrade to Postgres Operator 4.1.0.
+As with any upgrade, please ensure you have taken recent backups of all relevant data! Prerequisites. You will need the following items to complete the upgrade:
+ The latest 4.1.0 code for the Postgres Operator available The latest 4.1.0 PGO client binary Ensure you have a copy of the current pgouser and pgorole files for your environment and ensure you do not overwrite the current files.</description>
+    </item>
+    
+    <item>
+      <title>Upgrade to PGO 3.5 From Previous Versions</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/upgrade/upgradeto35/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/upgrade/upgradeto35/</guid>
+      <description>Upgrading to Version 3.5.0 From Previous Versions This procedure will give instructions on how to upgrade to Postgres Operator 3.5
+As with any upgrade, please ensure you have taken recent backups of all relevant data! For clusters created in prior versions that used pgbackrest, you will be required to first create a pgbasebackup for those clusters.
+After upgrading to Operator 3.5, you will need to restore those clusters from the pgbasebackup into a new cluster with --pgbackrest enabled.</description>
+    </item>
+    
   </channel>
 </rss>

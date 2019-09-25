@@ -99,6 +99,19 @@ The .bashrc NAMESPACE environment variable a user sets determines which namespac
     </item>
     
     <item>
+      <title>TLS</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/tls/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/tls/</guid>
+      <description>TLS Configuration Should you desire to alter the default TLS settings for the Postgres Operator, you can set the following variables in bash:
+To disable TLS and make an unsecured connection on port 8080 instead of connecting securely over the default port, 8443, set:
+Bash environment variables
+DISABLE_TLS=true PGO_APISERVER_PORT=8080  Or inventory variables if using Ansible
+pgo_disable_tls=&#39;true&#39; pgo_apiserver_port=8080  To disable TLS verifcation, set the follwing as a Bash environment variable</description>
+    </item>
+    
+    <item>
       <title>Operator Lifecycle Management Support</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/olm/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

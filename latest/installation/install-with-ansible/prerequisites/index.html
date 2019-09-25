@@ -168,6 +168,13 @@
           </a>
         </div>
     </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/tls/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/tls/">
+            TLS
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/olm/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/olm/">
@@ -923,12 +930,42 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/" class="dd-item
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/" class="dd-item haschildren
         ">
       <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/">Upgrade</a>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/">Upgrade</a><i class="fas fa-angle-right fa-lg category-icon"></i>
 
       </div>
+        <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade35/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade35/">
+            Upgrade PGO 3.5 Minor Versions
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade35to4/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade35to4/">
+            Upgrade PGO 3.5 to 4
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade40to41/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade40to41/">
+            Upgrade PGO 4.0.1 to 4.1.0
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgradeto35/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgradeto35/">
+            Upgrade to PGO 3.5 From Previous Versions
+          </a>
+        </div>
+    </li>
+        </ul>
     </li>
     <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/contributing/" class="dd-item haschildren
         ">
@@ -1778,7 +1815,7 @@ be deployed by the Crunchy PGO when creating and managing PG clusters.</p>
 <p>As this example resource configuration shows, integer <code>1</code> is used as the ID for each of the <code>resource</code> variables, which together form a single resource configuration called <code>small</code>.  This approach allows different resource configurations to be created by defining the proper <code>resource</code> variables with a unique ID for each required resource configuration.</p>
 
 <p>Additionally, once all resource configurations have been defined in the <code>inventory</code>, they can then be used to specify the default resource configurations that should be utilized for the various PG containers created by the operator.  This is done using the following variables, which are also defined in the  <code>inventory</code>:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#75af00">default_container_resources</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;small&#39;</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#75af00">default_container_resources</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;large&#39;</span>
 <span style="color:#75af00">default_load_resources</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;small&#39;</span>
 <span style="color:#75af00">default_lspvc_resources</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;small&#39;</span>
 <span style="color:#75af00">default_rmdata_resources</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;small&#39;</span>

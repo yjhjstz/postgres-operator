@@ -168,6 +168,13 @@
           </a>
         </div>
     </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/tls/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/tls/">
+            TLS
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/olm/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/olm/">
@@ -922,12 +929,42 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/" class="dd-item
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/" class="dd-item haschildren
         ">
       <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/">Upgrade</a>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/">Upgrade</a><i class="fas fa-angle-right fa-lg category-icon"></i>
 
       </div>
+        <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade35/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade35/">
+            Upgrade PGO 3.5 Minor Versions
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade35to4/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade35to4/">
+            Upgrade PGO 3.5 to 4
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade40to41/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade40to41/">
+            Upgrade PGO 4.0.1 to 4.1.0
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgradeto35/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgradeto35/">
+            Upgrade to PGO 3.5 From Previous Versions
+          </a>
+        </div>
+    </li>
+        </ul>
     </li>
     <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/contributing/" class="dd-item haschildren
         ">
@@ -1536,6 +1573,32 @@ pgo benchmark mycluster --policy=mytransactions -n pgouser1
 </code></pre>
 
 <p>This command will cause the PostgreSQL Service to be of a specific type instead of the default ClusterIP service type.</p>
+
+<h3 id="user-management">User Management</h3>
+
+<h4 id="create-a-user">Create a user</h4>
+
+<pre><code>pgo create user mycluster --username=someuser --password=somepassword --valid-days=10
+</code></pre>
+
+<p>This command will create a Postgres user on <code>mycluster</code> using the given username and password. You can add the <code>--managed</code> flag and the user will be managed by the operator. This means that a kubernetes secret will be created along with the Postgres user. Any users created with the <code>create user</code> command will automatically have access to all databases that were created when the cluster was created. You will need to manually update their privliges either by using an SQL policy or by using psql if you want to restrict access.</p>
+
+<h4 id="update-a-user">Update a user</h4>
+
+<pre><code>pgo update user mycluster --username=someuser --password=updatedpass
+</code></pre>
+
+<p>This command allows you to update the password for the given user on a cluster. The update user command also allows you to manage when users will expire.</p>
+
+<pre><code>pgo update user mycluster --username=someuser --valid-days=40
+</code></pre>
+
+<h4 id="delete-a-user">Delete a user</h4>
+
+<pre><code>pgo delete user mycluster --username=someuser
+</code></pre>
+
+<p>This command will delete the give user from <code>mycluster</code>. You can delete the user from all clusters by using the <code>--all</code> flag instead of the cluster name.</p>
 
 
 
