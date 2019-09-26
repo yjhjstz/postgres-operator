@@ -1583,6 +1583,18 @@ should contain all configurable variables the playbooks offer.</p>
 <td>false</td>
 <td>Determines whether or not the <code>cluster-admin</code> role is assigned to the PGO service account. Must be <code>true</code> to enable PGO namespace &amp; role creation when installing in OpenShift.</td>
 </tr>
+
+<tr>
+<td><code>pgbadgerport</code></td>
+<td>10000</td>
+<td>Set to configure the default port used to connect to pgbadger.</td>
+</tr>
+
+<tr>
+<td><code>exporter</code></td>
+<td>9187</td>
+<td>Set to configure the default port used to connect to postgres exporter.</td>
+</tr>
 </tbody>
 </table>
 
@@ -1630,6 +1642,8 @@ PostgreSQL Operator:</p>
 <li><code>replica_storage</code></li>
 <li><code>backrest_storage</code></li>
 <li><code>backup_storage</code></li>
+<li><code>pgbadgerport</code></li>
+<li><code>exporterport</code></li>
 </ul>
 
 <p>Additionally, <code>storage</code> variables will need to be defined to provide the Crunchy PGO with any required storage configuration.  Guidance for defining <code>storage</code> variables can be found in the next section.</p>
