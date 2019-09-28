@@ -1180,6 +1180,10 @@ are captured in a unique pgcluster resource for that Postgres cluster</li>
 <li>pgreplica - when you create a Postgres replica, a pgreplica CRD is created to define that replica</li>
 </ul>
 
+<h2 id="security-context-constraints">Security Context Constraints</h2>
+
+<p>In an Openshift installation of the PostgreSQL Operator, a custom Security Context Constraint (SCC) is used to customize the control permissions for the <em>pgcluster</em> pods. The PGO SCC adds file system group (fsgroup) 26 to the pod&rsquo;s existing security context and will be used in place of Openshift&rsquo;s default <em>restricted</em> SCC.</p>
+
 <h2 id="event-listeners">Event Listeners</h2>
 
 <p>Kubernetes events are created for the Operator CRD resources when
