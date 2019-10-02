@@ -1496,7 +1496,7 @@ should contain all configurable variables the playbooks offer.</p>
 
 <tr>
 <td><code>pgo_tls_no_verify</code></td>
-<td></td>
+<td>false</td>
 <td>Set to configure Operator to verify TLS certificates.</td>
 </tr>
 
@@ -1625,7 +1625,6 @@ PostgreSQL Operator:</p>
 <li><code>ccp_image_prefix</code></li>
 <li><code>ccp_image_tag</code></li>
 <li><code>pgo_client_version</code></li>
-<li><code>pgo_tls_no_verify</code></li>
 <li><code>auto_failover</code></li>
 <li><code>backrest</code></li>
 <li><code>badger</code></li>
@@ -1633,8 +1632,11 @@ PostgreSQL Operator:</p>
 <li><code>archive_mode</code></li>
 <li><code>archive_timeout</code></li>
 <li><code>auto_failover_sleep_secs</code></li>
+<li><code>auto_failover_replace_replica</code></li>
 <li><code>db_password_age_days</code></li>
 <li><code>db_password_length</code></li>
+<li><code>create_rbac</code></li>
+<li><code>db_name</code></li>
 <li><code>db_port</code></li>
 <li><code>db_replicas</code></li>
 <li><code>db_user</code></li>
@@ -1644,6 +1646,7 @@ PostgreSQL Operator:</p>
 <li><code>backup_storage</code></li>
 <li><code>pgbadgerport</code></li>
 <li><code>exporterport</code></li>
+<li><code>scheduler_timeout</code></li>
 </ul>
 
 <p>Additionally, <code>storage</code> variables will need to be defined to provide the Crunchy PGO with any required storage configuration.  Guidance for defining <code>storage</code> variables can be found in the next section.</p>
