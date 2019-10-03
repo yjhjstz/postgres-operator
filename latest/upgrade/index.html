@@ -1106,6 +1106,26 @@
 
 <p><a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade40to41/">Upgrade Postgres Operator from 4.0.1 to 4.1.0</a></p>
 
+<h2 id="upgrading-a-postgres-cluster">Upgrading A Postgres Cluster</h2>
+
+<p>Using the operator, it is possible to upgrade a postgres cluster in place.  When a pgo upgrade command is issued, and a &ndash;CCPImageTag is specified, the operator will upgrade each replica and the primary to the new CCPImageTag version. It is important to note that the postgres version of the new container should be compatible with the current running version. There is currently no version check done to ensure compatibility.</p>
+
+<p>The upgrade is accomplished by updating the CCPImageTag version in the deployment, which causes the old pod to be terminated and a new pod created with the updated deployment specification.</p>
+
+<p>When the upgrade starts, each replica is upgraded seqentially, waiting for the previous replica to go ready before updating the next. After the replicas complete, the primary is then upgraded to the new image. The upgrade process respects the <em>autofail</em> and the <em>AutofailReplaceReplica</em> settings as provided in the pgo.yaml or as a command line flag, if applicable.</p>
+
+<p>When the cluster is not in <em>autofail</em> mode, the deployments simply create a new pod when updated, terminating the old one. When autofail is enabled and the primary deployment is updated, the cluster behaves as though the primary had failed and begins the failover process. See <em>Automatic Failover</em> in the <em>Overview</em> section for more details on this and replica replacement.</p>
+
+<p>At this time, the backrest-repo container is not upgraded during this upgrade as it is part of the postgres operator release and is updated with the operator.</p>
+
+<h2 id="minor-upgrade-example">Minor Upgrade Example</h2>
+
+<p>In this example, we are upgrading a cluster from PostgreSQL 11.4 to 11.5 using the <code>crunchy-postgres:centos7-11.5-2.4.2</code> container:</p>
+
+<p><code>pgo upgrade mycluster --ccp-image-tag=centos7-11.5-2.4.2</code></p>
+
+<p>For more information, please see the <code>pgo upgrade</code> documentation <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_upgrade/">here.</a></p>
+
 
 
 
