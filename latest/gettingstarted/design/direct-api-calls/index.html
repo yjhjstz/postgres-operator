@@ -1126,7 +1126,7 @@
 <h6 id="get-api-server-version">Get API Server Version</h6>
 
 <pre><code>curl --cacert $PGO_CA_CERT --key $PGO_CLIENT_KEY --cert $PGO_CA_CERT \
--u username:password -H &quot;Content-Type:application/json&quot; --insecure \
+-u pgoadmin:examplepassword -H &quot;Content-Type:application/json&quot; --insecure \
 -X GET $PGO_APISERVER_URL/version
 </code></pre>
 
@@ -1135,11 +1135,11 @@
 <h6 id="create-cluster">Create Cluster</h6>
 
 <pre><code>curl --cacert $PGO_CA_CERT --key $PGO_CLIENT_KEY --cert $PGO_CA_CERT \
--u username:password -H &quot;Content-Type:application/json&quot; --insecure \
--X POST --data '{ \
-  &quot;ClientVersion&quot;:&quot;4.0.0&quot;, \
-  &quot;Namespace&quot;:&quot;pgouser1&quot;, \
-  &quot;Name&quot;:&quot;mycluster&quot;, \
+-u pgoadmin:examplepassword -H &quot;Content-Type:application/json&quot; --insecure \
+-X POST --data \
+  '{&quot;ClientVersion&quot;:&quot;4.1.0&quot;,
+  &quot;Namespace&quot;:&quot;pgouser1&quot;,
+  &quot;Name&quot;:&quot;mycluster&quot;,
   &quot;Series&quot;:1}' \
 $PGO_APISERVER_URL/clusters
 </code></pre>
@@ -1149,10 +1149,10 @@ $PGO_APISERVER_URL/clusters
 <h6 id="show-cluster">Show Cluster</h6>
 
 <pre><code>curl --cacert $PGO_CA_CERT --key $PGO_CLIENT_KEY --cert $PGO_CA_CERT \
--u username:password -H &quot;Content-Type:application/json&quot; --insecure \
--X POST --data '{ \
-  &quot;ClientVersion&quot;:&quot;4.0.0&quot;, \
-  &quot;Namespace&quot;:&quot;pgouser1&quot;, \
+-u pgoadmin:examplepassword -H &quot;Content-Type:application/json&quot; --insecure \
+-X POST --data \
+  '{&quot;ClientVersion&quot;:&quot;4.1.0&quot;,
+  &quot;Namespace&quot;:&quot;pgouser1&quot;,
   &quot;Clustername&quot;:&quot;mycluster&quot;}' \
 $PGO_APISERVER_URL/showclusters
 </code></pre>
@@ -1160,10 +1160,10 @@ $PGO_APISERVER_URL/showclusters
 <h6 id="delete-cluster">Delete Cluster</h6>
 
 <pre><code>curl --cacert $PGO_CA_CERT --key $PGO_CLIENT_KEY --cert $PGO_CA_CERT \
--u username:password -H &quot;Content-Type:application/json&quot; --insecure \
--X POST --data '{ \
-  &quot;ClientVersion&quot;:&quot;4.0.0&quot;, \
-  &quot;Namespace&quot;:&quot;pgouser1&quot;, \
+-u pgoadmin:examplepassword -H &quot;Content-Type:application/json&quot; --insecure \
+-X POST --data \
+  '{&quot;ClientVersion&quot;:&quot;4.1.0&quot;,
+  &quot;Namespace&quot;:&quot;pgouser1&quot;,
   &quot;Clustername&quot;:&quot;mycluster&quot;}' \
 $PGO_APISERVER_URL/clustersdelete
 </code></pre>

@@ -1143,6 +1143,53 @@ in the log.</p>
 
 <p>As with the other Operator templates, administrators can make custom changes to this set of templates to add custom features or metadata into the Resources created by the Operator.</p>
 
+<h2 id="operator-api-server">Operator API Server</h2>
+
+<p>The Operator&rsquo;s API server can be configured to allow access to select URL routes
+without requiring TLS authentication from the client and without
+the HTTP Basic authentication used for role-based-access.</p>
+
+<p>This configuration is performed by defining the <code>NOAUTH_ROUTES</code> environment
+variable for the apiserver container within the Operator pod.</p>
+
+<p>Typically, this configuration is made within the <code>deploy/deployment.json</code>
+file for bash-based installations and
+<code>ansible/roles/pgo-operator/templates/deployment.json.j2</code> for ansible installations.</p>
+
+<p>For example:</p>
+
+<pre><code>...
+    containers: [
+        {
+        	&quot;name&quot;: &quot;apiserver&quot;
+        	&quot;env&quot;: [
+                {
+                	&quot;name&quot;: &quot;NOAUTH_ROUTES&quot;,
+                	&quot;value&quot;: &quot;/health&quot;
+                }
+        	]
+        	...
+        }
+        ...
+    ]
+...
+</code></pre>
+
+<p>The <code>NOAUTH_ROUTES</code> variable must be set to a comma-separated list of
+URL routes. For example: <code>/health,/version,/example3</code> would opt to <strong>disable</strong>
+authentication for <code>$APISERVER_URL/health</code>, <code>$APISERVER_URL/version</code>, and
+<code>$APISERVER_URL/example3</code> respectively.</p>
+
+<p>Currently, only the following routes may have authentication disabled using
+this setting:</p>
+
+<pre><code>/health
+</code></pre>
+
+<p>If the health route has its authentication disabled, the existing readiness
+and liveness probes for the apiserver container could be enhanced by
+configuring them with HTTP-based checks against the health route.</p>
+
 <h2 id="security">Security</h2>
 
 <p>Setting up pgo users and general security configuration is described in the <a href="https://crunchydata.github.io/postgres-operator/latest/security">Security</a> section of this documentation.</p>
