@@ -1181,23 +1181,38 @@ Verify this by running:</p>
 
 <p>At this point, the Operator should be running the latest minor version of 3.5, and new clusters will be built using the appropriate specifications defined in your pgo.yaml file. For the existing clusters, upgrades can be performed with the following steps.</p>
 
-<p>To bring your clusters up to the latest versions of Containers, for each of your clusters you will want to run the following:</p>
+<div class="notices info" >Before beginning your upgrade procedure, be sure to consult the <a href="https://crunchydata.github.io/postgres-operator/latest/configuration/compatibility/">Compatibility Requirements Page</a> for container dependency information.</div>
 
-<pre><code>pgo scaledown &lt;clustername&gt; --query
-pgo scaledown &lt;clustername&gt; --target=&lt;replica-name&gt; --delete-data
+<p>First, update the deployment of each replica, one at a time, with the new image version:</p>
+
+<pre><code>kubectl edit deployment.apps/yourcluster
 </code></pre>
 
-<p>When you scale down the cluster you have the option of passing in the &ndash;delete-data flag on the pgo scaledown command. If you do this the pvc bound to your pod will also be deleted. If for some reason you need to keep the pvc around, you can remove this flag.</p>
+<p>then edit the line containing the image value, which will be similar to the following</p>
 
-<p>Now that your cluster only has one pod you can run the minor upgrade:</p>
-
-<pre><code>pgo upgrade &lt;clustername&gt;
+<pre><code>image: crunchydata/crunchy-postgres:centos7-11.3-2.4.0
 </code></pre>
 
-<p>Once the minor upgrade is done you can scale your cluster back to the previous number of replicas:</p>
+<p>When this new deployment is written, it will kill the pod and recreate it with the new image. Do this for each replica, waiting for the previous pod to upgrade completely before moving to next.</p>
 
-<pre><code>pgo scale &lt;clustername&gt; --replica-count=1
+<p>Once the replicas have been updated, update the deployment of primary by updating the <code>image:</code> line in the same fashion, waiting for it to come back up.</p>
+
+<p>Now, similar to the steps above, you will need to update the pgcluster <code>ccpimagetag:</code> to the new value:</p>
+
+<pre><code>kubectl edit pgcluster yourcluster
 </code></pre>
+
+<p>To check everything is now working as expected, execute</p>
+
+<pre><code>pgo test yourcluster
+</code></pre>
+
+<p>To validate the database connections and execute</p>
+
+<pre><code>pgo show cluster yourcluster
+</code></pre>
+
+<p>To check the various cluster elements are listed as expected.</p>
 
 <p>There is a bug in the operator where the image version for the backrest repo deployment is not updated with a pgo upgrade. As a workaround for this you need to redeploy the backrest shared repo deployment with the correct image version.</p>
 

@@ -1277,25 +1277,18 @@ Verify this by running:</p>
 
 <p>At this point, the Operator will be running version 4.1.0, and new clusters will be built using the appropriate specifications defined in your pgo.yaml file. For the existing clusters, upgrades can be performed with the following steps.</p>
 
-<p>To bring your clusters up to the latest versions of Postgres and Containers, for each of your clusters you will want to run the following:</p>
+<div class="notices info" >Before beginning your upgrade procedure, be sure to consult the <a href="https://crunchydata.github.io/postgres-operator/latest/configuration/compatibility/">Compatibility Requirements Page</a> for container dependency information.</div>
 
-<pre><code>pgo scaledown &lt;clustername&gt; --query
-pgo scaledown &lt;clustername&gt; --target
-</code></pre>
-
-<p>Now that your cluster only has one pod you can run the minor upgrade:</p>
+<p>To start, execute the minor upgrade command:</p>
 
 <pre><code>pgo upgrade cluster &lt;clustername&gt;
 </code></pre>
 
-<p>By default this command updates the cluster with the values in the pgo.yaml.  If however you are running more than one version of Postgres clusters you can run the following to upgrade any clusters that do not match what is in your current configuration.</p>
+<p>If you would like to know more about the Postgres Cluster minor upgrade, please see the <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/">Upgrade Page</a> for additional information.</p>
+
+<p>By default this command updates the cluster with the values in the pgo.yaml.  If however you are running more than one version of Postgres clusters you can run the following command to upgrade any clusters that do not match what is in your current configuration.</p>
 
 <pre><code>pgo upgrade &lt;clustername&gt; --ccp-image-tag=&lt;imagetag&gt;
-</code></pre>
-
-<p>Once the minor upgrade is done you can scale your cluster back to the previous number of replicas, for example:</p>
-
-<pre><code>pgo scale &lt;clustername&gt; --replica-count=2
 </code></pre>
 
 <p>There is a bug in the operator where the image version for the backrest repo deployment is not updated with a pgo upgrade. As a workaround for this you need to redeploy the backrest shared repo deployment with the correct image version.</p>
