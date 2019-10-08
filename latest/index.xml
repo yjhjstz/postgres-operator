@@ -624,7 +624,7 @@ pgo create cluster mycluster  pgo create cluster [flags]  Options  --autofail If
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_namespace/</guid>
       <description>pgo create namespace Create a namespace
 Synopsis Create a namespace. For example:
-pgo create namespace somenamespace Note: For Kubernetes versions prior to 1.12, this command will not function properly - use $PGOROOT/deploy/add_targted_namespace.sh script. For more details, see the Namespace Creation section under Installing Operator Using Bash in the documentation.  pgo create namespace [flags]  Options  -h, --help help for namespace  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver.</description>
+pgo create namespace somenamespace Note: For Kubernetes versions prior to 1.12, this command will not function properly - use $PGOROOT/deploy/add_targted_namespace.sh scriptor or give the user cluster-admin privileges. For more details, see the Namespace Creation section under Installing Operator Using Bash in the documentation.  pgo create namespace [flags]  Options  -h, --help help for namespace  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver.</description>
     </item>
     
     <item>
@@ -1195,8 +1195,8 @@ pgo update pgouser [flags]  Options  --all-namespaces all namespaces. -h, --help
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_update_user/</guid>
       <description>pgo update user Update a postgres user
-Synopsis UPDATE allows you to update a pgo user. For example: //change a password pgo update user mycluster &amp;ndash;username=someuser &amp;ndash;password=foo &amp;ndash;update-passwords &amp;ndash;expired=200 //expire password for a user pgo update user mycluster &amp;ndash;username=someuser &amp;ndash;expire-user
-pgo update user [flags]  Options  --all all clusters. --expire-user Performs expiring a user if set to true. --expired string required flag when updating passwords that will expire in X days using --update-passwords flag.</description>
+Synopsis UPDATE allows you to update a pgo user. For example: //change a password, set valid days for 40 days from now pgo update user mycluster &amp;ndash;username=someuser &amp;ndash;password=foo &amp;ndash;valid-days=40 //expire password for a user pgo update user mycluster &amp;ndash;username=someuser &amp;ndash;expire-user //Update all passwords older than the number of days specified pgo update user mycluster &amp;ndash;expired=45 &amp;ndash;password-length=8
+pgo update user [flags]  Options  --all all clusters.</description>
     </item>
     
     <item>
@@ -1208,7 +1208,8 @@ pgo update user [flags]  Options  --all all clusters. --expire-user Performs exp
       <description>pgo upgrade Perform an upgrade
 Synopsis UPGRADE performs an upgrade on a PostgreSQL cluster. For example:
 pgo upgrade mycluster
-pgo upgrade [flags]  Options  --ccp-image-tag string The CCPImageTag to use for cluster creation. If specified, overrides the pgo.yaml setting. -h, --help help for upgrade  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. -n, --namespace string The namespace to use for pgo requests.</description>
+This upgrade will update the CCPImageTag of the deployment for the following: primary, replicas, and backrest-repo. The running containers are upgraded one at a time, sequentially, in the following order: replicas, backrest-repo, then primary.
+pgo upgrade [flags]  Options  --ccp-image-tag string The CCPImageTag to use for cluster creation. If specified, overrides the pgo.</description>
     </item>
     
     <item>
