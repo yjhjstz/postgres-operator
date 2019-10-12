@@ -201,6 +201,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/common-env/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/installation/common-env/">
+            Operator Environment
+          </a>
+        </div>
+    </li>
     <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/" class="dd-item haschildren
         ">
       <div>
@@ -259,13 +266,6 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/install-pgo-client/" class="dd-item
-        ">
-      <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/installation/install-pgo-client/">Install `pgo` Client</a>
-
-      </div>
-    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/operator-install/" class="dd-item active">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/installation/operator-install/">
@@ -279,6 +279,13 @@
             Developer Setup
           </a>
         </div>
+    </li>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/install-pgo-client/" class="dd-item
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/installation/install-pgo-client/">Install `pgo` Client</a>
+
+      </div>
     </li>
         </ul>
     </li>
@@ -1018,14 +1025,15 @@
    Getting Started</option>
     <option value="/installation/" >
    Installation</option> 
+      <option value="/installation/common-env/" >- Operator Environment</option>
     <option value="/installation/install-with-ansible/" >
   - 
    Install Operator Using Ansible</option>
+      <option value="/installation/operator-install/"  selected>- Install Operator Using Bash</option>
+      <option value="/installation/developer-setup/" >- Developer Setup</option>
     <option value="/installation/install-pgo-client/" >
   - 
    Install `pgo` Client</option>
-      <option value="/installation/operator-install/"  selected>- Install Operator Using Bash</option>
-      <option value="/installation/developer-setup/" >- Developer Setup</option>
   
     <option value="/configuration/" >
    Configuration</option>
@@ -1142,6 +1150,8 @@ git checkout 4.1.0
 source $HOME/.bashrc
 </code></pre>
 
+<p>To manually configure the environment variables, refer to the <a href="https://crunchydata.github.io/postgres-operator/latest/installation/common-env/">environment documentation</a>.</p>
+
 <p>For various scripts used by the Operator, the <em>expenv</em> utility is required, download this utility from the Github Releases page, and place it into your PATH (e.g. $HOME/odev/bin).
 <div class="notices tip" ><p>There is also a Makefile target that includes is <em>expenv</em> and several other dependencies that are only needed if you plan on building from source:</p></p>
 
@@ -1183,8 +1193,6 @@ created as part of the default installation.</p>
 <div class="notices warning" ><p>In Kuberenetes versions prior to 1.12 (including Openshift up through 3.11), there is a limitation that requires an extra step during installation for the operator to function properly with watched namespaces. This limitation does not exist when using Kubernetes 1.12+. When a list of namespaces are provided through the NAMESPACE environment variable, the setupnamespaces.sh script handles the limitation properly in both the bash and ansible installation.</p>
 
 <p>However, if the user wishes to add a new watched namespace after installation, where the user would normally use pgo create namespace to add the new namespace, they should instead run the add-targeted-namespace.sh script or they may give themselves cluster-admin privileges instead of having to run setupnamespaces.sh script. Again, this is only required when running on a Kuberenetes distribution whose version is below 1.12. In Kubernetes version 1.12+ the pgo create namespace command works as expected.</p>
-
-<p>add-targeted-namespace.sh requires the additional environment variable PGO_INSTALLATION_NAME set to the unique name given to the Operator&rsquo;s installation</p>
 </div>
 
 <p>The <em>PGO_OPERATOR_NAMESPACE</em> environment variable is a comma separated list
@@ -1417,7 +1425,7 @@ postgres-operator-79bf94c658-zczf6   3/3       Running   0          47s
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/installation/install-pgo-client/" title="Install `pgo` Client"> <i class="fa fa-chevron-left"></i><label>Install `pgo` Client</label></a>
+<a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/uninstalling-metrics/" title="Uninstalling Metrics Stack"> <i class="fa fa-chevron-left"></i><label>Uninstalling Metrics Stack</label></a>
     <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/installation/developer-setup/" title="Developer Setup" style="margin-right: 0px;"><label>Developer Setup</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 

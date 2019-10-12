@@ -7,7 +7,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.55.6" />
-<title>pgo_update_pgouser :: Crunchy Data PostgreSQL Operator Documentation</title>
+<title>Operator Environment :: Crunchy Data PostgreSQL Operator Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/latest/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/latest/css/nucleus.css" rel="stylesheet">
 <link href="https://crunchydata.github.io/postgres-operator/latest/theme-flex/style.css" rel="stylesheet">
@@ -29,7 +29,7 @@
 
     
   </head>
-  <body data-url="/operatorcli/cli/pgo_update_pgouser/">
+  <body data-url="/installation/common-env/">
     
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
   
@@ -193,14 +193,15 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/" class="dd-item haschildren
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/installation/">Installation</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/installation/">Installation</a>
+            <i class="fas fa-angle-down fa-lg category-icon"></i>
 
       </div>
         <ul>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/common-env/" class="dd-item">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/common-env/" class="dd-item active">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/installation/common-env/">
             Operator Environment
@@ -397,11 +398,10 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/" class="dd-item parent haschildren
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/" class="dd-item haschildren
         ">
       <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/">Operator Command Line Utility</a>
-            <i class="fas fa-angle-down fa-lg category-icon"></i>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/">Operator Command Line Utility</a><i class="fas fa-angle-right fa-lg category-icon"></i>
 
       </div>
         <ul>
@@ -440,11 +440,10 @@
           </a>
         </div>
     </li>
-    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/" class="dd-item parent haschildren
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/" class="dd-item haschildren
         ">
       <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/">Operator CLI</a>
-            <i class="fas fa-angle-down fa-lg category-icon"></i>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/">Operator CLI</a><i class="fas fa-angle-right fa-lg category-icon"></i>
 
       </div>
         <ul>
@@ -861,7 +860,7 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_update_pgouser/" class="dd-item active">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_update_pgouser/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_update_pgouser/">
             pgo_update_pgouser
@@ -1025,88 +1024,23 @@
     <option value="/gettingstarted/" >
    Getting Started</option>
     <option value="/installation/" >
-   Installation</option>
+   Installation</option> 
+      <option value="/installation/common-env/"  selected>- Operator Environment</option>
+    <option value="/installation/install-with-ansible/" >
+  - 
+   Install Operator Using Ansible</option>
+      <option value="/installation/operator-install/" >- Install Operator Using Bash</option>
+      <option value="/installation/developer-setup/" >- Developer Setup</option>
+    <option value="/installation/install-pgo-client/" >
+  - 
+   Install `pgo` Client</option>
+  
     <option value="/configuration/" >
    Configuration</option>
     <option value="/overview/" >
    Overview</option>
     <option value="/operatorcli/" >
-   Operator Command Line Utility</option> 
-      <option value="/operatorcli/pgo-cli-overview/" >- PGO CLI Overview</option>
-      <option value="/operatorcli/pgo-cli-global-variables/" >- PGO CLI Global Environment Variables</option>
-      <option value="/operatorcli/pgo-cli-global-flags/" >- PGO CLI Global Flags</option>
-      <option value="/operatorcli/common-pgo-cli-operations/" >- Common PGO CLI Operations</option>
-      <option value="/operatorcli/pgo-overview/" >- Operator CLI Overview</option>
-    <option value="/operatorcli/cli/" >
-  - 
-   Operator CLI</option> 
-      <option value="/operatorcli/cli/pgo/" >-- pgo</option>
-      <option value="/operatorcli/cli/pgo_apply/" >-- pgo_apply</option>
-      <option value="/operatorcli/cli/pgo_backup/" >-- pgo_backup</option>
-      <option value="/operatorcli/cli/pgo_benchmark/" >-- pgo_benchmark</option>
-      <option value="/operatorcli/cli/pgo_cat/" >-- pgo_cat</option>
-      <option value="/operatorcli/cli/pgo_clidoc/" >-- pgo_clidoc</option>
-      <option value="/operatorcli/cli/pgo_create/" >-- pgo_create</option>
-      <option value="/operatorcli/cli/pgo_create_cluster/" >-- pgo_create_cluster</option>
-      <option value="/operatorcli/cli/pgo_create_namespace/" >-- pgo_create_namespace</option>
-      <option value="/operatorcli/cli/pgo_create_pgbouncer/" >-- pgo_create_pgbouncer</option>
-      <option value="/operatorcli/cli/pgo_create_pgorole/" >-- pgo_create_pgorole</option>
-      <option value="/operatorcli/cli/pgo_create_pgouser/" >-- pgo_create_pgouser</option>
-      <option value="/operatorcli/cli/pgo_create_pgpool/" >-- pgo_create_pgpool</option>
-      <option value="/operatorcli/cli/pgo_create_policy/" >-- pgo_create_policy</option>
-      <option value="/operatorcli/cli/pgo_create_schedule/" >-- pgo_create_schedule</option>
-      <option value="/operatorcli/cli/pgo_create_user/" >-- pgo_create_user</option>
-      <option value="/operatorcli/cli/pgo_delete/" >-- pgo_delete</option>
-      <option value="/operatorcli/cli/pgo_delete_backup/" >-- pgo_delete_backup</option>
-      <option value="/operatorcli/cli/pgo_delete_benchmark/" >-- pgo_delete_benchmark</option>
-      <option value="/operatorcli/cli/pgo_delete_cluster/" >-- pgo_delete_cluster</option>
-      <option value="/operatorcli/cli/pgo_delete_label/" >-- pgo_delete_label</option>
-      <option value="/operatorcli/cli/pgo_delete_namespace/" >-- pgo_delete_namespace</option>
-      <option value="/operatorcli/cli/pgo_delete_pgbouncer/" >-- pgo_delete_pgbouncer</option>
-      <option value="/operatorcli/cli/pgo_delete_pgorole/" >-- pgo_delete_pgorole</option>
-      <option value="/operatorcli/cli/pgo_delete_pgouser/" >-- pgo_delete_pgouser</option>
-      <option value="/operatorcli/cli/pgo_delete_pgpool/" >-- pgo_delete_pgpool</option>
-      <option value="/operatorcli/cli/pgo_delete_policy/" >-- pgo_delete_policy</option>
-      <option value="/operatorcli/cli/pgo_delete_schedule/" >-- pgo_delete_schedule</option>
-      <option value="/operatorcli/cli/pgo_delete_upgrade/" >-- pgo_delete_upgrade</option>
-      <option value="/operatorcli/cli/pgo_delete_user/" >-- pgo_delete_user</option>
-      <option value="/operatorcli/cli/pgo_df/" >-- pgo_df</option>
-      <option value="/operatorcli/cli/pgo_failover/" >-- pgo_failover</option>
-      <option value="/operatorcli/cli/pgo_label/" >-- pgo_label</option>
-      <option value="/operatorcli/cli/pgo_load/" >-- pgo_load</option>
-      <option value="/operatorcli/cli/pgo_ls/" >-- pgo_ls</option>
-      <option value="/operatorcli/cli/pgo_reload/" >-- pgo_reload</option>
-      <option value="/operatorcli/cli/pgo_restore/" >-- pgo_restore</option>
-      <option value="/operatorcli/cli/pgo_scale/" >-- pgo_scale</option>
-      <option value="/operatorcli/cli/pgo_scaledown/" >-- pgo_scaledown</option>
-      <option value="/operatorcli/cli/pgo_show/" >-- pgo_show</option>
-      <option value="/operatorcli/cli/pgo_show_backup/" >-- pgo_show_backup</option>
-      <option value="/operatorcli/cli/pgo_show_benchmark/" >-- pgo_show_benchmark</option>
-      <option value="/operatorcli/cli/pgo_show_cluster/" >-- pgo_show_cluster</option>
-      <option value="/operatorcli/cli/pgo_show_config/" >-- pgo_show_config</option>
-      <option value="/operatorcli/cli/pgo_show_namespace/" >-- pgo_show_namespace</option>
-      <option value="/operatorcli/cli/pgo_show_pgorole/" >-- pgo_show_pgorole</option>
-      <option value="/operatorcli/cli/pgo_show_pgouser/" >-- pgo_show_pgouser</option>
-      <option value="/operatorcli/cli/pgo_show_policy/" >-- pgo_show_policy</option>
-      <option value="/operatorcli/cli/pgo_show_pvc/" >-- pgo_show_pvc</option>
-      <option value="/operatorcli/cli/pgo_show_schedule/" >-- pgo_show_schedule</option>
-      <option value="/operatorcli/cli/pgo_show_upgrade/" >-- pgo_show_upgrade</option>
-      <option value="/operatorcli/cli/pgo_show_user/" >-- pgo_show_user</option>
-      <option value="/operatorcli/cli/pgo_show_workflow/" >-- pgo_show_workflow</option>
-      <option value="/operatorcli/cli/pgo_status/" >-- pgo_status</option>
-      <option value="/operatorcli/cli/pgo_test/" >-- pgo_test</option>
-      <option value="/operatorcli/cli/pgo_update/" >-- pgo_update</option>
-      <option value="/operatorcli/cli/pgo_update_cluster/" >-- pgo_update_cluster</option>
-      <option value="/operatorcli/cli/pgo_update_namespace/" >-- pgo_update_namespace</option>
-      <option value="/operatorcli/cli/pgo_update_pgorole/" >-- pgo_update_pgorole</option>
-      <option value="/operatorcli/cli/pgo_update_pgouser/"  selected>-- pgo_update_pgouser</option>
-      <option value="/operatorcli/cli/pgo_update_user/" >-- pgo_update_user</option>
-      <option value="/operatorcli/cli/pgo_upgrade/" >-- pgo_upgrade</option>
-      <option value="/operatorcli/cli/pgo_user/" >-- pgo_user</option>
-      <option value="/operatorcli/cli/pgo_version/" >-- pgo_version</option>
-      <option value="/operatorcli/cli/pgo_watch/" >-- pgo_watch</option>
-  
-  
+   Operator Command Line Utility</option>
     <option value="/security/" >
    RBAC Configuration</option>
     <option value="/upgrade/" >
@@ -1131,7 +1065,7 @@
             <i class="fa fa-info-circle"></i>
             
           </a>
-          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/develop/hugo/content/operatorcli/cli/pgo_update_pgouser.md" target="blank">
+          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/develop/hugo/content/Installation/common-env.md" target="blank">
             <i class="fa fa-code-fork"></i>
             
           </a>
@@ -1151,12 +1085,7 @@
 
 
 
-
-
-
- <a href='https://crunchydata.github.io/postgres-operator/latest/'>Crunchy Data Postgres Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/operatorcli/'>Operator Command Line Utility</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/'>Operator CLI</a> > pgo_update_pgouser
-
- 
+ <a href='https://crunchydata.github.io/postgres-operator/latest/'>Crunchy Data Postgres Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/installation/'>Installation</a> > Operator Environment
 
  
 
@@ -1172,62 +1101,165 @@
     
     <div id="body-inner">
 
-    <h1>pgo_update_pgouser</h1>
+    <h1>Operator Environment</h1>
 
     
 
     
-    
+    <p>For various scripts used by the Operator, the <code>expenv</code> utility is required as are certain environment variables.</p>
 
-<h2 id="pgo-update-pgouser">pgo update pgouser</h2>
+<p>Download the <code>expenv</code> utility from its <a href="https://github.com/blang/expenv/releases">Github Releases page</a>, and place it into your PATH (e.g. $HOME/odev/bin).</p>
 
-<p>Update a pgouser</p>
+<p>The following environment variables are heavily used in the Bash installation procedures and may be used in Operator helper scripts.</p>
 
-<h3 id="synopsis">Synopsis</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Ansible Inventory</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
 
-<p>UPDATE allows you to update a pgo user. For example:
-        pgo update pgouser myuser &ndash;pgouser-roles=somerole
-        pgo update pgouser myuser &ndash;pgouser-password=somepassword &ndash;pgouser-roles=somerole
-        pgo update pgouser myuser &ndash;pgouser-password=somepassword &ndash;no-prompt</p>
+<tbody>
+<tr>
+<td><code>DISABLE_EVENTING</code></td>
+<td>pgo_disable_eventing</td>
+<td>false</td>
+<td>Disable Operator eventing subsystem</td>
+</tr>
 
-<pre><code>pgo update pgouser [flags]
-</code></pre>
+<tr>
+<td><code>DISABLE_TLS</code></td>
+<td>pgo_disable_tls</td>
+<td>false</td>
+<td>Disable TLS for Operator</td>
+</tr>
 
-<h3 id="options">Options</h3>
+<tr>
+<td><code>GOPATH</code></td>
+<td></td>
+<td>$HOME/odev</td>
+<td>Golang project directory</td>
+</tr>
 
-<pre><code>      --all-namespaces              all namespaces.
-  -h, --help                        help for pgouser
-      --no-prompt                   No command line confirmation.
-      --pgouser-namespaces string   The namespaces to use for updating the pgouser roles.
-      --pgouser-password string     The password to use for updating the pgouser password.
-      --pgouser-roles string        The roles to use for updating the pgouser roles.
-</code></pre>
+<tr>
+<td><code>GOBIN</code></td>
+<td></td>
+<td>$GOPATH/bin</td>
+<td>Golang binary target directory</td>
+</tr>
 
-<h3 id="options-inherited-from-parent-commands">Options inherited from parent commands</h3>
+<tr>
+<td><code>NAMESPACE</code></td>
+<td>namespace</td>
+<td>pgouser1</td>
+<td>Namespaces monitored by Operator</td>
+</tr>
 
-<pre><code>      --apiserver-url string     The URL for the PostgreSQL Operator apiserver.
-      --debug                    Enable debugging when true.
-  -n, --namespace string         The namespace to use for pgo requests.
-      --pgo-ca-cert string       The CA Certificate file path for authenticating to the PostgreSQL Operator apiserver.
-      --pgo-client-cert string   The Client Certificate file path for authenticating to the PostgreSQL Operator apiserver.
-      --pgo-client-key string    The Client Key file path for authenticating to the PostgreSQL Operator apiserver.
-</code></pre>
+<tr>
+<td><code>PGOROOT</code></td>
+<td></td>
+<td>$GOPATH/src/github.com/crunchydata/postgres-operator</td>
+<td>Operator repository location</td>
+</tr>
 
-<h3 id="see-also">SEE ALSO</h3>
+<tr>
+<td><code>PGO_APISERVER_PORT</code></td>
+<td>pgo_apiserver_port</td>
+<td>8443</td>
+<td>HTTP(S) port for Operator API server</td>
+</tr>
 
-<ul>
-<li><a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_update/">pgo update</a>     - Update a pgouser, pgorole, or cluster</li>
-</ul>
+<tr>
+<td><code>PGO_BASEOS</code></td>
+<td></td>
+<td>centos7</td>
+<td>Base OS for container images</td>
+</tr>
 
-<h6 id="auto-generated-by-spf13-cobra-on-4-oct-2019">Auto generated by spf13/cobra on 4-Oct-2019</h6>
+<tr>
+<td><code>PGO_CA_CERT</code></td>
+<td></td>
+<td>$PGOROOT/conf/postgres-operator/server.crt</td>
+<td>Server certificate and CA trust</td>
+</tr>
+
+<tr>
+<td><code>PGO_CMD</code></td>
+<td></td>
+<td>kubectl</td>
+<td>Cluster management tool executable</td>
+</tr>
+
+<tr>
+<td><code>PGO_CLIENT_CERT</code></td>
+<td></td>
+<td>$PGOROOT/conf/postgres-operator/server.crt</td>
+<td>TLS Client certificate</td>
+</tr>
+
+<tr>
+<td><code>PGO_CLIENT_KEY</code></td>
+<td></td>
+<td>$PGOROOT/conf/postgres-operator/server.crt</td>
+<td>TLS Client certificate private key</td>
+</tr>
+
+<tr>
+<td><code>PGO_IMAGE_PREFIX</code></td>
+<td>pgo_image_prefix</td>
+<td>crunchydata</td>
+<td>Container image prefix</td>
+</tr>
+
+<tr>
+<td><code>PGO_IMAGE_TAG</code></td>
+<td>pgo_image_tag</td>
+<td>$PGO_BASEOS-$PGO_VERSION</td>
+<td>OS/Version tagging info for images</td>
+</tr>
+
+<tr>
+<td><code>PGO_INSTALLATION_NAME</code></td>
+<td>pgo_installation_name</td>
+<td>devtest</td>
+<td>Unique name given to Operator installation</td>
+</tr>
+
+<tr>
+<td><code>PGO_OPERATOR_NAMESPACE</code></td>
+<td>pgo_operator_namespace</td>
+<td>pgo</td>
+<td>Kubernetes namespace for the operator</td>
+</tr>
+
+<tr>
+<td><code>PGO_VERSION</code></td>
+<td></td>
+<td>4.1.0</td>
+<td>Operator version</td>
+</tr>
+
+<tr>
+<td><code>TLS_NO_VERIFY</code></td>
+<td>pgo_tls_no_verify</td>
+<td>false</td>
+<td>Disable certificate verification (e.g. strict hostname checking)</td>
+</tr>
+</tbody>
+</table>
+
+<div class="notices tip" ><code>examples/envs.sh</code> contains the above variable definitions as well</div>
 
 
 
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_update_pgorole/" title="pgo_update_pgorole"> <i class="fa fa-chevron-left"></i><label>pgo_update_pgorole</label></a>
-    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_update_user/" title="pgo_update_user" style="margin-right: 0px;"><label>pgo_update_user</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/installation/" title="Installation"> <i class="fa fa-chevron-left"></i><label>Installation</label></a>
+    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/" title="Install Operator Using Ansible" style="margin-right: 0px;"><label>Install Operator Using Ansible</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>

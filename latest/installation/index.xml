@@ -11,6 +11,18 @@
     
     
     <item>
+      <title>Operator Environment</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/installation/common-env/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/installation/common-env/</guid>
+      <description>For various scripts used by the Operator, the expenv utility is required as are certain environment variables.
+Download the expenv utility from its Github Releases page, and place it into your PATH (e.g. $HOME/odev/bin).
+The following environment variables are heavily used in the Bash installation procedures and may be used in Operator helper scripts.
+   Variable Ansible Inventory Example Description     DISABLE_EVENTING pgo_disable_eventing false Disable Operator eventing subsystem   DISABLE_TLS pgo_disable_tls false Disable TLS for Operator   GOPATH  $HOME/odev Golang project directory   GOBIN  $GOPATH/bin Golang binary target directory   NAMESPACE namespace pgouser1 Namespaces monitored by Operator   PGOROOT  $GOPATH/src/github.</description>
+    </item>
+    
+    <item>
       <title>Install Operator Using Bash</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/installation/operator-install/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
