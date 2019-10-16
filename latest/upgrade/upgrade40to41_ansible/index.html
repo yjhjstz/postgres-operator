@@ -7,7 +7,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.55.6" />
-<title>Overview :: Crunchy Data PostgreSQL Operator Documentation</title>
+<title>Upgrade PGO 4.0.1 to 4.1.0 (Ansible) :: Crunchy Data PostgreSQL Operator Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/latest/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/latest/css/nucleus.css" rel="stylesheet">
 <link href="https://crunchydata.github.io/postgres-operator/latest/theme-flex/style.css" rel="stylesheet">
@@ -29,7 +29,7 @@
 
     
   </head>
-  <body data-url="/overview/">
+  <body data-url="/upgrade/upgrade40to41_ansible/">
     
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
   
@@ -318,11 +318,10 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/overview/" class="dd-item parent active haschildren
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/overview/" class="dd-item haschildren
         ">
       <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/overview/">Overview</a>
-            <i class="fas fa-angle-down fa-lg category-icon"></i>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/overview/">Overview</a><i class="fas fa-angle-right fa-lg category-icon"></i>
 
       </div>
         <ul>
@@ -936,10 +935,11 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/" class="dd-item haschildren
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/">Upgrade</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/">Upgrade</a>
+            <i class="fas fa-angle-down fa-lg category-icon"></i>
 
       </div>
         <ul>
@@ -957,7 +957,7 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade40to41_ansible/" class="dd-item">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade40to41_ansible/" class="dd-item active">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade40to41_ansible/">
             Upgrade PGO 4.0.1 to 4.1.0 (Ansible)
@@ -1034,25 +1034,20 @@
    Installation</option>
     <option value="/configuration/" >
    Configuration</option>
-    <option value="/overview/"  selected>
-   Overview</option> 
-      <option value="/overview/node-affinitiy-overview/" >- Node Affinity in PostgreSQL Operator</option>
-      <option value="/overview/storage-overview/" >- Storage Overview</option>
-      <option value="/overview/custom-resource-definitions/" >- Custom Resource Definitions Overview</option>
-      <option value="/overview/scheduler-overview/" >- PGO Scheduler Overview</option>
-      <option value="/overview/backup-restore-overview/" >- PostgreSQL Operator Backup and Restore Capability</option>
-      <option value="/overview/postgres-operator-overview/" >- PostgreSQL Operator Overview</option>
-      <option value="/overview/users-role-overview/" >- PostgreSQL Operator User Roles Overview</option>
-      <option value="/overview/failover-overview/" >- Failover in the PostgreSQL Operator Overview</option>
-      <option value="/overview/postgres-operator-containers-overview/" >- PostgreSQL Operator Containers Overview</option>
-      <option value="/overview/namespace-overview/" >- PostgreSQL Operator Namespace Considerations Overview</option>
-  
+    <option value="/overview/" >
+   Overview</option>
     <option value="/operatorcli/" >
    Operator Command Line Utility</option>
     <option value="/security/" >
    RBAC Configuration</option>
     <option value="/upgrade/" >
-   Upgrade</option>
+   Upgrade</option> 
+      <option value="/upgrade/upgrade35/" >- Upgrade PGO 3.5 Minor Versions</option>
+      <option value="/upgrade/upgrade35to4/" >- Upgrade PGO 3.5 to 4.1</option>
+      <option value="/upgrade/upgrade40to41_ansible/"  selected>- Upgrade PGO 4.0.1 to 4.1.0 (Ansible)</option>
+      <option value="/upgrade/upgrade40to41_bash/" >- Upgrade PGO 4.0.1 to 4.1.0 (Bash)</option>
+      <option value="/upgrade/upgradeto35/" >- Upgrade to PGO 3.5 From Previous Versions</option>
+  
     <option value="/contributing/" >
    Contributing</option>
 
@@ -1073,7 +1068,7 @@
             <i class="fa fa-info-circle"></i>
             
           </a>
-          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/develop/hugo/content/overview/_index.md" target="blank">
+          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/develop/hugo/content/Upgrade/upgrade40to41_ansible.md" target="blank">
             <i class="fa fa-code-fork"></i>
             
           </a>
@@ -1090,7 +1085,12 @@
 
 
 
- <a href='https://crunchydata.github.io/postgres-operator/latest/'>Crunchy Data Postgres Operator</a> > Overview
+
+
+
+ <a href='https://crunchydata.github.io/postgres-operator/latest/'>Crunchy Data Postgres Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/upgrade/'>Upgrade</a> > Upgrade PGO 4.0.1 to 4.1.0 (Ansible)
+
+ 
 
  
 
@@ -1104,92 +1104,94 @@
     
     <div id="body-inner">
 
-    <h1>Overview</h1>
+    <h1>Upgrade PGO 4.0.1 to 4.1.0 (Ansible)</h1>
 
     
 
     
+    
 
+<h2 id="postgres-operator-ansible-upgrade-procedure-from-4-0-1-to-4-1-0">Postgres Operator Ansible Upgrade Procedure from 4.0.1 to 4.1.0</h2>
 
+<p>This procedure will give instructions on how to upgrade to Postgres Operator 4.1.0 when using the Ansible installation method.</p>
 
-<div class="extra-pagination inner">
-<nav class="pagination" role="navigation">
-	
-	<span class="page-number"> 1  1</span>
-	
-</nav>
+<div class="notices info" >As with any upgrade, please ensure you have taken recent backups of all relevant data!</div>
 
-</div>
+<h5 id="prerequisites">Prerequisites.</h5>
 
+<p>You will need the following items to complete the upgrade:</p>
 
-   <ul>
-    <li><a href="https://crunchydata.github.io/postgres-operator/latest/overview/node-affinitiy-overview/">Node Affinity in PostgreSQL Operator</a></li>
+<ul>
+<li>The latest 4.1.0 code for the Postgres Operator available</li>
 </ul>
 
+<p>These instructions assume you are executing in a terminal window and that your user has admin privileges in your Kubernetes or Openshift environment.</p>
 
-   <ul>
-    <li><a href="https://crunchydata.github.io/postgres-operator/latest/overview/storage-overview/">Storage Overview</a></li>
-</ul>
+<h5 id="step-0">Step 0</h5>
 
+<p>For the cluster(s) you wish to upgrade, scale down any replicas, if necessary (see <code>pgo scaledown --help</code> for more information on command usage) page for more information), then delete the cluster</p>
 
-   <ul>
-    <li><a href="https://crunchydata.github.io/postgres-operator/latest/overview/custom-resource-definitions/">Custom Resource Definitions Overview</a></li>
-</ul>
+<pre><code>pgo delete cluster &lt;clustername&gt;
+</code></pre>
 
+<div class="notices warning" >Please note the name of each cluster, the namespace used, and be sure not to delete the associated PVCs or CRDs!</div>
 
-   <ul>
-    <li><a href="https://crunchydata.github.io/postgres-operator/latest/overview/scheduler-overview/">PGO Scheduler Overview</a></li>
-</ul>
+<h5 id="step-1">Step 1</h5>
 
+<p>Save a copy of your current inventory file with a new name (such as <code>inventory.backup)</code> and checkout the latest 4.1 tag of the Postgres Operator.</p>
 
-   <ul>
-    <li><a href="https://crunchydata.github.io/postgres-operator/latest/overview/backup-restore-overview/">PostgreSQL Operator Backup and Restore Capability</a></li>
-</ul>
+<h5 id="step-2">Step 2</h5>
 
+<p>Update the new inventory file with the appropriate values for your new Operator installation, as described in the <a href="https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/prerequisites/">Ansible Install Prerequisites</a> and the <a href="https://crunchydata.github.io/postgres-operator/latest/configuration/compatibility/">Compatibility Requirements Guide</a>.</p>
 
-   <ul>
-    <li><a href="https://crunchydata.github.io/postgres-operator/latest/overview/postgres-operator-overview/">PostgreSQL Operator Overview</a></li>
-</ul>
+<h5 id="step-3">Step 3</h5>
 
+<p>Now you can upgrade your Operator installation and configure your connection settings as described in the <a href="https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/updating-operator/">Ansible Update Page</a>.</p>
 
-   <ul>
-    <li><a href="https://crunchydata.github.io/postgres-operator/latest/overview/users-role-overview/">PostgreSQL Operator User Roles Overview</a></li>
-</ul>
+<h5 id="step-4">Step 4</h5>
 
+<p>Verify the Operator is running:</p>
 
-   <ul>
-    <li><a href="https://crunchydata.github.io/postgres-operator/latest/overview/failover-overview/">Failover in the PostgreSQL Operator Overview</a></li>
-</ul>
+<pre><code>kubectl get pod -n &lt;operator namespace&gt;
+</code></pre>
 
+<p>And that it is upgraded to the appropriate version</p>
 
-   <ul>
-    <li><a href="https://crunchydata.github.io/postgres-operator/latest/overview/postgres-operator-containers-overview/">PostgreSQL Operator Containers Overview</a></li>
-</ul>
+<pre><code>pgo version
+</code></pre>
 
+<h5 id="step-5">Step 5</h5>
 
-   <ul>
-    <li><a href="https://crunchydata.github.io/postgres-operator/latest/overview/namespace-overview/">PostgreSQL Operator Namespace Considerations Overview</a></li>
-</ul>
+<p>Once the Operator is installed and functional, create new 4.1 clusters with the same name as was used previously. This will allow the new clusters to utilize the existing PVCs.</p>
 
+<pre><code>pgo create cluster &lt;clustername&gt; -n &lt;namespace&gt;
+</code></pre>
 
+<h5 id="step-6">Step 6</h5>
 
-<div style="margin-bottom:2rem"></div>
+<p>To verify cluster status, run
+        pgo test <clustername> -n <namespace>
+Output should be similar to:</p>
 
-<nav class="pagination" role="navigation">
-	
-	<span class="page-number"> 1  1</span>
-	
-</nav>
+<pre><code>psql -p 5432 -h 10.104.74.189 -U postgres postgres is Working
+psql -p 5432 -h 10.104.74.189 -U postgres userdb is Working
+psql -p 5432 -h 10.104.74.189 -U primaryuser postgres is Working
+psql -p 5432 -h 10.104.74.189 -U primaryuser userdb is Working
+psql -p 5432 -h 10.104.74.189 -U testuser postgres is Working
+psql -p 5432 -h 10.104.74.189 -U testuser userdb is Working
+</code></pre>
 
+<h5 id="step-7">Step 7</h5>
 
+<p>Scale up to the required number of replicas, as needed.</p>
 
 
 
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/configuration/pgo-yaml-configuration/" title="PGO YAML"> <i class="fa fa-chevron-left"></i><label>PGO YAML</label></a>
-    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/overview/node-affinitiy-overview/" title="Node Affinity in PostgreSQL Operator" style="margin-right: 0px;"><label>Node Affinity in PostgreSQL Operator</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade35to4/" title="Upgrade PGO 3.5 to 4.1"> <i class="fa fa-chevron-left"></i><label>Upgrade PGO 3.5 to 4.1</label></a>
+    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade40to41_bash/" title="Upgrade PGO 4.0.1 to 4.1.0 (Bash)" style="margin-right: 0px;"><label>Upgrade PGO 4.0.1 to 4.1.0 (Bash)</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
