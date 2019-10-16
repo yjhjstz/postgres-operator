@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Install Operator Using Ansible on Crunchy Data PostgreSQL Operator Documentation</title>
+    <link>https://crunchydata.github.io/postgres-operator/4.1.0/installation/install-with-ansible/</link>
+    <description>Recent content in Install Operator Using Ansible on Crunchy Data PostgreSQL Operator Documentation</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="https://crunchydata.github.io/postgres-operator/4.1.0/installation/install-with-ansible/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Prerequisites</title>
+      <link>https://crunchydata.github.io/postgres-operator/4.1.0/installation/install-with-ansible/prerequisites/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/4.1.0/installation/install-with-ansible/prerequisites/</guid>
+      <description>Prerequisites The following is required prior to installing Crunchy PostgreSQL Operator using Ansible:
+ postgres-operator playbooks source code for the target version Ansible 2.5+  Kubernetes Installs  Kubernetes v1.11+ Cluster admin privileges in Kubernetes kubectl configured to communicate with Kubernetes  OpenShift Installs  OpenShift v3.09+ Cluster admin privileges in OpenShift oc configured to communicate with OpenShift  Installing from a Windows Host If the Crunchy PostgreSQL Operator is being installed from a Windows host the following are required:</description>
+    </item>
+    
+    <item>
+      <title>Installing Ansible</title>
+      <link>https://crunchydata.github.io/postgres-operator/4.1.0/installation/install-with-ansible/installing-ansible/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/4.1.0/installation/install-with-ansible/installing-ansible/</guid>
+      <description>Installing Ansible on Linux, MacOS or Windows Ubuntu Subsystem To install Ansible on Linux or MacOS, see the official documentation provided by Ansible.
+Install Google Cloud SDK (Optional) If Crunchy PostgreSQL Operator is going to be installed in a Google Kubernetes Environment the Google Cloud SDK is required.
+To install the Google Cloud SDK on Linux or MacOS, see the official Google Cloud documentation.
+When installing the Google Cloud SDK on the Windows Ubuntu Subsystem, run the following commands to install:</description>
+    </item>
+    
+    <item>
+      <title>Installing PostgreSQL Operator</title>
+      <link>https://crunchydata.github.io/postgres-operator/4.1.0/installation/install-with-ansible/installing-operator/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/4.1.0/installation/install-with-ansible/installing-operator/</guid>
+      <description>Installing The following assumes the proper prerequisites are satisfied we can now install the PostgreSQL Operator.
+The commands should be run in the directory where the Crunchy PostgreSQL Operator playbooks is stored. See the ansible directory in the Crunchy PostgreSQL Operator project for the inventory file, main playbook and ansible roles.
+Installing on Linux On a Linux host with Ansible installed we can run the following command to install the PostgreSQL Operator:</description>
+    </item>
+    
+    <item>
+      <title>Installing Metrics Infrastructure</title>
+      <link>https://crunchydata.github.io/postgres-operator/4.1.0/installation/install-with-ansible/installing-metrics/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/4.1.0/installation/install-with-ansible/installing-metrics/</guid>
+      <description>Installing PostgreSQL clusters created by the Crunchy PostgreSQL Operator can optionally be configured to serve performance metrics via Prometheus Exporters. The metric exporters included in the database pod serve realtime metrics for the database container. In order to store and view this data, Grafana and Prometheus are required. The Crunchy PostgreSQL Operator does not create this infrastructure, however, they can be installed using the provided Ansible roles.
+Prerequisites The following assumes the proper prerequisites are satisfied we can now install the PostgreSQL Operator.</description>
+    </item>
+    
+    <item>
+      <title>Updating PostgreSQL Operator</title>
+      <link>https://crunchydata.github.io/postgres-operator/4.1.0/installation/install-with-ansible/updating-operator/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/4.1.0/installation/install-with-ansible/updating-operator/</guid>
+      <description>Updating Updating the Crunchy PostgreSQL Operator is essential to the lifecycle management of the service. Using the update flag will:
+ Update and redeploy the operator deployment Recreate configuration maps used by operator Remove any deprecated objects Allow administrators to change settings configured in the inventory Reinstall the pgo client if a new version is specified  The following assumes the proper prerequisites are satisfied we can now update the PostgreSQL Operator.</description>
+    </item>
+    
+    <item>
+      <title>Uninstalling PostgreSQL Operator</title>
+      <link>https://crunchydata.github.io/postgres-operator/4.1.0/installation/install-with-ansible/uninstalling-operator/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/4.1.0/installation/install-with-ansible/uninstalling-operator/</guid>
+      <description>Uninstalling PostgreSQL Operator The following assumes the proper prerequisites are satisfied we can now uninstall the PostgreSQL Operator.
+First, it is recommended to use the playbooks tagged with the same version of the PostgreSQL Operator currently deployed.
+With the correct playbooks acquired and prerequisites satisfied, simply run the following command:
+ansible-playbook -i /path/to/inventory --tags=uninstall --ask-become-pass main.yml If the Crunchy PostgreSQL Operator playbooks were installed using yum, use the following commands:</description>
+    </item>
+    
+    <item>
+      <title>Uninstalling Metrics Stack</title>
+      <link>https://crunchydata.github.io/postgres-operator/4.1.0/installation/install-with-ansible/uninstalling-metrics/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/4.1.0/installation/install-with-ansible/uninstalling-metrics/</guid>
+      <description>Uninstalling the Metrics Stack The following assumes the proper prerequisites are satisfied we can now uninstall the PostgreSQL Operator Metrics Infrastructure.
+First, it is recommended to use the playbooks tagged with the same version of the Metrics stack currently deployed.
+With the correct playbooks acquired and prerequisites satisfied, simply run the following command:
+ansible-playbook -i /path/to/inventory --tags=uninstall-metrics main.yml If the Crunchy PostgreSQL Operator playbooks were installed using yum, use the following commands:</description>
+    </item>
+    
+  </channel>
+</rss>

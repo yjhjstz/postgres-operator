@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Operator Command Line Utility on Crunchy Data PostgreSQL Operator Documentation</title>
+    <link>https://crunchydata.github.io/postgres-operator/4.1.0/operatorcli/</link>
+    <description>Recent content in Operator Command Line Utility on Crunchy Data PostgreSQL Operator Documentation</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="https://crunchydata.github.io/postgres-operator/4.1.0/operatorcli/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>PGO CLI Overview</title>
+      <link>https://crunchydata.github.io/postgres-operator/4.1.0/operatorcli/pgo-cli-overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/4.1.0/operatorcli/pgo-cli-overview/</guid>
+      <description>PGO Command Line Interface (PGO CLI) One of the suppport methods of interacting with the PostgreSQL Operator is through the command line tool, pgo CLI.
+The PGO CLI is downloaded from the GitHub Releases page for the PostgreSQL Operator (https://github.com/crunchydata/postgres-operator/releases).
+The pgo client is provided in Mac, Windows, and Linux binary formats, download the appropriate client to your local laptop or workstation to work with a remote Operator.
+PGO CLI Syntax Use the following syntax to run pgo commands from your terminal window:</description>
+    </item>
+    
+    <item>
+      <title>PGO CLI Global Environment Variables</title>
+      <link>https://crunchydata.github.io/postgres-operator/4.1.0/operatorcli/pgo-cli-global-variables/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/4.1.0/operatorcli/pgo-cli-global-variables/</guid>
+      <description>pgo CLI Global Environment Variables pgo will pick up these settings if set in your environment:
+   Name Description NOTES     PGOUSERNAME The username (role) used for auth on the operator apiserver. Requires that PGOUSERPASS be set.   PGOUSERPASS The password for used for auth on the operator apiserver. Requires that PGOUSERNAME be set.   PGOUSER The path the the pgouser file. Will be ignored if either PGOUSERNAME or PGOUSERPASS are set.</description>
+    </item>
+    
+    <item>
+      <title>PGO CLI Global Flags</title>
+      <link>https://crunchydata.github.io/postgres-operator/4.1.0/operatorcli/pgo-cli-global-flags/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/4.1.0/operatorcli/pgo-cli-global-flags/</guid>
+      <description>pgo CLI Global Flags pgo global command flags include:
+   Flag Description     n namespace targeted for the command   apiserver-url URL of the Operator REST API service, override with CO_APISERVER_URL environment variable   debug enable debug messages   pgo-ca-cert The CA Certificate file path for authenticating to the PostgreSQL Operator apiserver. Override with PGO_CA_CERT environment variable   pgo-client-cert The Client Certificate file path for authenticating to the PostgreSQL Operator apiserver.</description>
+    </item>
+    
+    <item>
+      <title>Common PGO CLI Operations</title>
+      <link>https://crunchydata.github.io/postgres-operator/4.1.0/operatorcli/common-pgo-cli-operations/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/4.1.0/operatorcli/common-pgo-cli-operations/</guid>
+      <description>Common PGO CLI Operations In all the examples below, the user is specifying the pgouser1 namespace as the target of the operator. Replace this value with your own namespace value. You can specify a default namespace to be used by setting the PGO_NAMESPACE environment variable on the pgo client environment.
+PostgreSQL Cluster Operations Creating a Cluster A user will typically start using the PostgreSQL Operator by creating PostgreSQL cluster including a single PostgreSQL instance as follows:</description>
+    </item>
+    
+    <item>
+      <title>Operator CLI Overview</title>
+      <link>https://crunchydata.github.io/postgres-operator/4.1.0/operatorcli/pgo-overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/4.1.0/operatorcli/pgo-overview/</guid>
+      <description>The command line tool, pgo, is used to interact with the Postgres Operator.
+Most users will work with the Operator using the pgo CLI tool. That tool is downloaded from the GitHub Releases page for the Operator.
+The pgo client is provided in Mac, Windows, and Linux binary formats, download the appropriate client to your local laptop or workstation to work with a remote Operator.
+Syntax Use the following syntax to run pgo commands from your terminal window:</description>
+    </item>
+    
+  </channel>
+</rss>

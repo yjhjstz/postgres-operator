@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Overview on Crunchy Data PostgreSQL Operator Documentation</title>
+    <link>https://crunchydata.github.io/postgres-operator/4.1.0/overview/</link>
+    <description>Recent content in Overview on Crunchy Data PostgreSQL Operator Documentation</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="https://crunchydata.github.io/postgres-operator/4.1.0/overview/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Node Affinity in PostgreSQL Operator</title>
+      <link>https://crunchydata.github.io/postgres-operator/4.1.0/overview/node-affinitiy-overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/4.1.0/overview/node-affinitiy-overview/</guid>
+      <description>Node Affinity in PostgreSQL Operator Kubernetes node affinity allows you to constrain which nodes your pod is eligible to be scheduled on, based on labels on the node.
+The PostgreSQL Operator provides users with the ability to add a node affinity section to a new Cluster Deployment. By adding a node affinity section to the Cluster Deployment, users can direct Kubernetes to attempt to schedule a primary PostgreSQL instance within a cluster on a specific Kubernetes node.</description>
+    </item>
+    
+    <item>
+      <title>Storage Overview</title>
+      <link>https://crunchydata.github.io/postgres-operator/4.1.0/overview/storage-overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/4.1.0/overview/storage-overview/</guid>
+      <description>Storage and the PostgreSQL Operator The PostgreSQL Operator allows for a variety of different configurations of persistent storage that can be leveraged by the PostgreSQL instances or clusters it deploys.
+The PostgreSQL Operator works with several different storage types, HostPath, Network File System(NFS), and Dynamic storage.
+ Hostpath is the simplest storage and useful for single node testing.
+ NFS provides the ability to do single and multi-node testing.</description>
+    </item>
+    
+    <item>
+      <title>Custom Resource Definitions Overview</title>
+      <link>https://crunchydata.github.io/postgres-operator/4.1.0/overview/custom-resource-definitions/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/4.1.0/overview/custom-resource-definitions/</guid>
+      <description>PostgreSQL Operator Custom Resource Definitions The PostgreSQL Operator defines the following series of Kubernetes Custom Resource Definitions (CRDs):
+Each of these CRDs are used in the design of the PostgreSQL Operator to perform PostgreSQL related operations in order to enable with on-demand, PostgreSQL-as-a-Service workflows.
+Cluster (pgclusters) The Cluster or pgcluster CRD is used by the PostgreSQL Operator to define the PostgreSQL cluster definition and make new PostgreSQL cluster requests.</description>
+    </item>
+    
+    <item>
+      <title>PGO Scheduler Overview</title>
+      <link>https://crunchydata.github.io/postgres-operator/4.1.0/overview/scheduler-overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/4.1.0/overview/scheduler-overview/</guid>
+      <description>PGO Scheduler The PostgreSQL Operator includes a cronlike scheduler application called pgo-scheduler. Its purpose is to run automated tasks such as PostgreSQL backups or SQL policies against PostgreSQL instances and clusters created by the PostgreSQL Operator.
+PGO Scheduler watches Kubernetes for configmaps with the label crunchy-scheduler=true in the same namespace the Operator is deployed. The configmaps are json objects that describe the schedule such as:
+ Cron like schedule such as: * * * * * Type of task: pgbackrest, pgbasebackup or policy  Schedules are removed automatically when the configmaps are deleted.</description>
+    </item>
+    
+    <item>
+      <title>PostgreSQL Operator Backup and Restore Capability</title>
+      <link>https://crunchydata.github.io/postgres-operator/4.1.0/overview/backup-restore-overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/4.1.0/overview/backup-restore-overview/</guid>
+      <description>PostgreSQL Operator Backup and Restore Capability The PostgreSQL Operator provides users with the ability to manage PostgreSQL cluster backups through both native PostgreSQL backup functionality, as well as using pgbackrest, an open source backup and restore solution designed to scale up to the largest databases. By default, beginning with verison 4.0, the PostgreSQL Operator backup command performs a PostgreSQL pgbackrest backup.
+The three backup types that can be configured through the PostgreSQL Operator CLI are:</description>
+    </item>
+    
+    <item>
+      <title>PostgreSQL Operator Overview</title>
+      <link>https://crunchydata.github.io/postgres-operator/4.1.0/overview/postgres-operator-overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/4.1.0/overview/postgres-operator-overview/</guid>
+      <description>PostgreSQL Operator Overview The PostgreSQL Operator extends Kubernetes to provide a higher- level abstraction enabling the rapid creation and management of PostgreSQL databases and clusters.
+The PostgreSQL Operator include the following components:
+ PostgreSQL Operator PostgreSQL Operator Containers PostgreSQL Operator PGO Client PostgreSQL Operator REST API Server PostgreSQL PGO Scheduler  The following diagram provides an overview of the components of the PostgreSQL Operator:
+PostgreSQL Operator The PostgreSQL Operator makes use of Kubernetes “Custom Resource Definitions” or “CRDs” to extend Kubernetes with custom, PostgreSQL specific, Kubernetes objects such as “Database” and “Cluster”.</description>
+    </item>
+    
+    <item>
+      <title>PostgreSQL Operator User Roles Overview</title>
+      <link>https://crunchydata.github.io/postgres-operator/4.1.0/overview/users-role-overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/4.1.0/overview/users-role-overview/</guid>
+      <description>User Roles in the PostgreSQL Operator The PostgreSQL Operator, when used in conjunction with the associated PostgreSQL Containers and Kubernetes, provides you with the ability to host your own open source, Kubernetes native PostgreSQL-as-a-Service infrastructure.
+In installing, configuring and operating the PostgreSQL Operator as a PostgreSQL-as-a-Service capability, the following user roles will be required:
+   Role Applicable Component Authorized Privileges and Functions Performed     Platform Admininistrator (Privileged User) PostgreSQL Operator The Platform Admininistrator is able to control all aspects of the PostgreSQL Operator functionality, including: provisioning and scaling clusters, adding PostgreSQL Administrators and PostgreSQL Users to clusters, setting PostgreSQL cluster security privileges, managing other PostgreSQL Operator users, and more.</description>
+    </item>
+    
+    <item>
+      <title>Failover in the PostgreSQL Operator Overview</title>
+      <link>https://crunchydata.github.io/postgres-operator/4.1.0/overview/failover-overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/4.1.0/overview/failover-overview/</guid>
+      <description>Failover in the PostgreSQL Operator There are a number of potential events that could cause a primary database instance or cluster to become unavailable during the course of normal operations, including:
+ A database storage (disk) failure or any other hardware failure The network on which the database resides becomes unreachable The host operating system becomes unstable and crashes A key database file becomes corrupted Total loss of data center  There may also be downtime events that are due to the normal case of operations, such as performing a minor upgrade, security patching of operating system, hardware upgrade, or other maintenance.</description>
+    </item>
+    
+    <item>
+      <title>PostgreSQL Operator Containers Overview</title>
+      <link>https://crunchydata.github.io/postgres-operator/4.1.0/overview/postgres-operator-containers-overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/4.1.0/overview/postgres-operator-containers-overview/</guid>
+      <description>PostgreSQL Operator Containers Overview The PostgreSQL Operator orchestrates a series of PostgreSQL and PostgreSQL related containers containers that enable rapid deployment of PostgreSQL, including administration and monitoring tools in a Kubernetes environment. The PostgreSQL Operator supports PostgreSQL 9.5+ with multiple PostgreSQL cluster deployment strategies and a variety of PostgreSQL related extensions and tools enabling enterprise grade PostgreSQL-as-a-Service. A full list of the containers supported by the PostgreSQL Operator is provided below.</description>
+    </item>
+    
+    <item>
+      <title>PostgreSQL Operator Namespace Considerations Overview</title>
+      <link>https://crunchydata.github.io/postgres-operator/4.1.0/overview/namespace-overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/4.1.0/overview/namespace-overview/</guid>
+      <description>Kubernetes Namespaces and the PostgreSQL Operator In Kubernetes, namespaces provide the user the ability to divide cluster resources between multiple users (via resource quota).
+The PostgreSQL Operator makes use of the Kubernetes Namespace support in order to define the Namespace to which the PostgreSQL Operator will deploy PostgreSQL clusters, enabling users to more easily allocate Kubernetes resources to specific areas within their business (users, projects, departments).
+Namespaces Applied to Organizational Requirements Prior to version PostgreSQL Operator 4.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -7,11 +7,7 @@
   </url>
   
   <url>
-    <loc>https://crunchydata.github.io/postgres-operator/stable/installation/install-with-ansible/</loc>
-  </url>
-  
-  <url>
-    <loc>https://crunchydata.github.io/postgres-operator/stable/installation/install-pgo-client/</loc>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/operatorcli/pgo-cli-overview/</loc>
   </url>
   
   <url>
@@ -31,7 +27,19 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/overview/node-affinitiy-overview/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/operatorcli/pgo-cli-global-variables/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/stable/configuration/pgo-yaml-configuration/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/overview/storage-overview/</loc>
   </url>
   
   <url>
@@ -47,7 +55,59 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/overview/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/operatorcli/pgo-cli-global-flags/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/operatorcli/common-pgo-cli-operations/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/overview/custom-resource-definitions/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/stable/gettingstarted/design/custom-config-ssl/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/gettingstarted/design/multi-zone-design-considerations/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/overview/scheduler-overview/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/overview/backup-restore-overview/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/overview/postgres-operator-overview/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/overview/users-role-overview/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/gettingstarted/design/direct-api-calls/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/gettingstarted/design/backrest-s3-configuration/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/gettingstarted/design/eventing/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/overview/failover-overview/</loc>
   </url>
   
   <url>
@@ -63,7 +123,31 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/overview/postgres-operator-containers-overview/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/overview/namespace-overview/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/gettingstarted/design/tls/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/security/configure-postgres-operator-rbac/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/security/install-postgres-operator-rbac/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/stable/gettingstarted/design/olm/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/security/api-encryption-configuration/</loc>
   </url>
   
   <url>
@@ -72,6 +156,26 @@
   
   <url>
     <loc>https://crunchydata.github.io/postgres-operator/stable/upgrade/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade35/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade35to4/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade40to41_ansible/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade40to41_bash/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/upgrade/upgradeto35/</loc>
   </url>
   
   <url>
@@ -115,11 +219,23 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/installation/common-env/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/installation/install-with-ansible/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/stable/installation/operator-install/</loc>
   </url>
   
   <url>
     <loc>https://crunchydata.github.io/postgres-operator/stable/installation/developer-setup/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/installation/install-pgo-client/</loc>
   </url>
   
   <url>
@@ -181,7 +297,19 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/operatorcli/cli/pgo_create_namespace/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/stable/operatorcli/cli/pgo_create_pgbouncer/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/operatorcli/cli/pgo_create_pgorole/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/operatorcli/cli/pgo_create_pgouser/</loc>
   </url>
   
   <url>
@@ -221,7 +349,19 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/operatorcli/cli/pgo_delete_namespace/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/stable/operatorcli/cli/pgo_delete_pgbouncer/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/operatorcli/cli/pgo_delete_pgorole/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/operatorcli/cli/pgo_delete_pgouser/</loc>
   </url>
   
   <url>
@@ -305,6 +445,14 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/operatorcli/cli/pgo_show_pgorole/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/operatorcli/cli/pgo_show_pgouser/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/stable/operatorcli/cli/pgo_show_policy/</loc>
   </url>
   
@@ -345,6 +493,22 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/operatorcli/cli/pgo_update_namespace/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/operatorcli/cli/pgo_update_pgorole/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/operatorcli/cli/pgo_update_pgouser/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/operatorcli/cli/pgo_update_user/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/stable/operatorcli/cli/pgo_upgrade/</loc>
   </url>
   
@@ -354,6 +518,10 @@
   
   <url>
     <loc>https://crunchydata.github.io/postgres-operator/stable/operatorcli/cli/pgo_version/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/stable/operatorcli/cli/pgo_watch/</loc>
   </url>
   
 </urlset>
