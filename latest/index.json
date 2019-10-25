@@ -431,7 +431,7 @@
 	"title": "Submitting Pull Requests",
 	"tags": [],
 	"description": "",
-	"content": "So you decided to submit an issue and work it. Great! Let\u0026rsquo;s get it merged in to the codebase. The following will go a long way to helping get the fix merged in quicker.\n Create a Pull Request from your Fork to the Develop branch. Update the checklists in the Pull Request Description. Reference which issues this Pull Request is resolving.  "
+	"content": "So you decided to submit an issue and work it. Great! Let\u0026rsquo;s get it merged in to the codebase. The following will go a long way to helping get the fix merged in quicker.\n Create a pull request from your fork to the master branch. Update the checklists in the Pull Request Description. Reference which issues this Pull Request is resolving.  "
 },
 {
 	"uri": "https://crunchydata.github.io/postgres-operator/latest/categories/",
