@@ -1175,6 +1175,8 @@ oc get pods -n &lt;NAMESPACE_NAME&gt;</code></pre></div>
 <p>After the Crunchy PostgreSQL Operator has successfully been installed we will need
 to configure local environment variables before using the <code>pgo</code> client.</p>
 
+<div class="notices info" >If TLS authentication was disabled during installation, please see the <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/tls/">TLS Configuration Page</a> for additional configuration information.</div>
+
 <p>To configure the environment variables used by <code>pgo</code> run the following command:</p>
 
 <p>Note: <code>&lt;PGO_NAMESPACE&gt;</code> should be replaced with the namespace the Crunchy PostgreSQL

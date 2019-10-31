@@ -1132,33 +1132,51 @@
 <h2 id="tls-configuration">TLS Configuration</h2>
 
 <p>Should you desire to alter the default TLS settings for the Postgres Operator, you can set the
-following variables in bash:</p>
+following variables as described below.</p>
+
+<h3 id="server-settings">Server Settings</h3>
 
 <p>To disable TLS and make an unsecured connection on port 8080 instead of connecting securely over
 the default port, 8443, set:</p>
 
 <p>Bash environment variables</p>
-
-<pre><code>DISABLE_TLS=true
-PGO_APISERVER_PORT=8080     
-</code></pre>
-
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">DISABLE_TLS</span><span style="color:#f92672">=</span><span style="color:#111">true</span>
+<span style="color:#111">PGO_APISERVER_PORT</span><span style="color:#f92672">=</span><span style="color:#ae81ff">8080</span>		</code></pre></div>
 <p>Or inventory variables if using Ansible</p>
-
-<pre><code>pgo_disable_tls='true'
-pgo_apiserver_port=8080
-</code></pre>
-
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">pgo_disable_tls=<span style="color:#d88200">&#39;true&#39;</span>
+pgo_apiserver_port=<span style="color:#ae81ff">8080</span></code></pre></div>
 <p>To disable TLS verifcation, set the follwing as a Bash environment variable</p>
-
-<pre><code>export TLS_NO_VERIFY=false
-</code></pre>
-
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">export</span> <span style="color:#111">TLS_NO_VERIFY</span><span style="color:#f92672">=</span>false</code></pre></div>
 <p>Or the following in the inventory file is using Ansible</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">pgo_tls_no_verify=<span style="color:#d88200">&#39;false&#39;</span></code></pre></div>
+<h3 id="connection-settings">Connection Settings</h3>
 
-<pre><code>pgo_tls_no_verify='false'
-</code></pre>
+<p>If TLS authentication has been disabled, or if the Operator&rsquo;s apiserver port is changed, be sure to
+update the PGO_APISERVER_URL accordingly.</p>
 
+<p>For example with an Ansible installation,</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">export</span> <span style="color:#111">PGO_APISERVER_URL</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;https://&lt;apiserver IP&gt;:8443&#39;</span></code></pre></div>
+<p>would become</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">export</span> <span style="color:#111">PGO_APISERVER_URL</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;http://&lt;apiserver IP&gt;:8080&#39;</span></code></pre></div>
+<p>With a Bash installation,</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">setip<span style="color:#f92672">()</span>
+<span style="color:#f92672">{</span>
+   <span style="color:#111">export</span> <span style="color:#111">PGO_APISERVER_URL</span><span style="color:#f92672">=</span>https://<span style="color:#d88200">`</span><span style="color:#111">$PGO_CMD</span> -n <span style="color:#d88200">&#34;</span><span style="color:#111">$PGO_OPERATOR_NAMESPACE</span><span style="color:#d88200">&#34;</span> get service postgres-operator -o<span style="color:#f92672">=</span><span style="color:#111">jsonpath</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;{.spec.clusterIP}&#34;</span><span style="color:#d88200">`</span>:8443
+<span style="color:#f92672">}</span></code></pre></div>
+<p>would become</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">setip<span style="color:#f92672">()</span>
+<span style="color:#f92672">{</span>
+   <span style="color:#111">export</span> <span style="color:#111">PGO_APISERVER_URL</span><span style="color:#f92672">=</span>http://<span style="color:#d88200">`</span><span style="color:#111">$PGO_CMD</span> -n <span style="color:#d88200">&#34;</span><span style="color:#111">$PGO_OPERATOR_NAMESPACE</span><span style="color:#d88200">&#34;</span> get service postgres-operator -o<span style="color:#f92672">=</span><span style="color:#111">jsonpath</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;{.spec.clusterIP}&#34;</span><span style="color:#d88200">`</span>:8080
+<span style="color:#f92672">}</span></code></pre></div>
+<h3 id="client-settings">Client Settings</h3>
+
+<p>Finally, if TLS has been disabled for the Operator&rsquo;s apiserver, the PGO client connection must be set to match
+the given settings.</p>
+
+<p>Two options are available, either the Bash environment variable</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">DISABLE_TLS</span><span style="color:#f92672">=</span>true</code></pre></div>
+<p>must be configured, or the &ndash;disable-tls flag must be included when using the client, i.e.</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pgo version --disable-tls</code></pre></div>
 
 
     
