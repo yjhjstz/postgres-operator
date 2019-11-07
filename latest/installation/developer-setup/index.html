@@ -1155,6 +1155,8 @@ on other operating systems at this time.</p>
 
 <p>This assumes you have Docker installed and running on your development host.</p>
 
+<p>By default, the Makefile will use buildah to build the container images, to override this default to use docker to build the images, set the IMGBUILDER variable to <code>docker</code></p>
+
 <p>The project uses the golang dep package manager to vendor all the golang source dependencies into the <em>vendor</em> directory.  You typically do not need to run any <em>dep</em> commands unless you are adding new golang package dependencies into the project outside of what is within the project for a given release.</p>
 
 <p>After a full compile, you will have a <em>pgo</em> binary in <code>$HOME/odev/bin</code> and the Operator images in your local Docker registry.</p>
