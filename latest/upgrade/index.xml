@@ -55,6 +55,17 @@ As with any upgrade, please ensure you have taken recent backups of all relevant
     </item>
     
     <item>
+      <title>Upgrade PostgreSQL Operator 4.1 Minor Versions</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade41/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade41/</guid>
+      <description>Upgrading Postgres Operator from 4.1.0 to a patch release This procedure will give instructions on how to upgrade Postgres Operator 4.1 patch releases.
+As with any upgrade, please ensure you have taken recent backups of all relevant data! Prerequisites You will need the following items to complete the upgrade:
+ The latest 4.1.X code for the Postgres Operator available The latest 4.1.X PGO client binary Finally, these instructions assume you are executing from $COROOT in a terminal window and that you are using the same user from your previous installation.</description>
+    </item>
+    
+    <item>
       <title>Upgrade to PGO 3.5 From Previous Versions</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/upgrade/upgradeto35/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
