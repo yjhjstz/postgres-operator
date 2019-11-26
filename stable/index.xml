@@ -17,7 +17,7 @@
       
       <guid>https://crunchydata.github.io/postgres-operator/stable/configuration/compatibility/</guid>
       <description>Container Dependencies The Operator depends on the Crunchy Containers and there are version dependencies between the two projects. Below are the operator releases and their dependent container release. For reference, the Postgres and PgBackrest versions for each container release are also listed.
-   Operator Release Container Release Postgres PgBackrest Version     4.1.0 2.4.2 11.5 2.17     10.10 2.17     9.</description>
+   Operator Release Container Release Postgres PgBackrest Version     4.1.1 4.1.1 12.1 2.18     11.6 2.18     10.</description>
     </item>
     
     <item>
@@ -82,7 +82,7 @@ The PostgreSQL Operator provides users with the ability to add a node affinity s
       <guid>https://crunchydata.github.io/postgres-operator/stable/configuration/pgo-yaml-configuration/</guid>
       <description>pgo.yaml Configuration The pgo.yaml file contains many different configuration settings as described in this section of the documentation.
 The pgo.yaml file is broken into major sections as described below:
-Cluster    Setting Definition     BasicAuth if set to true will enable Basic Authentication   PrimaryNodeLabel newly created primary deployments will specify this node label if specified, unless you override it using the &amp;ndash;node-label command line flag, if not set, no node label is specifed   ReplicaNodeLabel newly created replica deployments will specify this node label if specified, unless you override it using the &amp;ndash;node-label command line flag, if not set, no node label is specifed   CCPImagePrefix newly created containers will be based on this image prefix (e.</description>
+Cluster    Setting Definition     BasicAuth If set to &amp;quot;true&amp;quot; will enable Basic Authentication. If set to &amp;quot;false&amp;quot;, will allow a valid Operator user to successfully authenticate regardless of the value of the password provided for Basic Authentication.</description>
     </item>
     
     <item>
@@ -297,10 +297,10 @@ Namespaces Applied to Organizational Requirements Prior to version PostgreSQL Op
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/stable/gettingstarted/design/tls/</guid>
-      <description>TLS Configuration Should you desire to alter the default TLS settings for the Postgres Operator, you can set the following variables in bash:
-To disable TLS and make an unsecured connection on port 8080 instead of connecting securely over the default port, 8443, set:
+      <description>TLS Configuration Should you desire to alter the default TLS settings for the Postgres Operator, you can set the following variables as described below.
+Server Settings To disable TLS and make an unsecured connection on port 8080 instead of connecting securely over the default port, 8443, set:
 Bash environment variables
-DISABLE_TLS=true PGO_APISERVER_PORT=8080  Or inventory variables if using Ansible
+DISABLE_TLS=true PGO_APISERVER_PORT=8080	 Or inventory variables if using Ansible
 pgo_disable_tls=&#39;true&#39; pgo_apiserver_port=8080  To disable TLS verifcation, set the follwing as a Bash environment variable</description>
     </item>
     
@@ -391,6 +391,17 @@ As with any upgrade, please ensure you have taken recent backups of all relevant
       <description>Postgres Operator Bash Upgrade Procedure from 4.0.1 to 4.1.0 This procedure will give instructions on how to upgrade to Postgres Operator 4.1.0 when using the Bash installation method.
 As with any upgrade, please ensure you have taken recent backups of all relevant data! Prerequisites. You will need the following items to complete the upgrade:
  The latest 4.1.0 code for the Postgres Operator available The latest 4.1.0 PGO client binary  Finally, these instructions assume you are executing from $PGOROOT in a terminal window and that your user has admin privileges in your Kubernetes or Openshift environment.</description>
+    </item>
+    
+    <item>
+      <title>Upgrade PostgreSQL Operator 4.1 Minor Versions</title>
+      <link>https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade41/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade41/</guid>
+      <description>Upgrading Postgres Operator from 4.1.0 to a patch release This procedure will give instructions on how to upgrade Postgres Operator 4.1 patch releases.
+As with any upgrade, please ensure you have taken recent backups of all relevant data! Prerequisites You will need the following items to complete the upgrade:
+ The latest 4.1.X code for the Postgres Operator available The latest 4.1.X PGO client binary Finally, these instructions assume you are executing from $COROOT in a terminal window and that you are using the same user from your previous installation.</description>
     </item>
     
     <item>
@@ -546,7 +557,7 @@ If you have any question you can submit a Support - Question and Answer issue an
       
       <guid>https://crunchydata.github.io/postgres-operator/stable/contributing/pull-requests/</guid>
       <description>So you decided to submit an issue and work it. Great! Let&amp;rsquo;s get it merged in to the codebase. The following will go a long way to helping get the fix merged in quicker.
- Create a Pull Request from your Fork to the Develop branch. Update the checklists in the Pull Request Description. Reference which issues this Pull Request is resolving.  </description>
+ Create a pull request from your fork to the master branch. Update the checklists in the Pull Request Description. Reference which issues this Pull Request is resolving.  </description>
     </item>
     
     <item>

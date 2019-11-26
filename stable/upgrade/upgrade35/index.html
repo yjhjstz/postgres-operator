@@ -971,6 +971,13 @@
           </a>
         </div>
     </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade41/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade41/">
+            Upgrade PostgreSQL Operator 4.1 Minor Versions
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgradeto35/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgradeto35/">
@@ -1046,6 +1053,7 @@
       <option value="/upgrade/upgrade35to4/" >- Upgrade PGO 3.5 to 4.1</option>
       <option value="/upgrade/upgrade40to41_ansible/" >- Upgrade PGO 4.0.1 to 4.1.0 (Ansible)</option>
       <option value="/upgrade/upgrade40to41_bash/" >- Upgrade PGO 4.0.1 to 4.1.0 (Bash)</option>
+      <option value="/upgrade/upgrade41/" >- Upgrade PostgreSQL Operator 4.1 Minor Versions</option>
       <option value="/upgrade/upgradeto35/" >- Upgrade to PGO 3.5 From Previous Versions</option>
   
     <option value="/contributing/" >
@@ -1179,7 +1187,7 @@ Run which pgo to ensure you are replacing the current binary.</p>
 <p>Make sure that any and all configuration changes have been updated.<br />
 Run:</p>
 
-<pre><code>pgo show config 
+<pre><code>pgo show config
 </code></pre>
 
 <p>This will print out the current configuration that the operator is using.  Ensure you made any configuration changes required, you can compare this output with Step 0 to ensure no settings are missed.  If you happened to miss a setting, update the pgo.yaml file and rerun make deployoperator</p>
@@ -1253,7 +1261,7 @@ kubectl create -f &lt;cluster-name&gt;-backrest-repo.yaml
 <p>Verify that the correct images are being used for the cluster. Run <code>pgo show cluster &lt;cluster-name&gt;</code> on your cluster and check the version. Describe each of the pods in your cluster and verify that the image that is being used is correct.</p>
 
 <pre><code>pgo show cluster &lt;cluster-name&gt;
-kubectl get pods 
+kubectl get pods
 kubectl describe pod &lt;cluster-name&gt;-&lt;id&gt;
 kubectl describe pod &lt;cluster-name&gt;-backrest-shared-repo-&lt;id&gt;
 </code></pre>
@@ -1268,7 +1276,7 @@ pgo backup &lt;cluster-name&gt; --backup-type=pgbackrest
 
 <p>You&rsquo;ve now completed the upgrade and are running Crunchy PostgreSQL Operator v3.5.X, you can confirm this by running pgo version from the command line and running</p>
 
-<pre><code>pgo show cluster &lt;cluster-name&gt; 
+<pre><code>pgo show cluster &lt;cluster-name&gt;
 </code></pre>
 
 <p>on each cluster. For this minor upgrade, most existing settings and related services (such as pgbouncer, backup schedules and existing policies) are expected to work, but should be tested for functionality and adjusted or recreated as necessary.</p>

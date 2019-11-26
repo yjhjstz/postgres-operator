@@ -971,6 +971,13 @@
           </a>
         </div>
     </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade41/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade41/">
+            Upgrade PostgreSQL Operator 4.1 Minor Versions
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgradeto35/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgradeto35/">
@@ -1144,7 +1151,7 @@
 cd $HOME/odev/src/github.com/crunchydata
 git clone https://github.com/CrunchyData/postgres-operator.git
 cd postgres-operator
-git checkout v4.1.0
+git checkout v4.1.1
 </code></pre>
 
 <p>This creates a directory structure under your HOME directory name <em>odev</em> and clones the current Operator version to that structure.</p>
@@ -1371,6 +1378,8 @@ created previously.</p>
 <p>The <em>pgo</em> client is provided in Mac, Windows, and Linux binary formats,
 download the appropriate client to your local laptop or workstation to work
 with a remote Operator.</p>
+
+<div class="notices info" >If TLS authentication was disabled during installation, please see the <a href="https://crunchydata.github.io/postgres-operator/stable/gettingstarted/design/tls/">TLS Configuration Page</a> for additional configuration information.</div>
 
 <p>Prior to using <em>pgo</em>, users testing the Operator on a single host can specify the
 <em>postgres-operator</em> URL as follows:</p>

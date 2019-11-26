@@ -972,6 +972,13 @@
           </a>
         </div>
     </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade41/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade41/">
+            Upgrade PostgreSQL Operator 4.1 Minor Versions
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgradeto35/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgradeto35/">
@@ -1135,7 +1142,7 @@
 
 <p>The most basic example of this interaction is getting the version of the API server. You can send a GET request to <code>$PGO_APISERVER_URL/version</code> and this will send back a json response including the API server version. This is important because the server version and the client version must match. If you are using <code>pgo</code> this means you must have the correct version of the client but with a direct call you can specify the client version as part of the request.</p>
 
-<p>The API server is setup to work with the pgo command line interface so the parameters that are passed to the server can be found by looking at the related flags. For example, the series parameter used in the <code>create</code> example below is the same as the <code>-e, --series</code> flag that is described in the <a href="https://access.crunchydata.com/documentation/postgres-operator/4.1.0/operatorcli/cli/pgo_create_cluster/">pgo cli docs</a>.</p>
+<p>The API server is setup to work with the pgo command line interface so the parameters that are passed to the server can be found by looking at the related flags. For example, the series parameter used in the <code>create</code> example below is the same as the <code>-e, --series</code> flag that is described in the <a href="https://access.crunchydata.com/documentation/postgres-operator/4.1.1/operatorcli/cli/pgo_create_cluster/">pgo cli docs</a>.</p>
 
 <h6 id="get-api-server-version">Get API Server Version</h6>
 
@@ -1151,7 +1158,7 @@
 <pre><code>curl --cacert $PGO_CA_CERT --key $PGO_CLIENT_KEY --cert $PGO_CA_CERT \
 -u pgoadmin:examplepassword -H &quot;Content-Type:application/json&quot; --insecure \
 -X POST --data \
-  '{&quot;ClientVersion&quot;:&quot;4.1.0&quot;,
+  '{&quot;ClientVersion&quot;:&quot;4.1.1&quot;,
   &quot;Namespace&quot;:&quot;pgouser1&quot;,
   &quot;Name&quot;:&quot;mycluster&quot;,
   &quot;Series&quot;:1}' \
@@ -1165,7 +1172,7 @@ $PGO_APISERVER_URL/clusters
 <pre><code>curl --cacert $PGO_CA_CERT --key $PGO_CLIENT_KEY --cert $PGO_CA_CERT \
 -u pgoadmin:examplepassword -H &quot;Content-Type:application/json&quot; --insecure \
 -X POST --data \
-  '{&quot;ClientVersion&quot;:&quot;4.1.0&quot;,
+  '{&quot;ClientVersion&quot;:&quot;4.1.1&quot;,
   &quot;Namespace&quot;:&quot;pgouser1&quot;,
   &quot;Clustername&quot;:&quot;mycluster&quot;}' \
 $PGO_APISERVER_URL/showclusters
@@ -1176,7 +1183,7 @@ $PGO_APISERVER_URL/showclusters
 <pre><code>curl --cacert $PGO_CA_CERT --key $PGO_CLIENT_KEY --cert $PGO_CA_CERT \
 -u pgoadmin:examplepassword -H &quot;Content-Type:application/json&quot; --insecure \
 -X POST --data \
-  '{&quot;ClientVersion&quot;:&quot;4.1.0&quot;,
+  '{&quot;ClientVersion&quot;:&quot;4.1.1&quot;,
   &quot;Namespace&quot;:&quot;pgouser1&quot;,
   &quot;Clustername&quot;:&quot;mycluster&quot;}' \
 $PGO_APISERVER_URL/clustersdelete
