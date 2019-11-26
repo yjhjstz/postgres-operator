@@ -1187,12 +1187,17 @@ pgo scaledown mycluster --target=sometarget -n pgouser1
 <pre><code>pgo delete cluster mycluster -n pgouser1
 </code></pre>
 
-<h4 id="delete-a-cluster-and-its-persistent-volume-claims">Delete a Cluster and Its Persistent Volume Claims</h4>
+<p>This removes any PostgreSQL instances from being accessed as well as deletes all of its data and backups.</p>
 
-<p>You can remove the persistent volumes when removing a PostgreSQL cluster by specifying the following command flag:</p>
+<h5 id="retain-backups">Retain Backups</h5>
 
-<pre><code>pgo delete cluster mycluster --delete-data -n pgouser1
-</code></pre>
+<p>It can often be useful to keep the backups of a cluster even after its deleted, such as for archival purposes or for creating the cluster at a future date. You can delete the cluster but keep its backups using the <code>--keep-backups</code> flag:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pgo delete cluster mycluster --keep-backups -n pgouser1</code></pre></div>
+<h5 id="retain-cluster-data">Retain Cluster Data</h5>
+
+<p>There are rare circumstances in which you may want to keep a copy of the original cluster data, such as when upgrading manually to a newer version of the Operator. In these cases, you can use the <code>--keep-data</code> flag:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pgo delete cluster mycluster --keep-data -n pgouser1</code></pre></div>
+<p><strong>NOTE</strong>: The <code>--keep-data</code> flag is deprecated.</p>
 
 <h4 id="view-disk-utilization">View Disk Utilization</h4>
 
