@@ -1139,7 +1139,7 @@
 
 <p>The upgrade is accomplished by updating the CCPImageTag version in the deployment, which causes the old pod to be terminated and a new pod created with the updated deployment specification.</p>
 
-<p>When the upgrade starts, each replica is upgraded seqentially, waiting for the previous replica to go ready before updating the next. After the replicas complete, the primary is then upgraded to the new image. The upgrade process respects the <em>autofail</em> and the <em>AutofailReplaceReplica</em> settings as provided in the pgo.yaml or as a command line flag, if applicable.</p>
+<p>When the upgrade starts, each replica is upgraded seqentially, waiting for the previous replica to go ready before updating the next. After the replicas complete, the primary is then upgraded to the new image. The upgrade process respects the <em>autofail</em> setting as provided in the pgo.yaml or as a command line flag, if applicable.</p>
 
 <p>When the cluster is not in <em>autofail</em> mode, the deployments simply create a new pod when updated, terminating the old one. When autofail is enabled and the primary deployment is updated, the cluster behaves as though the primary had failed and begins the failover process. See <em>Automatic Failover</em> in the <em>Overview</em> section for more details on this and replica replacement.</p>
 
