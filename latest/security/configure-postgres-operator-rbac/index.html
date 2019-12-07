@@ -530,13 +530,6 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_pgpool/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_pgpool/">
-            pgo_create_pgpool
-          </a>
-        </div>
-    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_policy/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_policy/">
@@ -618,13 +611,6 @@
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_pgouser/">
             pgo_delete_pgouser
-          </a>
-        </div>
-    </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_pgpool/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_pgpool/">
-            pgo_delete_pgpool
           </a>
         </div>
     </li>
@@ -1209,11 +1195,6 @@ readonlyuser:password:pgoreader:
 </tr>
 
 <tr>
-<td>CreatePgpool</td>
-<td>allow <em>pgo create pgpool</em></td>
-</tr>
-
-<tr>
 <td>CreatePolicy</td>
 <td>allow <em>pgo create policy</em></td>
 </tr>
@@ -1251,11 +1232,6 @@ readonlyuser:password:pgoreader:
 <tr>
 <td>DeletePgbouncer</td>
 <td>allow <em>pgo delete pgbouncer</em></td>
-</tr>
-
-<tr>
-<td>DeletePgpool</td>
-<td>allow <em>pgo delete pgpool</em></td>
 </tr>
 
 <tr>
@@ -1392,7 +1368,7 @@ readonlyuser:password:pgoreader:
 
 <p>If the user is unauthorized for a pgo command, the user will get back this response:</p>
 
-<pre><code>Error:  Authentication Failed: 401 
+<pre><code>Error:  Authentication Failed: 401
 </code></pre>
 
 <h2 id="making-security-changes">Making Security Changes</h2>

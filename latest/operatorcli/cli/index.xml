@@ -85,8 +85,8 @@ pgo clidoc  pgo clidoc [flags]  Options  -h, --help help for clidoc  Options inh
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create/</guid>
       <description>pgo create Create a Postgres Operator resource
-Synopsis CREATE allows you to create a new Operator resource. For example: pgo create cluster pgo create pgbouncer pgo create pgpool pgo create pgouser pgo create pgorole pgo create policy pgo create namespace pgo create user
-pgo create [flags]  Options  -h, --help help for create  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver.</description>
+Synopsis CREATE allows you to create a new Operator resource. For example: pgo create cluster pgo create pgbouncer pgo create pgouser pgo create pgorole pgo create policy pgo create namespace pgo create user
+pgo create [flags]  Options  -h, --help help for create  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true.</description>
     </item>
     
     <item>
@@ -145,17 +145,6 @@ pgo create pgouser someuser  pgo create pgouser [flags]  Options  --all-namespac
     </item>
     
     <item>
-      <title>pgo_create_pgpool</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_pgpool/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_pgpool/</guid>
-      <description>pgo create pgpool Create a pgpool
-Synopsis Create a pgpool. For example:
-pgo create pgpool mycluster  pgo create pgpool [flags]  Options  -h, --help help for pgpool --pgpool-secret string The name of a pgpool secret to use for the pgpool configuration.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. -n, --namespace string The namespace to use for pgo requests.</description>
-    </item>
-    
-    <item>
       <title>pgo_create_policy</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_policy/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -196,7 +185,7 @@ pgo create user --username=someuser --all --managed pgo create user --username=s
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete/</guid>
       <description>pgo delete Delete an Operator resource
 Synopsis The delete command allows you to delete an Operator resource. For example:
-pgo delete backup mycluster pgo delete benchmark mycluster pgo delete cluster mycluster pgo delete cluster mycluster --delete-data pgo delete cluster mycluster --delete-data --delete-backups pgo delete label mycluster --label=env=research pgo delete pgbouncer mycluster pgo delete pgpool mycluster pgo delete pgouser someuser pgo delete pgorole somerole pgo delete policy mypolicy pgo delete namespace mynamespace pgo delete schedule --schedule-name=mycluster-pgbackrest-full pgo delete schedule --selector=name=mycluster pgo delete schedule mycluster pgo delete user --username=testuser --selector=name=mycluster  pgo delete [flags]  Options  -h, --help help for delete  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver.</description>
+pgo delete backup mycluster pgo delete benchmark mycluster pgo delete cluster mycluster pgo delete cluster mycluster --delete-data pgo delete cluster mycluster --delete-data --delete-backups pgo delete label mycluster --label=env=research pgo delete pgbouncer mycluster pgo delete pgouser someuser pgo delete pgorole somerole pgo delete policy mypolicy pgo delete namespace mynamespace pgo delete schedule --schedule-name=mycluster-pgbackrest-full pgo delete schedule --selector=name=mycluster pgo delete schedule mycluster pgo delete user --username=testuser --selector=name=mycluster  pgo delete [flags]  Options  -h, --help help for delete  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver.</description>
     </item>
     
     <item>
@@ -285,17 +274,6 @@ pgo delete pgorole somerole  pgo delete pgorole [flags]  Options  --all all reso
       <description>pgo delete pgouser Delete a pgouser
 Synopsis Delete a pgouser. For example:
 pgo delete pgouser someuser  pgo delete pgouser [flags]  Options  --all all resources. -h, --help help for pgouser --no-prompt No command line confirmation.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. -n, --namespace string The namespace to use for pgo requests. --pgo-ca-cert string The CA Certificate file path for authenticating to the PostgreSQL Operator apiserver.</description>
-    </item>
-    
-    <item>
-      <title>pgo_delete_pgpool</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_pgpool/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_pgpool/</guid>
-      <description>pgo delete pgpool Delete a pgpool from a cluster
-Synopsis Delete a pgpool from a cluster. For example:
-pgo delete pgpool mycluster  pgo delete pgpool [flags]  Options  -h, --help help for pgpool --no-prompt No command line confirmation. -s, --selector string The selector to use for cluster filtering.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true.</description>
     </item>
     
     <item>

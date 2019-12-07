@@ -530,13 +530,6 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_pgpool/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_pgpool/">
-            pgo_create_pgpool
-          </a>
-        </div>
-    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_policy/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_policy/">
@@ -618,13 +611,6 @@
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_pgouser/">
             pgo_delete_pgouser
-          </a>
-        </div>
-    </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_pgpool/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_pgpool/">
-            pgo_delete_pgpool
           </a>
         </div>
     </li>
@@ -1139,9 +1125,9 @@
 
 <p>The upgrade is accomplished by updating the CCPImageTag version in the deployment, which causes the old pod to be terminated and a new pod created with the updated deployment specification.</p>
 
-<p>When the upgrade starts, each replica is upgraded seqentially, waiting for the previous replica to go ready before updating the next. After the replicas complete, the primary is then upgraded to the new image. The upgrade process respects the <em>autofail</em> setting as provided in the pgo.yaml or as a command line flag, if applicable.</p>
+<p>When the upgrade starts, and if <em>autofail</em> is enabled for the cluster, each replica is upgraded seqentially, waiting for the previous replica to go ready before updating the next. After the replicas complete, the primary is then upgraded to the new image. Please note that the upgrade process respects the <em>autofail</em> setting as currently definied for the cluster being upgraded.  Therefore, if autofail is enabled when the primary deployment is updated, the cluster behaves as though the primary had failed and begins the failover process.  See <em>Automatic Failover</em> in the <em>Overview</em> section for more details about the PostgreSQL Operator failover process and expected behavior.</p>
 
-<p>When the cluster is not in <em>autofail</em> mode, the deployments simply create a new pod when updated, terminating the old one. When autofail is enabled and the primary deployment is updated, the cluster behaves as though the primary had failed and begins the failover process. See <em>Automatic Failover</em> in the <em>Overview</em> section for more details on this and replica replacement.</p>
+<p>When the cluster is not in <em>autofail</em> mode (i.e. autofail is disabled), the primary and all replicas are updated at the same time, after which they will remain in an &ldquo;unready&rdquo; status.  This is because when autofail is disabled, no attempt will be made to start the PostgreSQL databases contained within the primary or replica pods once the containers have been started following the update.  It is therefore necessary to re-enable autofail following a minor upgrade during which autofail was disabled in order to fully bring the cluster back online.</p>
 
 <p>At this time, the backrest-repo container is not upgraded during this upgrade as it is part of the postgres operator release and is updated with the operator.</p>
 

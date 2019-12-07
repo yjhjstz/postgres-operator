@@ -531,13 +531,6 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_pgpool/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_pgpool/">
-            pgo_create_pgpool
-          </a>
-        </div>
-    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_policy/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_policy/">
@@ -619,13 +612,6 @@
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_pgouser/">
             pgo_delete_pgouser
-          </a>
-        </div>
-    </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_pgpool/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_pgpool/">
-            pgo_delete_pgpool
           </a>
         </div>
     </li>
@@ -1432,7 +1418,7 @@ pgo update cluster --autofail=true -n pgouser1
 <p>Note that if you do a pgbackrest restore, you will need to reset the
 autofail flag to true after the restore is completed.</p>
 
-<h3 id="configuring-pgbouncer-pgpool-or-pgbadger-to-clusters">Configuring pgbouncer, pgpool or pgbadger to Clusters</h3>
+<h3 id="configuring-pgbouncer-or-pgbadger-to-clusters">Configuring pgbouncer or pgbadger to Clusters</h3>
 
 <h4 id="pgbouncer-deployment-and-configuration">pgbouncer Deployment and Configuration</h4>
 
@@ -1463,23 +1449,6 @@ configuration to pgbouncer.ini:</p>
 <p>You can remove a pgbouncer from a cluster as follows:</p>
 
 <pre><code>pgo delete pgbouncer mycluster -n pgouser1
-</code></pre>
-
-<h4 id="pgpool-deployment-and-configuration">pgpool Deployment and Configuration</h4>
-
-<p>To add a pgpool Deployment to your PostgreSQL cluster, enter:</p>
-
-<pre><code>pgo create cluster mycluster --pgpool -n pgouser1
-</code></pre>
-
-<p>You can also add a pgpool to a PostgreSQL cluster after initial creation as follows:</p>
-
-<pre><code>pgo create pgpool mycluster -n pgouser1
-</code></pre>
-
-<p>You can remove a pgpool from a PostgreSQL cluster as follows:</p>
-
-<pre><code>pgo delete pgpool mycluster -n pgouser1
 </code></pre>
 
 <h4 id="pgbadger-deployment">pgbadger Deployment</h4>

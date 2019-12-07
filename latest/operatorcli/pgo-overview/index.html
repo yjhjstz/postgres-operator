@@ -531,13 +531,6 @@
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_pgpool/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_pgpool/">
-            pgo_create_pgpool
-          </a>
-        </div>
-    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_policy/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_policy/">
@@ -619,13 +612,6 @@
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_pgouser/">
             pgo_delete_pgouser
-          </a>
-        </div>
-    </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_pgpool/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_pgpool/">
-            pgo_delete_pgpool
           </a>
         </div>
     </li>
@@ -1648,20 +1634,9 @@ configuration to pgbouncer.ini:</p>
 <pre><code>{{.PG_REPLICA_SERVICE_NAME}} = host={{.PG_REPLICA_SERVICE_NAME}} port={{.PG_PORT}} auth_user={{.PG_USERNAME}} dbname={{.PG_DATABASE}}
 </code></pre>
 
-<p>To add a pgpool Deployment to your Postgres cluster, enter:</p>
-
-<pre><code>pgo create cluster mycluster --pgpool -n pgouser1
-</code></pre>
-
-<p>You can also add a pgpool to a cluster after initial creation as follows:</p>
-
-<pre><code>pgo create pgpool mycluster -n pgouser1
-</code></pre>
-
-<p>You can remove a pgbouncer or pgpool from a cluster as follows:</p>
+<p>You can remove a pgbouncer from a cluster as follows:</p>
 
 <pre><code>pgo delete pgbouncer mycluster -n pgouser1
-pgo delete pgpool mycluster -n pgouser1
 </code></pre>
 
 <p>You can create a pgbadger sidecar container in your Postgres cluster
