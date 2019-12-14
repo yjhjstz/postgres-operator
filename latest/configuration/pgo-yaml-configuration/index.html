@@ -1233,6 +1233,11 @@
 <td>DisableAutofail</td>
 <td>optional, if set, will disable autofail capabilities by default in any newly created cluster</td>
 </tr>
+
+<tr>
+<td>DisableReplicaStartFailReinit</td>
+<td>if set to &ldquo;true&rdquo; will disable the detection of a &ldquo;start failed&rdquo; states in PG replicas, which results in the re-initialization of the replica in an attempt to bring it back online</td>
+</tr>
 </tbody>
 </table>
 
