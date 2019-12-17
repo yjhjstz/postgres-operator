@@ -18,7 +18,7 @@
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo/</guid>
       <description>pgo The pgo command line interface.
 Synopsis The pgo command line interface lets you create and manage PostgreSQL clusters.
-Options  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. -h, --help help for pgo -n, --namespace string The namespace to use for pgo requests. --pgo-ca-cert string The CA Certificate file path for authenticating to the PostgreSQL Operator apiserver. --pgo-client-cert string The Client Certificate file path for authenticating to the PostgreSQL Operator apiserver.</description>
+Options  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator. -h, --help help for pgo -n, --namespace string The namespace to use for pgo requests. --pgo-ca-cert string The CA Certificate file path for authenticating to the PostgreSQL Operator apiserver.</description>
     </item>
     
     <item>
@@ -64,7 +64,7 @@ pgo benchmark [flags]  Options  -b, --benchmark-opts string The extra flags pass
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_cat/</guid>
       <description>pgo cat Perform a cat command on a cluster
 Synopsis CAT performs a Linux cat command on a cluster file. For example:
-pgo cat mycluster /pgdata/mycluster/postgresql.conf  pgo cat [flags]  Options  -h, --help help for cat  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. -n, --namespace string The namespace to use for pgo requests. --pgo-ca-cert string The CA Certificate file path for authenticating to the PostgreSQL Operator apiserver.</description>
+pgo cat mycluster /pgdata/mycluster/postgresql.conf  pgo cat [flags]  Options  -h, --help help for cat  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator. -n, --namespace string The namespace to use for pgo requests.</description>
     </item>
     
     <item>
@@ -76,6 +76,17 @@ pgo cat mycluster /pgdata/mycluster/postgresql.conf  pgo cat [flags]  Options  -
       <description>pgo clidoc Generate Markdown of CLI commandes
 Synopsis The clidoc command allows you to generate markdown files for all CLI commands:
 pgo clidoc  pgo clidoc [flags]  Options  -h, --help help for clidoc  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --namespace string The namespace to use for pgo requests. --pgo-ca-cert string The CA Certificate file path for authenticating to the PostgreSQL Operator apiserver.</description>
+    </item>
+    
+    <item>
+      <title>pgo_clone</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_clone/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_clone/</guid>
+      <description>pgo clone Copies the primary database of an existing cluster to a new cluster
+Synopsis Clone makes a copy of an existing PostgreSQL cluster managed by the Operator and creates a new PostgreSQL cluster managed by the Operator, with the data from the old cluster.
+pgo clone oldcluster newcluster  pgo clone [flags]  Options  -h, --help help for clone  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver.</description>
     </item>
     
     <item>
@@ -97,7 +108,7 @@ pgo create [flags]  Options  -h, --help help for create  Options inherited from 
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_cluster/</guid>
       <description>pgo create cluster Create a PostgreSQL cluster
 Synopsis Create a PostgreSQL cluster consisting of a primary and a number of replica backends. For example:
-pgo create cluster mycluster  pgo create cluster [flags]  Options  --autofail If set, will cause autofailover to be enabled on this cluster. --ccp-image string The CCPImage name to use for cluster creation. If specified, overrides the value crunchy-postgres. -c, --ccp-image-tag string The CCPImageTag to use for cluster creation.</description>
+pgo create cluster mycluster  pgo create cluster [flags]  Options  --ccp-image string The CCPImage name to use for cluster creation. If specified, overrides the value crunchy-postgres. -c, --ccp-image-tag string The CCPImageTag to use for cluster creation. If specified, overrides the pgo.yaml setting. --custom-config string The name of a configMap that holds custom PostgreSQL configuration files used to override defaults.</description>
     </item>
     
     <item>
@@ -130,7 +141,7 @@ pgo create pgbouncer mycluster  pgo create pgbouncer [flags]  Options  -h, --hel
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_pgorole/</guid>
       <description>pgo create pgorole Create a pgorole
 Synopsis Create a pgorole. For example:
-pgo create pgorole somerole --permissions=&amp;quot;Cat,Ls&amp;quot;  pgo create pgorole [flags]  Options  -h, --help help for pgorole --permissions string specify a comma separated list of permissions for a pgorole  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. -n, --namespace string The namespace to use for pgo requests.</description>
+pgo create pgorole somerole --permissions=&amp;quot;Cat,Ls&amp;quot;  pgo create pgorole [flags]  Options  -h, --help help for pgorole --permissions string specify a comma separated list of permissions for a pgorole  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator.</description>
     </item>
     
     <item>
@@ -163,7 +174,7 @@ pgo create policy mypolicy --in-file=/tmp/mypolicy.sql  pgo create policy [flags
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_schedule/</guid>
       <description>pgo create schedule Create a cron-like scheduled task
 Synopsis Schedule creates a cron-like scheduled task. For example:
-pgo create schedule --schedule=&amp;quot;* * * * *&amp;quot; --schedule-type=pgbackrest --pgbackrest-backup-type=full mycluster  pgo create schedule [flags]  Options  -c, --ccp-image-tag string The CCPImageTag to use for cluster creation. If specified, overrides the pgo.yaml setting. --database string The database to run the SQL policy against. -h, --help help for schedule --pgbackrest-backup-type string The type of pgBackRest backup to schedule (full or diff).</description>
+pgo create schedule --schedule=&amp;quot;* * * * *&amp;quot; --schedule-type=pgbackrest --pgbackrest-backup-type=full mycluster  pgo create schedule [flags]  Options  -c, --ccp-image-tag string The CCPImageTag to use for cluster creation. If specified, overrides the pgo.yaml setting. --database string The database to run the SQL policy against. -h, --help help for schedule --pgbackrest-backup-type string The type of pgBackRest backup to schedule (full, diff or incr).</description>
     </item>
     
     <item>
@@ -196,7 +207,7 @@ pgo delete backup mycluster pgo delete benchmark mycluster pgo delete cluster my
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_backup/</guid>
       <description>pgo delete backup Delete a backup
 Synopsis Delete a backup. For example:
-pgo delete backup mydatabase  pgo delete backup [flags]  Options  -h, --help help for backup  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. -n, --namespace string The namespace to use for pgo requests. --pgo-ca-cert string The CA Certificate file path for authenticating to the PostgreSQL Operator apiserver.</description>
+pgo delete backup mydatabase  pgo delete backup [flags]  Options  -h, --help help for backup  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator. -n, --namespace string The namespace to use for pgo requests. --pgo-ca-cert string The CA Certificate file path for authenticating to the PostgreSQL Operator apiserver.</description>
     </item>
     
     <item>
@@ -207,7 +218,7 @@ pgo delete backup mydatabase  pgo delete backup [flags]  Options  -h, --help hel
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_benchmark/</guid>
       <description>pgo delete benchmark Delete benchmarks for a cluster
 Synopsis Delete benchmarks for a cluster. For example:
-pgo delete benchmark mycluster pgo delete benchmark --selector=env=test  pgo delete benchmark [flags]  Options  -h, --help help for benchmark -s, --selector string The selector to use for cluster filtering.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. -n, --namespace string The namespace to use for pgo requests.</description>
+pgo delete benchmark mycluster pgo delete benchmark --selector=env=test  pgo delete benchmark [flags]  Options  -h, --help help for benchmark -s, --selector string The selector to use for cluster filtering.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator.</description>
     </item>
     
     <item>
@@ -218,7 +229,7 @@ pgo delete benchmark mycluster pgo delete benchmark --selector=env=test  pgo del
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_cluster/</guid>
       <description>pgo delete cluster Delete a PostgreSQL cluster
 Synopsis Delete a PostgreSQL cluster. For example:
-pgo delete cluster --all pgo delete cluster mycluster  pgo delete cluster [flags]  Options  --all all clusters. Backups and data subject to --delete-backups and --delete-data flags, respectively. -b, --delete-backups Causes the backups for specified cluster to be removed permanently. -d, --delete-data Causes the data for specified cluster to be removed permanently. --keep-backups Keeps the backups available for use at a later time (e.</description>
+pgo delete cluster --all pgo delete cluster mycluster  pgo delete cluster [flags]  Options  --all Delete all clusters. Backups and data subject to --delete-backups and --delete-data flags, respectively. -h, --help help for cluster --keep-backups Keeps the backups available for use at a later time (e.g. recreating the cluster). --no-prompt No command line confirmation before delete.</description>
     </item>
     
     <item>
@@ -240,7 +251,7 @@ pgo delete label mycluster --label=env=research pgo delete label all --label=env
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_namespace/</guid>
       <description>pgo delete namespace Delete namespaces
 Synopsis Delete namespaces. For example:
-pgo delete namespace mynamespace pgo delete namespace --selector=env=test  pgo delete namespace [flags]  Options  -h, --help help for namespace  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. -n, --namespace string The namespace to use for pgo requests. --pgo-ca-cert string The CA Certificate file path for authenticating to the PostgreSQL Operator apiserver.</description>
+pgo delete namespace mynamespace pgo delete namespace --selector=env=test  pgo delete namespace [flags]  Options  -h, --help help for namespace  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator. -n, --namespace string The namespace to use for pgo requests.</description>
     </item>
     
     <item>
@@ -251,7 +262,7 @@ pgo delete namespace mynamespace pgo delete namespace --selector=env=test  pgo d
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_pgbouncer/</guid>
       <description>pgo delete pgbouncer Delete a pgbouncer from a cluster
 Synopsis Delete a pgbouncer from a cluster. For example:
-pgo delete pgbouncer mycluster  pgo delete pgbouncer [flags]  Options  -h, --help help for pgbouncer --no-prompt No command line confirmation. -s, --selector string The selector to use for cluster filtering.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true.</description>
+pgo delete pgbouncer mycluster  pgo delete pgbouncer [flags]  Options  -h, --help help for pgbouncer --no-prompt No command line confirmation before delete. -s, --selector string The selector to use for cluster filtering.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true.</description>
     </item>
     
     <item>
@@ -262,7 +273,7 @@ pgo delete pgbouncer mycluster  pgo delete pgbouncer [flags]  Options  -h, --hel
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_pgorole/</guid>
       <description>pgo delete pgorole Delete a pgorole
 Synopsis Delete a pgorole. For example:
-pgo delete pgorole somerole  pgo delete pgorole [flags]  Options  --all all resources. -h, --help help for pgorole --no-prompt No command line confirmation.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. -n, --namespace string The namespace to use for pgo requests. --pgo-ca-cert string The CA Certificate file path for authenticating to the PostgreSQL Operator apiserver.</description>
+pgo delete pgorole somerole  pgo delete pgorole [flags]  Options  --all Delete all PostgreSQL Operator roles. -h, --help help for pgorole --no-prompt No command line confirmation before delete.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator.</description>
     </item>
     
     <item>
@@ -273,7 +284,7 @@ pgo delete pgorole somerole  pgo delete pgorole [flags]  Options  --all all reso
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_pgouser/</guid>
       <description>pgo delete pgouser Delete a pgouser
 Synopsis Delete a pgouser. For example:
-pgo delete pgouser someuser  pgo delete pgouser [flags]  Options  --all all resources. -h, --help help for pgouser --no-prompt No command line confirmation.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. -n, --namespace string The namespace to use for pgo requests. --pgo-ca-cert string The CA Certificate file path for authenticating to the PostgreSQL Operator apiserver.</description>
+pgo delete pgouser someuser  pgo delete pgouser [flags]  Options  --all Delete all PostgreSQL Operator users. -h, --help help for pgouser --no-prompt No command line confirmation before delete.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator.</description>
     </item>
     
     <item>
@@ -284,7 +295,7 @@ pgo delete pgouser someuser  pgo delete pgouser [flags]  Options  --all all reso
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_policy/</guid>
       <description>pgo delete policy Delete a SQL policy
 Synopsis Delete a policy. For example:
-pgo delete policy mypolicy  pgo delete policy [flags]  Options  --all all resources. -h, --help help for policy --no-prompt No command line confirmation.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. -n, --namespace string The namespace to use for pgo requests. --pgo-ca-cert string The CA Certificate file path for authenticating to the PostgreSQL Operator apiserver.</description>
+pgo delete policy mypolicy  pgo delete policy [flags]  Options  --all Delete all SQL policies. -h, --help help for policy --no-prompt No command line confirmation before delete.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator.</description>
     </item>
     
     <item>
@@ -295,7 +306,7 @@ pgo delete policy mypolicy  pgo delete policy [flags]  Options  --all all resour
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_schedule/</guid>
       <description>pgo delete schedule Delete a schedule
 Synopsis Delete a cron-like schedule. For example:
-pgo delete schedule mycluster pgo delete schedule --selector=env=test pgo delete schedule --schedule-name=mycluster-pgbackrest-full  pgo delete schedule [flags]  Options  -h, --help help for schedule --no-prompt No command line confirmation. --schedule-name string The name of the schedule to delete. -s, --selector string The selector to use for cluster filtering.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver.</description>
+pgo delete schedule mycluster pgo delete schedule --selector=env=test pgo delete schedule --schedule-name=mycluster-pgbackrest-full  pgo delete schedule [flags]  Options  -h, --help help for schedule --no-prompt No command line confirmation before delete. --schedule-name string The name of the schedule to delete. -s, --selector string The selector to use for cluster filtering.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver.</description>
     </item>
     
     <item>
@@ -317,7 +328,7 @@ pgo delete upgrade mydatabase  pgo delete upgrade [flags]  Options  -h, --help h
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_user/</guid>
       <description>pgo delete user Delete a user
 Synopsis Delete a user. For example:
-pgo delete user --username=someuser --selector=name=mycluster  pgo delete user [flags]  Options  --all all clusters. -h, --help help for user --no-prompt No command line confirmation. -s, --selector string The selector to use for cluster filtering. --username string The username to delete.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver.</description>
+pgo delete user --username=someuser --selector=name=mycluster  pgo delete user [flags]  Options  --all Delete all PostgreSQL users from all clusters. -h, --help help for user --no-prompt No command line confirmation before delete. -s, --selector string The selector to use for cluster filtering. --username string The username to delete.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver.</description>
     </item>
     
     <item>
@@ -328,7 +339,7 @@ pgo delete user --username=someuser --selector=name=mycluster  pgo delete user [
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_df/</guid>
       <description>pgo df Display disk space for clusters
 Synopsis Displays the disk status for PostgreSQL clusters. For example:
-pgo df mycluster pgo df all pgo df --selector=env=research  pgo df [flags]  Options  -h, --help help for df -s, --selector string The selector to use for cluster filtering.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. -n, --namespace string The namespace to use for pgo requests.</description>
+pgo df mycluster pgo df all pgo df --selector=env=research  pgo df [flags]  Options  -h, --help help for df -s, --selector string The selector to use for cluster filtering.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator.</description>
     </item>
     
     <item>
@@ -339,7 +350,7 @@ pgo df mycluster pgo df all pgo df --selector=env=research  pgo df [flags]  Opti
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_failover/</guid>
       <description>pgo failover Performs a manual failover
 Synopsis Performs a manual failover. For example:
-pgo failover mycluster  pgo failover [flags]  Options  --autofail-replace-replica string If &#39;true&#39;, causes a replica to be created to replace the promoted replica. If &#39;false&#39;, causes a replica to not be created, if not set, the pgo.yaml AutofailReplaceReplica setting is used. -h, --help help for failover --no-prompt No command line confirmation. --query Prints the list of failover candidates.</description>
+pgo failover mycluster  pgo failover [flags]  Options  -h, --help help for failover --no-prompt No command line confirmation. --query Prints the list of failover candidates. --target string The replica target which the failover will occur on.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true.</description>
     </item>
     
     <item>
@@ -372,7 +383,7 @@ pgo load --load-config=./load.json --selector=project=xray  pgo load [flags]  Op
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_ls/</guid>
       <description>pgo ls Perform a ls command on a cluster
 Synopsis LS performs a Linux ls command on a cluster directory. For example:
-pgo ls mycluster /pgdata/mycluster/pg_log  pgo ls [flags]  Options  -h, --help help for ls  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. -n, --namespace string The namespace to use for pgo requests. --pgo-ca-cert string The CA Certificate file path for authenticating to the PostgreSQL Operator apiserver.</description>
+pgo ls mycluster /pgdata/mycluster/pg_log  pgo ls [flags]  Options  -h, --help help for ls  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator. -n, --namespace string The namespace to use for pgo requests.</description>
     </item>
     
     <item>
@@ -416,7 +427,7 @@ pgo scale mycluster --replica-count=1  pgo scale [flags]  Options  --ccp-image-t
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_scaledown/</guid>
       <description>pgo scaledown Scale down a PostgreSQL cluster
 Synopsis The scale command allows you to scale down a Cluster&amp;rsquo;s replica configuration. For example:
-To list targetable replicas: pgo scaledown mycluster --query To scale down a specific replica: pgo scaledown mycluster --target=mycluster-replica-xxxx  pgo scaledown [flags]  Options  -d, --delete-data Causes the data for the scaled down replica to be removed permanently. --keep-data Keeps the data for the specified instance. Can be used to troubleshoot issues with this specific instance.</description>
+To list targetable replicas: pgo scaledown mycluster --query To scale down a specific replica: pgo scaledown mycluster --target=mycluster-replica-xxxx  pgo scaledown [flags]  Options  -h, --help help for scaledown --keep-data Causes data for the scale down replica to *not* be deleted --no-prompt No command line confirmation. --query Prints the list of targetable replica candidates.</description>
     </item>
     
     <item>
@@ -438,7 +449,7 @@ pgo show backup mycluster pgo show backup mycluster --backup-type=pgbackrest pgo
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_backup/</guid>
       <description>pgo show backup Show backup information
 Synopsis Show backup information. For example:
-pgo show backup mycluser  pgo show backup [flags]  Options  --backup-type string The backup type output to list. Valid choices are pgbasebackup or pgbackrest. (default &amp;quot;pgbackrest&amp;quot;) -h, --help help for backup  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. -n, --namespace string The namespace to use for pgo requests.</description>
+pgo show backup mycluser  pgo show backup [flags]  Options  --backup-type string The backup type output to list. Valid choices are pgbasebackup or pgbackrest. (default &amp;quot;pgbackrest&amp;quot;) -h, --help help for backup  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator.</description>
     </item>
     
     <item>
@@ -449,7 +460,7 @@ pgo show backup mycluser  pgo show backup [flags]  Options  --backup-type string
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_benchmark/</guid>
       <description>pgo show benchmark Show benchmark information
 Synopsis Show benchmark results for clusters. For example:
-pgo show benchmark mycluster pgo show benchmark --selector=pg-cluster=mycluster  pgo show benchmark [flags]  Options  -h, --help help for benchmark -s, --selector string The selector to use for cluster filtering.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. -n, --namespace string The namespace to use for pgo requests.</description>
+pgo show benchmark mycluster pgo show benchmark --selector=pg-cluster=mycluster  pgo show benchmark [flags]  Options  -h, --help help for benchmark -s, --selector string The selector to use for cluster filtering.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator.</description>
     </item>
     
     <item>
@@ -471,7 +482,7 @@ pgo show cluster --all pgo show cluster mycluster  pgo show cluster [flags]  Opt
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_config/</guid>
       <description>pgo show config Show configuration information
 Synopsis Show configuration information for the Operator. For example:
-pgo show config  pgo show config [flags]  Options  -h, --help help for config  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. -n, --namespace string The namespace to use for pgo requests. --pgo-ca-cert string The CA Certificate file path for authenticating to the PostgreSQL Operator apiserver.</description>
+pgo show config  pgo show config [flags]  Options  -h, --help help for config  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator. -n, --namespace string The namespace to use for pgo requests.</description>
     </item>
     
     <item>
@@ -482,7 +493,7 @@ pgo show config  pgo show config [flags]  Options  -h, --help help for config  O
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_namespace/</guid>
       <description>pgo show namespace Show namespace information
 Synopsis Show namespace information for the Operator. For example:
-pgo show namespace  pgo show namespace [flags]  Options  --all show all resources. -h, --help help for namespace  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. -n, --namespace string The namespace to use for pgo requests. --pgo-ca-cert string The CA Certificate file path for authenticating to the PostgreSQL Operator apiserver.</description>
+pgo show namespace  pgo show namespace [flags]  Options  --all show all resources. -h, --help help for namespace  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator. -n, --namespace string The namespace to use for pgo requests.</description>
     </item>
     
     <item>
@@ -493,7 +504,7 @@ pgo show namespace  pgo show namespace [flags]  Options  --all show all resource
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_pgorole/</guid>
       <description>pgo show pgorole Show pgorole information
 Synopsis Show pgorole information . For example:
-pgo show pgorole somerole  pgo show pgorole [flags]  Options  --all show all resources. -h, --help help for pgorole  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. -n, --namespace string The namespace to use for pgo requests. --pgo-ca-cert string The CA Certificate file path for authenticating to the PostgreSQL Operator apiserver.</description>
+pgo show pgorole somerole  pgo show pgorole [flags]  Options  --all show all resources. -h, --help help for pgorole  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator. -n, --namespace string The namespace to use for pgo requests.</description>
     </item>
     
     <item>
@@ -504,7 +515,7 @@ pgo show pgorole somerole  pgo show pgorole [flags]  Options  --all show all res
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_pgouser/</guid>
       <description>pgo show pgouser Show pgouser information
 Synopsis Show pgouser information for an Operator user. For example:
-pgo show pgouser someuser  pgo show pgouser [flags]  Options  --all show all resources. -h, --help help for pgouser  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. -n, --namespace string The namespace to use for pgo requests. --pgo-ca-cert string The CA Certificate file path for authenticating to the PostgreSQL Operator apiserver.</description>
+pgo show pgouser someuser  pgo show pgouser [flags]  Options  --all show all resources. -h, --help help for pgouser  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator. -n, --namespace string The namespace to use for pgo requests.</description>
     </item>
     
     <item>
@@ -515,7 +526,7 @@ pgo show pgouser someuser  pgo show pgouser [flags]  Options  --all show all res
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_policy/</guid>
       <description>pgo show policy Show policy information
 Synopsis Show policy information. For example:
-pgo show policy --all pgo show policy policy1  pgo show policy [flags]  Options  --all show all resources. -h, --help help for policy  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. -n, --namespace string The namespace to use for pgo requests. --pgo-ca-cert string The CA Certificate file path for authenticating to the PostgreSQL Operator apiserver.</description>
+pgo show policy --all pgo show policy policy1  pgo show policy [flags]  Options  --all show all resources. -h, --help help for policy  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator. -n, --namespace string The namespace to use for pgo requests.</description>
     </item>
     
     <item>
@@ -570,7 +581,7 @@ pgo show user --all pgo show user mycluster pgo show user --selector=name=nyclus
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_workflow/</guid>
       <description>pgo show workflow Show workflow information
 Synopsis Show workflow information for a given workflow. For example:
-pgo show workflow 25927091-b343-4017-be4b-71575f0b3eb5  pgo show workflow [flags]  Options  -h, --help help for workflow  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. -n, --namespace string The namespace to use for pgo requests. --pgo-ca-cert string The CA Certificate file path for authenticating to the PostgreSQL Operator apiserver.</description>
+pgo show workflow 25927091-b343-4017-be4b-71575f0b3eb5  pgo show workflow [flags]  Options  -h, --help help for workflow  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator. -n, --namespace string The namespace to use for pgo requests.</description>
     </item>
     
     <item>
@@ -581,7 +592,7 @@ pgo show workflow 25927091-b343-4017-be4b-71575f0b3eb5  pgo show workflow [flags
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_status/</guid>
       <description>pgo status Display PostgreSQL cluster status
 Synopsis Display namespace wide information for PostgreSQL clusters. For example:
-pgo status  pgo status [flags]  Options  -h, --help help for status -o, --output string The output format. Currently, json is the only supported value.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. -n, --namespace string The namespace to use for pgo requests.</description>
+pgo status  pgo status [flags]  Options  -h, --help help for status -o, --output string The output format. Currently, json is the only supported value.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator.</description>
     </item>
     
     <item>
@@ -591,7 +602,7 @@ pgo status  pgo status [flags]  Options  -h, --help help for status -o, --output
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_test/</guid>
       <description>pgo test Test cluster connectivity
-Synopsis TEST allows you to test the connectivity for a cluster. For example:
+Synopsis TEST allows you to test the availability of a PostgreSQL cluster. For example:
 pgo test mycluster pgo test --selector=env=research pgo test --all  pgo test [flags]  Options  --all test all resources. -h, --help help for test -o, --output string The output format. Currently, json is the only supported value. -s, --selector string The selector to use for cluster filtering.  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver.</description>
     </item>
     
@@ -614,7 +625,7 @@ pgo update pgouser someuser --pgouser-password=somenewpassword pgo update pgouse
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_update_cluster/</guid>
       <description>pgo update cluster Update a PostgreSQL cluster
 Synopsis Update a PostgreSQL cluster. For example:
-pgo update cluster mycluster --autofail=false pgo update cluster mycluster myothercluster --autofail=false pgo update cluster --selector=name=mycluster --autofail=false pgo update cluster --all --autofail=true  pgo update cluster [flags]  Options  --all all resources. --autofail autofail default is false. -h, --help help for cluster --no-prompt No command line confirmation. -s, --selector string The selector to use for cluster filtering.</description>
+pgo update cluster mycluster --autofail=false pgo update cluster mycluster myothercluster --autofail=false pgo update cluster --selector=name=mycluster --autofail=false pgo update cluster --all --autofail=true  pgo update cluster [flags]  Options  --all all resources. --disable-autofail Disables autofail capabitilies in the cluster. -h, --help help for cluster --no-prompt No command line confirmation. -s, --selector string The selector to use for cluster filtering.</description>
     </item>
     
     <item>
@@ -625,7 +636,7 @@ pgo update cluster mycluster --autofail=false pgo update cluster mycluster myoth
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_update_namespace/</guid>
       <description>pgo update namespace Update a namespace, applying Operator RBAC
 Synopsis UPDATE allows you to update a Namespace. For example: pgo update namespace mynamespace
-pgo update namespace [flags]  Options  -h, --help help for namespace  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. -n, --namespace string The namespace to use for pgo requests. --pgo-ca-cert string The CA Certificate file path for authenticating to the PostgreSQL Operator apiserver.</description>
+pgo update namespace [flags]  Options  -h, --help help for namespace  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator. -n, --namespace string The namespace to use for pgo requests.</description>
     </item>
     
     <item>
@@ -670,7 +681,7 @@ pgo update user [flags]  Options  --all all clusters.</description>
       <description>pgo upgrade Perform an upgrade
 Synopsis UPGRADE performs an upgrade on a PostgreSQL cluster. For example:
 pgo upgrade mycluster
-This upgrade will update the CCPImageTag of the deployment for the following: primary, replicas, and backrest-repo. The running containers are upgraded one at a time, sequentially, in the following order: replicas, backrest-repo, then primary.
+This upgrade will update the CCPImageTag of the deployment for the primary and all replicas. The running containers are upgraded one at a time, sequentially, in the following order: replicas, backrest-repo, then primary.
 pgo upgrade [flags]  Options  --ccp-image-tag string The CCPImageTag to use for cluster creation. If specified, overrides the pgo.</description>
     </item>
     
@@ -693,7 +704,7 @@ pgo user --selector=name=mycluster --update-passwords pgo user --change-password
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_version/</guid>
       <description>pgo version Print version information for the PostgreSQL Operator
 Synopsis VERSION allows you to print version information for the postgres-operator. For example:
-pgo version  pgo version [flags]  Options  -h, --help help for version  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. -n, --namespace string The namespace to use for pgo requests. --pgo-ca-cert string The CA Certificate file path for authenticating to the PostgreSQL Operator apiserver.</description>
+pgo version  pgo version [flags]  Options  -h, --help help for version  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator. -n, --namespace string The namespace to use for pgo requests.</description>
     </item>
     
     <item>

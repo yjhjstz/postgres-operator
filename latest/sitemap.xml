@@ -39,6 +39,10 @@
   </url>
   
   <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/overview/pod-affinitiy-overview/</loc>
+  </url>
+  
+  <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/overview/storage-overview/</loc>
   </url>
   
@@ -290,6 +294,10 @@
   
   <url>
     <loc>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_clidoc/</loc>
+  </url>
+  
+  <url>
+    <loc>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_clone/</loc>
   </url>
   
   <url>

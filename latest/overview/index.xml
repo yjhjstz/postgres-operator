@@ -21,6 +21,16 @@ The PostgreSQL Operator provides users with the ability to add a node affinity s
     </item>
     
     <item>
+      <title>Pod Anti-Affinity in PostgreSQL Operator</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/overview/pod-affinitiy-overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/overview/pod-affinitiy-overview/</guid>
+      <description>Pod Anti-Affinity in PostgreSQL Operator By default, when a new PostgreSQL cluster is created using the PostgreSQL Operator, pod anti-affinity rules will be applied to any deployments comprising the full PG cluster (please note that default pod anti-affinity does not apply to any Kubernetes jobs created by the PostgreSQL Operator). This includes:
+ The primary PG deployment The deployments for each PG replica The pgBackrest dedicated repostiory deployment The pgBouncer deployment (if enabled for the cluster)  With default pod anti-affinity enabled, Kubernetes will attempt to schedule pods created by each of the separate deployments above on a unique node, but will not guarentee that this will ocurr.</description>
+    </item>
+    
+    <item>
       <title>Storage Overview</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/overview/storage-overview/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
