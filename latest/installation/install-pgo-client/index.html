@@ -1214,6 +1214,34 @@ oc port-forward &lt;OPERATOR_POD_NAME&gt; -n &lt;OPERATOR_NAMESPACE&gt; <span st
 
 <p>Apply those changes to the current session by running:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">source</span> <span style="color:#d88200">${</span><span style="color:#111">HOME</span><span style="color:#111">?</span><span style="color:#d88200">}</span>/.bashrc</code></pre></div>
+<h2 id="pgo-client-container">PGO-Client Container</h2>
+
+<p>The following will setup the <code>pgo</code> client image in a Kubernetes or Openshift
+environment. The image must be installed using the Ansible installer.</p>
+
+<h3 id="installing-the-pgo-client-container">Installing the PGO-Client Container</h3>
+
+<p>The pgo-client container can be installed with the Ansible installer by updating
+the <code>pgo_client_container_install</code> variable in the inventory file. Set this
+variable to true in the inventory file and run the ansible-playbook. As part of
+the install the <code>pgo.tls</code> and <code>pgouser-&lt;username&gt;</code> secrets are used to configure
+the <code>pgo</code> client.</p>
+
+<h3 id="using-the-pgo-client-deployment">Using the PGO-Client Deployment</h3>
+
+<p>Once the container has been installed you can access it by exec&rsquo;ing into the
+pod. You can run single commands with the kubectl or oc command line tools
+or multiple commands by exec&rsquo;ing into the pod with bash.</p>
+
+<pre><code>kubectl exec -it -n pgo &lt;pgo-client-deployment-name&gt; -c &quot;pgo version&quot;
+
+# or
+
+kubectl exec -it -n pgo &lt;pgo-client-deployment-name&gt; bash
+</code></pre>
+
+<p>The deployment does not require any configuration to connect to the operator.</p>
+
 <h2 id="windows">Windows</h2>
 
 <p>The following will setup the <code>pgo</code> client to be used on a Windows system.</p>

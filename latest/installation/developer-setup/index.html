@@ -1122,38 +1122,110 @@
     
     
 
-<h1 id="developing">Developing</h1>
-
 <p>The <a href="https://github.com/crunchydata/postgres-operator">Postgres-Operator</a> is an open source project hosted on GitHub.</p>
 
-<p>Developers that wish to build the Operator from source or contribute to the project via pull requests would set up a development environment through the following steps.</p>
+<p>This guide is intended for those wanting to build the Operator from source or contribute via pull requests.</p>
 
-<h2 id="create-kubernetes-cluster">Create Kubernetes Cluster</h2>
+<h1 id="prerequisites">Prerequisites</h1>
 
-<p>We use either OpenShift Container Platform or kubeadm to install development clusters.</p>
+<p>The target development host for these instructions is a CentOS 7 or RHEL 7 host. Others operating systems
+are possible, however we do not support building or running the Operator on others at this time.</p>
 
-<h2 id="create-a-local-development-host">Create a Local Development Host</h2>
+<h2 id="environment-variables">Environment Variables</h2>
 
-<p>We currently build on CentOS 7 and RHEL 7 hosts. Others operating systems
-are possible, however we do not support building or running the Operator
-on other operating systems at this time.</p>
+<p>The following environment variables are expected by the steps in this guide:</p>
 
-<h2 id="perform-manual-install">Perform Manual Install</h2>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
 
-<p>You can follow the manual installation method described in this documentation to make sure you can deploy from your local development host to your Kubernetes cluster.</p>
+<tbody>
+<tr>
+<td><code>GOPATH</code></td>
+<td>$HOME/odev</td>
+<td>Golang project directory</td>
+</tr>
 
-<h2 id="build-locally">Build Locally</h2>
+<tr>
+<td><code>PGOROOT</code></td>
+<td>$GOPATH/src/github.com/crunchydata/postgres-operator</td>
+<td>Operator repository location</td>
+</tr>
 
-<p>You can now build the Operator from source on local on your development host.  Here are some steps to follow:</p>
+<tr>
+<td><code>PGO_BASEOS</code></td>
+<td>centos7</td>
+<td>Base OS for container images</td>
+</tr>
 
-<h3 id="get-build-dependencies">Get Build Dependencies</h3>
+<tr>
+<td><code>PGO_CMD</code></td>
+<td>kubectl</td>
+<td>Cluster management tool executable</td>
+</tr>
 
-<p>Run the following target to install a golang compiler, and any other build dependencies:</p>
+<tr>
+<td><code>PGO_IMAGE_PREFIX</code></td>
+<td>crunchydata</td>
+<td>Container image prefix</td>
+</tr>
+
+<tr>
+<td><code>PGO_OPERATOR_NAMESPACE</code></td>
+<td>pgo</td>
+<td>Kubernetes namespace for the operator</td>
+</tr>
+
+<tr>
+<td><code>PGO_VERSION</code></td>
+<td>4.2.0</td>
+<td>Operator version</td>
+</tr>
+</tbody>
+</table>
+
+<div class="notices tip" ><code>examples/envs.sh</code> contains the above variable definitions as well as others used by postgres-operator tools</div>
+
+<h2 id="other-requirements">Other requirements</h2>
+
+<ul>
+<li>The development host has been created, has access to <code>yum</code> updates, and has a regular user account with <code>sudo</code> rights to run <code>yum</code>.</li>
+<li><code>GOPATH</code> points to a directory containing <code>src</code>,<code>pkg</code>, and <code>bin</code> directories.</li>
+<li>The development host has <code>$GOPATH/bin</code> added to its <code>PATH</code> environment variable. Development tools will be installed to this path. Defining a <code>GOBIN</code> environment variable other than <code>$GOPATH/bin</code> may yield unexpected results.</li>
+<li>The development host has <code>git</code> installed and has cloned the postgres-operator repository to <code>$GOPATH/src/github.com/crunchydata/postgres-operator</code>. Makefile targets below are run from the repository directory.</li>
+<li>Deploying the Operator will require deployment access to a Kubernetes cluster. Clusters built on OpenShift Container Platform (OCP) or built using <code>kubeadm</code> are the validation targets for Pull Requests and thus recommended for devleopment. Instructions for setting up these clusters are outside the scope of this guide.</li>
+</ul>
+
+<h1 id="building">Building</h1>
+
+<h2 id="dependencies">Dependencies</h2>
+
+<p>Configuring build dependencies is automated via the <code>setup</code> target in the project Makefile:</p>
 
 <pre><code>make setup
 </code></pre>
 
-<h3 id="compile">Compile</h3>
+<p>The setup target ensures the presence of:</p>
+
+<ul>
+<li><code>GOPATH</code> and <code>PATH</code> as described in the prerequisites</li>
+<li>EPEL yum repository</li>
+<li>golang compiler</li>
+<li><code>dep</code> dependency manager</li>
+<li>NSQ messaging binaries</li>
+<li><code>docker</code> container tool</li>
+<li><code>buildah</code> OCI image building tool</li>
+<li><code>expenv</code> config tool</li>
+</ul>
+
+<p>By default, docker is not configured to run its daemon. Refer to the <a href="https://docs.docker.com/install/linux/linux-postinstall/">docker post-installation instructions</a> to configure it to run once or at system startup. This is not done automatically.</p>
+
+<h2 id="compile">Compile</h2>
 
 <p>You will build all the Operator binaries and Docker images by running:</p>
 
@@ -1164,20 +1236,20 @@ on other operating systems at this time.</p>
 
 <p>By default, the Makefile will use buildah to build the container images, to override this default to use docker to build the images, set the IMGBUILDER variable to <code>docker</code></p>
 
-<p>The project uses the golang dep package manager to vendor all the golang source dependencies into the <em>vendor</em> directory.  You typically do not need to run any <em>dep</em> commands unless you are adding new golang package dependencies into the project outside of what is within the project for a given release.</p>
+<p>The project uses the golang dep package manager to vendor all the golang source dependencies into the <code>vendor</code> directory.  You typically do not need to run any <code>dep</code> commands unless you are adding new golang package dependencies into the project outside of what is within the project for a given release.</p>
 
-<p>After a full compile, you will have a <em>pgo</em> binary in <code>$HOME/odev/bin</code> and the Operator images in your local Docker registry.</p>
+<p>After a full compile, you will have a <code>pgo</code> binary in <code>$HOME/odev/bin</code> and the Operator images in your local Docker registry.</p>
 
-<h3 id="release">Release</h3>
+<h2 id="release">Release</h2>
 
 <p>You can perform a release build by running:</p>
 
 <pre><code>make release
 </code></pre>
 
-<p>This will compile the Mac and Windows versions of <em>pgo</em>.</p>
+<p>This will compile the Mac and Windows versions of <code>pgo</code>.</p>
 
-<h3 id="deploy">Deploy</h3>
+<h1 id="deployment">Deployment</h1>
 
 <p>Now that you have built the Operator images, you can push them to your Kubernetes cluster if that cluster is remote to your development host.</p>
 
@@ -1188,18 +1260,18 @@ on other operating systems at this time.</p>
 
 <p>To deploy the Operator on your Kubernetes cluster.  If your Kubernetes cluster is not local to your development host, you will need to specify a config file that will connect you to your Kubernetes cluster. See the Kubernetes documentation for details.</p>
 
-<h3 id="debug">Debug</h3>
+<h1 id="troubleshooting">Troubleshooting</h1>
 
 <p>Debug level logging in turned on by default when deploying the Operator.</p>
 
-<p>Sample bash functions are supplied in <em>examples/envs.sh</em> to view
+<p>Sample bash functions are supplied in <code>examples/envs.sh</code> to view
 the Operator logs.</p>
 
-<p>You can view the Operator REST API logs with the <em>alog</em> bash function.</p>
+<p>You can view the Operator REST API logs with the <code>alog</code> bash function.</p>
 
-<p>You can view the Operator core logic logs with the <em>olog</em> bash function.</p>
+<p>You can view the Operator core logic logs with the <code>olog</code> bash function.</p>
 
-<p>You can view the Scheduler logs with the <em>slog</em> bash function.</p>
+<p>You can view the Scheduler logs with the <code>slog</code> bash function.</p>
 
 <p>These logs contain the following details:</p>
 
@@ -1211,15 +1283,15 @@ File Information
 PGO version
 </code></pre>
 
-<p>Additionally, you can view the Operator deployment Event logs with the <em>elog</em> bash function.</p>
+<p>Additionally, you can view the Operator deployment Event logs with the <code>elog</code> bash function.</p>
 
-<p>You can enable the <em>pgo</em> CLI debugging with the following flag:</p>
+<p>You can enable the <code>pgo</code> CLI debugging with the following flag:</p>
 
 <pre><code>pgo version --debug
 </code></pre>
 
 <p>You can set the REST API URL as follows after a deployment if you are
-developing on your local host by executing the <em>setip</em> bash function.</p>
+developing on your local host by executing the <code>setip</code> bash function.</p>
 
 
 

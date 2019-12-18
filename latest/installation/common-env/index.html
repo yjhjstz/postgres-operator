@@ -1262,6 +1262,34 @@
 <td>false</td>
 <td>Disable certificate verification (e.g. strict hostname checking)</td>
 </tr>
+
+<tr>
+<td><code>TLS_CA_TRUST</code></td>
+<td>pgo_tls_ca_store</td>
+<td>/var/pki/my_cas.crt</td>
+<td>PEM-encoded list of trusted CA certificates</td>
+</tr>
+
+<tr>
+<td><code>ADD_OS_TRUSTSTORE</code></td>
+<td>pgo_add_os_ca_store</td>
+<td>false</td>
+<td>Adds OS root trust collection to apiserver</td>
+</tr>
+
+<tr>
+<td><code>NOAUTH_ROUTES</code></td>
+<td>pgo_noauth_routes</td>
+<td>&rdquo;/health&rdquo;</td>
+<td>Disable mTLS and HTTP BasicAuth for listed routes</td>
+</tr>
+
+<tr>
+<td><code>EXCLUDE_OS_TRUST</code></td>
+<td></td>
+<td>false</td>
+<td>Excludes OS root trust from pgo client</td>
+</tr>
 </tbody>
 </table>
 

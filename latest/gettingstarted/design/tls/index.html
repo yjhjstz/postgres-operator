@@ -1138,28 +1138,46 @@
 
 <h2 id="tls-configuration">TLS Configuration</h2>
 
-<p>Should you desire to alter the default TLS settings for the Postgres Operator, you can set the
-following variables as described below.</p>
+<p>Should you desire to alter the default TLS settings for the Postgres
+Operator, you can set the following variables as described below.</p>
 
 <h3 id="server-settings">Server Settings</h3>
 
-<p>To disable TLS and make an unsecured connection on port 8080 instead of connecting securely over
-the default port, 8443, set:</p>
+<p>To disable TLS and make an unsecured connection on port 8080 instead of
+connecting securely over the default port, 8443, set:</p>
 
 <p>Bash environment variables</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">DISABLE_TLS</span><span style="color:#f92672">=</span><span style="color:#111">true</span>
-<span style="color:#111">PGO_APISERVER_PORT</span><span style="color:#f92672">=</span><span style="color:#ae81ff">8080</span>		</code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">export</span> <span style="color:#111">DISABLE_TLS</span><span style="color:#f92672">=</span><span style="color:#111">true</span>
+<span style="color:#111">export</span> <span style="color:#111">PGO_APISERVER_PORT</span><span style="color:#f92672">=</span><span style="color:#ae81ff">8080</span>		</code></pre></div>
 <p>Or inventory variables if using Ansible</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">pgo_disable_tls=<span style="color:#d88200">&#39;true&#39;</span>
 pgo_apiserver_port=<span style="color:#ae81ff">8080</span></code></pre></div>
 <p>To disable TLS verifcation, set the follwing as a Bash environment variable</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">export</span> <span style="color:#111">TLS_NO_VERIFY</span><span style="color:#f92672">=</span>false</code></pre></div>
-<p>Or the following in the inventory file is using Ansible</p>
+<p>Or the following in the inventory file if using Ansible</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">pgo_tls_no_verify=<span style="color:#d88200">&#39;false&#39;</span></code></pre></div>
+<h3 id="tls-trust">TLS Trust</h3>
+
+<h4 id="custom-trust-additions">Custom Trust Additions</h4>
+
+<p>To configure the server to allow connections from any client presenting a
+certificate issued by CAs within a custom, PEM-encoded certificate list,
+set the following as a Bash environment variable</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">export</span> <span style="color:#111">TLS_CA_TRUST</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;/path/to/trust/file&#34;</span></code></pre></div>
+<p>Or the following in the inventory file if using Ansible</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">pgo_tls_ca_store=<span style="color:#d88200">&#39;/path/to/trust/file&#39;</span></code></pre></div>
+<h4 id="system-default-trust">System Default Trust</h4>
+
+<p>To configure the server to allow connections from any client presenting a
+certificate issued by CAs within the operating system&rsquo;s default trust store,
+set the following as a Bash environment variable</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">export</span> <span style="color:#111">ADD_OS_TRUSTSTORE</span><span style="color:#f92672">=</span>true</code></pre></div>
+<p>Or the following in the inventory file if using Ansible</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">pgo_add_os_ca_store=<span style="color:#d88200">&#39;true&#39;</span></code></pre></div>
 <h3 id="connection-settings">Connection Settings</h3>
 
-<p>If TLS authentication has been disabled, or if the Operator&rsquo;s apiserver port is changed, be sure to
-update the PGO_APISERVER_URL accordingly.</p>
+<p>If TLS authentication has been disabled, or if the Operator&rsquo;s apiserver port
+is changed, be sure to update the PGO_APISERVER_URL accordingly.</p>
 
 <p>For example with an Ansible installation,</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">export</span> <span style="color:#111">PGO_APISERVER_URL</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;https://&lt;apiserver IP&gt;:8443&#39;</span></code></pre></div>
@@ -1177,8 +1195,15 @@ update the PGO_APISERVER_URL accordingly.</p>
 <span style="color:#f92672">}</span></code></pre></div>
 <h3 id="client-settings">Client Settings</h3>
 
-<p>Finally, if TLS has been disabled for the Operator&rsquo;s apiserver, the PGO client connection must be set to match
-the given settings.</p>
+<p>By default, the pgo client will trust certificates issued by one of the
+Certificate Authorities listed in the operating system&rsquo;s default CA trust
+store. To prevent their inclusion, two configuation methods are available:
+either the Bash environment variable</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">EXCLUDE_OS_TRUST</span><span style="color:#f92672">=</span>true</code></pre></div>
+<p>or the &ndash;exclude-os-trust can be included during client use</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pgo version --exclude-os-trust</code></pre></div>
+<p>Finally, if TLS has been disabled for the Operator&rsquo;s apiserver, the PGO
+client connection must be set to match the given settings.</p>
 
 <p>Two options are available, either the Bash environment variable</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">DISABLE_TLS</span><span style="color:#f92672">=</span>true</code></pre></div>

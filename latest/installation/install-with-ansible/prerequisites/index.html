@@ -1622,6 +1622,13 @@ sets of variables cannot be used at the same time.</div>
 </tr>
 
 <tr>
+<td><code>pgo_add_os_ca_store</code></td>
+<td>false</td>
+<td></td>
+<td>When true, includes system default certificate authorities</td>
+</tr>
+
+<tr>
 <td><code>pgo_admin_username</code></td>
 <td>admin</td>
 <td><strong>Required</strong></td>
@@ -1706,6 +1713,13 @@ sets of variables cannot be used at the same time.</div>
 </tr>
 
 <tr>
+<td><code>pgo_noauth_routes</code></td>
+<td></td>
+<td></td>
+<td>Configures URL routes with mTLS and HTTP BasicAuth disabled.</td>
+</tr>
+
+<tr>
 <td><code>pgo_operator_namespace</code></td>
 <td></td>
 <td><strong>Required</strong></td>
@@ -1713,10 +1727,38 @@ sets of variables cannot be used at the same time.</div>
 </tr>
 
 <tr>
+<td><code>pgo_tls_ca_store</code></td>
+<td></td>
+<td></td>
+<td>Set to add additional Certificate Authorities for Operator to trust (PEM-encoded file).</td>
+</tr>
+
+<tr>
 <td><code>pgo_tls_no_verify</code></td>
 <td>false</td>
 <td></td>
 <td>Set to configure Operator to verify TLS certificates.</td>
+</tr>
+
+<tr>
+<td><code>pgo_client_container_install</code></td>
+<td>false</td>
+<td></td>
+<td>Installs the pgo-client deployment along with ansible isnstall</td>
+</tr>
+
+<tr>
+<td><code>pgo_apiserver_url</code></td>
+<td><code>https://postgres-operator</code></td>
+<td></td>
+<td>Sets the <code>pgo_apiserver_url</code> in the pgo-client deployment</td>
+</tr>
+
+<tr>
+<td><code>pgo_client_cert_secret</code></td>
+<td><code>pgo.tls</code></td>
+<td></td>
+<td>Sets the secret that the pgo-client will use when connecting to the operator. Secret should hold the TLS certs</td>
 </tr>
 
 <tr>
@@ -1960,7 +2002,6 @@ be deployed by the Crunchy PGO when creating and managing PG clusters.</p>
 <p>Additionally, once all resource configurations have been defined in the <code>inventory</code>, they can then be used to specify the default resource configurations that should be utilized for the various PG containers created by the operator.  This is done using the following variables, which are also defined in the  <code>inventory</code>:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#75af00">default_container_resources</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;large&#39;</span>
 <span style="color:#75af00">default_load_resources</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;small&#39;</span>
-<span style="color:#75af00">default_lspvc_resources</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;small&#39;</span>
 <span style="color:#75af00">default_rmdata_resources</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;small&#39;</span>
 <span style="color:#75af00">default_backup_resources</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;small&#39;</span>
 <span style="color:#75af00">default_pgbouncer_resources</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;small&#39;</span></code></pre></div>

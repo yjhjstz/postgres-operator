@@ -1250,7 +1250,17 @@
 
 <tr>
 <td>DisableReplicaStartFailReinit</td>
-<td>if set to &ldquo;true&rdquo; will disable the detection of a &ldquo;start failed&rdquo; states in PG replicas, which results in the re-initialization of the replica in an attempt to bring it back online</td>
+<td>if set to <code>true</code> will disable the detection of a &ldquo;start failed&rdquo; states in PG replicas, which results in the re-initialization of the replica in an attempt to bring it back online</td>
+</tr>
+
+<tr>
+<td>PodAntiAffinity</td>
+<td>either <code>preferred</code>, <code>required</code> or <code>disabled</code> to either specify the type of affinity that should be utilized for the default pod anti-affinity applied to PG clusters, or to disable default pod anti-affinity all together (default <code>preferred</code>)</td>
+</tr>
+
+<tr>
+<td>SyncReplication</td>
+<td>boolean, if set to <code>true</code> will automatically enable synchronous replication in new PostgreSQL clusters (default <code>false</code>)</td>
 </tr>
 </tbody>
 </table>
@@ -1324,11 +1334,6 @@
 <tr>
 <td>MatchLabels</td>
 <td>optional, if set, will cause the PVC to add a <em>matchlabels</em> selector in order to match a PV, only useful when the StorageType is <em>create</em>, when specified a label of <em>key=value</em> is added to the PVC as a match criteria</td>
-</tr>
-
-<tr>
-<td>PodAntiAffinity</td>
-<td>either <code>preferred</code>, <code>required</code> or <code>disabled</code> to either specify the type of affinity that should be utilized for the default pod anti-affinity applied to PG clusters, or to disable default pod anti-affinity all together  (default <code>preferred</code>)</td>
 </tr>
 </tbody>
 </table>
@@ -1407,11 +1412,6 @@ for other access modes it might support.</p>
 <tr>
 <td>DefaultLoadResource</td>
 <td>optional, the value of the container resources configuration to use for pgo-load containers, if not set, no resource limits or requests are added on the database container</td>
-</tr>
-
-<tr>
-<td>DefaultLspvcResource</td>
-<td>optional, the value of the container resources configuration to use for pgo-lspvc containers, if not set, no resource limits or requests are added on the database container</td>
 </tr>
 
 <tr>
