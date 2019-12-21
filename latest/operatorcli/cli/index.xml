@@ -229,7 +229,7 @@ pgo delete benchmark mycluster pgo delete benchmark --selector=env=test  pgo del
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_cluster/</guid>
       <description>pgo delete cluster Delete a PostgreSQL cluster
 Synopsis Delete a PostgreSQL cluster. For example:
-pgo delete cluster --all pgo delete cluster mycluster  pgo delete cluster [flags]  Options  --all Delete all clusters. Backups and data subject to --delete-backups and --delete-data flags, respectively. -h, --help help for cluster --keep-backups Keeps the backups available for use at a later time (e.g. recreating the cluster). --no-prompt No command line confirmation before delete.</description>
+pgo delete cluster --all pgo delete cluster mycluster  pgo delete cluster [flags]  Options  --all Delete all clusters. Backups and data subject to --delete-backups and --delete-data flags, respectively. -h, --help help for cluster --keep-backups Keeps the backups available for use at a later time (e.g. recreating the cluster). --keep-data Keeps the data for the specified cluster.</description>
     </item>
     
     <item>
