@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Crunchy Data Postgres Operator on Crunchy Data PostgreSQL Operator Documentation</title>
+    <title>Crunchy PostgreSQL Operator on Crunchy Data PostgreSQL Operator Documentation</title>
     <link>https://crunchydata.github.io/postgres-operator/latest/</link>
-    <description>Recent content in Crunchy Data Postgres Operator on Crunchy Data PostgreSQL Operator Documentation</description>
+    <description>Recent content in Crunchy PostgreSQL Operator on Crunchy Data PostgreSQL Operator Documentation</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
@@ -21,18 +21,6 @@
     </item>
     
     <item>
-      <title>PGO CLI Overview</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/pgo-cli-overview/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/pgo-cli-overview/</guid>
-      <description>PGO Command Line Interface (PGO CLI) One of the suppport methods of interacting with the PostgreSQL Operator is through the command line tool, pgo CLI.
-The PGO CLI is downloaded from the GitHub Releases page for the PostgreSQL Operator (https://github.com/crunchydata/postgres-operator/releases).
-The pgo client is provided in Mac, Windows, and Linux binary formats, download the appropriate client to your local laptop or workstation to work with a remote Operator.
-PGO CLI Syntax Use the following syntax to run pgo commands from your terminal window:</description>
-    </item>
-    
-    <item>
       <title>Configuration Resources</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/configuration/configuration/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -41,37 +29,6 @@ PGO CLI Syntax Use the following syntax to run pgo commands from your terminal w
       <description>The operator is template-driven; this makes it simple to configure both the client and the operator.
 conf Directory The Operator is configured with a collection of files found in the conf directory. These configuration files are deployed to your Kubernetes cluster when the Operator is deployed. Changes made to any of these configuration files currently require a redeployment of the Operator on the Kubernetes cluster.
 The server components of the Operator include Role Based Access Control resources which need to be created a single time by a Kubernetes cluster-admin user.</description>
-    </item>
-    
-    <item>
-      <title>Design</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/designoverview/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/designoverview/</guid>
-      <description>Provisioning So, what does the Postgres Operator actually deploy when you create a cluster?
-On this diagram, objects with dashed lines are components that are optionally deployed as part of a PostgreSQL Cluster by the operator. Objects with solid lines are the fundamental and required components.
-For example, within the Primary Deployment, the metrics container is completely optional. That component can be deployed using either the operator configuration or command line arguments if you want to cause metrics to be collected from the Postgres container.</description>
-    </item>
-    
-    <item>
-      <title>Node Affinity in PostgreSQL Operator</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/overview/node-affinitiy-overview/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/overview/node-affinitiy-overview/</guid>
-      <description>Node Affinity in PostgreSQL Operator Kubernetes node affinity allows you to constrain which nodes your pod is eligible to be scheduled on, based on labels on the node.
-The PostgreSQL Operator provides users with the ability to add a node affinity section to a new Cluster Deployment. By adding a node affinity section to the Cluster Deployment, users can direct Kubernetes to attempt to schedule a primary PostgreSQL instance within a cluster on a specific Kubernetes node.</description>
-    </item>
-    
-    <item>
-      <title>PGO CLI Global Environment Variables</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/pgo-cli-global-variables/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/pgo-cli-global-variables/</guid>
-      <description>pgo CLI Global Environment Variables pgo will pick up these settings if set in your environment:
-   Name Description NOTES     PGOUSERNAME The username (role) used for auth on the operator apiserver. Requires that PGOUSERPASS be set.   PGOUSERPASS The password for used for auth on the operator apiserver. Requires that PGOUSERNAME be set.   PGOUSER The path the the pgouser file. Will be ignored if either PGOUSERNAME or PGOUSERPASS are set.</description>
     </item>
     
     <item>
@@ -86,75 +43,22 @@ Cluster    Setting Definition     BasicAuth If set to &amp;quot;true&amp;quot; w
     </item>
     
     <item>
-      <title>Pod Anti-Affinity in PostgreSQL Operator</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/overview/pod-affinitiy-overview/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/overview/pod-affinitiy-overview/</guid>
-      <description>Pod Anti-Affinity in PostgreSQL Operator By default, when a new PostgreSQL cluster is created using the PostgreSQL Operator, pod anti-affinity rules will be applied to any deployments comprising the full PG cluster (please note that default pod anti-affinity does not apply to any Kubernetes jobs created by the PostgreSQL Operator). This includes:
- The primary PG deployment The deployments for each PG replica The pgBackrest dedicated repostiory deployment The pgBouncer deployment (if enabled for the cluster)  With default pod anti-affinity enabled, Kubernetes will attempt to schedule pods created by each of the separate deployments above on a unique node, but will not guarentee that this will ocurr.</description>
-    </item>
-    
-    <item>
-      <title>Storage Overview</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/overview/storage-overview/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/overview/storage-overview/</guid>
-      <description>Storage and the PostgreSQL Operator The PostgreSQL Operator allows for a variety of different configurations of persistent storage that can be leveraged by the PostgreSQL instances or clusters it deploys.
-The PostgreSQL Operator works with several different storage types, HostPath, Network File System(NFS), and Dynamic storage.
- Hostpath is the simplest storage and useful for single node testing.
- NFS provides the ability to do single and multi-node testing.</description>
-    </item>
-    
-    <item>
       <title>Custom Configuration</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/custom-config/</link>
+      <link>https://crunchydata.github.io/postgres-operator/latest/advanced/custom-config/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/custom-config/</guid>
+      <guid>https://crunchydata.github.io/postgres-operator/latest/advanced/custom-config/</guid>
       <description>Custom Postgres Configurations Users and administrators can specify a custom set of Postgres configuration files be used when creating a new Postgres cluster. The configuration files you can change include -
  postgresql.conf pg_hba.conf setup.sql  Different configurations for PostgreSQL might be defined for the following -
  OLTP types of databases OLAP types of databases High Memory Minimal Configuration for Development Project Specific configurations Special Security Requirements  Global ConfigMap If you create a configMap called pgo-custom-pg-config with any of the above files within it, new clusters will use those configuration files when setting up a new database instance.</description>
     </item>
     
     <item>
-      <title>PGO CLI Global Flags</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/pgo-cli-global-flags/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/pgo-cli-global-flags/</guid>
-      <description>pgo CLI Global Flags pgo global command flags include:
-   Flag Description     n namespace targeted for the command   apiserver-url URL of the Operator REST API service, override with CO_APISERVER_URL environment variable   debug enable debug messages   pgo-ca-cert The CA Certificate file path for authenticating to the PostgreSQL Operator apiserver. Override with PGO_CA_CERT environment variable   pgo-client-cert The Client Certificate file path for authenticating to the PostgreSQL Operator apiserver.</description>
-    </item>
-    
-    <item>
-      <title>Common PGO CLI Operations</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/common-pgo-cli-operations/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/common-pgo-cli-operations/</guid>
-      <description>Common PGO CLI Operations In all the examples below, the user is specifying the pgouser1 namespace as the target of the operator. Replace this value with your own namespace value. You can specify a default namespace to be used by setting the PGO_NAMESPACE environment variable on the pgo client environment.
-PostgreSQL Cluster Operations Creating a Cluster A user will typically start using the PostgreSQL Operator by creating PostgreSQL cluster including a single PostgreSQL instance as follows:</description>
-    </item>
-    
-    <item>
-      <title>Custom Resource Definitions Overview</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/overview/custom-resource-definitions/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/overview/custom-resource-definitions/</guid>
-      <description>PostgreSQL Operator Custom Resource Definitions The PostgreSQL Operator defines the following series of Kubernetes Custom Resource Definitions (CRDs):
-Each of these CRDs are used in the design of the PostgreSQL Operator to perform PostgreSQL related operations in order to enable with on-demand, PostgreSQL-as-a-Service workflows.
-Cluster (pgclusters) The Cluster or pgcluster CRD is used by the PostgreSQL Operator to define the PostgreSQL cluster definition and make new PostgreSQL cluster requests.</description>
-    </item>
-    
-    <item>
       <title>Custom SSL Configuration</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/custom-config-ssl/</link>
+      <link>https://crunchydata.github.io/postgres-operator/latest/advanced/custom-config-ssl/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/custom-config-ssl/</guid>
+      <guid>https://crunchydata.github.io/postgres-operator/latest/advanced/custom-config-ssl/</guid>
       <description>Custom PostgreSQL SSL Configurations The PostgreSQL Operator can create clusters that use SSL authentication by utilizing custom configmaps.
 Configuration Files for SSL Authentication Users and administrators can specify a custom set of PostgreSQL configuration files to be used when creating a new PostgreSQL cluster. This example uses the files below-
  postgresql.conf pg_hba.conf pg_ident.conf  along with generated security certificates, to setup a custom SSL configuration.
@@ -163,150 +67,29 @@ Config Files Purpose The postgresql.</description>
     
     <item>
       <title>Multi-Zone Cloud Considerations</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/multi-zone-design-considerations/</link>
+      <link>https://crunchydata.github.io/postgres-operator/latest/advanced/multi-zone-design-considerations/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/multi-zone-design-considerations/</guid>
+      <guid>https://crunchydata.github.io/postgres-operator/latest/advanced/multi-zone-design-considerations/</guid>
       <description>Considerations for PostgreSQL Operator Deployments in Multi-Zone Cloud Environments Overview When using the PostgreSQL Operator in a Kubernetes cluster consisting of nodes that span multiple zones, special consideration must be taken to ensure all pods and the associated volumes re scheduled and provisioned within the same zone.
 Given that a pod is unable mount a volume that is located in another zone, any volumes that are dynamically provisioned must be provisioned in a topology-aware manner according to the specific scheduling requirements for the pod.</description>
     </item>
     
     <item>
-      <title>PGO Scheduler Overview</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/overview/scheduler-overview/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/overview/scheduler-overview/</guid>
-      <description>PGO Scheduler The PostgreSQL Operator includes a cronlike scheduler application called pgo-scheduler. Its purpose is to run automated tasks such as PostgreSQL backups or SQL policies against PostgreSQL instances and clusters created by the PostgreSQL Operator.
-PGO Scheduler watches Kubernetes for configmaps with the label crunchy-scheduler=true in the same namespace the Operator is deployed. The configmaps are json objects that describe the schedule such as:
- Cron like schedule such as: * * * * * Type of task: pgbackrest, pgbasebackup or policy  Schedules are removed automatically when the configmaps are deleted.</description>
-    </item>
-    
-    <item>
-      <title>PostgreSQL Operator Backup and Restore Capability</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/overview/backup-restore-overview/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/overview/backup-restore-overview/</guid>
-      <description>PostgreSQL Operator Backup and Restore Capability The PostgreSQL Operator provides users with the ability to manage PostgreSQL cluster backups through both native PostgreSQL backup functionality, as well as using pgbackrest, an open source backup and restore solution designed to scale up to the largest databases. By default, beginning with verison 4.0, the PostgreSQL Operator backup command performs a PostgreSQL pgbackrest backup.
-The three backup types that can be configured through the PostgreSQL Operator CLI are:</description>
-    </item>
-    
-    <item>
-      <title>PostgreSQL Operator Overview</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/overview/postgres-operator-overview/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/overview/postgres-operator-overview/</guid>
-      <description>PostgreSQL Operator Overview The PostgreSQL Operator extends Kubernetes to provide a higher- level abstraction enabling the rapid creation and management of PostgreSQL databases and clusters.
-The PostgreSQL Operator include the following components:
- PostgreSQL Operator PostgreSQL Operator Containers PostgreSQL Operator PGO Client PostgreSQL Operator REST API Server PostgreSQL PGO Scheduler  The following diagram provides an overview of the components of the PostgreSQL Operator:
-PostgreSQL Operator The PostgreSQL Operator makes use of Kubernetes “Custom Resource Definitions” or “CRDs” to extend Kubernetes with custom, PostgreSQL specific, Kubernetes objects such as “Database” and “Cluster”.</description>
-    </item>
-    
-    <item>
-      <title>PostgreSQL Operator User Roles Overview</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/overview/users-role-overview/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/overview/users-role-overview/</guid>
-      <description>User Roles in the PostgreSQL Operator The PostgreSQL Operator, when used in conjunction with the associated PostgreSQL Containers and Kubernetes, provides you with the ability to host your own open source, Kubernetes native PostgreSQL-as-a-Service infrastructure.
-In installing, configuring and operating the PostgreSQL Operator as a PostgreSQL-as-a-Service capability, the following user roles will be required:
-   Role Applicable Component Authorized Privileges and Functions Performed     Platform Admininistrator (Privileged User) PostgreSQL Operator The Platform Admininistrator is able to control all aspects of the PostgreSQL Operator functionality, including: provisioning and scaling clusters, adding PostgreSQL Administrators and PostgreSQL Users to clusters, setting PostgreSQL cluster security privileges, managing other PostgreSQL Operator users, and more.</description>
-    </item>
-    
-    <item>
       <title>Rest API</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/direct-api-calls/</link>
+      <link>https://crunchydata.github.io/postgres-operator/latest/advanced/direct-api-calls/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/direct-api-calls/</guid>
+      <guid>https://crunchydata.github.io/postgres-operator/latest/advanced/direct-api-calls/</guid>
       <description>Direct API Calls The API can also be accessed by interacting directly with the API server. This can be done by making curl calls to POST or GET information from the server. In order to make these calls you will need to provide certificates along with your request using the --cacert, --key, and --cert flags. Next you will need to provide the username and password for the RBAC along with a header that includes the content type and the --insecure flag.</description>
     </item>
     
     <item>
-      <title>pgBackrest with S3</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/backrest-s3-configuration/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/backrest-s3-configuration/</guid>
-      <description>pgbackrest Configuration The PostgreSQL Operator integrates various features of the pgbackrest backup and restore project.
-The pgo-backrest-repo container acts as a pgBackRest remote repository for the Postgres cluster to use for storing archive files and backups.
-The following diagrams depicts some of the integration features:
-In this diagram, starting from left to right we see the following:
- a user when they enter pgo backup mycluster &amp;ndash;backup-type=pgbackrest will cause a pgo-backrest container to be run as a Job, that container will execute a pgbackrest backup command in the pgBackRest repository container to perform the backup function.</description>
-    </item>
-    
-    <item>
-      <title>Eventing</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/eventing/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/eventing/</guid>
-      <description>Operator Eventing The Operator creates events from the various life-cycle events going on within the Operator logic and driven by pgo users as they interact with the Operator and as Postgres clusters come and go or get updated.
-Event Watching There is a pgo CLI command:
-pgo watch alltopic  This command connects to the event stream and listens on a topic for event real-time. The command will not complete until the pgo user enters ctrl-C.</description>
-    </item>
-    
-    <item>
-      <title>Failover in the PostgreSQL Operator Overview</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/overview/failover-overview/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/overview/failover-overview/</guid>
-      <description>Failover in the PostgreSQL Operator There are a number of potential events that could cause a primary database instance or cluster to become unavailable during the course of normal operations, including:
- A database storage (disk) failure or any other hardware failure The network on which the database resides becomes unreachable The host operating system becomes unstable and crashes A key database file becomes corrupted Total loss of data center  There may also be downtime events that are due to the normal case of operations, such as performing a minor upgrade, security patching of operating system, hardware upgrade, or other maintenance.</description>
-    </item>
-    
-    <item>
-      <title>Namespace</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/namespace/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/namespace/</guid>
-      <description>Operator Namespaces The Operator itself knows which namespace it is running within by referencing the PGO_OPERATOR_NAMESPACE environment variable at startup time from within its Deployment definition.
-The PGO_OPERATOR_NAMESPACE environment variable a user sets in their .bashrc file is used to determine what namespace the Operator is deployed into. The PGO_OPERATOR_NAMESPACE variable is referenced by the Operator during deployment.
-The .bashrc NAMESPACE environment variable a user sets determines which namespaces the Operator will watch.</description>
-    </item>
-    
-    <item>
-      <title>Operator CLI Overview</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/pgo-overview/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/pgo-overview/</guid>
-      <description>The command line tool, pgo, is used to interact with the Postgres Operator.
-Most users will work with the Operator using the pgo CLI tool. That tool is downloaded from the GitHub Releases page for the Operator.
-The pgo client is provided in Mac, Windows, and Linux binary formats, download the appropriate client to your local laptop or workstation to work with a remote Operator.
-Syntax Use the following syntax to run pgo commands from your terminal window:</description>
-    </item>
-    
-    <item>
-      <title>PostgreSQL Operator Containers Overview</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/overview/postgres-operator-containers-overview/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/overview/postgres-operator-containers-overview/</guid>
-      <description>PostgreSQL Operator Containers Overview The PostgreSQL Operator orchestrates a series of PostgreSQL and PostgreSQL related containers containers that enable rapid deployment of PostgreSQL, including administration and monitoring tools in a Kubernetes environment. The PostgreSQL Operator supports PostgreSQL 9.5+ with multiple PostgreSQL cluster deployment strategies and a variety of PostgreSQL related extensions and tools enabling enterprise grade PostgreSQL-as-a-Service. A full list of the containers supported by the PostgreSQL Operator is provided below.</description>
-    </item>
-    
-    <item>
-      <title>PostgreSQL Operator Namespace Considerations Overview</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/overview/namespace-overview/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/overview/namespace-overview/</guid>
-      <description>Kubernetes Namespaces and the PostgreSQL Operator In Kubernetes, namespaces provide the user the ability to divide cluster resources between multiple users (via resource quota).
-The PostgreSQL Operator makes use of the Kubernetes Namespace support in order to define the Namespace to which the PostgreSQL Operator will deploy PostgreSQL clusters, enabling users to more easily allocate Kubernetes resources to specific areas within their business (users, projects, departments).
-Namespaces Applied to Organizational Requirements Prior to version PostgreSQL Operator 4.</description>
-    </item>
-    
-    <item>
       <title>TLS</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/tls/</link>
+      <link>https://crunchydata.github.io/postgres-operator/latest/configuration/tls/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/tls/</guid>
+      <guid>https://crunchydata.github.io/postgres-operator/latest/configuration/tls/</guid>
       <description>TLS Configuration Should you desire to alter the default TLS settings for the Postgres Operator, you can set the following variables as described below.
 Server Settings To disable TLS and make an unsecured connection on port 8080 instead of connecting securely over the default port, 8443, set:
 Bash environment variables
@@ -335,17 +118,6 @@ username:password:pgoadmin: pgouser1:password:pgoadmin:pgouser1 pgouser2:passwor
 The first step is to install the PostgreSQL Operator RBAC configuration. This can be accomplished by running:
 make installrbac  This script will install the PostreSQL Operator Custom Resource Definitions, CRD’s and creates the following RBAC resources on your Kubernetes cluster:
    Setting Definition     Custom Resource Definitions (crd.</description>
-    </item>
-    
-    <item>
-      <title>Operator Lifecycle Management Support</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/olm/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/olm/</guid>
-      <description>Operator Lifecycle Management Support The PostgreSQL Operator supports Red Hat OLM (Operator Lifecycle Manager) to a degree starting with the PostgreSQL Operator 4.0 release.
-The PostgreSQL Operator supports the different deployment models as documented here
-The PostgreSQL Operator is available for download in OperatorHub.io</description>
     </item>
     
     <item>
@@ -426,6 +198,18 @@ After upgrading to Operator 3.5, you will need to restore those clusters from th
     </item>
     
     <item>
+      <title>Overview</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/pgo-cli-overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/pgo-cli-overview/</guid>
+      <description>PGO Command Line Interface (PGO CLI) One of the suppport methods of interacting with the PostgreSQL Operator is through the command line tool, pgo CLI.
+The PGO CLI is downloaded from the GitHub Releases page for the PostgreSQL Operator (https://github.com/crunchydata/postgres-operator/releases).
+The pgo client is provided in Mac, Windows, and Linux binary formats, download the appropriate client to your local laptop or workstation to work with a remote Operator.
+PGO CLI Syntax Use the following syntax to run pgo commands from your terminal window:</description>
+    </item>
+    
+    <item>
       <title>Prerequisites</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/prerequisites/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -433,6 +217,17 @@ After upgrading to Operator 3.5, you will need to restore those clusters from th
       <guid>https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/prerequisites/</guid>
       <description>Prerequisites The following is required prior to installing Crunchy PostgreSQL Operator using Ansible:
  postgres-operator playbooks source code for the target version Ansible 2.5+  Kubernetes Installs  Kubernetes v1.11+ Cluster admin privileges in Kubernetes kubectl configured to communicate with Kubernetes  OpenShift Installs  OpenShift v3.09+ Cluster admin privileges in OpenShift oc configured to communicate with OpenShift  Installing from a Windows Host If the Crunchy PostgreSQL Operator is being installed from a Windows host the following are required:</description>
+    </item>
+    
+    <item>
+      <title>Common Operations</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/common-pgo-cli-operations/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/common-pgo-cli-operations/</guid>
+      <description>Common Operations In all the examples below, the user is specifying the pgouser1 namespace as the target of the operator. Replace this value with your own namespace value. You can specify a default namespace to be used by setting the PGO_NAMESPACE environment variable on the pgo client environment.
+Cluster Operations A user will typically start using the Operator by creating a Postgres cluster as follows:
+pgo create cluster mycluster -n pgouser1  This command creates a Postgres cluster in the pgouser1 namespace that has a single Postgres primary container.</description>
     </item>
     
     <item>
@@ -515,6 +310,37 @@ The following environment variables are heavily used in the Bash installation pr
     </item>
     
     <item>
+      <title>Overview</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/architecture/overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/architecture/overview/</guid>
+      <description>The goal of the Crunchy PostgreSQL Operator is to provide a means to quickly get your applications up and running on PostgreSQL for both development and production environments. To understand how the PostgreSQL Operator does this, we want to give you a tour of its architecture, with explains both the architecture of the PostgreSQL Operator itself as well as recommended deployment models for PostgreSQL in production!
+Crunchy PostgreSQL Operator Architecture The Crunchy PostgreSQL Operator extends Kubernetes to provide a higher-level abstraction for rapid creation and management of PostgreSQL clusters.</description>
+    </item>
+    
+    <item>
+      <title>Provisioning</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/architecture/provisioning/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/architecture/provisioning/</guid>
+      <description>What happens when the Crunchy PostgreSQL Operator creates a PostgreSQL cluster?
+First, an entry needs to be added to the Pgcluster CRD that provides the essential attributes for maintaining the definition of a PostgreSQL cluster. These attributes include:
+ Cluster name The storage and resource definitions to use References to any secrets required, e.g. ones to the pgBackRest repository High-availability rules Which sidecars and ancillary services are enabled, e.g. pgBouncer, pgMonitor  After the Pgcluster CRD entry is set up, the PostgreSQL Operator handles various tasks to ensure that a healthy PostgreSQL cluster can be deployed.</description>
+    </item>
+    
+    <item>
+      <title>Disaster Recovery</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/architecture/disaster-recovery/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/architecture/disaster-recovery/</guid>
+      <description>When using the PostgreSQL Operator, the answer to the question &amp;ldquo;do you take backups of your database&amp;rdquo; is automatically &amp;ldquo;yes!&amp;rdquo;
+The PostgreSQL Operator uses the open source pgBackRest backup and restore utility that is designed for working with databases that are many terabytes in size. As described in the Provisioning section, pgBackRest is enabled by default as it permits the PostgreSQL Operator to automate some advanced as well as convenient behaviors, including:</description>
+    </item>
+    
+    <item>
       <title>Install Operator Using Bash</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/installation/operator-install/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -523,6 +349,16 @@ The following environment variables are heavily used in the Bash installation pr
       <description>A full installation of the Operator includes the following steps:
  create a project structure configure your environment variables configure Operator templates create security resources deploy the operator install pgo CLI (end user command tool)  Operator end-users are only required to install the pgo CLI client on their host and can skip the server-side installation steps. pgo CLI clients are provided for Linux, Mac, and Windows clients.
 The Operator can be deployed by multiple methods including:</description>
+    </item>
+    
+    <item>
+      <title>High-Availability</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/architecture/high-availability/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/architecture/high-availability/</guid>
+      <description>One of the great things about PostgreSQL is its reliability: it is very stable and typically &amp;ldquo;just works.&amp;rdquo; However, there are certain things that can happen in the environment that PostgreSQL is deployed in that can affect its uptime, including:
+ The database storage disk fails or some other hardware failure occurs The network on which the database resides becomes unreachable The host operating system becomes unstable and crashes A key database file becomes corrupted A data center is lost  There may also be downtime events that are due to the normal case of operations, such as performing a minor upgrade, security patching of operating system, hardware upgrade, or other maintenance.</description>
     </item>
     
     <item>
@@ -535,6 +371,60 @@ The Operator can be deployed by multiple methods including:</description>
 This guide is intended for those wanting to build the Operator from source or contribute via pull requests.
 Prerequisites The target development host for these instructions is a CentOS 7 or RHEL 7 host. Others operating systems are possible, however we do not support building or running the Operator on others at this time.
 Environment Variables The following environment variables are expected by the steps in this guide:</description>
+    </item>
+    
+    <item>
+      <title>Namespace Management</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/architecture/namespace/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/architecture/namespace/</guid>
+      <description>Operator Namespaces The Operator itself knows which namespace it is running within by referencing the PGO_OPERATOR_NAMESPACE environment variable at startup time from within its Deployment definition.
+The PGO_OPERATOR_NAMESPACE environment variable a user sets in their .bashrc file is used to determine what namespace the Operator is deployed into. The PGO_OPERATOR_NAMESPACE variable is referenced by the Operator during deployment.
+The .bashrc NAMESPACE environment variable a user sets determines which namespaces the Operator will watch.</description>
+    </item>
+    
+    <item>
+      <title>Lifecycle Events</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/architecture/eventing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/architecture/eventing/</guid>
+      <description>Operator Eventing The Operator creates events from the various life-cycle events going on within the Operator logic and driven by pgo users as they interact with the Operator and as Postgres clusters come and go or get updated.
+Event Watching There is a pgo CLI command:
+pgo watch alltopic  This command connects to the event stream and listens on a topic for event real-time. The command will not complete until the pgo user enters ctrl-C.</description>
+    </item>
+    
+    <item>
+      <title>PostgreSQL Containers</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/architecture/postgres-operator-containers-overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/architecture/postgres-operator-containers-overview/</guid>
+      <description>PostgreSQL Operator Containers Overview The PostgreSQL Operator orchestrates a series of PostgreSQL and PostgreSQL related containers containers that enable rapid deployment of PostgreSQL, including administration and monitoring tools in a Kubernetes environment. The PostgreSQL Operator supports PostgreSQL 9.5+ with multiple PostgreSQL cluster deployment strategies and a variety of PostgreSQL related extensions and tools enabling enterprise grade PostgreSQL-as-a-Service. A full list of the containers supported by the PostgreSQL Operator is provided below.</description>
+    </item>
+    
+    <item>
+      <title>Storage</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/architecture/storage-overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/architecture/storage-overview/</guid>
+      <description>Storage and the PostgreSQL Operator The PostgreSQL Operator allows for a variety of different configurations of persistent storage that can be leveraged by the PostgreSQL instances or clusters it deploys.
+The PostgreSQL Operator works with several different storage types, HostPath, Network File System(NFS), and Dynamic storage.
+ Hostpath is the simplest storage and useful for single node testing.
+ NFS provides the ability to do single and multi-node testing.</description>
+    </item>
+    
+    <item>
+      <title>User &amp; Roles</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/architecture/users-role-overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/architecture/users-role-overview/</guid>
+      <description>User Roles in the PostgreSQL Operator The PostgreSQL Operator, when used in conjunction with the associated PostgreSQL Containers and Kubernetes, provides you with the ability to host your own open source, Kubernetes native PostgreSQL-as-a-Service infrastructure.
+In installing, configuring and operating the PostgreSQL Operator as a PostgreSQL-as-a-Service capability, the following user roles will be required:
+   Role Applicable Component Authorized Privileges and Functions Performed     Platform Admininistrator (Privileged User) PostgreSQL Operator The Platform Admininistrator is able to control all aspects of the PostgreSQL Operator functionality, including: provisioning and scaling clusters, adding PostgreSQL Administrators and PostgreSQL Users to clusters, setting PostgreSQL cluster security privileges, managing other PostgreSQL Operator users, and more.</description>
     </item>
     
     <item>
@@ -578,11 +468,11 @@ If you have any question you can submit a Support - Question and Answer issue an
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo/</guid>
       <description>pgo The pgo command line interface.
 Synopsis The pgo command line interface lets you create and manage PostgreSQL clusters.
-Options  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator. -h, --help help for pgo -n, --namespace string The namespace to use for pgo requests. --pgo-ca-cert string The CA Certificate file path for authenticating to the PostgreSQL Operator apiserver.</description>
+Options  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator. --exclude-os-trust Exclude CA certs from OS default trust store -h, --help help for pgo -n, --namespace string The namespace to use for pgo requests. --pgo-ca-cert string The CA Certificate file path for authenticating to the PostgreSQL Operator apiserver.</description>
     </item>
     
     <item>
-      <title>pgo_apply</title>
+      <title>pgo apply</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_apply/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -593,7 +483,7 @@ pgo apply mypolicy1 --selector=name=mycluster pgo apply mypolicy1 --selector=som
     </item>
     
     <item>
-      <title>pgo_backup</title>
+      <title>pgo backup</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_backup/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -605,7 +495,7 @@ pgo backup [flags]  Options  --backup-opts string The pgbackup options to pass i
     </item>
     
     <item>
-      <title>pgo_benchmark</title>
+      <title>pgo benchmark</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_benchmark/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -617,40 +507,29 @@ pgo benchmark [flags]  Options  -b, --benchmark-opts string The extra flags pass
     </item>
     
     <item>
-      <title>pgo_cat</title>
+      <title>pgo cat</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_cat/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_cat/</guid>
       <description>pgo cat Perform a cat command on a cluster
 Synopsis CAT performs a Linux cat command on a cluster file. For example:
-pgo cat mycluster /pgdata/mycluster/postgresql.conf  pgo cat [flags]  Options  -h, --help help for cat  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator. -n, --namespace string The namespace to use for pgo requests.</description>
+pgo cat mycluster /pgdata/mycluster/postgresql.conf  pgo cat [flags]  Options  -h, --help help for cat  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator. --exclude-os-trust Exclude CA certs from OS default trust store -n, --namespace string The namespace to use for pgo requests.</description>
     </item>
     
     <item>
-      <title>pgo_clidoc</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_clidoc/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_clidoc/</guid>
-      <description>pgo clidoc Generate Markdown of CLI commandes
-Synopsis The clidoc command allows you to generate markdown files for all CLI commands:
-pgo clidoc  pgo clidoc [flags]  Options  -h, --help help for clidoc  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --namespace string The namespace to use for pgo requests. --pgo-ca-cert string The CA Certificate file path for authenticating to the PostgreSQL Operator apiserver.</description>
-    </item>
-    
-    <item>
-      <title>pgo_clone</title>
+      <title>pgo clone</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_clone/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_clone/</guid>
       <description>pgo clone Copies the primary database of an existing cluster to a new cluster
 Synopsis Clone makes a copy of an existing PostgreSQL cluster managed by the Operator and creates a new PostgreSQL cluster managed by the Operator, with the data from the old cluster.
-pgo clone oldcluster newcluster  pgo clone [flags]  Options  -h, --help help for clone  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver.</description>
+pgo clone oldcluster newcluster  pgo clone [flags]  Options  -h, --help help for clone --pgbackrest-storage-source string The data source for the clone when both &amp;quot;local&amp;quot; and &amp;quot;s3&amp;quot; are enabled in the source cluster.</description>
     </item>
     
     <item>
-      <title>pgo_create</title>
+      <title>pgo create</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -661,7 +540,7 @@ pgo create [flags]  Options  -h, --help help for create  Options inherited from 
     </item>
     
     <item>
-      <title>pgo_create_cluster</title>
+      <title>pgo create cluster</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_cluster/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -672,7 +551,7 @@ pgo create cluster mycluster  pgo create cluster [flags]  Options  --ccp-image s
     </item>
     
     <item>
-      <title>pgo_create_namespace</title>
+      <title>pgo create namespace</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_namespace/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -683,7 +562,7 @@ pgo create namespace somenamespace Note: For Kubernetes versions prior to 1.12, 
     </item>
     
     <item>
-      <title>pgo_create_pgbouncer</title>
+      <title>pgo create pgbouncer</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_pgbouncer/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -694,7 +573,7 @@ pgo create pgbouncer mycluster  pgo create pgbouncer [flags]  Options  -h, --hel
     </item>
     
     <item>
-      <title>pgo_create_pgorole</title>
+      <title>pgo create pgorole</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_pgorole/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -705,7 +584,7 @@ pgo create pgorole somerole --permissions=&amp;quot;Cat,Ls&amp;quot;  pgo create
     </item>
     
     <item>
-      <title>pgo_create_pgouser</title>
+      <title>pgo create pgouser</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_pgouser/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -716,7 +595,7 @@ pgo create pgouser someuser  pgo create pgouser [flags]  Options  --all-namespac
     </item>
     
     <item>
-      <title>pgo_create_policy</title>
+      <title>pgo create policy</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_policy/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -727,7 +606,7 @@ pgo create policy mypolicy --in-file=/tmp/mypolicy.sql  pgo create policy [flags
     </item>
     
     <item>
-      <title>pgo_create_schedule</title>
+      <title>pgo create schedule</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_schedule/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -738,7 +617,7 @@ pgo create schedule --schedule=&amp;quot;* * * * *&amp;quot; --schedule-type=pgb
     </item>
     
     <item>
-      <title>pgo_create_user</title>
+      <title>pgo create user</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_user/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -749,7 +628,7 @@ pgo create user --username=someuser --all --managed pgo create user --username=s
     </item>
     
     <item>
-      <title>pgo_delete</title>
+      <title>pgo delete</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -760,18 +639,18 @@ pgo delete backup mycluster pgo delete benchmark mycluster pgo delete cluster my
     </item>
     
     <item>
-      <title>pgo_delete_backup</title>
+      <title>pgo delete backup</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_backup/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_backup/</guid>
       <description>pgo delete backup Delete a backup
 Synopsis Delete a backup. For example:
-pgo delete backup mydatabase  pgo delete backup [flags]  Options  -h, --help help for backup  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator. -n, --namespace string The namespace to use for pgo requests. --pgo-ca-cert string The CA Certificate file path for authenticating to the PostgreSQL Operator apiserver.</description>
+pgo delete backup mydatabase  pgo delete backup [flags]  Options  -h, --help help for backup  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator. --exclude-os-trust Exclude CA certs from OS default trust store -n, --namespace string The namespace to use for pgo requests.</description>
     </item>
     
     <item>
-      <title>pgo_delete_benchmark</title>
+      <title>pgo delete benchmark</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_benchmark/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -782,7 +661,7 @@ pgo delete benchmark mycluster pgo delete benchmark --selector=env=test  pgo del
     </item>
     
     <item>
-      <title>pgo_delete_cluster</title>
+      <title>pgo delete cluster</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_cluster/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -793,7 +672,7 @@ pgo delete cluster --all pgo delete cluster mycluster  pgo delete cluster [flags
     </item>
     
     <item>
-      <title>pgo_delete_label</title>
+      <title>pgo delete label</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_label/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -804,18 +683,18 @@ pgo delete label mycluster --label=env=research pgo delete label all --label=env
     </item>
     
     <item>
-      <title>pgo_delete_namespace</title>
+      <title>pgo delete namespace</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_namespace/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_namespace/</guid>
       <description>pgo delete namespace Delete namespaces
 Synopsis Delete namespaces. For example:
-pgo delete namespace mynamespace pgo delete namespace --selector=env=test  pgo delete namespace [flags]  Options  -h, --help help for namespace  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator. -n, --namespace string The namespace to use for pgo requests.</description>
+pgo delete namespace mynamespace pgo delete namespace --selector=env=test  pgo delete namespace [flags]  Options  -h, --help help for namespace  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator. --exclude-os-trust Exclude CA certs from OS default trust store -n, --namespace string The namespace to use for pgo requests.</description>
     </item>
     
     <item>
-      <title>pgo_delete_pgbouncer</title>
+      <title>pgo delete pgbouncer</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_pgbouncer/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -826,7 +705,7 @@ pgo delete pgbouncer mycluster  pgo delete pgbouncer [flags]  Options  -h, --hel
     </item>
     
     <item>
-      <title>pgo_delete_pgorole</title>
+      <title>pgo delete pgorole</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_pgorole/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -837,7 +716,7 @@ pgo delete pgorole somerole  pgo delete pgorole [flags]  Options  --all Delete a
     </item>
     
     <item>
-      <title>pgo_delete_pgouser</title>
+      <title>pgo delete pgouser</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_pgouser/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -848,7 +727,7 @@ pgo delete pgouser someuser  pgo delete pgouser [flags]  Options  --all Delete a
     </item>
     
     <item>
-      <title>pgo_delete_policy</title>
+      <title>pgo delete policy</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_policy/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -859,7 +738,7 @@ pgo delete policy mypolicy  pgo delete policy [flags]  Options  --all Delete all
     </item>
     
     <item>
-      <title>pgo_delete_schedule</title>
+      <title>pgo delete schedule</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_schedule/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -870,18 +749,7 @@ pgo delete schedule mycluster pgo delete schedule --selector=env=test pgo delete
     </item>
     
     <item>
-      <title>pgo_delete_upgrade</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_upgrade/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_upgrade/</guid>
-      <description>pgo delete upgrade Delete an upgrade
-Synopsis Delete an upgrade. For example:
-pgo delete upgrade mydatabase  pgo delete upgrade [flags]  Options  -h, --help help for upgrade  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. -n, --namespace string The namespace to use for pgo requests. --pgo-ca-cert string The CA Certificate file path for authenticating to the PostgreSQL Operator apiserver.</description>
-    </item>
-    
-    <item>
-      <title>pgo_delete_user</title>
+      <title>pgo delete user</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_user/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -892,7 +760,7 @@ pgo delete user --username=someuser --selector=name=mycluster  pgo delete user [
     </item>
     
     <item>
-      <title>pgo_df</title>
+      <title>pgo df</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_df/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -903,7 +771,7 @@ pgo df mycluster pgo df all pgo df --selector=env=research  pgo df [flags]  Opti
     </item>
     
     <item>
-      <title>pgo_failover</title>
+      <title>pgo failover</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_failover/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -914,7 +782,7 @@ pgo failover mycluster  pgo failover [flags]  Options  -h, --help help for failo
     </item>
     
     <item>
-      <title>pgo_label</title>
+      <title>pgo label</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_label/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -925,7 +793,7 @@ pgo label mycluster yourcluster --label=environment=prod pgo label all --label=e
     </item>
     
     <item>
-      <title>pgo_load</title>
+      <title>pgo load</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_load/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -936,18 +804,18 @@ pgo load --load-config=./load.json --selector=project=xray  pgo load [flags]  Op
     </item>
     
     <item>
-      <title>pgo_ls</title>
+      <title>pgo ls</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_ls/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_ls/</guid>
       <description>pgo ls Perform a ls command on a cluster
 Synopsis LS performs a Linux ls command on a cluster directory. For example:
-pgo ls mycluster /pgdata/mycluster/pg_log  pgo ls [flags]  Options  -h, --help help for ls  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator. -n, --namespace string The namespace to use for pgo requests.</description>
+pgo ls mycluster /pgdata/mycluster/pg_log  pgo ls [flags]  Options  -h, --help help for ls  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator. --exclude-os-trust Exclude CA certs from OS default trust store -n, --namespace string The namespace to use for pgo requests.</description>
     </item>
     
     <item>
-      <title>pgo_reload</title>
+      <title>pgo reload</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_reload/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -958,7 +826,7 @@ pgo reload mycluster  pgo reload [flags]  Options  -h, --help help for reload --
     </item>
     
     <item>
-      <title>pgo_restore</title>
+      <title>pgo restore</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_restore/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -969,7 +837,7 @@ pgo restore mycluster  pgo restore [flags]  Options  --backup-opts string The re
     </item>
     
     <item>
-      <title>pgo_scale</title>
+      <title>pgo scale</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_scale/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -980,7 +848,7 @@ pgo scale mycluster --replica-count=1  pgo scale [flags]  Options  --ccp-image-t
     </item>
     
     <item>
-      <title>pgo_scaledown</title>
+      <title>pgo scaledown</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_scaledown/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -991,7 +859,7 @@ To list targetable replicas: pgo scaledown mycluster --query To scale down a spe
     </item>
     
     <item>
-      <title>pgo_show</title>
+      <title>pgo show</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -1002,7 +870,7 @@ pgo show backup mycluster pgo show backup mycluster --backup-type=pgbackrest pgo
     </item>
     
     <item>
-      <title>pgo_show_backup</title>
+      <title>pgo show backup</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_backup/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -1013,7 +881,7 @@ pgo show backup mycluser  pgo show backup [flags]  Options  --backup-type string
     </item>
     
     <item>
-      <title>pgo_show_benchmark</title>
+      <title>pgo show benchmark</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_benchmark/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -1024,7 +892,7 @@ pgo show benchmark mycluster pgo show benchmark --selector=pg-cluster=mycluster 
     </item>
     
     <item>
-      <title>pgo_show_cluster</title>
+      <title>pgo show cluster</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_cluster/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -1035,73 +903,73 @@ pgo show cluster --all pgo show cluster mycluster  pgo show cluster [flags]  Opt
     </item>
     
     <item>
-      <title>pgo_show_config</title>
+      <title>pgo show config</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_config/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_config/</guid>
       <description>pgo show config Show configuration information
 Synopsis Show configuration information for the Operator. For example:
-pgo show config  pgo show config [flags]  Options  -h, --help help for config  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator. -n, --namespace string The namespace to use for pgo requests.</description>
+pgo show config  pgo show config [flags]  Options  -h, --help help for config  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator. --exclude-os-trust Exclude CA certs from OS default trust store -n, --namespace string The namespace to use for pgo requests.</description>
     </item>
     
     <item>
-      <title>pgo_show_namespace</title>
+      <title>pgo show namespace</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_namespace/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_namespace/</guid>
       <description>pgo show namespace Show namespace information
 Synopsis Show namespace information for the Operator. For example:
-pgo show namespace  pgo show namespace [flags]  Options  --all show all resources. -h, --help help for namespace  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator. -n, --namespace string The namespace to use for pgo requests.</description>
+pgo show namespace  pgo show namespace [flags]  Options  --all show all resources. -h, --help help for namespace  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator. --exclude-os-trust Exclude CA certs from OS default trust store -n, --namespace string The namespace to use for pgo requests.</description>
     </item>
     
     <item>
-      <title>pgo_show_pgorole</title>
+      <title>pgo show pgorole</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_pgorole/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_pgorole/</guid>
       <description>pgo show pgorole Show pgorole information
 Synopsis Show pgorole information . For example:
-pgo show pgorole somerole  pgo show pgorole [flags]  Options  --all show all resources. -h, --help help for pgorole  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator. -n, --namespace string The namespace to use for pgo requests.</description>
+pgo show pgorole somerole  pgo show pgorole [flags]  Options  --all show all resources. -h, --help help for pgorole  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator. --exclude-os-trust Exclude CA certs from OS default trust store -n, --namespace string The namespace to use for pgo requests.</description>
     </item>
     
     <item>
-      <title>pgo_show_pgouser</title>
+      <title>pgo show pgouser</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_pgouser/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_pgouser/</guid>
       <description>pgo show pgouser Show pgouser information
 Synopsis Show pgouser information for an Operator user. For example:
-pgo show pgouser someuser  pgo show pgouser [flags]  Options  --all show all resources. -h, --help help for pgouser  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator. -n, --namespace string The namespace to use for pgo requests.</description>
+pgo show pgouser someuser  pgo show pgouser [flags]  Options  --all show all resources. -h, --help help for pgouser  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator. --exclude-os-trust Exclude CA certs from OS default trust store -n, --namespace string The namespace to use for pgo requests.</description>
     </item>
     
     <item>
-      <title>pgo_show_policy</title>
+      <title>pgo show policy</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_policy/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_policy/</guid>
       <description>pgo show policy Show policy information
 Synopsis Show policy information. For example:
-pgo show policy --all pgo show policy policy1  pgo show policy [flags]  Options  --all show all resources. -h, --help help for policy  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator. -n, --namespace string The namespace to use for pgo requests.</description>
+pgo show policy --all pgo show policy policy1  pgo show policy [flags]  Options  --all show all resources. -h, --help help for policy  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator. --exclude-os-trust Exclude CA certs from OS default trust store -n, --namespace string The namespace to use for pgo requests.</description>
     </item>
     
     <item>
-      <title>pgo_show_pvc</title>
+      <title>pgo show pvc</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_pvc/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_pvc/</guid>
       <description>pgo show pvc Show PVC information for a cluster
 Synopsis Show PVC information. For example:
-pgo show pvc mycluster pgo show pvc --all  pgo show pvc [flags]  Options  --all show all resources. -h, --help help for pvc  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator. -n, --namespace string The namespace to use for pgo requests.</description>
+pgo show pvc mycluster pgo show pvc --all  pgo show pvc [flags]  Options  --all show all resources. -h, --help help for pvc  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator. --exclude-os-trust Exclude CA certs from OS default trust store -n, --namespace string The namespace to use for pgo requests.</description>
     </item>
     
     <item>
-      <title>pgo_show_schedule</title>
+      <title>pgo show schedule</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_schedule/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -1112,18 +980,7 @@ pgo show schedule mycluster pgo show schedule --selector=pg-cluster=mycluster pg
     </item>
     
     <item>
-      <title>pgo_show_upgrade</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_upgrade/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_upgrade/</guid>
-      <description>pgo show upgrade Show upgrade information
-Synopsis Show upgrade information. For example:
-pgo show upgrade mycluster  pgo show upgrade [flags]  Options  -h, --help help for upgrade  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. -n, --namespace string The namespace to use for pgo requests. --pgo-ca-cert string The CA Certificate file path for authenticating to the PostgreSQL Operator apiserver.</description>
-    </item>
-    
-    <item>
-      <title>pgo_show_user</title>
+      <title>pgo show user</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_user/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -1134,18 +991,18 @@ pgo show user --all pgo show user mycluster pgo show user --selector=name=nyclus
     </item>
     
     <item>
-      <title>pgo_show_workflow</title>
+      <title>pgo show workflow</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_workflow/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_workflow/</guid>
       <description>pgo show workflow Show workflow information
 Synopsis Show workflow information for a given workflow. For example:
-pgo show workflow 25927091-b343-4017-be4b-71575f0b3eb5  pgo show workflow [flags]  Options  -h, --help help for workflow  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator. -n, --namespace string The namespace to use for pgo requests.</description>
+pgo show workflow 25927091-b343-4017-be4b-71575f0b3eb5  pgo show workflow [flags]  Options  -h, --help help for workflow  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator. --exclude-os-trust Exclude CA certs from OS default trust store -n, --namespace string The namespace to use for pgo requests.</description>
     </item>
     
     <item>
-      <title>pgo_status</title>
+      <title>pgo status</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_status/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -1156,7 +1013,7 @@ pgo status  pgo status [flags]  Options  -h, --help help for status -o, --output
     </item>
     
     <item>
-      <title>pgo_test</title>
+      <title>pgo test</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_test/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -1167,7 +1024,7 @@ pgo test mycluster pgo test --selector=env=research pgo test --all  pgo test [fl
     </item>
     
     <item>
-      <title>pgo_update</title>
+      <title>pgo update</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_update/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -1178,7 +1035,7 @@ pgo update pgouser someuser --pgouser-password=somenewpassword pgo update pgouse
     </item>
     
     <item>
-      <title>pgo_update_cluster</title>
+      <title>pgo update cluster</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_update_cluster/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -1189,18 +1046,18 @@ pgo update cluster mycluster --autofail=false pgo update cluster mycluster myoth
     </item>
     
     <item>
-      <title>pgo_update_namespace</title>
+      <title>pgo update namespace</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_update_namespace/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_update_namespace/</guid>
       <description>pgo update namespace Update a namespace, applying Operator RBAC
 Synopsis UPDATE allows you to update a Namespace. For example: pgo update namespace mynamespace
-pgo update namespace [flags]  Options  -h, --help help for namespace  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator. -n, --namespace string The namespace to use for pgo requests.</description>
+pgo update namespace [flags]  Options  -h, --help help for namespace  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator. --exclude-os-trust Exclude CA certs from OS default trust store -n, --namespace string The namespace to use for pgo requests.</description>
     </item>
     
     <item>
-      <title>pgo_update_pgorole</title>
+      <title>pgo update pgorole</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_update_pgorole/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -1211,7 +1068,7 @@ pgo update pgorole [flags]  Options  -h, --help help for pgorole --no-prompt No 
     </item>
     
     <item>
-      <title>pgo_update_pgouser</title>
+      <title>pgo update pgouser</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_update_pgouser/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -1222,7 +1079,7 @@ pgo update pgouser [flags]  Options  --all-namespaces all namespaces. -h, --help
     </item>
     
     <item>
-      <title>pgo_update_user</title>
+      <title>pgo update user</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_update_user/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -1233,7 +1090,7 @@ pgo update user [flags]  Options  --all all clusters.</description>
     </item>
     
     <item>
-      <title>pgo_upgrade</title>
+      <title>pgo upgrade</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_upgrade/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -1246,29 +1103,18 @@ pgo upgrade [flags]  Options  --ccp-image-tag string The CCPImageTag to use for 
     </item>
     
     <item>
-      <title>pgo_user</title>
-      <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_user/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_user/</guid>
-      <description>pgo user Manage PostgreSQL users
-Synopsis USER allows you to manage users and passwords across a set of clusters. For example:
-pgo user --selector=name=mycluster --update-passwords pgo user --change-password=bob --expired=300 --selector=name=mycluster --password=newpass  pgo user [flags]  Options  --change-password string Updates the password for a user on selective clusters. --db string Grants the user access to a database. --expired string required flag when updating passwords that will expire in X days using --update-passwords flag.</description>
-    </item>
-    
-    <item>
-      <title>pgo_version</title>
+      <title>pgo version</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_version/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_version/</guid>
       <description>pgo version Print version information for the PostgreSQL Operator
 Synopsis VERSION allows you to print version information for the postgres-operator. For example:
-pgo version  pgo version [flags]  Options  -h, --help help for version  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator. -n, --namespace string The namespace to use for pgo requests.</description>
+pgo version  pgo version [flags]  Options  -h, --help help for version  Options inherited from parent commands  --apiserver-url string The URL for the PostgreSQL Operator apiserver. --debug Enable debugging when true. --disable-tls Disable TLS authentication to the Postgres Operator. --exclude-os-trust Exclude CA certs from OS default trust store -n, --namespace string The namespace to use for pgo requests.</description>
     </item>
     
     <item>
-      <title>pgo_watch</title>
+      <title>pgo watch</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_watch/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       

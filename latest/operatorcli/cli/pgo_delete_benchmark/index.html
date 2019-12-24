@@ -7,7 +7,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.55.6" />
-<title>pgo_delete_benchmark :: Crunchy Data PostgreSQL Operator Documentation</title>
+<title>pgo delete benchmark :: Crunchy Data PostgreSQL Operator Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/latest/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/latest/css/nucleus.css" rel="stylesheet">
 <link href="https://crunchydata.github.io/postgres-operator/latest/theme-flex/style.css" rel="stylesheet">
@@ -98,98 +98,119 @@
         <hr>
 
       <b>Navigation</b>
-    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/" class="dd-item haschildren
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/quickstart/" class="dd-item
         ">
       <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/">Getting Started</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/quickstart/">Quickstart</a>
+
+      </div>
+    </li>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/architecture/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/">Architecture</a><i class="fas fa-angle-right fa-lg category-icon"></i>
 
       </div>
         <ul>
-    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/" class="dd-item haschildren
-        ">
-      <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/">Design</a><i class="fas fa-angle-right fa-lg category-icon"></i>
-
-      </div>
-        <ul>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/designoverview/" class="dd-item">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/architecture/overview/" class="dd-item">
         <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/designoverview/">
-            Design
+          <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/overview/">
+            Overview
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/custom-config/" class="dd-item">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/architecture/provisioning/" class="dd-item">
         <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/custom-config/">
-            Custom Configuration
+          <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/provisioning/">
+            Provisioning
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/custom-config-ssl/" class="dd-item">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/architecture/disaster-recovery/" class="dd-item">
         <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/custom-config-ssl/">
-            Custom SSL Configuration
+          <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/disaster-recovery/">
+            Disaster Recovery
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/multi-zone-design-considerations/" class="dd-item">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/architecture/high-availability/" class="dd-item">
         <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/multi-zone-design-considerations/">
-            Multi-Zone Cloud Considerations
+          <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/high-availability/">
+            High-Availability
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/direct-api-calls/" class="dd-item">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/architecture/namespace/" class="dd-item">
         <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/direct-api-calls/">
-            Rest API
+          <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/namespace/">
+            Namespace Management
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/backrest-s3-configuration/" class="dd-item">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/architecture/eventing/" class="dd-item">
         <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/backrest-s3-configuration/">
-            pgBackrest with S3
+          <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/eventing/">
+            Lifecycle Events
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/eventing/" class="dd-item">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/architecture/postgres-operator-containers-overview/" class="dd-item">
         <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/eventing/">
-            Eventing
+          <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/postgres-operator-containers-overview/">
+            PostgreSQL Containers
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/namespace/" class="dd-item">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/architecture/storage-overview/" class="dd-item">
         <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/namespace/">
-            Namespace
+          <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/storage-overview/">
+            Storage
           </a>
         </div>
     </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/tls/" class="dd-item">
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/architecture/users-role-overview/" class="dd-item">
         <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/tls/">
-            TLS
-          </a>
-        </div>
-    </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/olm/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/design/olm/">
-            Operator Lifecycle Management Support
+          <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/users-role-overview/">
+            User &amp; Roles
           </a>
         </div>
     </li>
         </ul>
     </li>
-    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/prereq/" class="dd-item
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/configuration/" class="dd-item haschildren
         ">
       <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/gettingstarted/prereq/">Prerequisites</a>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/configuration/">Configuration</a><i class="fas fa-angle-right fa-lg category-icon"></i>
 
       </div>
+        <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/configuration/compatibility/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/configuration/compatibility/">
+            Compatibility Requirements
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/configuration/configuration/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/configuration/configuration/">
+            Configuration Resources
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/configuration/pgo-yaml-configuration/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/configuration/pgo-yaml-configuration/">
+            PGO YAML
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/configuration/tls/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/configuration/tls/">
+            TLS
+          </a>
+        </div>
     </li>
         </ul>
     </li>
@@ -200,6 +221,13 @@
 
       </div>
         <ul>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/prereq/" class="dd-item
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/installation/prereq/">Prerequisites</a>
+
+      </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/installation/common-env/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/installation/common-env/">
@@ -288,126 +316,10 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/configuration/" class="dd-item haschildren
-        ">
-      <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/configuration/">Configuration</a><i class="fas fa-angle-right fa-lg category-icon"></i>
-
-      </div>
-        <ul>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/configuration/compatibility/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/configuration/compatibility/">
-            Compatibility Requirements
-          </a>
-        </div>
-    </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/configuration/configuration/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/configuration/configuration/">
-            Configuration Resources
-          </a>
-        </div>
-    </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/configuration/pgo-yaml-configuration/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/configuration/pgo-yaml-configuration/">
-            PGO YAML
-          </a>
-        </div>
-    </li>
-        </ul>
-    </li>
-    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/overview/" class="dd-item haschildren
-        ">
-      <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/overview/">Overview</a><i class="fas fa-angle-right fa-lg category-icon"></i>
-
-      </div>
-        <ul>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/overview/node-affinitiy-overview/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/overview/node-affinitiy-overview/">
-            Node Affinity in PostgreSQL Operator
-          </a>
-        </div>
-    </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/overview/pod-affinitiy-overview/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/overview/pod-affinitiy-overview/">
-            Pod Anti-Affinity in PostgreSQL Operator
-          </a>
-        </div>
-    </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/overview/storage-overview/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/overview/storage-overview/">
-            Storage Overview
-          </a>
-        </div>
-    </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/overview/custom-resource-definitions/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/overview/custom-resource-definitions/">
-            Custom Resource Definitions Overview
-          </a>
-        </div>
-    </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/overview/scheduler-overview/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/overview/scheduler-overview/">
-            PGO Scheduler Overview
-          </a>
-        </div>
-    </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/overview/backup-restore-overview/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/overview/backup-restore-overview/">
-            PostgreSQL Operator Backup and Restore Capability
-          </a>
-        </div>
-    </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/overview/postgres-operator-overview/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/overview/postgres-operator-overview/">
-            PostgreSQL Operator Overview
-          </a>
-        </div>
-    </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/overview/users-role-overview/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/overview/users-role-overview/">
-            PostgreSQL Operator User Roles Overview
-          </a>
-        </div>
-    </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/overview/failover-overview/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/overview/failover-overview/">
-            Failover in the PostgreSQL Operator Overview
-          </a>
-        </div>
-    </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/overview/postgres-operator-containers-overview/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/overview/postgres-operator-containers-overview/">
-            PostgreSQL Operator Containers Overview
-          </a>
-        </div>
-    </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/overview/namespace-overview/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/overview/namespace-overview/">
-            PostgreSQL Operator Namespace Considerations Overview
-          </a>
-        </div>
-    </li>
-        </ul>
-    </li>
     <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/">Operator Command Line Utility</a>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/">Using the pgo Client</a>
             <i class="fas fa-angle-down fa-lg category-icon"></i>
 
       </div>
@@ -415,42 +327,21 @@
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/pgo-cli-overview/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/pgo-cli-overview/">
-            PGO CLI Overview
-          </a>
-        </div>
-    </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/pgo-cli-global-variables/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/pgo-cli-global-variables/">
-            PGO CLI Global Environment Variables
-          </a>
-        </div>
-    </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/pgo-cli-global-flags/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/pgo-cli-global-flags/">
-            PGO CLI Global Flags
+            Overview
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/common-pgo-cli-operations/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/common-pgo-cli-operations/">
-            Common PGO CLI Operations
-          </a>
-        </div>
-    </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/pgo-overview/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/pgo-overview/">
-            Operator CLI Overview
+            Common Operations
           </a>
         </div>
     </li>
     <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/">Operator CLI</a>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/">Full Reference</a>
             <i class="fas fa-angle-down fa-lg category-icon"></i>
 
       </div>
@@ -465,441 +356,413 @@
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_apply/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_apply/">
-            pgo_apply
+            pgo apply
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_backup/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_backup/">
-            pgo_backup
+            pgo backup
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_benchmark/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_benchmark/">
-            pgo_benchmark
+            pgo benchmark
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_cat/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_cat/">
-            pgo_cat
-          </a>
-        </div>
-    </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_clidoc/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_clidoc/">
-            pgo_clidoc
+            pgo cat
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_clone/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_clone/">
-            pgo_clone
+            pgo clone
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create/">
-            pgo_create
+            pgo create
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_cluster/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_cluster/">
-            pgo_create_cluster
+            pgo create cluster
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_namespace/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_namespace/">
-            pgo_create_namespace
+            pgo create namespace
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_pgbouncer/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_pgbouncer/">
-            pgo_create_pgbouncer
+            pgo create pgbouncer
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_pgorole/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_pgorole/">
-            pgo_create_pgorole
+            pgo create pgorole
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_pgouser/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_pgouser/">
-            pgo_create_pgouser
+            pgo create pgouser
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_policy/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_policy/">
-            pgo_create_policy
+            pgo create policy
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_schedule/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_schedule/">
-            pgo_create_schedule
+            pgo create schedule
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_user/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_create_user/">
-            pgo_create_user
+            pgo create user
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete/">
-            pgo_delete
+            pgo delete
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_backup/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_backup/">
-            pgo_delete_backup
+            pgo delete backup
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_benchmark/" class="dd-item active">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_benchmark/">
-            pgo_delete_benchmark
+            pgo delete benchmark
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_cluster/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_cluster/">
-            pgo_delete_cluster
+            pgo delete cluster
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_label/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_label/">
-            pgo_delete_label
+            pgo delete label
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_namespace/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_namespace/">
-            pgo_delete_namespace
+            pgo delete namespace
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_pgbouncer/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_pgbouncer/">
-            pgo_delete_pgbouncer
+            pgo delete pgbouncer
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_pgorole/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_pgorole/">
-            pgo_delete_pgorole
+            pgo delete pgorole
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_pgouser/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_pgouser/">
-            pgo_delete_pgouser
+            pgo delete pgouser
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_policy/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_policy/">
-            pgo_delete_policy
+            pgo delete policy
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_schedule/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_schedule/">
-            pgo_delete_schedule
-          </a>
-        </div>
-    </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_upgrade/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_upgrade/">
-            pgo_delete_upgrade
+            pgo delete schedule
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_user/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_user/">
-            pgo_delete_user
+            pgo delete user
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_df/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_df/">
-            pgo_df
+            pgo df
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_failover/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_failover/">
-            pgo_failover
+            pgo failover
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_label/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_label/">
-            pgo_label
+            pgo label
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_load/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_load/">
-            pgo_load
+            pgo load
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_ls/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_ls/">
-            pgo_ls
+            pgo ls
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_reload/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_reload/">
-            pgo_reload
+            pgo reload
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_restore/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_restore/">
-            pgo_restore
+            pgo restore
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_scale/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_scale/">
-            pgo_scale
+            pgo scale
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_scaledown/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_scaledown/">
-            pgo_scaledown
+            pgo scaledown
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show/">
-            pgo_show
+            pgo show
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_backup/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_backup/">
-            pgo_show_backup
+            pgo show backup
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_benchmark/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_benchmark/">
-            pgo_show_benchmark
+            pgo show benchmark
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_cluster/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_cluster/">
-            pgo_show_cluster
+            pgo show cluster
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_config/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_config/">
-            pgo_show_config
+            pgo show config
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_namespace/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_namespace/">
-            pgo_show_namespace
+            pgo show namespace
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_pgorole/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_pgorole/">
-            pgo_show_pgorole
+            pgo show pgorole
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_pgouser/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_pgouser/">
-            pgo_show_pgouser
+            pgo show pgouser
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_policy/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_policy/">
-            pgo_show_policy
+            pgo show policy
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_pvc/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_pvc/">
-            pgo_show_pvc
+            pgo show pvc
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_schedule/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_schedule/">
-            pgo_show_schedule
-          </a>
-        </div>
-    </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_upgrade/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_upgrade/">
-            pgo_show_upgrade
+            pgo show schedule
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_user/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_user/">
-            pgo_show_user
+            pgo show user
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_workflow/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_show_workflow/">
-            pgo_show_workflow
+            pgo show workflow
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_status/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_status/">
-            pgo_status
+            pgo status
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_test/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_test/">
-            pgo_test
+            pgo test
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_update/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_update/">
-            pgo_update
+            pgo update
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_update_cluster/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_update_cluster/">
-            pgo_update_cluster
+            pgo update cluster
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_update_namespace/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_update_namespace/">
-            pgo_update_namespace
+            pgo update namespace
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_update_pgorole/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_update_pgorole/">
-            pgo_update_pgorole
+            pgo update pgorole
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_update_pgouser/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_update_pgouser/">
-            pgo_update_pgouser
+            pgo update pgouser
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_update_user/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_update_user/">
-            pgo_update_user
+            pgo update user
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_upgrade/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_upgrade/">
-            pgo_upgrade
-          </a>
-        </div>
-    </li>
-      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_user/" class="dd-item">
-        <div>
-          <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_user/">
-            pgo_user
+            pgo upgrade
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_version/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_version/">
-            pgo_version
+            pgo version
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_watch/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_watch/">
-            pgo_watch
+            pgo watch
           </a>
         </div>
     </li>
@@ -932,6 +795,43 @@
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/security/api-encryption-configuration/">
             PostgreSQL Operator API Encryption Configuration
+          </a>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/advanced/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/latest/advanced/">Advanced Topics</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+
+      </div>
+        <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/advanced/custom-config/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/advanced/custom-config/">
+            Custom Configuration
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/advanced/custom-config-ssl/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/advanced/custom-config-ssl/">
+            Custom SSL Configuration
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/advanced/multi-zone-design-considerations/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/advanced/multi-zone-design-considerations/">
+            Multi-Zone Cloud Considerations
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/advanced/direct-api-calls/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/latest/advanced/direct-api-calls/">
+            Rest API
           </a>
         </div>
     </li>
@@ -1036,92 +936,87 @@
       <center>Navigation :
         <select onchange="javascript:location.href = this.value;">
           
-    <option value="/gettingstarted/" >
-   Getting Started</option>
-    <option value="/installation/" >
-   Installation</option>
+    <option value="/quickstart/" >
+   Quickstart</option>
+    <option value="/architecture/" >
+   Architecture</option>
     <option value="/configuration/" >
    Configuration</option>
-    <option value="/overview/" >
-   Overview</option>
+    <option value="/installation/" >
+   Installation</option>
     <option value="/operatorcli/" >
-   Operator Command Line Utility</option> 
-      <option value="/operatorcli/pgo-cli-overview/" >- PGO CLI Overview</option>
-      <option value="/operatorcli/pgo-cli-global-variables/" >- PGO CLI Global Environment Variables</option>
-      <option value="/operatorcli/pgo-cli-global-flags/" >- PGO CLI Global Flags</option>
-      <option value="/operatorcli/common-pgo-cli-operations/" >- Common PGO CLI Operations</option>
-      <option value="/operatorcli/pgo-overview/" >- Operator CLI Overview</option>
+   Using the pgo Client</option> 
+      <option value="/operatorcli/pgo-cli-overview/" >- Overview</option>
+      <option value="/operatorcli/common-pgo-cli-operations/" >- Common Operations</option>
     <option value="/operatorcli/cli/" >
   - 
-   Operator CLI</option> 
+   Full Reference</option> 
       <option value="/operatorcli/cli/pgo/" >-- pgo</option>
-      <option value="/operatorcli/cli/pgo_apply/" >-- pgo_apply</option>
-      <option value="/operatorcli/cli/pgo_backup/" >-- pgo_backup</option>
-      <option value="/operatorcli/cli/pgo_benchmark/" >-- pgo_benchmark</option>
-      <option value="/operatorcli/cli/pgo_cat/" >-- pgo_cat</option>
-      <option value="/operatorcli/cli/pgo_clidoc/" >-- pgo_clidoc</option>
-      <option value="/operatorcli/cli/pgo_clone/" >-- pgo_clone</option>
-      <option value="/operatorcli/cli/pgo_create/" >-- pgo_create</option>
-      <option value="/operatorcli/cli/pgo_create_cluster/" >-- pgo_create_cluster</option>
-      <option value="/operatorcli/cli/pgo_create_namespace/" >-- pgo_create_namespace</option>
-      <option value="/operatorcli/cli/pgo_create_pgbouncer/" >-- pgo_create_pgbouncer</option>
-      <option value="/operatorcli/cli/pgo_create_pgorole/" >-- pgo_create_pgorole</option>
-      <option value="/operatorcli/cli/pgo_create_pgouser/" >-- pgo_create_pgouser</option>
-      <option value="/operatorcli/cli/pgo_create_policy/" >-- pgo_create_policy</option>
-      <option value="/operatorcli/cli/pgo_create_schedule/" >-- pgo_create_schedule</option>
-      <option value="/operatorcli/cli/pgo_create_user/" >-- pgo_create_user</option>
-      <option value="/operatorcli/cli/pgo_delete/" >-- pgo_delete</option>
-      <option value="/operatorcli/cli/pgo_delete_backup/" >-- pgo_delete_backup</option>
-      <option value="/operatorcli/cli/pgo_delete_benchmark/"  selected>-- pgo_delete_benchmark</option>
-      <option value="/operatorcli/cli/pgo_delete_cluster/" >-- pgo_delete_cluster</option>
-      <option value="/operatorcli/cli/pgo_delete_label/" >-- pgo_delete_label</option>
-      <option value="/operatorcli/cli/pgo_delete_namespace/" >-- pgo_delete_namespace</option>
-      <option value="/operatorcli/cli/pgo_delete_pgbouncer/" >-- pgo_delete_pgbouncer</option>
-      <option value="/operatorcli/cli/pgo_delete_pgorole/" >-- pgo_delete_pgorole</option>
-      <option value="/operatorcli/cli/pgo_delete_pgouser/" >-- pgo_delete_pgouser</option>
-      <option value="/operatorcli/cli/pgo_delete_policy/" >-- pgo_delete_policy</option>
-      <option value="/operatorcli/cli/pgo_delete_schedule/" >-- pgo_delete_schedule</option>
-      <option value="/operatorcli/cli/pgo_delete_upgrade/" >-- pgo_delete_upgrade</option>
-      <option value="/operatorcli/cli/pgo_delete_user/" >-- pgo_delete_user</option>
-      <option value="/operatorcli/cli/pgo_df/" >-- pgo_df</option>
-      <option value="/operatorcli/cli/pgo_failover/" >-- pgo_failover</option>
-      <option value="/operatorcli/cli/pgo_label/" >-- pgo_label</option>
-      <option value="/operatorcli/cli/pgo_load/" >-- pgo_load</option>
-      <option value="/operatorcli/cli/pgo_ls/" >-- pgo_ls</option>
-      <option value="/operatorcli/cli/pgo_reload/" >-- pgo_reload</option>
-      <option value="/operatorcli/cli/pgo_restore/" >-- pgo_restore</option>
-      <option value="/operatorcli/cli/pgo_scale/" >-- pgo_scale</option>
-      <option value="/operatorcli/cli/pgo_scaledown/" >-- pgo_scaledown</option>
-      <option value="/operatorcli/cli/pgo_show/" >-- pgo_show</option>
-      <option value="/operatorcli/cli/pgo_show_backup/" >-- pgo_show_backup</option>
-      <option value="/operatorcli/cli/pgo_show_benchmark/" >-- pgo_show_benchmark</option>
-      <option value="/operatorcli/cli/pgo_show_cluster/" >-- pgo_show_cluster</option>
-      <option value="/operatorcli/cli/pgo_show_config/" >-- pgo_show_config</option>
-      <option value="/operatorcli/cli/pgo_show_namespace/" >-- pgo_show_namespace</option>
-      <option value="/operatorcli/cli/pgo_show_pgorole/" >-- pgo_show_pgorole</option>
-      <option value="/operatorcli/cli/pgo_show_pgouser/" >-- pgo_show_pgouser</option>
-      <option value="/operatorcli/cli/pgo_show_policy/" >-- pgo_show_policy</option>
-      <option value="/operatorcli/cli/pgo_show_pvc/" >-- pgo_show_pvc</option>
-      <option value="/operatorcli/cli/pgo_show_schedule/" >-- pgo_show_schedule</option>
-      <option value="/operatorcli/cli/pgo_show_upgrade/" >-- pgo_show_upgrade</option>
-      <option value="/operatorcli/cli/pgo_show_user/" >-- pgo_show_user</option>
-      <option value="/operatorcli/cli/pgo_show_workflow/" >-- pgo_show_workflow</option>
-      <option value="/operatorcli/cli/pgo_status/" >-- pgo_status</option>
-      <option value="/operatorcli/cli/pgo_test/" >-- pgo_test</option>
-      <option value="/operatorcli/cli/pgo_update/" >-- pgo_update</option>
-      <option value="/operatorcli/cli/pgo_update_cluster/" >-- pgo_update_cluster</option>
-      <option value="/operatorcli/cli/pgo_update_namespace/" >-- pgo_update_namespace</option>
-      <option value="/operatorcli/cli/pgo_update_pgorole/" >-- pgo_update_pgorole</option>
-      <option value="/operatorcli/cli/pgo_update_pgouser/" >-- pgo_update_pgouser</option>
-      <option value="/operatorcli/cli/pgo_update_user/" >-- pgo_update_user</option>
-      <option value="/operatorcli/cli/pgo_upgrade/" >-- pgo_upgrade</option>
-      <option value="/operatorcli/cli/pgo_user/" >-- pgo_user</option>
-      <option value="/operatorcli/cli/pgo_version/" >-- pgo_version</option>
-      <option value="/operatorcli/cli/pgo_watch/" >-- pgo_watch</option>
+      <option value="/operatorcli/cli/pgo_apply/" >-- pgo apply</option>
+      <option value="/operatorcli/cli/pgo_backup/" >-- pgo backup</option>
+      <option value="/operatorcli/cli/pgo_benchmark/" >-- pgo benchmark</option>
+      <option value="/operatorcli/cli/pgo_cat/" >-- pgo cat</option>
+      <option value="/operatorcli/cli/pgo_clone/" >-- pgo clone</option>
+      <option value="/operatorcli/cli/pgo_create/" >-- pgo create</option>
+      <option value="/operatorcli/cli/pgo_create_cluster/" >-- pgo create cluster</option>
+      <option value="/operatorcli/cli/pgo_create_namespace/" >-- pgo create namespace</option>
+      <option value="/operatorcli/cli/pgo_create_pgbouncer/" >-- pgo create pgbouncer</option>
+      <option value="/operatorcli/cli/pgo_create_pgorole/" >-- pgo create pgorole</option>
+      <option value="/operatorcli/cli/pgo_create_pgouser/" >-- pgo create pgouser</option>
+      <option value="/operatorcli/cli/pgo_create_policy/" >-- pgo create policy</option>
+      <option value="/operatorcli/cli/pgo_create_schedule/" >-- pgo create schedule</option>
+      <option value="/operatorcli/cli/pgo_create_user/" >-- pgo create user</option>
+      <option value="/operatorcli/cli/pgo_delete/" >-- pgo delete</option>
+      <option value="/operatorcli/cli/pgo_delete_backup/" >-- pgo delete backup</option>
+      <option value="/operatorcli/cli/pgo_delete_benchmark/"  selected>-- pgo delete benchmark</option>
+      <option value="/operatorcli/cli/pgo_delete_cluster/" >-- pgo delete cluster</option>
+      <option value="/operatorcli/cli/pgo_delete_label/" >-- pgo delete label</option>
+      <option value="/operatorcli/cli/pgo_delete_namespace/" >-- pgo delete namespace</option>
+      <option value="/operatorcli/cli/pgo_delete_pgbouncer/" >-- pgo delete pgbouncer</option>
+      <option value="/operatorcli/cli/pgo_delete_pgorole/" >-- pgo delete pgorole</option>
+      <option value="/operatorcli/cli/pgo_delete_pgouser/" >-- pgo delete pgouser</option>
+      <option value="/operatorcli/cli/pgo_delete_policy/" >-- pgo delete policy</option>
+      <option value="/operatorcli/cli/pgo_delete_schedule/" >-- pgo delete schedule</option>
+      <option value="/operatorcli/cli/pgo_delete_user/" >-- pgo delete user</option>
+      <option value="/operatorcli/cli/pgo_df/" >-- pgo df</option>
+      <option value="/operatorcli/cli/pgo_failover/" >-- pgo failover</option>
+      <option value="/operatorcli/cli/pgo_label/" >-- pgo label</option>
+      <option value="/operatorcli/cli/pgo_load/" >-- pgo load</option>
+      <option value="/operatorcli/cli/pgo_ls/" >-- pgo ls</option>
+      <option value="/operatorcli/cli/pgo_reload/" >-- pgo reload</option>
+      <option value="/operatorcli/cli/pgo_restore/" >-- pgo restore</option>
+      <option value="/operatorcli/cli/pgo_scale/" >-- pgo scale</option>
+      <option value="/operatorcli/cli/pgo_scaledown/" >-- pgo scaledown</option>
+      <option value="/operatorcli/cli/pgo_show/" >-- pgo show</option>
+      <option value="/operatorcli/cli/pgo_show_backup/" >-- pgo show backup</option>
+      <option value="/operatorcli/cli/pgo_show_benchmark/" >-- pgo show benchmark</option>
+      <option value="/operatorcli/cli/pgo_show_cluster/" >-- pgo show cluster</option>
+      <option value="/operatorcli/cli/pgo_show_config/" >-- pgo show config</option>
+      <option value="/operatorcli/cli/pgo_show_namespace/" >-- pgo show namespace</option>
+      <option value="/operatorcli/cli/pgo_show_pgorole/" >-- pgo show pgorole</option>
+      <option value="/operatorcli/cli/pgo_show_pgouser/" >-- pgo show pgouser</option>
+      <option value="/operatorcli/cli/pgo_show_policy/" >-- pgo show policy</option>
+      <option value="/operatorcli/cli/pgo_show_pvc/" >-- pgo show pvc</option>
+      <option value="/operatorcli/cli/pgo_show_schedule/" >-- pgo show schedule</option>
+      <option value="/operatorcli/cli/pgo_show_user/" >-- pgo show user</option>
+      <option value="/operatorcli/cli/pgo_show_workflow/" >-- pgo show workflow</option>
+      <option value="/operatorcli/cli/pgo_status/" >-- pgo status</option>
+      <option value="/operatorcli/cli/pgo_test/" >-- pgo test</option>
+      <option value="/operatorcli/cli/pgo_update/" >-- pgo update</option>
+      <option value="/operatorcli/cli/pgo_update_cluster/" >-- pgo update cluster</option>
+      <option value="/operatorcli/cli/pgo_update_namespace/" >-- pgo update namespace</option>
+      <option value="/operatorcli/cli/pgo_update_pgorole/" >-- pgo update pgorole</option>
+      <option value="/operatorcli/cli/pgo_update_pgouser/" >-- pgo update pgouser</option>
+      <option value="/operatorcli/cli/pgo_update_user/" >-- pgo update user</option>
+      <option value="/operatorcli/cli/pgo_upgrade/" >-- pgo upgrade</option>
+      <option value="/operatorcli/cli/pgo_version/" >-- pgo version</option>
+      <option value="/operatorcli/cli/pgo_watch/" >-- pgo watch</option>
   
   
     <option value="/security/" >
    RBAC Configuration</option>
+    <option value="/advanced/" >
+   Advanced Topics</option>
     <option value="/upgrade/" >
    Upgrade</option>
     <option value="/contributing/" >
@@ -1167,7 +1062,7 @@
 
 
 
- <a href='https://crunchydata.github.io/postgres-operator/latest/'>Crunchy Data Postgres Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/operatorcli/'>Operator Command Line Utility</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/'>Operator CLI</a> > pgo_delete_benchmark
+ <a href='https://crunchydata.github.io/postgres-operator/latest/'>Crunchy PostgreSQL Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/operatorcli/'>Using the pgo Client</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/'>Full Reference</a> > pgo delete benchmark
 
  
 
@@ -1185,7 +1080,7 @@
     
     <div id="body-inner">
 
-    <h1>pgo_delete_benchmark</h1>
+    <h1>pgo delete benchmark</h1>
 
     
 
@@ -1218,6 +1113,7 @@ pgo delete benchmark --selector=env=test
 <pre><code>      --apiserver-url string     The URL for the PostgreSQL Operator apiserver.
       --debug                    Enable debugging when true.
       --disable-tls              Disable TLS authentication to the Postgres Operator.
+      --exclude-os-trust         Exclude CA certs from OS default trust store
   -n, --namespace string         The namespace to use for pgo requests.
       --pgo-ca-cert string       The CA Certificate file path for authenticating to the PostgreSQL Operator apiserver.
       --pgo-client-cert string   The Client Certificate file path for authenticating to the PostgreSQL Operator apiserver.
@@ -1230,15 +1126,15 @@ pgo delete benchmark --selector=env=test
 <li><a href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete/">pgo delete</a>     - Delete an Operator resource</li>
 </ul>
 
-<h6 id="auto-generated-by-spf13-cobra-on-17-dec-2019">Auto generated by spf13/cobra on 17-Dec-2019</h6>
+<h6 id="auto-generated-by-spf13-cobra-on-23-dec-2019">Auto generated by spf13/cobra on 23-Dec-2019</h6>
 
 
 
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_backup/" title="pgo_delete_backup"> <i class="fa fa-chevron-left"></i><label>pgo_delete_backup</label></a>
-    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_cluster/" title="pgo_delete_cluster" style="margin-right: 0px;"><label>pgo_delete_cluster</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_backup/" title="pgo delete backup"> <i class="fa fa-chevron-left"></i><label>pgo delete backup</label></a>
+    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/operatorcli/cli/pgo_delete_cluster/" title="pgo delete cluster" style="margin-right: 0px;"><label>pgo delete cluster</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
