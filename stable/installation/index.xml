@@ -39,10 +39,10 @@ The Operator can be deployed by multiple methods including:</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/stable/installation/developer-setup/</guid>
-      <description>Developing The Postgres-Operator is an open source project hosted on GitHub.
-Developers that wish to build the Operator from source or contribute to the project via pull requests would set up a development environment through the following steps.
-Create Kubernetes Cluster We use either OpenShift Container Platform or kubeadm to install development clusters.
-Create a Local Development Host We currently build on CentOS 7 and RHEL 7 hosts. Others operating systems are possible, however we do not support building or running the Operator on other operating systems at this time.</description>
+      <description>The Postgres-Operator is an open source project hosted on GitHub.
+This guide is intended for those wanting to build the Operator from source or contribute via pull requests.
+Prerequisites The target development host for these instructions is a CentOS 7 or RHEL 7 host. Others operating systems are possible, however we do not support building or running the Operator on others at this time.
+Environment Variables The following environment variables are expected by the steps in this guide:</description>
     </item>
     
   </channel>

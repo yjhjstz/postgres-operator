@@ -17,7 +17,7 @@
       
       <guid>https://crunchydata.github.io/postgres-operator/stable/configuration/compatibility/</guid>
       <description>Container Dependencies The Operator depends on the Crunchy Containers and there are version dependencies between the two projects. Below are the operator releases and their dependent container release. For reference, the Postgres and PgBackrest versions for each container release are also listed.
-   Operator Release Container Release Postgres PgBackrest Version     4.1.1 4.1.1 12.1 2.18     11.6 2.18     10.</description>
+   Operator Release Container Release Postgres PgBackrest Version     4.2.0 4.2.0 12.1 2.20     11.6 2.18     10.</description>
     </item>
     
     <item>
@@ -40,6 +40,19 @@ The server components of the Operator include Role Based Access Control resource
       <description>pgo.yaml Configuration The pgo.yaml file contains many different configuration settings as described in this section of the documentation.
 The pgo.yaml file is broken into major sections as described below:
 Cluster    Setting Definition     BasicAuth If set to &amp;quot;true&amp;quot; will enable Basic Authentication. If set to &amp;quot;false&amp;quot;, will allow a valid Operator user to successfully authenticate regardless of the value of the password provided for Basic Authentication.</description>
+    </item>
+    
+    <item>
+      <title>TLS</title>
+      <link>https://crunchydata.github.io/postgres-operator/stable/configuration/tls/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/stable/configuration/tls/</guid>
+      <description>TLS Configuration Should you desire to alter the default TLS settings for the Postgres Operator, you can set the following variables as described below.
+Server Settings To disable TLS and make an unsecured connection on port 8080 instead of connecting securely over the default port, 8443, set:
+Bash environment variables
+export DISABLE_TLS=true export PGO_APISERVER_PORT=8080	 Or inventory variables if using Ansible
+pgo_disable_tls=&amp;#39;true&amp;#39; pgo_apiserver_port=8080 To disable TLS verifcation, set the follwing as a Bash environment variable</description>
     </item>
     
   </channel>
