@@ -1088,9 +1088,6 @@ export TLS_CA_TRUST=&quot;&quot;
 export ADD_OS_TRUSTSTORE=false
 export NOAUTH_ROUTES=&quot;&quot;
 
-# Disable default inclusion of OS trust in PGO clients
-export EXCLUDE_OS_TRUST=false
-
 # for disabling the Operator eventing
 export DISABLE_EVENTING=false
 </code></pre>
@@ -1109,7 +1106,6 @@ $PGO_CMD  -n &quot;$PGO_OPERATOR_NAMESPACE&quot; logs `$PGO_CMD  -n &quot;$PGO_O
 <pre><code>export TLS_CA_TRUST=&quot;&quot;
 export ADD_OS_TRUSTSTORE=false
 export NOAUTH_ROUTES=&quot;&quot;
-export EXCLUDE_OS_TRUST=false
 </code></pre>
 
 <p>Finally source the updated bash file:</p>
