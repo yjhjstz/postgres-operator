@@ -7,7 +7,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="generator" content="Hugo 0.55.6" />
-<title>Upgrade PGO 3.5 to 4.2.0 :: Crunchy Data PostgreSQL Operator Documentation</title>
+<title>Upgrade PGO 3.5 to 4.3.0 :: Crunchy Data PostgreSQL Operator Documentation</title>
 <link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/latest/favicon.png" type="image/x-icon" />
 <link href="https://crunchydata.github.io/postgres-operator/latest/css/nucleus.css" rel="stylesheet">
 <link href="https://crunchydata.github.io/postgres-operator/latest/theme-flex/style.css" rel="stylesheet">
@@ -839,21 +839,21 @@
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade35to4/" class="dd-item active">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade35to4/">
-            Upgrade PGO 3.5 to 4.2.0
+            Upgrade PGO 3.5 to 4.3.0
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade4xto42_ansible/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade4xto42_ansible/">
-            Upgrade PGO 4.X to 4.2.0 (Ansible)
+            Upgrade PGO 4.X to 4.3.0 (Ansible)
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade4xto42_bash/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade4xto42_bash/">
-            Upgrade PGO 4.X to 4.2.0 (Bash)
+            Upgrade PGO 4.X to 4.3.0 (Bash)
           </a>
         </div>
     </li>
@@ -938,9 +938,9 @@
     <option value="/upgrade/" >
    Upgrade</option> 
       <option value="/upgrade/upgrade35/" >- Upgrade PGO 3.5 Minor Versions</option>
-      <option value="/upgrade/upgrade35to4/"  selected>- Upgrade PGO 3.5 to 4.2.0</option>
-      <option value="/upgrade/upgrade4xto42_ansible/" >- Upgrade PGO 4.X to 4.2.0 (Ansible)</option>
-      <option value="/upgrade/upgrade4xto42_bash/" >- Upgrade PGO 4.X to 4.2.0 (Bash)</option>
+      <option value="/upgrade/upgrade35to4/"  selected>- Upgrade PGO 3.5 to 4.3.0</option>
+      <option value="/upgrade/upgrade4xto42_ansible/" >- Upgrade PGO 4.X to 4.3.0 (Ansible)</option>
+      <option value="/upgrade/upgrade4xto42_bash/" >- Upgrade PGO 4.X to 4.3.0 (Bash)</option>
       <option value="/upgrade/upgrade41/" >- Upgrade PostgreSQL Operator 4.1 Minor Versions</option>
       <option value="/upgrade/upgradeto35/" >- Upgrade to PGO 3.5 From Previous Versions</option>
   
@@ -984,7 +984,7 @@
 
 
 
- <a href='https://crunchydata.github.io/postgres-operator/latest/'>Crunchy PostgreSQL Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/upgrade/'>Upgrade</a> > Upgrade PGO 3.5 to 4.2.0
+ <a href='https://crunchydata.github.io/postgres-operator/latest/'>Crunchy PostgreSQL Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/latest/upgrade/'>Upgrade</a> > Upgrade PGO 3.5 to 4.3.0
 
  
 
@@ -1000,24 +1000,24 @@
     
     <div id="body-inner">
 
-    <h1>Upgrade PGO 3.5 to 4.2.0</h1>
+    <h1>Upgrade PGO 3.5 to 4.3.0</h1>
 
     
 
     
     
 
-<h2 id="upgrading-a-cluster-from-version-3-5-x-to-pgo-4-2-0">Upgrading a Cluster from Version 3.5.x to PGO 4.2.0</h2>
+<h2 id="upgrading-a-cluster-from-version-3-5-x-to-pgo-4-3-0">Upgrading a Cluster from Version 3.5.x to PGO 4.3.0</h2>
 
-<p>This section will outline the procedure to upgrade a given cluster created using Postgres Operator 3.5.x to PGO version 4.2.0. This version of the Postgres Operator has several fundamental changes to the existing PGCluster structure and deployment model. Most notably, all PGClusters use the new Crunchy Postgres HA container in place of the previous Crunchy Postgres containers. The use of this new container is a breaking change from previous versions of the Operator.</p>
+<p>This section will outline the procedure to upgrade a given cluster created using Postgres Operator 3.5.x to PGO version 4.3.0. This version of the Postgres Operator has several fundamental changes to the existing PGCluster structure and deployment model. Most notably, all PGClusters use the new Crunchy Postgres HA container in place of the previous Crunchy Postgres containers. The use of this new container is a breaking change from previous versions of the Operator.</p>
 
 <h4 id="crunchy-postgres-high-availability-containers">Crunchy Postgres High Availability Containers</h4>
 
-<p>Using the PostgreSQL Operator 4.2.0 requires replacing your <code>crunchy-postgres</code> and <code>crunchy-postgres-gis</code> containers with the <code>crunchy-postgres-ha</code> and <code>crunchy-postgres-gis-ha</code> containers respectively. The underlying PostgreSQL installations in the container remain the same but are now optimized for Kubernetes environments to provide the new high-availability functionality.</p>
+<p>Using the PostgreSQL Operator 4.3.0 requires replacing your <code>crunchy-postgres</code> and <code>crunchy-postgres-gis</code> containers with the <code>crunchy-postgres-ha</code> and <code>crunchy-postgres-gis-ha</code> containers respectively. The underlying PostgreSQL installations in the container remain the same but are now optimized for Kubernetes environments to provide the new high-availability functionality.</p>
 
 <p>A major change to this container is that the PostgreSQL process is now managed by Patroni. This allows a PostgreSQL cluster that is deployed by the PostgreSQL Operator to manage its own uptime and availability, to elect a new leader in the event of a downtime scenario, and to automatically heal after a failover event.</p>
 
-<p>When creating your new clusters using version 4.2.0 of the Postgres Operator, the <code>pgo create cluster</code> command will automatically use the new <code>crunchy-postgres-ha</code> image if the image is unspecified. If you are creating a PostGIS enabled cluster, please be sure to use the updated image name, as with the command:</p>
+<p>When creating your new clusters using version 4.3.0 of the Postgres Operator, the <code>pgo create cluster</code> command will automatically use the new <code>crunchy-postgres-ha</code> image if the image is unspecified. If you are creating a PostGIS enabled cluster, please be sure to use the updated image name, as with the command:</p>
 
 <pre><code>pgo create cluster mygiscluster --ccp-image=crunchy-postgres-gis-ha
 </code></pre>
@@ -1029,13 +1029,13 @@
 <p>You will need the following items to complete the upgrade:</p>
 
 <ul>
-<li>The latest PGO 4.2.0 code for the Postgres Operator available</li>
-<li>The latest PGO 4.2.0 client binary</li>
+<li>The latest PGO 4.3.0 code for the Postgres Operator available</li>
+<li>The latest PGO 4.3.0 client binary</li>
 </ul>
 
 <h5 id="step-0">Step 0</h5>
 
-<p>Create a new Linux user with the same permissions are the existing user used to install the Crunchy Postgres Operator. This is necessary to avoid any issues with environment variable differences between 3.5 and 4.2.0.</p>
+<p>Create a new Linux user with the same permissions are the existing user used to install the Crunchy Postgres Operator. This is necessary to avoid any issues with environment variable differences between 3.5 and 4.3.0.</p>
 
 <h5 id="step-1">Step 1</h5>
 
@@ -1056,7 +1056,7 @@ $COROOT/deploy/remove-crd.sh
 
 <h5 id="step-3">Step 3</h5>
 
-<p>Log in as your new Linux user and install the 4.2.0 Postgres Operator.</p>
+<p>Log in as your new Linux user and install the 4.3.0 Postgres Operator.</p>
 
 <p><a href="https://crunchydata.github.io/postgres-operator/latest/installation/operator-install/">Bash Installation</a></p>
 
@@ -1064,14 +1064,14 @@ $COROOT/deploy/remove-crd.sh
 
 <h5 id="step-4">Step 4</h5>
 
-<p>Once the Operator is installed and functional, create a new 4.2.0 cluster with the same name and using the same major PostgreSQL version as was used previously. This will allow the new cluster to utilize the existing PVCs.</p>
+<p>Once the Operator is installed and functional, create a new 4.3.0 cluster with the same name and using the same major PostgreSQL version as was used previously. This will allow the new cluster to utilize the existing PVCs.</p>
 
 <pre><code>pgo create cluster &lt;clustername&gt; -n &lt;namespace&gt;
 </code></pre>
 
 <h5 id="step-5">Step 5</h5>
 
-<p>Manually update the old leftover Secrets to use the new label as defined in 4.2.0:</p>
+<p>Manually update the old leftover Secrets to use the new label as defined in 4.3.0:</p>
 
 <pre><code>kubectl label secret/&lt;clustername&gt;-postgres-secret pg-cluster=&lt;clustername&gt; -n &lt;namespace&gt;
 kubectl label secret/&lt;clustername&gt;-primaryuser-secret pg-cluster=&lt;clustername&gt; -n &lt;namespace&gt;
@@ -1106,7 +1106,7 @@ kubectl label secret/&lt;clustername&gt;-testuser-secret pg-cluster=&lt;clustern
         <div class="chevrons">
     <div id="navigation">
 <a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade35/" title="Upgrade PGO 3.5 Minor Versions"> <i class="fa fa-chevron-left"></i><label>Upgrade PGO 3.5 Minor Versions</label></a>
-    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade4xto42_ansible/" title="Upgrade PGO 4.X to 4.2.0 (Ansible)" style="margin-right: 0px;"><label>Upgrade PGO 4.X to 4.2.0 (Ansible)</label><i class="fa fa-chevron-right"></i></a></div>
+    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/latest/upgrade/upgrade4xto42_ansible/" title="Upgrade PGO 4.X to 4.3.0 (Ansible)" style="margin-right: 0px;"><label>Upgrade PGO 4.X to 4.3.0 (Ansible)</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
