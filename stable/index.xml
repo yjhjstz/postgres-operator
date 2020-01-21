@@ -17,7 +17,7 @@
       
       <guid>https://crunchydata.github.io/postgres-operator/stable/configuration/compatibility/</guid>
       <description>Container Dependencies The Operator depends on the Crunchy Containers and there are version dependencies between the two projects. Below are the operator releases and their dependent container release. For reference, the Postgres and PgBackrest versions for each container release are also listed.
-   Operator Release Container Release Postgres PgBackrest Version     4.2.0 4.2.0 12.1 2.20     11.6 2.18     10.</description>
+   Operator Release Container Release Postgres PgBackrest Version     4.2.1 4.2.1 12.1 2.20     11.6 2.20     10.</description>
     </item>
     
     <item>
@@ -143,30 +143,30 @@ As with any upgrade, please ensure you have taken recent backups of all relevant
     </item>
     
     <item>
-      <title>Upgrade PGO 3.5 to 4.2.0</title>
+      <title>Upgrade PGO 3.5 to 4.2.1</title>
       <link>https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade35to4/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade35to4/</guid>
-      <description>Upgrading a Cluster from Version 3.5.x to PGO 4.2.0 This section will outline the procedure to upgrade a given cluster created using Postgres Operator 3.5.x to PGO version 4.2.0. This version of the Postgres Operator has several fundamental changes to the existing PGCluster structure and deployment model. Most notably, all PGClusters use the new Crunchy Postgres HA container in place of the previous Crunchy Postgres containers. The use of this new container is a breaking change from previous versions of the Operator.</description>
+      <description>Upgrading a Cluster from Version 3.5.x to PGO 4.2.1 This section will outline the procedure to upgrade a given cluster created using Postgres Operator 3.5.x to PGO version 4.2.1. This version of the Postgres Operator has several fundamental changes to the existing PGCluster structure and deployment model. Most notably, all PGClusters use the new Crunchy Postgres HA container in place of the previous Crunchy Postgres containers. The use of this new container is a breaking change from previous versions of the Operator.</description>
     </item>
     
     <item>
-      <title>Upgrade PGO 4.X to 4.2.0 (Ansible)</title>
+      <title>Upgrade PGO 4.X to 4.2.1 (Ansible)</title>
       <link>https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade4xto42_ansible/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade4xto42_ansible/</guid>
-      <description>Postgres Operator Ansible Upgrade Procedure from 4.X to 4.2.0 This procedure will give instructions on how to upgrade to version 4.2.0 of the Crunchy Postgres Operator using the Ansible installation method. This version of the Postgres Operator has several fundamental changes to the existing PGCluster structure and deployment model. Most notably, all PGClusters use the new Crunchy Postgres HA container in place of the previous Crunchy Postgres containers. The use of this new container is a breaking change from previous versions of the Operator.</description>
+      <description>Postgres Operator Ansible Upgrade Procedure from 4.X to 4.2.1 This procedure will give instructions on how to upgrade to version 4.2.1 of the Crunchy Postgres Operator using the Ansible installation method. This version of the Postgres Operator has several fundamental changes to the existing PGCluster structure and deployment model. Most notably, all PGClusters use the new Crunchy Postgres HA container in place of the previous Crunchy Postgres containers. The use of this new container is a breaking change from previous versions of the Operator.</description>
     </item>
     
     <item>
-      <title>Upgrade PGO 4.X to 4.2.0 (Bash)</title>
+      <title>Upgrade PGO 4.X to 4.2.1 (Bash)</title>
       <link>https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade4xto42_bash/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade4xto42_bash/</guid>
-      <description>Postgres Operator Bash Upgrade Procedure from 4.X to 4.2.0 This procedure will give instructions on how to upgrade to version 4.2.0 of the Crunchy Postgres Operator using the Bash installation method. This version of the Postgres Operator has several fundamental changes to the existing PGCluster structure and deployment model. Most notably, all PGClusters use the new Crunchy Postgres HA container in place of the previous Crunchy Postgres containers. The use of this new container is a breaking change from previous versions of the Operator.</description>
+      <description>Postgres Operator Bash Upgrade Procedure from 4.X to 4.2.1 This procedure will give instructions on how to upgrade to version 4.2.1 of the Crunchy Postgres Operator using the Bash installation method. This version of the Postgres Operator has several fundamental changes to the existing PGCluster structure and deployment model. Most notably, all PGClusters use the new Crunchy Postgres HA container in place of the previous Crunchy Postgres containers. The use of this new container is a breaking change from previous versions of the Operator.</description>
     </item>
     
     <item>
@@ -1069,7 +1069,7 @@ pgo update user [flags]  Options  --all all clusters.</description>
 Synopsis UPGRADE performs an upgrade on a PostgreSQL cluster. For example:
 pgo upgrade mycluster
 This upgrade will update the CCPImageTag of the deployment for the primary and all replicas. The running containers are upgraded one at a time, sequentially, in the following order: replicas, backrest-repo, then primary.
-pgo upgrade [flags]  Options  --ccp-image-tag string The CCPImageTag to use for cluster creation. If specified, overrides the pgo.</description>
+Note: If the PostgreSQL Operator is deployed using OLM, the value of the CCPImageTag is overriden by what is in the RELATEDIMAGE* environmental variables, e.</description>
     </item>
     
     <item>

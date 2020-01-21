@@ -839,21 +839,21 @@
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade35to4/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade35to4/">
-            Upgrade PGO 3.5 to 4.2.0
+            Upgrade PGO 3.5 to 4.2.1
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade4xto42_ansible/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade4xto42_ansible/">
-            Upgrade PGO 4.X to 4.2.0 (Ansible)
+            Upgrade PGO 4.X to 4.2.1 (Ansible)
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade4xto42_bash/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade4xto42_bash/">
-            Upgrade PGO 4.X to 4.2.0 (Bash)
+            Upgrade PGO 4.X to 4.2.1 (Bash)
           </a>
         </div>
     </li>
@@ -1066,10 +1066,9 @@ is changed, be sure to update the PGO_APISERVER_URL accordingly.</p>
 
 <p>By default, the pgo client will trust certificates issued by one of the
 Certificate Authorities listed in the operating system&rsquo;s default CA trust
-store. To prevent their inclusion, two configuation methods are available:
-either the Bash environment variable</p>
+store, if any. To exclude them, either use the environment variable</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">EXCLUDE_OS_TRUST</span><span style="color:#f92672">=</span>true</code></pre></div>
-<p>or the &ndash;exclude-os-trust can be included during client use</p>
+<p>or use the &ndash;exclude-os-trust flag</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pgo version --exclude-os-trust</code></pre></div>
 <p>Finally, if TLS has been disabled for the Operator&rsquo;s apiserver, the PGO
 client connection must be set to match the given settings.</p>

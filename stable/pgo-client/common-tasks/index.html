@@ -839,21 +839,21 @@
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade35to4/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade35to4/">
-            Upgrade PGO 3.5 to 4.2.0
+            Upgrade PGO 3.5 to 4.2.1
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade4xto42_ansible/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade4xto42_ansible/">
-            Upgrade PGO 4.X to 4.2.0 (Ansible)
+            Upgrade PGO 4.X to 4.2.1 (Ansible)
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade4xto42_bash/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade4xto42_bash/">
-            Upgrade PGO 4.X to 4.2.0 (Bash)
+            Upgrade PGO 4.X to 4.2.1 (Bash)
           </a>
         </div>
     </li>
@@ -1071,8 +1071,8 @@ command:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo version</code></pre></div>
 <p>which, if working, will yield results similar to:</p>
 
-<pre><code>pgo client version 4.2.0
-pgo-apiserver version 4.2.0
+<pre><code>pgo client version 4.2.1
+pgo-apiserver version 4.2.1
 </code></pre>
 
 <h3 id="inspecting-the-postgresql-operator-configuration">Inspecting the PostgreSQL Operator Configuration</h3>
@@ -1088,7 +1088,7 @@ deployed by default, which storage classes are being used, etc.</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">BasicAuth<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
 Cluster<span style="color:#111">:</span>
   CCPImagePrefix<span style="color:#111">:</span> crunchydata
-  CCPImageTag<span style="color:#111">:</span> centos7-<span style="color:#ae81ff">12.1</span>-<span style="color:#ae81ff">4.2</span>.<span style="color:#ae81ff">0</span>
+  CCPImageTag<span style="color:#111">:</span> centos7-<span style="color:#ae81ff">12.1</span>-<span style="color:#ae81ff">4.2</span>.<span style="color:#ae81ff">1</span>
   PrimaryNodeLabel<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
   ReplicaNodeLabel<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
   Policies<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
@@ -1123,7 +1123,7 @@ Pgo<span style="color:#111">:</span>
   PreferredFailoverNode<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
   Audit<span style="color:#111">:</span> <span style="color:#00a8c8">false</span>
   PGOImagePrefix<span style="color:#111">:</span> crunchydata
-  PGOImageTag<span style="color:#111">:</span> centos7-<span style="color:#ae81ff">4.2</span>.<span style="color:#ae81ff">0</span>
+  PGOImageTag<span style="color:#111">:</span> centos7-<span style="color:#ae81ff">4.2</span>.<span style="color:#ae81ff">1</span>
 ContainerResources<span style="color:#111">:</span>
   large<span style="color:#111">:</span>
     RequestsMemory<span style="color:#111">:</span> 2Gi
@@ -1179,9 +1179,9 @@ Claims:                  8
 Total Volume Size:       8Gi       
 
 Database Images:
-                         4	crunchydata/crunchy-postgres-ha:centos7-12.1-4.2.0
-                         4	crunchydata/pgo-backrest-repo:centos7-4.2.0
-                         8	crunchydata/pgo-backrest:centos7-4.2.0
+                         4	crunchydata/crunchy-postgres-ha:centos7-12.1-4.2.1
+                         4	crunchydata/pgo-backrest-repo:centos7-4.2.1
+                         8	crunchydata/pgo-backrest:centos7-4.2.1
 
 Databases Not Ready:
 
@@ -1211,7 +1211,7 @@ Labels (count &gt; 1): [count] [label]
 	[4]	[pgo-pg-database=true]
 	[4]	[crunchy_collect=false]
 	[4]	[pg-pod-anti-affinity=]
-	[4]	[pgo-version=4.2.0]
+	[4]	[pgo-version=4.2.1]
 	[4]	[archive-timeout=60]
 	[2]	[pg-cluster=hacluster]
 </code></pre>
@@ -1306,7 +1306,7 @@ including the nodes that the pods are assigned to</li>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo show cluster hacluster</code></pre></div>
 <p>which will yield output similar to:</p>
 
-<pre><code>cluster : hacluster (crunchy-postgres-ha:centos7-12.1-4.2.0)
+<pre><code>cluster : hacluster (crunchy-postgres-ha:centos7-12.1-4.2.1)
 	pod : hacluster-6dc6cfcfb9-f9knq (Running) on node01 (1/1) (primary)
 	pvc : hacluster
 	resources : CPU Limit= Memory Limit=, CPU Request= Memory Request=
@@ -1314,7 +1314,7 @@ including the nodes that the pods are assigned to</li>
 	deployment : hacluster
 	deployment : hacluster-backrest-shared-repo
 	service : hacluster - ClusterIP (10.102.20.42)
-	labels : pg-pod-anti-affinity= archive-timeout=60 crunchy-pgbadger=false crunchy_collect=false deployment-name=hacluster pg-cluster=hacluster crunchy-pgha-scope=hacluster autofail=true pgo-backrest=true pgo-version=4.2.0 current-primary=hacluster name=hacluster pgouser=pgoadmin workflowid=ae714d12-f5d0-4fa9-910f-21944b41dec8
+	labels : pg-pod-anti-affinity= archive-timeout=60 crunchy-pgbadger=false crunchy_collect=false deployment-name=hacluster pg-cluster=hacluster crunchy-pgha-scope=hacluster autofail=true pgo-backrest=true pgo-version=4.2.1 current-primary=hacluster name=hacluster pgouser=pgoadmin workflowid=ae714d12-f5d0-4fa9-910f-21944b41dec8
 </code></pre>
 
 <h3 id="deleting-a-cluster">Deleting a Cluster</h3>
@@ -1701,7 +1701,7 @@ into your Postgres cluster pod as follows:</p>
 <p>Note: backend metric storage such as Prometheus and front end
 visualization software such as Grafana are not created automatically
 by the PostgreSQL Operator.  For instructions on installing Grafana and
-Prometheus in your environment, see the <a href="https://access.crunchydata.com/documentation/crunchy-containers/4.2.0/examples/metrics/metrics/">Crunchy Container Suite documentation</a>.</p>
+Prometheus in your environment, see the <a href="https://access.crunchydata.com/documentation/crunchy-containers/4.2.1/examples/metrics/metrics/">Crunchy Container Suite documentation</a>.</p>
 
 <h3 id="create-a-cluster-using-specific-storage">Create a Cluster using Specific Storage</h3>
 

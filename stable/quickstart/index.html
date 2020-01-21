@@ -838,21 +838,21 @@
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade35to4/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade35to4/">
-            Upgrade PGO 3.5 to 4.2.0
+            Upgrade PGO 3.5 to 4.2.1
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade4xto42_ansible/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade4xto42_ansible/">
-            Upgrade PGO 4.X to 4.2.0 (Ansible)
+            Upgrade PGO 4.X to 4.2.1 (Ansible)
           </a>
         </div>
     </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade4xto42_bash/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/upgrade/upgrade4xto42_bash/">
-            Upgrade PGO 4.X to 4.2.0 (Bash)
+            Upgrade PGO 4.X to 4.2.1 (Bash)
           </a>
         </div>
     </li>
@@ -1003,19 +1003,19 @@
 <p>There are two paths to quickly get you up and running with the PostgreSQL Operator:</p>
 
 <ul>
-<li>Installation via a Marketplace</li>
-<li>Installation via the Ansible Installer</li>
-</ul>
-
-<p>The marketplaces that include the Crunchy PostgreSQL Operator include:</p>
+<li><a href="#ansible">Installation via Ansible</a></li>
+<li>Installation via a Marketplace
 
 <ul>
-<li><a href="https://console.cloud.google.com/marketplace/details/crunchydata/crunchy-postgresql-operator">Crunchy PostgreSQL for GKE</a> - Google Cloud Marketplace</li>
+<li>Installation via <a href="#google-cloud-platform-marketplace">Google Cloud Platform Marketplace</a></li>
+</ul></li>
 </ul>
 
-<p>The marketplaces will get your environment set up quickly, and you can use &ldquo;Step 5&rdquo; below to validate your installation.</p>
+<p>Marketplaces can help you get more quickly started in your environment as they provide a mostly automated process, but there are a few steps you will need to take to ensure you can fully utilize your PostgreSQL Operator environment.</p>
 
-<p>Below will guide you through the steps for installing and using the PostgreSQL Operator using the Ansible Installer.</p>
+<h1 id="ansible">Ansible</h1>
+
+<p>Below will guide you through the steps for installing and using the PostgreSQL Operator using an installer that works with Ansible.</p>
 
 <h2 id="step-1-prerequisites">Step 1: Prerequisites</h2>
 
@@ -1025,7 +1025,7 @@
 <li>A Kubernetes or OpenShift environment where you have enough privileges to install an application, i.e. you can add a <a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole">ClusterRole</a>. If you&rsquo;re a Cluster Admin, you&rsquo;re all set.
 
 <ul>
-<li>Your Kubernetes version should be 1.13+. <strong>NOTE</strong>: For v4.2.0, while we have updated the PostgreSQL Operator for compatibility with 1.16+, we have not fully tested it.</li>
+<li>Your Kubernetes version should be 1.13+. <strong>NOTE</strong>: For v4.2.1, while we have updated the PostgreSQL Operator for compatibility with 1.16+, we have not fully tested it.</li>
 <li>For OpenShift, the PostgreSQL Operator will work in 3.11+</li>
 </ul></li>
 <li><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/">PersistentVolume</a>s that are available</li>
@@ -1046,7 +1046,8 @@
 
 <p>You can download the playbook by cloning the <a href="https://github.com/CrunchyData/postgres-operator">PostgreSQL Operator git repository</a> and running the following commands:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git clone https://github.com/CrunchyData/postgres-operator.git
-git checkout v4.2.0 <span style="color:#75715e"># you can substitute this for the version that you want to install</span>
+<span style="color:#111">cd</span> postgres-operator
+git checkout v4.2.1 <span style="color:#75715e"># you can substitute this for the version that you want to install</span>
 <span style="color:#111">cd</span> ansible</code></pre></div>
 <h3 id="configure-your-installation">Configure your Installation</h3>
 
@@ -1171,8 +1172,8 @@ postgres-operator-56d6ccb97-tmz7m   4/4     Running   0          2m
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo version</code></pre></div>
 <p>If successful, you should see output similar to this:</p>
 
-<pre><code>pgo client version 4.2.0
-pgo-apiserver version 4.2.0
+<pre><code>pgo client version 4.2.1
+pgo-apiserver version 4.2.1
 </code></pre>
 
 <h2 id="step-5-have-some-fun-create-a-postgresql-cluster">Step 5: Have Some Fun - Create a PostgreSQL Cluster</h2>
@@ -1197,6 +1198,144 @@ workflow id 1cd0d225-7cd4-4044-b269-aa7bedae219b
 </code></pre>
 
 <p>The <code>pgo test</code> command provides you the basic information you need to connect to your PostgreSQL cluster from within your Kubernetes environment. For more detailed information, you can use <code>pgo show cluster -n pgouser1 hippo</code>.</p>
+
+<h1 id="marketplaces">Marketplaces</h1>
+
+<p>Below is the list of the marketplaces where you can find the Crunchy PostgreSQL Operator:</p>
+
+<ul>
+<li>Google Cloud Platform Marketplace: <a href="https://console.cloud.google.com/marketplace/details/crunchydata/crunchy-postgresql-operator">Crunchy PostgreSQL for GKE</a></li>
+</ul>
+
+<p>Follow the instructions below for the marketplace that you want to use to deploy the Crunchy PostgreSQL Operator.</p>
+
+<h2 id="google-cloud-platform-marketplace">Google Cloud Platform Marketplace</h2>
+
+<p>The PostgreSQL Operator is installed as part of the <a href="https://console.cloud.google.com/marketplace/details/crunchydata/crunchy-postgresql-operator">Crunchy PostgreSQL for GKE</a> project that is available in the Google Cloud Platform Marketplace (GCP Marketplace). Please follow the steps deploy to get the PostgreSQL Operator deployed!</p>
+
+<h3 id="step-1-prerequisites-1">Step 1: Prerequisites</h3>
+
+<h4 id="install-kubectl-and-gcloud-sdk">Install <code>Kubectl</code> and <code>gcloud</code> SDK</h4>
+
+<ul>
+<li><a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">kubectl</a> is required to execute kube commands with in GKE.</li>
+<li><a href="https://cloud.google.com/sdk/install">gcloudsdk</a> essential command line tools for google cloud</li>
+</ul>
+
+<h4 id="verification">Verification</h4>
+
+<p>Below are a few steps to check if the PostgreSQL Operator is up and running.</p>
+
+<p>For this example we are deploying the operator into a namespace called <code>pgo</code>. First, see that the the Kubernetes Deployment of the Operator exists and is healthy:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl -n pgo get deployments</code></pre></div>
+<p>If successful, you should see output similar to this:</p>
+
+<pre><code>NAME                READY   UP-TO-DATE   AVAILABLE   AGE
+postgres-operator   1/1     1            1           16h
+</code></pre>
+
+<p>Next, see if the Pods that run the PostgreSQL Operator are up and running:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl -n pgo get pods</code></pre></div>
+<p>If successful, you should see output similar to this:</p>
+
+<pre><code>NAME                                READY   STATUS    RESTARTS   AGE
+postgres-operator-56d6ccb97-tmz7m   4/4     Running   0          2m
+</code></pre>
+
+<h3 id="step-2-install-the-postgresql-operator-user-keys">Step 2: Install the PostgreSQL Operator User Keys</h3>
+
+<p>After your operator is deployed via GCP Marketplace you will need to get keys used to secure the Operator REST API. For these instructions we will assume the operator is deployed in a namespace named &ldquo;pgo&rdquo; if this in not the case for your operator change the namespace to coencide with where your operator is deployed. Using the <code>gcloud</code> utility, ensure you are logged into the GKE cluster that you installed the PostgreSQL Operator into, run the following commands to retrieve the cert and key:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl get secret pgo.tls -n pgo -o <span style="color:#111">jsonpath</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;{.data.tls\.key}&#39;</span> <span style="color:#111">|</span> base64 --decode &gt; /tmp/client.key
+kubectl get secret pgo.tls -n pgo -o <span style="color:#111">jsonpath</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;{.data.tls\.crt}&#39;</span> <span style="color:#111">|</span> base64 --decode &gt; /tmp/client.crt</code></pre></div>
+<h3 id="step-3-setup-postgresql-operator-user">Step 3: Setup PostgreSQL Operator User</h3>
+
+<p>The PostgreSQL Operator implements its own role-based access control (RBAC) system for authenticating and authorization PostgreSQL Operator users access to its REST API.  A default PostgreSQL Operator user (aka a &ldquo;pgouser&rdquo;) is created as part of the marketplace installation (these credentials are set during the marketplace deployment workflow).</p>
+
+<p>Create the pgouser file in <code>${HOME?}/.pgo/&lt;operatornamespace&gt;/pgouser</code> and insert the user and password you created on deployment of the PostgreSQL Operator via GCP Marketplace.  For example, if you set up a user with the username of <code>username</code> and a password of <code>hippo</code>:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">username:hippo</code></pre></div>
+<h3 id="step-4-setup-environment-variables">Step 4: Setup Environment variables</h3>
+
+<p>The PostgreSQL Operator Client uses several environmental variables to make it easier for interfacing with the PostgreSQL Operator.</p>
+
+<p>Set the environmental variables to use the key / certificate pair that you pulled in Step 2 was deployed via the marketplace. Using the previous examples, You can set up environment variables with the following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#111">export</span> <span style="color:#111">PGOUSER</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;</span><span style="color:#d88200">${</span><span style="color:#111">HOME</span><span style="color:#111">?</span><span style="color:#d88200">}</span><span style="color:#d88200">/.pgo/pgo/pgouser&#34;</span>
+<span style="color:#111">export</span> <span style="color:#111">PGO_CA_CERT</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;/tmp/client.crt&#34;</span>
+<span style="color:#111">export</span> <span style="color:#111">PGO_CLIENT_CERT</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;/tmp/client.crt&#34;</span>
+<span style="color:#111">export</span> <span style="color:#111">PGO_CLIENT_KEY</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;/tmp/client.key&#34;</span>
+<span style="color:#111">export</span> <span style="color:#111">PGO_APISERVER_URL</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;https://127.0.0.1:8443&#39;</span></code></pre></div>
+<p>If you wish to permanently add these variables to your environment, you can run the following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat <span style="color:#d88200">&lt;&lt;EOF &gt;&gt; ~/.bashrc
+</span><span style="color:#d88200">export PGOUSER=&#34;${HOME?}/.pgo/pgo/pgouser&#34;
+</span><span style="color:#d88200">export PGO_CA_CERT=&#34;/tmp/client.crt&#34;
+</span><span style="color:#d88200">export PGO_CLIENT_CERT=&#34;/tmp/client.crt&#34;
+</span><span style="color:#d88200">export PGO_CLIENT_KEY=&#34;/tmp/client.key&#34;
+</span><span style="color:#d88200">export PGO_APISERVER_URL=&#39;https://127.0.0.1:8443&#39;
+</span><span style="color:#d88200">EOF</span>
+
+<span style="color:#111">source</span> ~/.bashrc</code></pre></div>
+<p><strong>NOTE</strong>: For macOS users, you must use <code>~/.bash_profile</code> instead of <code>~/.bashrc</code></p>
+
+<h3 id="step-5-install-the-postgresql-operator-client-pgo">Step 5:  Install the PostgreSQL Operator Client <code>pgo</code></h3>
+
+<p>The <a href="https://crunchydata.github.io/postgres-operator/stable/pgo-client/"><code>pgo</code> client</a> provides a helpful command-line interface to perform key operations on a PostgreSQL Operator, such as creating a PostgreSQL cluster.</p>
+
+<p>The <code>pgo</code> client can be downloaded from GitHub <a href="https://github.com/crunchydata/postgres-operator/releases">Releases</a> (subscribers can download it from the <a href="https://access.crunchydata.com">Crunchy Data Customer Portal</a>).</p>
+
+<p>Note that the <code>pgo</code> client&rsquo;s version must match the version of the PostgreSQL Operator that you have deployed. For example, if you have deployed version 4.2.1 of the PostgreSQL Operator, you must use the <code>pgo</code> for 4.2.1.</p>
+
+<p>Once you have download the <code>pgo</code> client, change the permissions on the file to be executable if need be as shown below:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">chmod +x pgo</code></pre></div>
+<h3 id="step-6-connect-to-the-postgresql-operator">Step 6:  Connect to the PostgreSQL Operator</h3>
+
+<p>Finally, let&rsquo;s see if we can connect to the PostgreSQL Operator from the <code>pgo</code> client. In order to communicate with the PostgreSQL Operator API server, you will first need to set up a <a href="https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/">port forward</a> to your local environment.</p>
+
+<p>In a new console window, run the following command to set up a port forward:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl -n pgo port-forward svc/postgres-operator <span style="color:#ae81ff">8443</span>:8443</code></pre></div>
+<p>Back to your original console window, you can verify that you can connect to the PostgreSQL Operator using the following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo version</code></pre></div>
+<p>If successful, you should see output similar to this:</p>
+
+<pre><code>pgo client version 4.2.1
+pgo-apiserver version 4.2.1
+</code></pre>
+
+<h3 id="step-7-create-a-namespace">Step 7: Create a Namespace</h3>
+
+<p>We are almost there!  You can optionally add a namespace that can be managed by the PostgreSQL Operator to watch and to deploy a PostgreSQL cluster into.</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create namespace wateringhole</code></pre></div>
+<p>verify the operator has access to the newly added namespace</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo show namespace --all</code></pre></div>
+<p>you should see out put similar to this:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo username: admin
+namespace                useraccess          installaccess       
+application-system       accessible          no access                   
+default                  accessible          no access                  
+kube-public              accessible          no access           
+kube-system              accessible          no access           
+pgo                      accessible          no access
+wateringhole             accessible          accessible  </code></pre></div>
+<h3 id="step-8-have-some-fun-create-a-postgresql-cluster">Step 8: Have Some Fun - Create a PostgreSQL Cluster</h3>
+
+<p>You are now ready to create a new cluster in the <code>wateringhole</code> namespace, try the command below:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster -n wateringhole hippo</code></pre></div>
+<p>If successful, you should see output similar to this:</p>
+
+<pre><code>created Pgcluster hippo
+workflow id 1cd0d225-7cd4-4044-b269-aa7bedae219b
+</code></pre>
+
+<p>This will create a PostgreSQL cluster named <code>hippo</code>. It may take a few moments for the cluster to be provisioned. You can see the status of this cluster using the <code>pgo test</code> command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo <span style="color:#111">test</span> -n wateringhole hippo</code></pre></div>
+<p>When everything is up and running, you should see output similar to this:</p>
+
+<pre><code>cluster : hippo
+	Services
+		primary (10.97.140.113:5432): UP
+	Instances
+		primary (hippo-7b64747476-6dr4h): UP
+</code></pre>
+
+<p>The <code>pgo test</code> command provides you the basic information you need to connect to your PostgreSQL cluster from within your Kubernetes environment. For more detailed information, you can use <code>pgo show cluster -n wateringhole hippo</code>.</p>
 
 
 

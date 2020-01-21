@@ -1,0 +1,1869 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <title>Crunchy Data PostgreSQL Operator Documentation</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="generator" content="Hugo 0.55.6" />
+<title>Common pgo Client Tasks :: Crunchy Data PostgreSQL Operator Documentation</title>
+<link rel="shortcut icon" href="https://crunchydata.github.io/postgres-operator/4.2.1/favicon.png" type="image/x-icon" />
+<link href="https://crunchydata.github.io/postgres-operator/4.2.1/css/nucleus.css" rel="stylesheet">
+<link href="https://crunchydata.github.io/postgres-operator/4.2.1/theme-flex/style.css" rel="stylesheet">
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<link href="https://crunchydata.github.io/postgres-operator/4.2.1/css/Fort-Fonts.css" rel="stylesheet">
+<link href="https://crunchydata.github.io/postgres-operator/4.2.1/css/custom.css" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+<script src="https://crunchydata.github.io/postgres-operator/4.2.1/js/jquery-2.x.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.bundle.min.js" integrity="sha384-zDnhMsjVZfS3hiP7oCBRmfjkQC4fzxVxFhBx8Hkz2aZX8gEvA/jsP3eXRCvzTofP" crossorigin="anonymous"></script>
+<script src="https://crunchydata.github.io/postgres-operator/4.2.1/js/main.js"></script>
+<script src="https://crunchydata.github.io/postgres-operator/4.2.1/js/toc.js"></script>
+<script type="text/javascript">
+      var baseurl = "https:\/\/crunchydata.github.io\/postgres-operator\/4.2.1";
+</script>
+<meta name="description" content="">
+
+
+
+    
+  </head>
+  <body data-url="/pgo-client/common-tasks/">
+    
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+  
+<a class="navbar-brand" href="https://www.crunchydata.com/"><img alt="Crunchy Data" src="https://crunchydata.github.io/postgres-operator/4.2.1/images/logo.svg"></a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <ul class="navbar-nav mr-auto"></ul>
+  <span class="navbar-text">
+      <nav class="shortcuts">
+              <li class="" role="">
+                  <a href="https://github.com/CrunchyData/postgres-operator" target="_blank" rel="noopener">
+                    <i class='fab fa-github'></i> <label>Source</label>
+                  </a>
+              </li>
+              <li class="" role="">
+                  <a href="https://kubernetes.io/docs/" target="_blank" rel="noopener">
+                    <i class='fas fa-bookmark'></i> <label>Kubernetes</label>
+                  </a>
+              </li>
+              <li class="" role="">
+                  <a href="https://github.com/CrunchyData/postgres-operator/blob/master/LICENSE.md" target="_blank" rel="noopener">
+                    <i class='fas fa-file-contract'></i> <label>License</label>
+                  </a>
+              </li>
+      </nav>
+  </span>
+</nav>
+
+<article>
+  <aside>
+
+    <ul class="menu">
+      <div>
+        <div class="searchbox">
+          <input data-search-input id="search-by" type="text" placeholder="">
+        </div>
+        <script type="text/javascript" src="https://crunchydata.github.io/postgres-operator/4.2.1/js/lunr.min.js"></script>
+        <script type="text/javascript" src="https://crunchydata.github.io/postgres-operator/4.2.1/js/auto-complete.js"></script>
+        <link href="https://crunchydata.github.io/postgres-operator/4.2.1/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+          
+              var baseurl = "https:\/\/crunchydata.github.io\/postgres-operator\/4.2.1";
+          
+        </script>
+        <script type="text/javascript" src="https://crunchydata.github.io/postgres-operator/4.2.1/js/search.js"></script>
+      </div>
+
+      <hr>
+      <a class="baselink" href="https://crunchydata.github.io/postgres-operator/4.2.1/">Crunchy Data PostgreSQL Operator Documentation</a>
+      <hr>
+        <b>Available Formats</b>
+        <nav class="downloads">
+                <li class="" role="">
+                    <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pdf/postgres_operator.pdf" target="_blank" rel="noopener">
+                      <i class='fas fa-file-pdf'></i> <label>PDF</label>
+                    </a>
+                </li>
+                <li class="" role="">
+                    <a href="https://crunchydata.github.io/postgres-operator/4.2.1/epub/postgres_operator.epub" target="_blank" rel="noopener">
+                      <i class='fas fa-book'></i> <label>EPUB</label>
+                    </a>
+                </li>
+        </nav>
+        <hr>
+
+      <b>Navigation</b>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/quickstart/" class="dd-item
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/4.2.1/quickstart/">Quickstart</a>
+
+      </div>
+    </li>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/architecture/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/4.2.1/architecture/">Architecture</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+
+      </div>
+        <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/architecture/overview/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/architecture/overview/">
+            Overview
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/architecture/provisioning/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/architecture/provisioning/">
+            Provisioning
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/architecture/disaster-recovery/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/architecture/disaster-recovery/">
+            Disaster Recovery
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/architecture/high-availability/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/architecture/high-availability/">
+            High-Availability
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/architecture/namespace/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/architecture/namespace/">
+            Namespace Management
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/architecture/eventing/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/architecture/eventing/">
+            Lifecycle Events
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/architecture/postgres-operator-containers-overview/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/architecture/postgres-operator-containers-overview/">
+            PostgreSQL Containers
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/architecture/storage-overview/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/architecture/storage-overview/">
+            Storage
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/architecture/users-role-overview/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/architecture/users-role-overview/">
+            User &amp; Roles
+          </a>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/configuration/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/4.2.1/configuration/">Configuration</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+
+      </div>
+        <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/configuration/compatibility/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/configuration/compatibility/">
+            Compatibility Requirements
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/configuration/configuration/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/configuration/configuration/">
+            Configuration Resources
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/configuration/pgo-yaml-configuration/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/configuration/pgo-yaml-configuration/">
+            PGO YAML
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/configuration/tls/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/configuration/tls/">
+            TLS
+          </a>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/installation/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/4.2.1/installation/">Installation</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+
+      </div>
+        <ul>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/installation/prereq/" class="dd-item
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/4.2.1/installation/prereq/">Prerequisites</a>
+
+      </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/installation/common-env/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/installation/common-env/">
+            Operator Environment
+          </a>
+        </div>
+    </li>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/installation/install-with-ansible/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/4.2.1/installation/install-with-ansible/">Install Operator Using Ansible</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+
+      </div>
+        <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/installation/install-with-ansible/prerequisites/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/installation/install-with-ansible/prerequisites/">
+            Prerequisites
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/installation/install-with-ansible/installing-ansible/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/installation/install-with-ansible/installing-ansible/">
+            Installing Ansible
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/installation/install-with-ansible/installing-operator/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/installation/install-with-ansible/installing-operator/">
+            Installing PostgreSQL Operator
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/installation/install-with-ansible/installing-metrics/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/installation/install-with-ansible/installing-metrics/">
+            Installing Metrics Infrastructure
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/installation/install-with-ansible/updating-operator/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/installation/install-with-ansible/updating-operator/">
+            Updating PostgreSQL Operator
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/installation/install-with-ansible/uninstalling-operator/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/installation/install-with-ansible/uninstalling-operator/">
+            Uninstalling PostgreSQL Operator
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/installation/install-with-ansible/uninstalling-metrics/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/installation/install-with-ansible/uninstalling-metrics/">
+            Uninstalling Metrics Stack
+          </a>
+        </div>
+    </li>
+        </ul>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/installation/operator-install/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/installation/operator-install/">
+            Install Operator Using Bash
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/installation/developer-setup/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/installation/developer-setup/">
+            Developer Setup
+          </a>
+        </div>
+    </li>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/installation/install-pgo-client/" class="dd-item
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/4.2.1/installation/install-pgo-client/">Install `pgo` Client</a>
+
+      </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/">Using the pgo Client</a>
+            <i class="fas fa-angle-down fa-lg category-icon"></i>
+
+      </div>
+        <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/common-tasks/" class="dd-item active">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/common-tasks/">
+            Common pgo Client Tasks
+          </a>
+        </div>
+    </li>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/">pgo Client Reference</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+
+      </div>
+        <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_apply/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_apply/">
+            pgo apply
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_backup/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_backup/">
+            pgo backup
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_benchmark/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_benchmark/">
+            pgo benchmark
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_cat/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_cat/">
+            pgo cat
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_clone/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_clone/">
+            pgo clone
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_create/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_create/">
+            pgo create
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_create_cluster/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_create_cluster/">
+            pgo create cluster
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_create_namespace/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_create_namespace/">
+            pgo create namespace
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_create_pgbouncer/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_create_pgbouncer/">
+            pgo create pgbouncer
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_create_pgorole/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_create_pgorole/">
+            pgo create pgorole
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_create_pgouser/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_create_pgouser/">
+            pgo create pgouser
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_create_policy/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_create_policy/">
+            pgo create policy
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_create_schedule/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_create_schedule/">
+            pgo create schedule
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_create_user/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_create_user/">
+            pgo create user
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_delete/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_delete/">
+            pgo delete
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_delete_backup/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_delete_backup/">
+            pgo delete backup
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_delete_benchmark/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_delete_benchmark/">
+            pgo delete benchmark
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_delete_cluster/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_delete_cluster/">
+            pgo delete cluster
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_delete_label/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_delete_label/">
+            pgo delete label
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_delete_namespace/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_delete_namespace/">
+            pgo delete namespace
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_delete_pgbouncer/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_delete_pgbouncer/">
+            pgo delete pgbouncer
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_delete_pgorole/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_delete_pgorole/">
+            pgo delete pgorole
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_delete_pgouser/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_delete_pgouser/">
+            pgo delete pgouser
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_delete_policy/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_delete_policy/">
+            pgo delete policy
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_delete_schedule/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_delete_schedule/">
+            pgo delete schedule
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_delete_user/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_delete_user/">
+            pgo delete user
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_df/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_df/">
+            pgo df
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_failover/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_failover/">
+            pgo failover
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_label/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_label/">
+            pgo label
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_load/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_load/">
+            pgo load
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_ls/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_ls/">
+            pgo ls
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_reload/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_reload/">
+            pgo reload
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_restore/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_restore/">
+            pgo restore
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_scale/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_scale/">
+            pgo scale
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_scaledown/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_scaledown/">
+            pgo scaledown
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_show/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_show/">
+            pgo show
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_show_backup/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_show_backup/">
+            pgo show backup
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_show_benchmark/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_show_benchmark/">
+            pgo show benchmark
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_show_cluster/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_show_cluster/">
+            pgo show cluster
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_show_config/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_show_config/">
+            pgo show config
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_show_namespace/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_show_namespace/">
+            pgo show namespace
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_show_pgorole/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_show_pgorole/">
+            pgo show pgorole
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_show_pgouser/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_show_pgouser/">
+            pgo show pgouser
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_show_policy/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_show_policy/">
+            pgo show policy
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_show_pvc/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_show_pvc/">
+            pgo show pvc
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_show_schedule/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_show_schedule/">
+            pgo show schedule
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_show_user/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_show_user/">
+            pgo show user
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_show_workflow/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_show_workflow/">
+            pgo show workflow
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_status/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_status/">
+            pgo status
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_test/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_test/">
+            pgo test
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_update/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_update/">
+            pgo update
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_update_cluster/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_update_cluster/">
+            pgo update cluster
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_update_namespace/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_update_namespace/">
+            pgo update namespace
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_update_pgorole/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_update_pgorole/">
+            pgo update pgorole
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_update_pgouser/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_update_pgouser/">
+            pgo update pgouser
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_update_user/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_update_user/">
+            pgo update user
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_upgrade/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_upgrade/">
+            pgo upgrade
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_version/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_version/">
+            pgo version
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_watch/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_watch/">
+            pgo watch
+          </a>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/security/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/4.2.1/security/">RBAC Configuration</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+
+      </div>
+        <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/security/configure-postgres-operator-rbac/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/security/configure-postgres-operator-rbac/">
+            Configuration of PostgreSQL Operator RBAC
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/security/install-postgres-operator-rbac/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/security/install-postgres-operator-rbac/">
+            Installation of PostgreSQL Operator RBAC
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/security/api-encryption-configuration/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/security/api-encryption-configuration/">
+            PostgreSQL Operator API Encryption Configuration
+          </a>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/advanced/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/4.2.1/advanced/">Advanced Topics</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+
+      </div>
+        <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/advanced/custom-config/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/advanced/custom-config/">
+            Custom Configuration
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/advanced/custom-config-ssl/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/advanced/custom-config-ssl/">
+            Custom SSL Configuration
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/advanced/multi-zone-design-considerations/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/advanced/multi-zone-design-considerations/">
+            Multi-Zone Cloud Considerations
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/advanced/direct-api-calls/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/advanced/direct-api-calls/">
+            Rest API
+          </a>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/upgrade/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/4.2.1/upgrade/">Upgrade</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+
+      </div>
+        <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/upgrade/upgrade35/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/upgrade/upgrade35/">
+            Upgrade PGO 3.5 Minor Versions
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/upgrade/upgrade35to4/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/upgrade/upgrade35to4/">
+            Upgrade PGO 3.5 to 4.2.1
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/upgrade/upgrade4xto42_ansible/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/upgrade/upgrade4xto42_ansible/">
+            Upgrade PGO 4.X to 4.2.1 (Ansible)
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/upgrade/upgrade4xto42_bash/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/upgrade/upgrade4xto42_bash/">
+            Upgrade PGO 4.X to 4.2.1 (Bash)
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/upgrade/upgrade41/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/upgrade/upgrade41/">
+            Upgrade PostgreSQL Operator 4.1 Minor Versions
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/upgrade/upgradeto35/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/upgrade/upgradeto35/">
+            Upgrade to PGO 3.5 From Previous Versions
+          </a>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/contributing/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="https://crunchydata.github.io/postgres-operator/4.2.1/contributing/">Contributing</a><i class="fas fa-angle-right fa-lg category-icon"></i>
+
+      </div>
+        <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/contributing/documentation-updates/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/contributing/documentation-updates/">
+            Updating Documentation
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/contributing/issues/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/contributing/issues/">
+            Submitting Issues
+          </a>
+        </div>
+    </li>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/4.2.1/contributing/pull-requests/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/4.2.1/contributing/pull-requests/">
+            Submitting Pull Requests
+          </a>
+        </div>
+    </li>
+        </ul>
+    </li>
+
+
+
+
+      <hr><nav id="TableOfContents"></nav>
+
+
+
+      <section>
+      </section>
+    </ul>
+  </aside>
+  <section class="page">
+
+    <div class="nav-select">
+      <center>Navigation :
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/quickstart/" >
+   Quickstart</option>
+    <option value="/architecture/" >
+   Architecture</option>
+    <option value="/configuration/" >
+   Configuration</option>
+    <option value="/installation/" >
+   Installation</option>
+    <option value="/pgo-client/" >
+   Using the pgo Client</option> 
+      <option value="/pgo-client/common-tasks/"  selected>- Common pgo Client Tasks</option>
+    <option value="/pgo-client/reference/" >
+  - 
+   pgo Client Reference</option>
+  
+    <option value="/security/" >
+   RBAC Configuration</option>
+    <option value="/advanced/" >
+   Advanced Topics</option>
+    <option value="/upgrade/" >
+   Upgrade</option>
+    <option value="/contributing/" >
+   Contributing</option>
+
+
+
+        </select>
+      </center>
+    </div>
+
+    
+      <div id="top-bar">
+        
+          
+          
+          
+        <div id="top-github-link">
+          <a class="github-link" href="https://crunchydata.github.io/postgres-operator/4.2.1/contributing/" target="blank">
+            <i class="fa fa-info-circle"></i>
+            
+          </a>
+          <a class="github-link" href="https://github.com/CrunchyData/postgres-operator/edit/develop/hugo/content/pgo-client/common-tasks.md" target="blank">
+            <i class="fa fa-code-fork"></i>
+            
+          </a>
+        </div><div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+            <span id="sidebar-toggle-span">
+              <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                <i class="fa fa-bars"></i>
+              </a>
+            </span>
+            <span id="toc-menu"><i class="fa fa-list-alt"></i></span>
+            <span class="links">
+            
+
+
+
+
+
+
+
+ <a href='https://crunchydata.github.io/postgres-operator/4.2.1/'>Crunchy PostgreSQL Operator</a> > <a href='https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/'>Using the pgo Client</a> > Common pgo Client Tasks
+
+ 
+
+ 
+
+
+            </span>
+        </div>
+
+      </div>
+    
+
+    
+    <div id="body-inner">
+
+    <h1>Common pgo Client Tasks</h1>
+
+    
+
+    
+    
+
+<p>While the full <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/"><code>pgo</code> client reference</a> will tell you
+everything you need to know about how to use <code>pgo</code>, it may be helpful to see
+several examples on how to conduct &ldquo;day-in-the-life&rdquo; tasks for administrating
+PostgreSQL cluster with the PostgreSQL Operator.</p>
+
+<p>The below guide covers many of the common operations that are required when
+managing PostgreSQL clusters. The guide is broken up by different administrative
+topics, such as provisioning, high-availability, etc.</p>
+
+<h2 id="general-notes">General Notes</h2>
+
+<p>Many of the <code>pgo</code> client commands require you to specify a namespace via the
+<code>-n</code> or <code>--namespace</code> flag. While this is a very helpful tool when managing
+PostgreSQL deployments across many Kubernetes namespaces, this can become
+onerous for the intents of this guide.</p>
+
+<p>If you install the PostgreSQL Operator using the <a href="https://crunchydata.github.io/postgres-operator/4.2.1/quickstart/">quickstart</a>
+guide, you will have two namespaces installed: <code>pgouser1</code> and <code>pgouser2</code>. We
+can choose to always use one of these namespaces by setting the <code>PGO_NAMESPACE</code>
+environmental variable, which is detailed in the global <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/"><code>pgo</code> Client</a>
+reference,</p>
+
+<p>For convenience, we will use the <code>pgouser1</code> namespace in the examples below.
+For even more convenience, we recommend setting <code>pgouser1</code> to be the value of
+the <code>PGO_NAMESPACE</code> variable. In the shell that you will be executing the <code>pgo</code>
+commands in, run the following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#111">export</span> <span style="color:#111">PGO_NAMESPACE</span><span style="color:#f92672">=</span>shell</code></pre></div>
+<p>If you do not wish to set this environmental variable, or are in an environment
+where you are unable to use envirionmental variables, you will have to use the
+<code>--namespace</code> (or <code>-n</code>) flag for most commands, e.g.</p>
+
+<p><code>pgo version -n pgouser1</code></p>
+
+<h3 id="json-output">JSON Output</h3>
+
+<p>The default for the <code>pgo</code> client commands is to output their results in a
+readable format. However, there are times where it may be helpful to you to have
+the format output in a machine parseable format like JSON.</p>
+
+<p>Several commands support the <code>-o</code>/<code>--output</code> flags that delivers the results of
+the command in the specified output. Presently, the only output that is
+supported is <code>json</code>.</p>
+
+<p>As an example of using this feature, if you wanted to get the results of the
+<code>pgo test</code> command in JSON, you could run the following:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo <span style="color:#111">test</span> hacluster -o json</code></pre></div>
+<h2 id="postgresql-operator-system-basics">PostgreSQL Operator System Basics</h2>
+
+<p>To get started, it&rsquo;s first important to understand the basics of working with
+the PostgreSQL Operator itself. You should know how to test if the PostgreSQL
+Operator is working, check the overall status of the PostgreSQL Operator, view
+the current configuration that the PostgreSQL Operator us using, and seeing
+which Kubernetes Namespaces the PostgreSQL Operator has access to.</p>
+
+<p>While this may not be as fun as creating high-availability PostgreSQL clusters,
+these commands will help you to perform basic troubleshooting tasks in your
+environment.</p>
+
+<h3 id="checking-connectivity-to-the-postgresql-operator">Checking Connectivity to the PostgreSQL Operator</h3>
+
+<p>A common task when working with the PostgreSQL Operator is to check connectivity
+to the PostgreSQL Operator. This can be accomplish with the <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_version/"><code>pgo version</code></a>
+command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo version</code></pre></div>
+<p>which, if working, will yield results similar to:</p>
+
+<pre><code>pgo client version 4.2.1
+pgo-apiserver version 4.2.1
+</code></pre>
+
+<h3 id="inspecting-the-postgresql-operator-configuration">Inspecting the PostgreSQL Operator Configuration</h3>
+
+<p>The <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_status/"><code>pgo show config</code></a> command allows you to
+view the current configuration that the PostgreSQL Operator is using. This can
+be helpful for troubleshooting issues such as which PostgreSQL images are being
+deployed by default, which storage classes are being used, etc.</p>
+
+<p>You can run the <code>pgo show config</code> command by running:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo show config</code></pre></div>
+<p>which yields output similar to:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">BasicAuth<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
+Cluster<span style="color:#111">:</span>
+  CCPImagePrefix<span style="color:#111">:</span> crunchydata
+  CCPImageTag<span style="color:#111">:</span> centos7-<span style="color:#ae81ff">12.1</span>-<span style="color:#ae81ff">4.2</span>.<span style="color:#ae81ff">1</span>
+  PrimaryNodeLabel<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
+  ReplicaNodeLabel<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
+  Policies<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
+  LogStatement<span style="color:#111">:</span> none
+  LogMinDurationStatement<span style="color:#111">:</span> <span style="color:#d88200">&#34;60000&#34;</span>
+  Metrics<span style="color:#111">:</span> <span style="color:#00a8c8">false</span>
+  Badger<span style="color:#111">:</span> <span style="color:#00a8c8">false</span>
+  Port<span style="color:#111">:</span> <span style="color:#d88200">&#34;5432&#34;</span>
+  PGBadgerPort<span style="color:#111">:</span> <span style="color:#d88200">&#34;10000&#34;</span>
+  ExporterPort<span style="color:#111">:</span> <span style="color:#d88200">&#34;9187&#34;</span>
+  User<span style="color:#111">:</span> testuser
+  ArchiveTimeout<span style="color:#111">:</span> <span style="color:#d88200">&#34;60&#34;</span>
+  Database<span style="color:#111">:</span> userdb
+  PasswordAgeDays<span style="color:#111">:</span> <span style="color:#d88200">&#34;60&#34;</span>
+  PasswordLength<span style="color:#111">:</span> <span style="color:#d88200">&#34;8&#34;</span>
+  Strategy<span style="color:#111">:</span> <span style="color:#d88200">&#34;1&#34;</span>
+  Replicas<span style="color:#111">:</span> <span style="color:#d88200">&#34;0&#34;</span>
+  ServiceType<span style="color:#111">:</span> ClusterIP
+  BackrestPort<span style="color:#111">:</span> <span style="color:#ae81ff">2022</span>
+  Backrest<span style="color:#111">:</span> <span style="color:#00a8c8">true</span>
+  BackrestS3Bucket<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
+  BackrestS3Endpoint<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
+  BackrestS3Region<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
+  DisableAutofail<span style="color:#111">:</span> <span style="color:#00a8c8">false</span>
+  AutofailReplaceReplica<span style="color:#111">:</span> <span style="color:#00a8c8">false</span>
+  PgmonitorPassword<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
+  EnableCrunchyadm<span style="color:#111">:</span> <span style="color:#00a8c8">false</span>
+  DisableReplicaStartFailReinit<span style="color:#111">:</span> <span style="color:#00a8c8">false</span>
+  PodAntiAffinity<span style="color:#111">:</span> preferred
+  SyncReplication<span style="color:#111">:</span> <span style="color:#00a8c8">false</span>
+Pgo<span style="color:#111">:</span>
+  PreferredFailoverNode<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
+  Audit<span style="color:#111">:</span> <span style="color:#00a8c8">false</span>
+  PGOImagePrefix<span style="color:#111">:</span> crunchydata
+  PGOImageTag<span style="color:#111">:</span> centos7-<span style="color:#ae81ff">4.2</span>.<span style="color:#ae81ff">1</span>
+ContainerResources<span style="color:#111">:</span>
+  large<span style="color:#111">:</span>
+    RequestsMemory<span style="color:#111">:</span> 2Gi
+    RequestsCPU<span style="color:#111">:</span> <span style="color:#d88200">&#34;2.0&#34;</span>
+    LimitsMemory<span style="color:#111">:</span> 2Gi
+    LimitsCPU<span style="color:#111">:</span> <span style="color:#d88200">&#34;4.0&#34;</span>
+  small<span style="color:#111">:</span>
+    RequestsMemory<span style="color:#111">:</span> 256Mi
+    RequestsCPU<span style="color:#111">:</span> <span style="color:#d88200">&#34;0.1&#34;</span>
+    LimitsMemory<span style="color:#111">:</span> 256Mi
+    LimitsCPU<span style="color:#111">:</span> <span style="color:#d88200">&#34;0.1&#34;</span>
+PrimaryStorage<span style="color:#111">:</span> nfsstorage
+BackupStorage<span style="color:#111">:</span> nfsstorage
+ReplicaStorage<span style="color:#111">:</span> nfsstorage
+BackrestStorage<span style="color:#111">:</span> nfsstorage
+Storage<span style="color:#111">:</span>
+  nfsstorage<span style="color:#111">:</span>
+    AccessMode<span style="color:#111">:</span> ReadWriteMany
+    Size<span style="color:#111">:</span> 1G
+    StorageType<span style="color:#111">:</span> create
+    StorageClass<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
+    Fsgroup<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
+    SupplementalGroups<span style="color:#111">:</span> <span style="color:#d88200">&#34;65534&#34;</span>
+    MatchLabels<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
+DefaultContainerResources<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
+DefaultLoadResources<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
+DefaultRmdataResources<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
+DefaultBackupResources<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
+DefaultBadgerResources<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
+DefaultPgbouncerResources<span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span></code></pre></div>
+<h3 id="viewing-postgresql-operator-key-metrics">Viewing PostgreSQL Operator Key Metrics</h3>
+
+<p>The <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_status/"><code>pgo status</code></a> command provides a
+generalized statistical view of the overall resource consumption of the
+PostgreSQL Operator. These stats include:</p>
+
+<ul>
+<li>The total number of PostgreSQL instances</li>
+<li>The total number of Persistent Volume Claims (PVC) that are allocated, along with the total amount of disk the claims specify</li>
+<li>The types of container images that are deployed, along with how many are deployed</li>
+<li>The nodes that are used by the PostgreSQL Operator</li>
+</ul>
+
+<p>and more</p>
+
+<p>You can use the <code>pgo status</code> command by running:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo status</code></pre></div>
+<p>which yields output similar to:</p>
+
+<pre><code>Operator Start:          2019-12-26 17:53:45 +0000 UTC
+Databases:               8
+Claims:                  8
+Total Volume Size:       8Gi       
+
+Database Images:
+                         4	crunchydata/crunchy-postgres-ha:centos7-12.1-4.2.1
+                         4	crunchydata/pgo-backrest-repo:centos7-4.2.1
+                         8	crunchydata/pgo-backrest:centos7-4.2.1
+
+Databases Not Ready:
+
+Nodes:
+	master                        
+		Status:Ready                         
+		Labels:
+			beta.kubernetes.io/arch=amd64
+			beta.kubernetes.io/os=linux
+			kubernetes.io/arch=amd64
+			kubernetes.io/hostname=master
+			kubernetes.io/os=linux
+			node-role.kubernetes.io/master=
+	node01                        
+		Status:Ready                         
+		Labels:
+			beta.kubernetes.io/arch=amd64
+			beta.kubernetes.io/os=linux
+			kubernetes.io/arch=amd64
+			kubernetes.io/hostname=node01
+			kubernetes.io/os=linux
+
+Labels (count &gt; 1): [count] [label]
+	[8]	[vendor=crunchydata]
+	[4]	[pgo-backrest-repo=true]
+	[4]	[pgouser=pgoadmin]
+	[4]	[pgo-pg-database=true]
+	[4]	[crunchy_collect=false]
+	[4]	[pg-pod-anti-affinity=]
+	[4]	[pgo-version=4.2.1]
+	[4]	[archive-timeout=60]
+	[2]	[pg-cluster=hacluster]
+</code></pre>
+
+<h3 id="viewing-postgresql-operator-managed-namespaces">Viewing PostgreSQL Operator Managed Namespaces</h3>
+
+<p>The PostgreSQL Operator has the ability to manage PostgreSQL clusters across
+Kubernetes Namespaces. During the course of Operations, it can be helpful to
+know which namespaces the PostgreSQL Operator can use for deploying PostgreSQL
+clusters.</p>
+
+<p>You can view which namespaces the PostgreSQL Operator can utilize by using
+the <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_show_namespace/"><code>pgo show namespace</code></a> command. To
+list out the namespaces that the PostgreSQL Operator has access to, you can run
+the following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo show namespace --all</code></pre></div>
+<p>which yields output similar to:</p>
+
+<pre><code>pgo username: pgoadmin
+namespace                useraccess          installaccess       
+default                  accessible          no access           
+kube-node-lease          accessible          no access           
+kube-public              accessible          no access           
+kube-system              accessible          no access           
+pgo                      accessible          no access           
+pgouser1                 accessible          accessible          
+pgouser2                 accessible          accessible          
+somethingelse            no access           no access   
+</code></pre>
+
+<p><strong>NOTE</strong>: Based on your deployment, your Kuberentes administrator may restrict
+access to the multi-namespace feature of the PostgreSQL Operator. In this case,
+you do not need to worry about managing your namespaces and as such do not need
+to use this command, but we recommend setting the <code>PGO_NAMESPACE</code> variable as
+described in the <a href="#general-notes">general notes</a> on this page.</p>
+
+<h2 id="provisioning-create-view-destroy">Provisioning: Create, View, Destroy</h2>
+
+<h3 id="creating-a-postgresql-cluster">Creating a PostgreSQL Cluster</h3>
+
+<p>You can create a cluster using the <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_create_cluster/"><code>pgo create cluster</code></a>
+command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster hacluster</code></pre></div>
+<p>which if successfully, will yield output similar to this:</p>
+
+<pre><code>created Pgcluster hacluster
+workflow id ae714d12-f5d0-4fa9-910f-21944b41dec8
+</code></pre>
+
+<h4 id="create-a-postgresql-cluster-with-postgis">Create a PostgreSQL Cluster with PostGIS</h4>
+
+<p>To create a PostgreSQL cluster that uses the geospatial extension PostGIS, you
+can execute the following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster hagiscluster --ccp-image<span style="color:#f92672">=</span>crunchy-postgres-gis-ha</code></pre></div>
+<h4 id="tracking-a-newly-provisioned-cluster">Tracking a Newly Provisioned Cluster</h4>
+
+<p>A new PostgreSQL cluster can take a few moments to provision. You may have
+noticed that the <code>pgo create cluster</code> command returns something called a
+&ldquo;workflow id&rdquo;. This workflow ID allows you to track the progress of your new
+PostgreSQL cluster while it is being provisioned using the <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_show_workflow/"><code>pgo show workflow</code></a>
+command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo show workflow ae714d12-f5d0-4fa9-910f-21944b41dec8</code></pre></div>
+<p>which can yield output similar to:</p>
+
+<pre><code>parameter           value
+---------           -----
+pg-cluster          hacluster
+task completed      2019-12-27T02:10:14Z
+task submitted      2019-12-27T02:09:46Z
+workflowid          ae714d12-f5d0-4fa9-910f-21944b41dec8
+</code></pre>
+
+<h3 id="view-postgresql-cluster-details">View PostgreSQL Cluster Details</h3>
+
+<p>To see details about your PostgreSQL cluster, you can use the <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_show_cluster/"><code>pgo show cluster</code></a>
+command. These details include elements such as:</p>
+
+<ul>
+<li>The version of PostgreSQL that the cluster is using</li>
+<li>The PostgreSQL instances that comprise the cluster</li>
+<li>The Pods assigned to the cluster for all of the associated components,
+including the nodes that the pods are assigned to</li>
+<li>The Persistent Volume Claims (PVC) that are being consumed by the cluster</li>
+<li>The Kubernetes Deployments associated with the cluster</li>
+<li>The Kubernetes Services associated with the cluster</li>
+<li>The Kubernetes Labels that are assigned to the PostgreSQL instances</li>
+</ul>
+
+<p>and more.</p>
+
+<p>You can view the details of the cluster by executing the following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo show cluster hacluster</code></pre></div>
+<p>which will yield output similar to:</p>
+
+<pre><code>cluster : hacluster (crunchy-postgres-ha:centos7-12.1-4.2.1)
+	pod : hacluster-6dc6cfcfb9-f9knq (Running) on node01 (1/1) (primary)
+	pvc : hacluster
+	resources : CPU Limit= Memory Limit=, CPU Request= Memory Request=
+	storage : Primary=200M Replica=200M
+	deployment : hacluster
+	deployment : hacluster-backrest-shared-repo
+	service : hacluster - ClusterIP (10.102.20.42)
+	labels : pg-pod-anti-affinity= archive-timeout=60 crunchy-pgbadger=false crunchy_collect=false deployment-name=hacluster pg-cluster=hacluster crunchy-pgha-scope=hacluster autofail=true pgo-backrest=true pgo-version=4.2.1 current-primary=hacluster name=hacluster pgouser=pgoadmin workflowid=ae714d12-f5d0-4fa9-910f-21944b41dec8
+</code></pre>
+
+<h3 id="deleting-a-cluster">Deleting a Cluster</h3>
+
+<p>You can delete a PostgreSQL cluster that is managed by the PostgreSQL Operator
+by executing the following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo delete cluster hacluster</code></pre></div>
+<p>This will remove the cluster from being managed by the PostgreSQL Operator, as
+well as delete the root data Persistent Volume Claim (PVC) and backup PVCs
+associated with the cluster.</p>
+
+<p>If you wish to keep your PostgreSQL data PVC, you can delete the cluster with
+the following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo delete cluster hacluster --keep-data</code></pre></div>
+<p>You can then recreate the PostgreSQL cluster with the same data by using the
+<code>pgo create cluster</code> command with a cluster of the same name:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster hacluster</code></pre></div>
+<p>This technique is used when performing tasks such as upgrading the PostgreSQL
+Operator.</p>
+
+<p>You can also keep the pgBackRest repository associated with the PostgreSQL
+cluster by using the <code>--keep-backups</code> flag with the <code>pgo delete cluster</code>
+command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo delete cluster hacluster --keep-backups</code></pre></div>
+<h2 id="testing-postgresql-cluster-availability">Testing PostgreSQL Cluster Availability</h2>
+
+<p>You can test the availability of your cluster by using the <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_test/"><code>pgo test</code></a>
+command. The <code>pgo test</code> command checks to see if the Kubernetes Services and
+the Pods that comprise the PostgreSQL cluster are available to receive
+connections. This includes:</p>
+
+<ul>
+<li>Testing that the Kubernetes Endpoints are available and able to route requests
+to healthy Pods</li>
+<li>Testing that each PostgreSQL instance is available and ready to accept client
+connections by performing a connectivity check similar to the one performed by
+<code>pg_isready</code></li>
+</ul>
+
+<p>To test the availability of a PostgreSQL cluster, you can run the following
+command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo <span style="color:#111">test</span> hacluster</code></pre></div>
+<p>which will yield output similar to:</p>
+
+<pre><code>cluster : hacluster
+	Services
+		primary (10.102.20.42:5432): UP
+	Instances
+		primary (hacluster-6dc6cfcfb9-f9knq): UP
+</code></pre>
+
+<h2 id="disaster-recovery-backups-restores">Disaster Recovery: Backups &amp; Restores</h2>
+
+<p>The PostgreSQL Operator supports sophisticated functionality for managing your
+backups and restores. For more information for how this works, please see the
+<a href="https://crunchydata.github.io/postgres-operator/4.2.1/architecture/disaster-recovery/">disaster recovery</a> guide.</p>
+
+<h3 id="creating-a-backup">Creating a Backup</h3>
+
+<p>The PostgreSQL Operator uses the open source <a href="https://www.pgbackrest.org">pgBackRest</a>
+backup and recovery utility for managing backups and PostgreSQL archives. These
+backups are also used as part of managing the overall health and
+high-availability of PostgreSQL clusters managed by the PostgreSQL Operator and
+used as part of the cloning process as well.</p>
+
+<p>When a new PostgreSQL cluster is provisioned by the PostgreSQL Operator, a full
+pgBackRest backup is taken by default. This is required in order to create new
+replicas (via <code>pgo scale</code>) for the PostgreSQL cluster as well as healing during
+a <a href="https://crunchydata.github.io/postgres-operator/4.2.1/architecture/high-availability/">failover scenario</a>.</p>
+
+<p>To create a backup, you can run the following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create backup hacluster</code></pre></div>
+<p>which by default, will create an incremental pgBackRest backup. The reason for
+this is that the PostgreSQL Operator initially creates a pgBackRest full backup
+when the cluster is initial provisioned, and pgBackRest will take incremental
+backups for each subsequent backup until a different backup type is specified.</p>
+
+<p>Most pgBackRest options are supported and can be passed in by the PostgreSQL
+Operator via the <code>--backup-opts</code> flag. What follows are some examples for how
+to utilize pgBackRest with the PostgreSQL Operator to help you create your
+optimal disaster recovery setup.</p>
+
+<h4 id="creating-a-full-backup">Creating a Full Backup</h4>
+
+<p>You can create a full backup using the following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create backup hacluster --backup-opts<span style="color:#f92672">=</span><span style="color:#d88200">&#34;--type=full&#34;</span></code></pre></div>
+<h4 id="creating-a-differential-backup">Creating a Differential Backup</h4>
+
+<p>You can create a differential backup using the following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create backup hacluster --backup-opts<span style="color:#f92672">=</span><span style="color:#d88200">&#34;--type=diff&#34;</span></code></pre></div>
+<h4 id="creating-an-incremental-backup">Creating an Incremental Backup</h4>
+
+<p>You can create a differential backup using the following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create backup hacluster --backup-opts<span style="color:#f92672">=</span><span style="color:#d88200">&#34;--type=incr&#34;</span></code></pre></div>
+<p>An incremental backup is created without specifying any options after a full or
+differential backup is taken.</p>
+
+<h3 id="creating-backups-in-s3">Creating Backups in S3</h3>
+
+<p>The PostgreSQL Operator supports creating backups in S3 or any object storage
+system that uses the S3 protocol. For more information, please read the section
+on <a href="https://crunchydata.github.io/postgres-operator/4.2.1/architecture/disaster-recovery/#using-s3">PostgreSQL Operator Backups with S3</a>
+in the architecture section.</p>
+
+<h3 id="displaying-backup-information">Displaying Backup Information</h3>
+
+<p>You can see information about the current state of backups in a PostgreSQL
+cluster managed by the PostgreSQL Operator by executing the following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo show backup hacluster</code></pre></div>
+<h3 id="setting-backup-retention">Setting Backup Retention</h3>
+
+<p>By default, pgBackRest will allow you to keep on creating backups until you run
+out of disk space. As such, it may be helpful to manage how many backups are
+retained.</p>
+
+<p>pgBackRest comes with several flags for managing how backups can be retained:</p>
+
+<ul>
+<li><code>--repo1-retention-full</code>: how many full backups to retain</li>
+<li><code>--repo1-retention-diff</code>: how many differential backups to retain</li>
+<li><code>--repo1-retention-archive</code>: how many sets of WAL archives to retain alongside
+the full and differential backups that are retained</li>
+</ul>
+
+<p>For example, to create a full backup and retain the previous 7 full backups, you
+would execute the following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create backup hacluster --backup-opts<span style="color:#f92672">=</span><span style="color:#d88200">&#34;--type=full --repo1-retention-full=7&#34;</span></code></pre></div>
+<h3 id="scheduling-backups">Scheduling Backups</h3>
+
+<p>Any effective disaster recovery strategy includes having regularly scheduled
+backups. The PostgreSQL Operator enables this through its scheduling sidecar
+that is deployed alongside the Operator.</p>
+
+<h4 id="creating-a-scheduled-backup">Creating a Scheduled Backup</h4>
+
+<p>For example, to schedule a full backup once a day at midnight, you can execute
+the following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create schedule hacluster --schedule<span style="color:#f92672">=</span><span style="color:#d88200">&#34;0 1 * * *&#34;</span> <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>  --schedule-type<span style="color:#f92672">=</span>pgbackrest  --pgbackrest-backup-type<span style="color:#f92672">=</span>full</code></pre></div>
+<p>To schedule an incremental backup once every 3 hours, you can execute the
+following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create schedule hacluster --schedule<span style="color:#f92672">=</span><span style="color:#d88200">&#34;0 */3 * * *&#34;</span> <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>  --schedule-type<span style="color:#f92672">=</span>pgbackrest  --pgbackrest-backup-type<span style="color:#f92672">=</span>incr</code></pre></div>
+<p>You can also create regularly scheduled backups and combine it with a retention
+policy. For example, using the above example of taking a nightly full backup,
+you can specify a policy of retaining 21 backups by executing the following
+command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create schedule hacluster --schedule<span style="color:#f92672">=</span><span style="color:#d88200">&#34;0 0 * * *&#34;</span> <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>  --schedule-type<span style="color:#f92672">=</span>pgbackrest  --pgbackrest-backup-type<span style="color:#f92672">=</span>full <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>  --schedule-opts<span style="color:#f92672">=</span><span style="color:#d88200">&#34;--repo1-retention-full=21&#34;</span></code></pre></div>
+<h3 id="restore-a-cluster">Restore a Cluster</h3>
+
+<p>The PostgreSQL Operator supports the ability to perform a full restore on a
+PostgreSQL cluster as well as a point-in-time-recovery using the <code>pgo restore</code>
+command. Note that both of these options are <strong>destructive</strong> to the existing
+PostgreSQL cluster; to &ldquo;restore&rdquo; the PostgreSQL cluster to a new deployment,
+please see the <a href="#clone-a-postgresql-cluster">clone</a> section.</p>
+
+<p>After a restore, there are some cleanup steps you will need to perform. Please
+review the <a href="#post-restore-cleanup">Post Restore Cleanup</a> section.</p>
+
+<h4 id="full-restore">Full Restore</h4>
+
+<p>To perform a full restore of a PostgreSQL cluster, you can execute the following
+command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo restore hacluster</code></pre></div>
+<p>If you want your PostgreSQL cluster to be restored to a specific node, you can
+execute the following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo restore hacluster --node-label<span style="color:#f92672">=</span>failure-domain.beta.kubernetes.io/zone<span style="color:#f92672">=</span>us-central1-a</code></pre></div>
+<p>There are very few reasons why you will want to execute a full restore. If you
+want to make a copy of your PostgreSQL cluster, please use
+<a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_clone"><code>pgo clone</code></a>.</p>
+
+<h4 id="point-in-time-recovery-pitr">Point-in-time-Recovery (PITR)</h4>
+
+<p>The more likely scenario when performing a PostgreSQL cluster restore is to
+recover to a particular point-in-time (e.g. before a key table was dropped). For
+example, to restore a cluster to December 23, 2019 at 8:00am:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo restore hacluster --pitr-target<span style="color:#f92672">=</span><span style="color:#d88200">&#34;2019-12-23 08:00:00.000000+00&#34;</span> <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>  --backup-opts<span style="color:#f92672">=</span><span style="color:#d88200">&#34;--type=time&#34;</span></code></pre></div>
+<p>The PostgreSQL Operator supports the full set of pgBackRest restore options,
+which can be passed into the <code>--backup-opts</code> parameter. For more information,
+please review the <a href="https://pgbackrest.org/command.html#command-restore">pgBackRest restore options</a></p>
+
+<h4 id="post-restore-cleanup">Post Restore Cleanup</h4>
+
+<p>After a restore is complete, you will need to re-enable high-availability on a
+PostgreSQL cluster manually. You can re-enable high-availability by executing
+the following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo update cluster hacluster --autofail<span style="color:#f92672">=</span>true</code></pre></div>
+<h3 id="logical-backups-pg-dump-pg-dumpall">Logical Backups (<code>pg_dump</code> / <code>pg_dumpall</code>)</h3>
+
+<p>The PostgreSQL Operator supports taking logical backups with <code>pg_dump</code> and
+<code>pg_dumpall</code>. While they do not provide the same performance and storage
+optimizations as the physical backups provided by pgBackRest, logical backups
+are helpful when one wants to upgrade between major PostgreSQL versions, or
+provide only a subset of a database, such as a table.</p>
+
+<h4 id="create-a-logical-backup">Create a Logical Backup</h4>
+
+<p>To create a logical backup of a full database, you can run the following
+command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo backup hacluster --backup-type<span style="color:#f92672">=</span>pgdump</code></pre></div>
+<p>You can pass in specific options to <code>--backup-opts</code>, which can accept most of
+the options that the <a href="https://www.postgresql.org/docs/current/app-pgdump.html"><code>pg_dump</code></a>
+command accepts. For example, to only dump the data from a specific table called
+<code>users</code>:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo backup hacluster --backup-type<span style="color:#f92672">=</span>pgdump --backup-opts<span style="color:#f92672">=</span><span style="color:#d88200">&#34;-t users&#34;</span></code></pre></div>
+<p>To use <code>pg_dumpall</code> to create a logical backup of all the data in a PostgreSQL
+cluster, you must pass the <code>--dump-all</code> flag in <code>--backup-opts</code>, i.e.:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo backup hacluster --backup-type<span style="color:#f92672">=</span>pgdump --backup-opts<span style="color:#f92672">=</span><span style="color:#d88200">&#34;--dump-all&#34;</span></code></pre></div>
+<h4 id="viewing-logical-backups">Viewing Logical Backups</h4>
+
+<p>To view an available list of logical backups, you can use the <code>pgo show backup</code>
+command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo show backup --backup-type<span style="color:#f92672">=</span>pgdump</code></pre></div>
+<p>This provides information about the PVC that the logical backups are stored on
+as well as the timestamps required to perform a restore from a logical backup.</p>
+
+<h4 id="restore-from-a-logical-backup">Restore from a Logical Backup</h4>
+
+<p>To restore from a logical backup, you need to reference the PVC that the logical
+backup is stored to, as well as the timestamp that was created by the logical
+backup.</p>
+
+<p>You can restore a logical backup using the following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo restore hacluster --backup-type<span style="color:#f92672">=</span>pgdump --backup-pvc<span style="color:#f92672">=</span>hacluster-pgdump-pvc <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>  --pitr-target<span style="color:#f92672">=</span><span style="color:#d88200">&#34;2019-01-15-00-03-25&#34;</span> -n pgouser1</code></pre></div>
+<h2 id="high-availability-scaling-up-down">High-Availability: Scaling Up &amp; Down</h2>
+
+<p>The PostgreSQL Operator supports a robust <a href="https://crunchydata.github.io/postgres-operator/4.2.1/architecture/high-availability">high-availability</a>
+set up to ensure that your PostgreSQL clusters can stay up and running. For
+detailed information on how it works, please see the
+<a href="(/architecture/high-availability)">high-availability architecture</a> section.</p>
+
+<h3 id="creating-a-new-replica">Creating a New Replica</h3>
+
+<p>To create a new replica, also known as &ldquo;scaling up&rdquo;, you can execute the
+following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo scale hacluster --replica-count<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span></code></pre></div>
+<p>If you wanted to add two new replicas at the same time, you could execute the
+following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo scale hacluster --replica-count<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span></code></pre></div>
+<h3 id="viewing-available-replicas">Viewing Available Replicas</h3>
+
+<p>You can view the available replicas in a few ways. First, you can use <code>pgo show cluster</code>
+to see the overall information about the PostgreSQL cluster:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo show cluster hacluster</code></pre></div>
+<p>You can also find specific replica names by using the <code>--query</code> flag on the
+<code>pgo failover</code> and <code>pgo scaledown</code> commands, e.g.:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo failover --query hacluster</code></pre></div>
+<h3 id="manual-failover">Manual Failover</h3>
+
+<p>The PostgreSQL Operator is set up with an automated failover system based on
+distributed consensus, but there may be times where you wish to have your
+cluster manually failover. If you wish to have your cluster manually failover,
+first, query your cluster to determine which failover targets are available.
+The query command also provides information that may help your decision, such as
+replication lag:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo failover --query hacluster</code></pre></div>
+<p>Once you have selected the replica that is best for your to failover to, you can
+perform a failover with the following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo failover hacluster --target<span style="color:#f92672">=</span>hacluster-abcd</code></pre></div>
+<p>where <code>hacluster-abcd</code> is the name of the PostgreSQL instance that you want to
+promote to become the new primary</p>
+
+<h4 id="destroying-a-replica">Destroying a Replica</h4>
+
+<p>To destroy a replica, first query the available replicas by using the <code>--query</code>
+flag on the <code>pgo scaledown</code> command, i.e.:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo scaledown hacluster --query</code></pre></div>
+<p>Once you have picked the replica you want to remove, you can remove it by
+executing the following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo scaledown hacluster --target<span style="color:#f92672">=</span>hacluster-abcd</code></pre></div>
+<p>where <code>hacluster-abcd</code> is the name of the PostgreSQL replica that you want to
+destroy.</p>
+
+<h2 id="clone-a-postgresql-cluster">Clone a PostgreSQL Cluster</h2>
+
+<p>You can create a copy of an existing PostgreSQL cluster in a new PostgreSQL
+cluster by using the <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_clone/"><code>pgo clone</code></a> command. To
+create a new copy of a PostgreSQL cluster, you can execute the following
+command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo clone hacluster newhacluster</code></pre></div>
+<h2 id="monitoring">Monitoring</h2>
+
+<h3 id="view-disk-utilization">View Disk Utilization</h3>
+
+<p>You can see a comparison of Postgres data size versus the Persistent
+volume claim size by entering the following:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo df hacluster -n pgouser1</code></pre></div>
+<h2 id="labels">Labels</h2>
+
+<p>Labels are a helpful way to organize PostgreSQL clusters, such as by application
+type or environment. The PostgreSQL Operator supports managing Kubernetes Labels
+as a convenient way to group PostgreSQL clusters together.</p>
+
+<p>You can view which labels are assigned to a PostgreSQL cluster using the
+<a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_show_cluster/"><code>pgo show cluster</code></a> command. You are also
+able to see these labels when using <code>kubectl</code> or <code>oc</code>.</p>
+
+<h3 id="add-a-label-to-a-postgresql-cluster">Add a Label to a PostgreSQL Cluster</h3>
+
+<p>Labels can be added to PostgreSQL clusters using the <a href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/pgo_label/"><code>pgo label</code></a>
+command. For example, to add a label with a key/value pair of <code>env=production</code>,
+you could execute the following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo label hacluster --label<span style="color:#f92672">=</span><span style="color:#111">env</span><span style="color:#f92672">=</span>production</code></pre></div>
+<h3 id="add-a-label-to-multiple-postgresql-clusters">Add a Label to Multiple PostgreSQL Clusters</h3>
+
+<p>You can add also add a label to multiple PostgreSQL clusters simultaneously
+using the <code>--selector</code> flag on the <code>pgo label</code> command. For example, to add a
+label with a key/value pair of <code>env=production</code> to clusters that have a label
+key/value pair of <code>app=payment</code>, you could execute the following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo label --selector<span style="color:#f92672">=</span><span style="color:#111">app</span><span style="color:#f92672">=</span>payment --label<span style="color:#f92672">=</span><span style="color:#111">env</span><span style="color:#f92672">=</span>production</code></pre></div>
+<h2 id="policy-management">Policy Management</h2>
+
+<h3 id="create-a-policy">Create a Policy</h3>
+
+<p>To create a SQL policy, enter the following:</p>
+
+<pre><code>pgo create policy mypolicy --in-file=mypolicy.sql -n pgouser1
+</code></pre>
+
+<p>This examples creates a policy named <em>mypolicy</em> using the contents
+of the file <em>mypolicy.sql</em> which is assumed to be in the current
+directory.</p>
+
+<p>You can view policies as following:</p>
+
+<pre><code>pgo show policy --all -n pgouser1
+</code></pre>
+
+<h3 id="apply-a-policy">Apply a Policy</h3>
+
+<pre><code>pgo apply mypolicy --selector=environment=prod
+pgo apply mypolicy --selector=name=hacluster
+</code></pre>
+
+<h2 id="advanced-operations">Advanced Operations</h2>
+
+<h3 id="connection-pooling-via-pgbouncer">Connection Pooling via pgBouncer</h3>
+
+<p>To add a pgbouncer Deployment to your Postgres cluster, enter:</p>
+
+<pre><code>pgo create cluster hacluster --pgbouncer -n pgouser1
+</code></pre>
+
+<p>You can add pgbouncer after a Postgres cluster is created as follows:</p>
+
+<pre><code>pgo create pgbouncer hacluster
+pgo create pgbouncer --selector=name=hacluster
+</code></pre>
+
+<p>You can also specify a pgbouncer password as follows:</p>
+
+<pre><code>pgo create cluster hacluster --pgbouncer --pgbouncer-pass=somepass -n pgouser1
+</code></pre>
+
+<p>Note, the pgbouncer configuration defaults to specifying only
+a single entry for the primary database.  If you want it to
+have an entry for the replica service, add the following
+configuration to pgbouncer.ini:</p>
+
+<pre><code>{{.PG_REPLICA_SERVICE_NAME}} = host={{.PG_REPLICA_SERVICE_NAME}} port={{.PG_PORT}} auth_user={{.PG_USERNAME}} dbname={{.PG_DATABASE}}
+</code></pre>
+
+<p>You can remove a pgbouncer from a cluster as follows:</p>
+
+<pre><code>pgo delete pgbouncer hacluster -n pgouser1
+</code></pre>
+
+<p>You can create a pgbadger sidecar container in your Postgres cluster
+pod as follows:</p>
+
+<pre><code>pgo create cluster hacluster --pgbadger -n pgouser1
+</code></pre>
+
+<p>Likewise, you can add the Crunchy Collect Metrics sidecar container
+into your Postgres cluster pod as follows:</p>
+
+<pre><code>pgo create cluster hacluster --metrics -n pgouser1
+</code></pre>
+
+<p>Note: backend metric storage such as Prometheus and front end
+visualization software such as Grafana are not created automatically
+by the PostgreSQL Operator.  For instructions on installing Grafana and
+Prometheus in your environment, see the <a href="https://access.crunchydata.com/documentation/crunchy-containers/4.2.1/examples/metrics/metrics/">Crunchy Container Suite documentation</a>.</p>
+
+<h3 id="create-a-cluster-using-specific-storage">Create a Cluster using Specific Storage</h3>
+
+<pre><code>pgo create cluster hacluster --storage-config=somestorageconfig -n pgouser1
+</code></pre>
+
+<p>Likewise, you can specify a storage configuration when creating
+a replica:</p>
+
+<pre><code>pgo scale hacluster --storage-config=someslowerstorage -n pgouser1
+</code></pre>
+
+<p>This example specifies the <em>somestorageconfig</em> storage configuration
+to be used by the Postgres cluster.  This lets you specify a storage
+configuration that is defined in the <em>pgo.yaml</em> file specifically for
+a given Postgres cluster.</p>
+
+<p>You can create a Cluster using a Preferred Node as follows:</p>
+
+<pre><code>pgo create cluster hacluster --node-label=speed=superfast -n pgouser1
+</code></pre>
+
+<p>That command will cause a node affinity rule to be added to the
+Postgres pod which will influence the node upon which Kubernetes
+will schedule the Pod.</p>
+
+<p>Likewise, you can create a Replica using a Preferred Node as follows:</p>
+
+<pre><code>pgo scale hacluster --node-label=speed=slowerthannormal -n pgouser1
+</code></pre>
+
+<h3 id="create-a-cluster-with-loadbalancer-servicetype">Create a Cluster with LoadBalancer ServiceType</h3>
+
+<pre><code>pgo create cluster hacluster --service-type=LoadBalancer -n pgouser1
+</code></pre>
+
+<p>This command will cause the Postgres Service to be of a specific
+type instead of the default ClusterIP service type.</p>
+
+<h3 id="namespace-operations">Namespace Operations</h3>
+
+<p>Create an Operator namespace where Postgres clusters can be created
+and managed by the Operator:</p>
+
+<pre><code>pgo create namespace mynamespace
+</code></pre>
+
+<p>Update a Namespace to be able to be used by the Operator:</p>
+
+<pre><code>pgo update namespace somenamespace
+</code></pre>
+
+<p>Delete a Namespace:</p>
+
+<pre><code>pgo delete namespace mynamespace
+</code></pre>
+
+<h3 id="postgresql-operator-user-operations">PostgreSQL Operator User Operations</h3>
+
+<p>PGO users are users defined for authenticating to the PGO REST API.  You
+can manage those users with the following commands:</p>
+
+<pre><code>pgo create pgouser someuser --pgouser-namespaces=&quot;pgouser1,pgouser2&quot; --pgouser-password=&quot;somepassword&quot; --pgouser-roles=&quot;pgoadmin&quot;
+pgo create pgouser otheruser --all-namespaces --pgouser-password=&quot;somepassword&quot; --pgouser-roles=&quot;pgoadmin&quot;
+</code></pre>
+
+<p>Update a user:</p>
+
+<pre><code>pgo update pgouser someuser --pgouser-namespaces=&quot;pgouser1,pgouser2&quot; --pgouser-password=&quot;somepassword&quot; --pgouser-roles=&quot;pgoadmin&quot;
+pgo update pgouser otheruser --all-namespaces --pgouser-password=&quot;somepassword&quot; --pgouser-roles=&quot;pgoadmin&quot;
+</code></pre>
+
+<p>Delete a PGO user:</p>
+
+<pre><code>pgo delete pgouser someuser
+</code></pre>
+
+<p>PGO roles are also managed as follows:</p>
+
+<pre><code>pgo create pgorole somerole --permissions=&quot;Cat,Ls&quot;
+</code></pre>
+
+<p>Delete a PGO role with:</p>
+
+<pre><code>pgo delete pgorole somerole
+</code></pre>
+
+<p>Update a PGO role with:</p>
+
+<pre><code>pgo update pgorole somerole --permissions=&quot;Cat,Ls&quot;
+</code></pre>
+
+<h3 id="postgresql-cluster-user-operations">PostgreSQL Cluster User Operations</h3>
+
+<p>Managed Postgres users can be viewed using the following command:</p>
+
+<pre><code>pgo show user hacluster
+</code></pre>
+
+<p>Postgres users can be created using the following command examples:</p>
+
+<pre><code>pgo create user hacluster --username=somepguser --password=somepassword --managed
+pgo create user --selector=name=hacluster --username=somepguser --password=somepassword --managed
+</code></pre>
+
+<p>Those commands are identical in function, and create on the hacluster Postgres cluster, a user named <em>somepguser</em>, with a password of <em>somepassword</em>, the account is <em>managed</em> meaning that
+these credentials are stored as a Secret on the Kubernetes cluster in the Operator
+namespace.</p>
+
+<p>Postgres users can be deleted using the following command:</p>
+
+<pre><code>pgo delete user hacluster --username=somepguser
+</code></pre>
+
+<p>That command deletes the user on the hacluster Postgres cluster.</p>
+
+<p>Postgres users can be updated using the following command:</p>
+
+<pre><code>pgo update user hacluster --username=somepguser --password=frodo
+</code></pre>
+
+<p>That command changes the password for the user on the hacluster Postgres cluster.</p>
+
+
+
+    
+        <div class="chevrons">
+    <div id="navigation">
+<a class="nav nav-prev" href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/" title="Using the pgo Client"> <i class="fa fa-chevron-left"></i><label>Using the pgo Client</label></a>
+    <a class="nav nav-next" href="https://crunchydata.github.io/postgres-operator/4.2.1/pgo-client/reference/" title="pgo Client Reference" style="margin-right: 0px;"><label>pgo Client Reference</label><i class="fa fa-chevron-right"></i></a></div>
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+  
+
+  </div>
+
+
+	<div>
+	</div>
+</footer>
+
+<link href="https://crunchydata.github.io/postgres-operator/4.2.1/css/featherlight.min.css" rel="stylesheet">
+<script src="https://crunchydata.github.io/postgres-operator/4.2.1/js/featherlight.min.js"></script>
+
+<script src="https://crunchydata.github.io/postgres-operator/4.2.1/theme-flex/script.js"></script>
+
+
+    
+
+    
+    
+
+    
+  </body>
+</html>
