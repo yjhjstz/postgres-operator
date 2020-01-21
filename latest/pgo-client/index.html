@@ -1017,6 +1017,30 @@ provided by the PostgreSQL Operator</p>
 or have it installed in your preferred binary format or as a container in your
 Kubernetes cluster using the <a href="https://crunchydata.github.io/postgres-operator/latest/installation/install-with-ansible/">Ansible Installer</a>.</p>
 
+<h2 id="general-notes-on-using-the-pgo-client">General Notes on Using the <code>pgo</code> Client</h2>
+
+<p>Many of the <code>pgo</code> client commands require you to specify a namespace via the
+<code>-n</code> or <code>--namespace</code> flag. While this is a very helpful tool when managing
+PostgreSQL deployments across many Kubernetes namespaces, this can become
+onerous for the intents of this guide.</p>
+
+<p>If you install the PostgreSQL Operator using the <a href="https://crunchydata.github.io/postgres-operator/latest/quickstart/">quickstart</a>
+guide, you will have two namespaces installed: <code>pgouser1</code> and <code>pgouser2</code>. We
+can choose to always use one of these namespaces by setting the <code>PGO_NAMESPACE</code>
+environmental variable, which is detailed in the global <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/"><code>pgo</code> Client</a>
+reference,</p>
+
+<p>For convenience, we will use the <code>pgouser1</code> namespace in the examples below.
+For even more convenience, we recommend setting <code>pgouser1</code> to be the value of
+the <code>PGO_NAMESPACE</code> variable. In the shell that you will be executing the <code>pgo</code>
+commands in, run the following command:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#111">export</span> <span style="color:#111">PGO_NAMESPACE</span><span style="color:#f92672">=</span>pgouser1</code></pre></div>
+<p>If you do not wish to set this environmental variable, or are in an environment
+where you are unable to use environmental variables, you will have to use the
+<code>--namespace</code> (or <code>-n</code>) flag for most commands, e.g.</p>
+
+<p><code>pgo version -n pgouser1</code></p>
+
 <h2 id="syntax">Syntax</h2>
 
 <p>The syntax for <code>pgo</code> is similar to what you would expect from using the

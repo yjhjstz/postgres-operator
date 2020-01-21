@@ -1014,11 +1014,11 @@ PostgreSQL cluster with the PostgreSQL Operator.</p>
 managing PostgreSQL clusters. The guide is broken up by different administrative
 topics, such as provisioning, high-availability, etc.</p>
 
-<h2 id="general-notes">General Notes</h2>
+<h2 id="setup-before-running-the-examples">Setup Before Running the Examples</h2>
 
 <p>Many of the <code>pgo</code> client commands require you to specify a namespace via the
 <code>-n</code> or <code>--namespace</code> flag. While this is a very helpful tool when managing
-PostgreSQL deployments across many Kubernetes namespaces, this can become
+PostgreSQL deployxments across many Kubernetes namespaces, this can become
 onerous for the intents of this guide.</p>
 
 <p>If you install the PostgreSQL Operator using the <a href="https://crunchydata.github.io/postgres-operator/latest/quickstart/">quickstart</a>
@@ -1031,9 +1031,9 @@ reference,</p>
 For even more convenience, we recommend setting <code>pgouser1</code> to be the value of
 the <code>PGO_NAMESPACE</code> variable. In the shell that you will be executing the <code>pgo</code>
 commands in, run the following command:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#111">export</span> <span style="color:#111">PGO_NAMESPACE</span><span style="color:#f92672">=</span>shell</code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#111">export</span> <span style="color:#111">PGO_NAMESPACE</span><span style="color:#f92672">=</span>pgouser1</code></pre></div>
 <p>If you do not wish to set this environmental variable, or are in an environment
-where you are unable to use envirionmental variables, you will have to use the
+where you are unable to use environmental variables, you will have to use the
 <code>--namespace</code> (or <code>-n</code>) flag for most commands, e.g.</p>
 
 <p><code>pgo version -n pgouser1</code></p>
@@ -1242,7 +1242,7 @@ pgouser2                 accessible          accessible
 somethingelse            no access           no access   
 </code></pre>
 
-<p><strong>NOTE</strong>: Based on your deployment, your Kuberentes administrator may restrict
+<p><strong>NOTE</strong>: Based on your deployment, your Kubernetes administrator may restrict
 access to the multi-namespace feature of the PostgreSQL Operator. In this case,
 you do not need to worry about managing your namespaces and as such do not need
 to use this command, but we recommend setting the <code>PGO_NAMESPACE</code> variable as
@@ -1386,7 +1386,7 @@ replicas (via <code>pgo scale</code>) for the PostgreSQL cluster as well as heal
 a <a href="https://crunchydata.github.io/postgres-operator/latest/architecture/high-availability/">failover scenario</a>.</p>
 
 <p>To create a backup, you can run the following command:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create backup hacluster</code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo backup hacluster</code></pre></div>
 <p>which by default, will create an incremental pgBackRest backup. The reason for
 this is that the PostgreSQL Operator initially creates a pgBackRest full backup
 when the cluster is initial provisioned, and pgBackRest will take incremental
@@ -1400,15 +1400,15 @@ optimal disaster recovery setup.</p>
 <h4 id="creating-a-full-backup">Creating a Full Backup</h4>
 
 <p>You can create a full backup using the following command:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create backup hacluster --backup-opts<span style="color:#f92672">=</span><span style="color:#d88200">&#34;--type=full&#34;</span></code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo backup hacluster --backup-opts<span style="color:#f92672">=</span><span style="color:#d88200">&#34;--type=full&#34;</span></code></pre></div>
 <h4 id="creating-a-differential-backup">Creating a Differential Backup</h4>
 
 <p>You can create a differential backup using the following command:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create backup hacluster --backup-opts<span style="color:#f92672">=</span><span style="color:#d88200">&#34;--type=diff&#34;</span></code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo backup hacluster --backup-opts<span style="color:#f92672">=</span><span style="color:#d88200">&#34;--type=diff&#34;</span></code></pre></div>
 <h4 id="creating-an-incremental-backup">Creating an Incremental Backup</h4>
 
 <p>You can create a differential backup using the following command:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create backup hacluster --backup-opts<span style="color:#f92672">=</span><span style="color:#d88200">&#34;--type=incr&#34;</span></code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo backup hacluster --backup-opts<span style="color:#f92672">=</span><span style="color:#d88200">&#34;--type=incr&#34;</span></code></pre></div>
 <p>An incremental backup is created without specifying any options after a full or
 differential backup is taken.</p>
 
@@ -1441,7 +1441,7 @@ the full and differential backups that are retained</li>
 
 <p>For example, to create a full backup and retain the previous 7 full backups, you
 would execute the following command:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create backup hacluster --backup-opts<span style="color:#f92672">=</span><span style="color:#d88200">&#34;--type=full --repo1-retention-full=7&#34;</span></code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo backup hacluster --backup-opts<span style="color:#f92672">=</span><span style="color:#d88200">&#34;--type=full --repo1-retention-full=7&#34;</span></code></pre></div>
 <h3 id="scheduling-backups">Scheduling Backups</h3>
 
 <p>Any effective disaster recovery strategy includes having regularly scheduled

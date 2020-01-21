@@ -1131,7 +1131,8 @@ gke_some-name_some-zone-some_project</code></pre></div>
 <span style="color:#111">export</span> <span style="color:#111">PGO_CA_CERT</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;</span><span style="color:#d88200">${</span><span style="color:#111">HOME</span><span style="color:#111">?</span><span style="color:#d88200">}</span><span style="color:#d88200">/.pgo/pgo/client.crt&#34;</span>
 <span style="color:#111">export</span> <span style="color:#111">PGO_CLIENT_CERT</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;</span><span style="color:#d88200">${</span><span style="color:#111">HOME</span><span style="color:#111">?</span><span style="color:#d88200">}</span><span style="color:#d88200">/.pgo/pgo/client.crt&#34;</span>
 <span style="color:#111">export</span> <span style="color:#111">PGO_CLIENT_KEY</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;</span><span style="color:#d88200">${</span><span style="color:#111">HOME</span><span style="color:#111">?</span><span style="color:#d88200">}</span><span style="color:#d88200">/.pgo/pgo/client.pem&#34;</span>
-<span style="color:#111">export</span> <span style="color:#111">PGO_APISERVER_URL</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;https://127.0.0.1:8443&#39;</span></code></pre></div>
+<span style="color:#111">export</span> <span style="color:#111">PGO_APISERVER_URL</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;https://127.0.0.1:8443&#39;</span>
+<span style="color:#111">export</span> <span style="color:#111">PGO_NAMESPACE</span><span style="color:#f92672">=</span>pgouser1</code></pre></div>
 <p>If you wish to permanently add these variables to your environment, you can run the following:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat <span style="color:#d88200">&lt;&lt;EOF &gt;&gt; ~/.bashrc
 </span><span style="color:#d88200">export PGOUSER=&#34;${HOME?}/.pgo/pgo/pgouser&#34;
@@ -1139,6 +1140,7 @@ gke_some-name_some-zone-some_project</code></pre></div>
 </span><span style="color:#d88200">export PGO_CLIENT_CERT=&#34;${HOME?}/.pgo/pgo/client.crt&#34;
 </span><span style="color:#d88200">export PGO_CLIENT_KEY=&#34;${HOME?}/.pgo/pgo/client.pem&#34;
 </span><span style="color:#d88200">export PGO_APISERVER_URL=&#39;https://127.0.0.1:8443&#39;
+</span><span style="color:#d88200">export PGO_NAMESPACE=pgouser1
 </span><span style="color:#d88200">EOF</span>
 
 <span style="color:#111">source</span> ~/.bashrc</code></pre></div>
@@ -1180,7 +1182,11 @@ pgo-apiserver version 4.3.0
 
 <p>The quickstart installation method creates two namespaces that you can deploy your PostgreSQL clusters into called <code>pgouser1</code> and <code>pgouser2</code>. Let&rsquo;s create a new PostgreSQL cluster in <code>pgouser1</code>:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster -n pgouser1 hippo</code></pre></div>
-<p>If successful, you should see output similar to this:</p>
+<p>Alternatively, because we set the <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/#general-notes-on-using-the-pgo-client"><code>PGO_NAMESPACE</code></a> environmental variable in our <code>.bashrc</code> file, we could omit the <code>-n</code> flag from the <a href="https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_create_cluster/"><code>pgo create cluster</code></a> command and just run this:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo create cluster hippo</code></pre></div>
+<p>Even with <code>PGO_NAMESPACE</code> set, you can always overwrite which namespace to use by setting the <code>-n</code> flag for the specific command. For explicitness, we will continue to use the <code>-n</code> flag in the remaining examples of this quickstart.</p>
+
+<p>If your cluster creation command executed successfully, you should see output similar to this:</p>
 
 <pre><code>created Pgcluster hippo
 workflow id 1cd0d225-7cd4-4044-b269-aa7bedae219b
@@ -1262,7 +1268,8 @@ kubectl get secret pgo.tls -n pgo -o <span style="color:#111">jsonpath</span><sp
 <span style="color:#111">export</span> <span style="color:#111">PGO_CA_CERT</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;/tmp/client.crt&#34;</span>
 <span style="color:#111">export</span> <span style="color:#111">PGO_CLIENT_CERT</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;/tmp/client.crt&#34;</span>
 <span style="color:#111">export</span> <span style="color:#111">PGO_CLIENT_KEY</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;/tmp/client.key&#34;</span>
-<span style="color:#111">export</span> <span style="color:#111">PGO_APISERVER_URL</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;https://127.0.0.1:8443&#39;</span></code></pre></div>
+<span style="color:#111">export</span> <span style="color:#111">PGO_APISERVER_URL</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;https://127.0.0.1:8443&#39;</span>
+<span style="color:#111">export</span> <span style="color:#111">PGO_NAMESPACE</span><span style="color:#f92672">=</span>pgouser1</code></pre></div>
 <p>If you wish to permanently add these variables to your environment, you can run the following command:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat <span style="color:#d88200">&lt;&lt;EOF &gt;&gt; ~/.bashrc
 </span><span style="color:#d88200">export PGOUSER=&#34;${HOME?}/.pgo/pgo/pgouser&#34;
@@ -1270,6 +1277,7 @@ kubectl get secret pgo.tls -n pgo -o <span style="color:#111">jsonpath</span><sp
 </span><span style="color:#d88200">export PGO_CLIENT_CERT=&#34;/tmp/client.crt&#34;
 </span><span style="color:#d88200">export PGO_CLIENT_KEY=&#34;/tmp/client.key&#34;
 </span><span style="color:#d88200">export PGO_APISERVER_URL=&#39;https://127.0.0.1:8443&#39;
+</span><span style="color:#d88200">export PGO_NAMESPACE=pgouser1
 </span><span style="color:#d88200">EOF</span>
 
 <span style="color:#111">source</span> ~/.bashrc</code></pre></div>

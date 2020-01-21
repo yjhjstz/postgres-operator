@@ -1106,7 +1106,7 @@ use Kubernetes selectors to easily find out which objects are being watched by
 the PostgreSQL Operator. For example, to get all of the managed Secrets in the
 default namespace the PostgreSQL Operator is deployed into (<code>pgo</code>):</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl get secrets -n pgo --selector<span style="color:#f92672">=</span><span style="color:#111">vendor</span><span style="color:#f92672">=</span>crunchydata</code></pre></div>
-<h2 id="kuberentes-deployments-the-crunchy-postgresql-operator-deployment-model">Kuberentes Deployments: The Crunchy PostgreSQL Operator Deployment Model</h2>
+<h2 id="kubernetes-deployments-the-crunchy-postgresql-operator-deployment-model">Kubernetes Deployments: The Crunchy PostgreSQL Operator Deployment Model</h2>
 
 <p>The Crunchy PostgreSQL Operator uses <a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/">Kubernetes Deployments</a>
 for running PostgreSQL clusters instead of StatefulSets or other objects. This
@@ -1127,7 +1127,7 @@ against, but we want its hardware profile to mirror that of the primary
 instance. We can run the following command:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pgo scale mixed --replica-count<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> <span style="color:#8045ff">\
 </span><span style="color:#8045ff"></span>  --storage-config<span style="color:#f92672">=</span>fast --resources-config<span style="color:#f92672">=</span>large</code></pre></div>
-<p>Kuberentes Deployments allow us to create heterogeneous clusters with ease and
+<p>Kubernetes Deployments allow us to create heterogeneous clusters with ease and
 let us scale them up and down as we please. Additional components in our
 PostgreSQL cluster, such as the pgBackRest repository or an optional pgBouncer,
 are deployed as Kubernetes Deployments as well.</p>
