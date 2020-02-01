@@ -1012,7 +1012,7 @@ pgo update pgouser someuser --pgouser-password=somenewpassword pgo update pgouse
       <guid>https://crunchydata.github.io/postgres-operator/latest/pgo-client/reference/pgo_update_cluster/</guid>
       <description>pgo update cluster Update a PostgreSQL cluster
 Synopsis Update a PostgreSQL cluster. For example:
-pgo update cluster mycluster --autofail=false pgo update cluster mycluster myothercluster --autofail=false pgo update cluster --selector=name=mycluster --autofail=false pgo update cluster --all --autofail=true  pgo update cluster [flags]  Options  --all all resources. --disable-autofail Disables autofail capabitilies in the cluster. -h, --help help for cluster --no-prompt No command line confirmation. -s, --selector string The selector to use for cluster filtering.</description>
+pgo update cluster mycluster --autofail=false pgo update cluster mycluster myothercluster --disable-autofail pgo update cluster --selector=name=mycluster --disable-autofail pgo update cluster --all --enable-autofail  pgo update cluster [flags]  Options  --all all resources. --disable-autofail Disables autofail capabitilies in the cluster. --enable-autofail Enables autofail capabitilies in the cluster. -h, --help help for cluster --no-prompt No command line confirmation.</description>
     </item>
     
     <item>
