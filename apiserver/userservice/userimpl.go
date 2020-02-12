@@ -326,13 +326,13 @@ func updatePassword(clusterName string, p connInfo, username, newPassword, passw
 		return err
 	}
 
-	querystr := "ALTER user \"" + username + "\" VALID UNTIL '" + passwordExpireDate + "'"
-	log.Debug(querystr)
-	rows, err = conn.Query(querystr)
-	if err != nil {
-		log.Debug(err.Error())
-		return err
-	}
+	// querystr := "ALTER user \"" + username + "\" VALID UNTIL '" + passwordExpireDate + "'"
+	// log.Debug(querystr)
+	// rows, err = conn.Query(querystr)
+	// if err != nil {
+	// 	log.Debug(err.Error())
+	// 	return err
+	// }
 
 	defer func() {
 		if conn != nil {
