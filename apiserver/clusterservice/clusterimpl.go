@@ -935,13 +935,8 @@ func getClusterParams(request *msgs.CreateClusterRequest, name string, userLabel
 	//pgbackrest - set with user request first or look at global flag is not set
 	// Note: validateBackrestStorageType called earlier in CreateCluster will generate
 	// and return error to user if BackrestFlag is not true or false
-	if request.BackrestFlag == "true" || request.BackrestFlag == "false" {
-		labels[config.LABEL_BACKREST] = request.BackrestFlag
-		log.Debug("backrest set in user labels")
-	} else {
-		log.Debug("using Backrest from pgo.yaml")
-		labels[config.LABEL_BACKREST] = strconv.FormatBool(apiserver.Pgo.Cluster.Backrest)
-	}
+	log.Debug("using Backrest from pgo.yaml")
+	labels[config.LABEL_BACKREST] = strconv.FormatBool(apiserver.Pgo.Cluster.Backrest)
 
 	// pgbouncer
 	if request.PgbouncerFlag {

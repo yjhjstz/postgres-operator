@@ -250,6 +250,30 @@ func GetConfVolume(clientset *kubernetes.Clientset, cl *crv1.Pgcluster, namespac
 	return "\"emptyDir\": { \"medium\": \"Memory\" }"
 }
 
+func GetHostIp(clientset *kubernetes.Clientset, cluster *crv1.Pgcluster, namespace string) string {
+	selector := config.LABEL_SERVICE_NAME + "=" + cluster.Spec.Name + "," + config.LABEL_DEPLOYMENT_NAME
+	log.Debugf("selector for GetHostIp is %s", selector)
+
+	pods, err := kubeapi.GetPods(clientset, selector, namespace)
+	if err != nil {
+		return err
+	}
+	primaryReady := false
+	for _, p := range pods.Items {
+		if p.ObjectMeta.Labels[config.LABEL_SERVICE_NAME] == cluster.Spec.Name {
+			cluster.Spec.PrimaryHost = p.Spec.NodeName
+			primaryReady = true
+		}
+	}
+	
+	if primaryReady {
+		log.Debug("GetHostIp  primary host " + cluster.Spec.PrimaryHost)
+	} else {
+		log.Debug("GetHostIp not found primary host " + cluster.Spec.PrimaryHost)
+	}
+	return cluster.Spec.PrimaryHost
+}
+
 // sets the proper collect secret in the deployment spec if collect is enabled
 func GetCollectVolume(clientset *kubernetes.Clientset, cl *crv1.Pgcluster, namespace string) string {
 	if cl.Spec.UserLabels[config.LABEL_COLLECT] == "true" {
