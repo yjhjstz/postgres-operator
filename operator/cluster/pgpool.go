@@ -254,10 +254,15 @@ func AddPgpool(clientset *kubernetes.Clientset, cl *crv1.Pgcluster, namespace st
 	var doc bytes.Buffer
 	var err error
 
+
 	//handle user specified pgpool secret
 	var secretName string
-	primaryName := cl.Spec.Name
-	replicaName := cl.Spec.Name + "-replica"
+	// primaryName := cl.Spec.Name
+	// replicaName := cl.Spec.Name + "-replica"
+
+	primaryName := operator.GetPrimaryIp(clientset, cl, namespace)
+	replicaName := operator.GetReplicaIp(clientset, cl, namespace)
+
 	if cl.Spec.UserLabels[config.LABEL_PGPOOL_SECRET] != "" {
 		secretName = cl.Spec.UserLabels[config.LABEL_PGPOOL_SECRET]
 		log.Debugf("pgpool secret %s specifed by user", secretName)
@@ -284,10 +289,12 @@ func AddPgpool(clientset *kubernetes.Clientset, cl *crv1.Pgcluster, namespace st
 		ClusterName:        clusterName,
 		CCPImagePrefix:     operator.Pgo.Cluster.CCPImagePrefix,
 		CCPImageTag:        cl.Spec.CCPImageTag,
-		Port:               operator.Pgo.Cluster.Port,
+		Port:               operator.Pgo.Cluster.Port, // TODO add port
 		PGPoolSecret:       secretName,
 		PGUserSecret:       userSecret,
 		ContainerResources: "",
+		PrimaryServiceName: primaryName,
+		ReplicaServiceName: replicaName,
 	}
 
 	if operator.Pgo.DefaultPgpoolResources != "" {
@@ -478,3 +485,4 @@ func getPgpoolPasswd(clientset *kubernetes.Clientset, namespace, clusterName str
 
 	return doc.Bytes(), pgpoolUsername, pgpoolPassword, err
 }
+

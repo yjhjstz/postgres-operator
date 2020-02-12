@@ -33,7 +33,7 @@
                 }
             },
             "spec": {
-
+                "hostNetwork": true,
                 "containers": [{
                     "name": "pgpool",
                     "image": "{{.CCPImagePrefix}}/crunchy-pgpool:{{.CCPImageTag}}",

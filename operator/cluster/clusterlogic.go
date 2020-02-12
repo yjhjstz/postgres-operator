@@ -340,7 +340,7 @@ func Scale(clientset *kubernetes.Clientset, client *rest.RESTClient, replica *cr
 		CCPImageTag:             imageTag,
 		CCPImage:                image,
 		PVCName:                 util.CreatePVCSnippet(cluster.Spec.ReplicaStorage.StorageType, pvcName),
-		PrimaryHost:             operator.GetHostIp(clientset, cluster, namespace),
+		PrimaryHost:             operator.GetPrimaryIp(clientset, cluster, namespace),
 		Database:                cluster.Spec.Database,
 		DataPathOverride:        replica.Spec.Name,
 		ArchiveMode:             archiveMode,

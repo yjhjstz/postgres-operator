@@ -24,12 +24,13 @@ import (
 	"k8s.io/apimachinery/pkg/util/validation"
 
 	"gopkg.in/yaml.v2"
-
+	msgs "github.com/crunchydata/postgres-operator/apiservermsgs"
 	crv1 "github.com/crunchydata/postgres-operator/apis/cr/v1"
 	"github.com/crunchydata/postgres-operator/config"
 	"github.com/crunchydata/postgres-operator/kubeapi"
 	"github.com/crunchydata/postgres-operator/util"
 	log "github.com/sirupsen/logrus"
+	"k8s.io/api/core/v1"
 	"k8s.io/client-go/kubernetes"
 )
 
@@ -250,9 +251,28 @@ func GetConfVolume(clientset *kubernetes.Clientset, cl *crv1.Pgcluster, namespac
 	return "\"emptyDir\": { \"medium\": \"Memory\" }"
 }
 
-func GetHostIp(clientset *kubernetes.Clientset, cluster *crv1.Pgcluster, namespace string) string {
+func getType(pod *v1.Pod, clusterName string) string {
+	//log.Debugf("%v\n", pod.ObjectMeta.Labels)
+	if pod.ObjectMeta.Labels[config.LABEL_PGO_BACKREST_REPO] != "" {
+		return msgs.PodTypePgbackrest
+	} else if pod.ObjectMeta.Labels[config.LABEL_PGBOUNCER] != "" {
+		return msgs.PodTypePgbouncer
+	} else if pod.ObjectMeta.Labels[config.LABEL_PGPOOL_POD] != "" {
+		return msgs.PodTypePgpool
+	} else if pod.ObjectMeta.Labels[config.LABEL_PGBACKUP] == "true" {
+		return msgs.PodTypeBackup
+	} else if pod.ObjectMeta.Labels[config.LABEL_SERVICE_NAME] == clusterName {
+		return msgs.PodTypePrimary
+	} else {
+		return msgs.PodTypeReplica
+	}
+	return msgs.PodTypeUnknown
+
+}
+
+func GetPrimaryIp(clientset *kubernetes.Clientset, cluster *crv1.Pgcluster, namespace string) string {
 	selector := config.LABEL_SERVICE_NAME + "=" + cluster.Spec.Name + "," + config.LABEL_DEPLOYMENT_NAME
-	log.Debugf("selector for GetHostIp is %s", selector)
+	log.Debugf("selector for GetPrimaryIp is %s", selector)
 
 	pods, err := kubeapi.GetPods(clientset, selector, namespace)
 	if err != nil {
@@ -260,18 +280,37 @@ func GetHostIp(clientset *kubernetes.Clientset, cluster *crv1.Pgcluster, namespa
 	}
 	primaryReady := false
 	for _, p := range pods.Items {
-		if p.ObjectMeta.Labels[config.LABEL_SERVICE_NAME] == cluster.Spec.Name {
+		if getType(&p,cluster.Spec.Name) == msgs.PodTypePrimary {
 			cluster.Spec.PrimaryHost = p.Spec.NodeName
 			primaryReady = true
 		}
 	}
 	
 	if primaryReady {
-		log.Debug("GetHostIp  primary host " + cluster.Spec.PrimaryHost)
+		log.Debug("GetPrimaryIp  primary host " + cluster.Spec.PrimaryHost)
 	} else {
-		log.Debug("GetHostIp not found primary host " + cluster.Spec.PrimaryHost)
+		log.Debug("GetPrimaryIp not found primary host " + cluster.Spec.PrimaryHost)
 	}
 	return cluster.Spec.PrimaryHost
+}
+
+
+func GetReplicaIp(clientset *kubernetes.Clientset, cluster *crv1.Pgcluster, namespace string) string {
+	selector = config.LABEL_SERVICE_NAME + "=" + cluster.Spec.Name + "-replica" + "," + config.LABEL_DEPLOYMENT_NAME
+	log.Debugf("selector for GetReplicaIp is %s", selector)
+
+	pods, err := kubeapi.GetPods(clientset, selector, namespace)
+	if err != nil {
+		return err
+	}
+	
+	for _, p := range pods.Items {
+		if getType(&p,cluster.Spec.Name) == msgs.PodTypeReplica {
+			return p.Spec.NodeName
+		}
+	}
+	
+	return cluster.Spec.Name
 }
 
 // sets the proper collect secret in the deployment spec if collect is enabled
