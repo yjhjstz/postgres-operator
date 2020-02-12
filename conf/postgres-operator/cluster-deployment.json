@@ -176,7 +176,8 @@
         {{.NodeSelector}}
 
                 "restartPolicy": "Always",
-                "dnsPolicy": "ClusterFirst"
+                "dnsPolicy": "ClusterFirst",
+                "hostNetwork": true
             }
         },
         "strategy": {

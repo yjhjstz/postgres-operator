@@ -17,6 +17,7 @@
                 }
             },
             "spec": {
+                "hostNetwork": true,
                 "serviceAccountName": "postgres-operator",
                 "containers": [
                     {

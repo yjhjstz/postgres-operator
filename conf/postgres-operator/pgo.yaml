@@ -17,7 +17,7 @@ Cluster:
   ArchiveMode:  false
   ArchiveTimeout:  60
   ServiceType:  ClusterIP
-  Backrest:  true
+  Backrest:  false
   BackrestPort:  2022
   BackrestS3Bucket:
   BackrestS3Endpoint:
@@ -26,10 +26,10 @@ Cluster:
   AutofailReplaceReplica:  false
   LogStatement:  none
   LogMinDurationStatement:  60000
-PrimaryStorage: storageos
-BackupStorage: storageos
-ReplicaStorage: storageos
-BackrestStorage: storageos
+PrimaryStorage: nfsstoragered
+BackupStorage: nfsstoragered
+ReplicaStorage: nfsstoragered
+BackrestStorage: nfsstoragered
 Storage:
   hostpathstorage:
     AccessMode:  ReadWriteMany
