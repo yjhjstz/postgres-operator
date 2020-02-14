@@ -276,7 +276,7 @@ func GetPrimaryIp(clientset *kubernetes.Clientset, cluster *crv1.Pgcluster, name
 
 	pods, err := kubeapi.GetPods(clientset, selector, namespace)
 	if err != nil {
-		return err
+		log.Error(err)
 	}
 	primaryReady := false
 	for _, p := range pods.Items {
@@ -296,12 +296,12 @@ func GetPrimaryIp(clientset *kubernetes.Clientset, cluster *crv1.Pgcluster, name
 
 
 func GetReplicaIp(clientset *kubernetes.Clientset, cluster *crv1.Pgcluster, namespace string) string {
-	selector = config.LABEL_SERVICE_NAME + "=" + cluster.Spec.Name + "-replica" + "," + config.LABEL_DEPLOYMENT_NAME
+	selector := config.LABEL_SERVICE_NAME + "=" + cluster.Spec.Name + "-replica" + "," + config.LABEL_DEPLOYMENT_NAME
 	log.Debugf("selector for GetReplicaIp is %s", selector)
 
 	pods, err := kubeapi.GetPods(clientset, selector, namespace)
 	if err != nil {
-		return err
+		log.Error(err)
 	}
 	
 	for _, p := range pods.Items {
