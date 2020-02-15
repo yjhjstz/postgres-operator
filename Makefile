@@ -1,3 +1,11 @@
+# env 
+ifndef PGOROOT
+    export PGOROOT=$(GOPATH)/src/github.com/crunchydata/postgres-operator
+endif
+PGO_BASEOS=centos7
+PGO_IMAGE_PREFIX=hub.didiyun.com/postgres
+PGO_IMAGE_TAG=centos7-4.2.1
+
 RELTMPDIR=/tmp/release.$(PGO_VERSION)
 RELFILE=/tmp/postgres-operator.$(PGO_VERSION).tar.gz
 
@@ -137,7 +145,7 @@ push:
 pull:
 	docker pull $(PGO_IMAGE_PREFIX)/postgres-operator:$(PGO_IMAGE_TAG)
 	docker pull $(PGO_IMAGE_PREFIX)/pgo-apiserver:$(PGO_IMAGE_TAG)
-	docker push $(PGO_IMAGE_PREFIX)/pgo-event:$(PGO_IMAGE_TAG)
+	docker pull $(PGO_IMAGE_PREFIX)/pgo-event:$(PGO_IMAGE_TAG)
 	docker pull $(PGO_IMAGE_PREFIX)/pgo-backrest-repo:$(PGO_IMAGE_TAG)
 	docker pull $(PGO_IMAGE_PREFIX)/pgo-backrest-restore:$(PGO_IMAGE_TAG)
 	docker pull $(PGO_IMAGE_PREFIX)/pgo-lspvc:$(PGO_IMAGE_TAG)
