@@ -1,7 +1,7 @@
 Cluster:
   PrimaryNodeLabel:
   ReplicaNodeLabel:
-  CCPImagePrefix:  crunchydata
+  CCPImagePrefix:  hub.didiyun.com/postgres
   Metrics:  false
   Badger:  false
   CCPImageTag:  centos7-12.1-4.2.1
@@ -102,5 +102,5 @@ Pgo:
   AutofailSleepSeconds:  9
   PreferredFailoverNode:
   Audit:  false
-  PGOImagePrefix:  crunchydata
+  PGOImagePrefix:  hub.didiyun.com/postgres
   PGOImageTag:  centos7-4.1.1
