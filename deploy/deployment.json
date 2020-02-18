@@ -54,7 +54,7 @@
                             },
                             {
                                 "name": "PGO_INSTALLATION_NAME",
-                                "value": "$PGO_INSTALLATION_NAME"
+                                "value": "dev"
                             },
                             {
                                 "name": "PGO_OPERATOR_NAMESPACE",

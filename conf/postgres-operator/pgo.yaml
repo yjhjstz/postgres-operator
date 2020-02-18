@@ -104,3 +104,4 @@ Pgo:
   Audit:  false
   PGOImagePrefix:  hub.didiyun.com/postgres
   PGOImageTag:  centos7-4.1.1
+BasicAuth: false
