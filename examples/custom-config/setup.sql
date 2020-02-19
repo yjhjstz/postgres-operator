@@ -1,29 +1,40 @@
+--- System Setup
+SET application_name="container_setup";
 
-/* the following are required for other container operations */
-alter user postgres password 'PG_ROOT_PASSWORD';
+CREATE EXTENSION IF NOT EXISTS pg_stat_statements;
+CREATE EXTENSION IF NOT EXISTS quantum;
 
-create user PG_PRIMARY_USER with REPLICATION  PASSWORD 'PG_PRIMARY_PASSWORD';
-create user PG_USER with password 'PG_PASSWORD';
+ALTER USER postgres PASSWORD 'PG_ROOT_PASSWORD';
 
-create table primarytable (key varchar(20), value varchar(20));
-grant all on primarytable to PG_PRIMARY_USER;
+CREATE USER PG_PRIMARY_USER WITH REPLICATION;
+ALTER USER PG_PRIMARY_USER PASSWORD 'PG_PRIMARY_PASSWORD';
 
-create database PG_DATABASE;
+CREATE USER "PG_USER" LOGIN;
+ALTER USER "PG_USER" PASSWORD 'PG_PASSWORD';
 
-grant all privileges on database PG_DATABASE to PG_USER;
+CREATE DATABASE PG_DATABASE;
+GRANT ALL PRIVILEGES ON DATABASE PG_DATABASE TO "PG_USER";
+
+CREATE TABLE IF NOT EXISTS primarytable (key varchar(20), value varchar(20));
+GRANT ALL ON primarytable TO PG_PRIMARY_USER;
+
+--- PG_DATABASE Setup
 
 \c PG_DATABASE
 
-/* the following can be customized for your purposes */
+CREATE EXTENSION IF NOT EXISTS pg_stat_statements;
+CREATE EXTENSION IF NOT EXISTS quantum;
 
-\c PG_DATABASE PG_USER;
+--- Verify permissions via PG_USER
 
-create table customtable (
-	key varchar(30) primary key,
-	value varchar(50) not null,
-	updatedt timestamp not null
+\c PG_DATABASE "PG_USER";
+
+CREATE SCHEMA IF NOT EXISTS "PG_USER";
+
+CREATE TABLE IF NOT EXISTS "PG_USER".testtable (
+	name varchar(30) PRIMARY KEY,
+	value varchar(50) NOT NULL,
+	updatedt timestamp NOT NULL
 );
 
-insert into customtable (key, value, updatedt) values ('CPU', '256', now());
-
-grant all on customtable to PG_PRIMARY_USER;
+INSERT INTO "PG_USER".testtable (name, value, updatedt) VALUES ('CPU', '256', now());
