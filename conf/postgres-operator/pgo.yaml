@@ -10,7 +10,7 @@ Cluster:
   ExporterPort: 9187
   User:  testuser
   Database:  userdb
-  PasswordAgeDays:  60
+  PasswordAgeDays:  600
   PasswordLength:  8
   Strategy:  1
   Replicas:  0
@@ -24,7 +24,7 @@ Cluster:
   BackrestS3Region:
   Autofail:  false
   AutofailReplaceReplica:  false
-  LogStatement:  none
+  LogStatement:  ddl
   LogMinDurationStatement:  60000
 PrimaryStorage: nfsstoragered
 BackupStorage: nfsstoragered
@@ -46,7 +46,7 @@ Storage:
     SupplementalGroups:  65534
   nfsstoragered:
     AccessMode:  ReadWriteMany
-    Size:  1G
+    Size:  10G
     MatchLabels: crunchyzone=red
     StorageType:  create
     SupplementalGroups:  65534
@@ -76,7 +76,7 @@ Storage:
     Fsgroup:  26
   rook:
     AccessMode:  ReadWriteOnce
-    Size:  1G
+    Size:  10G
     StorageType:  dynamic
     StorageClass:  rook-ceph-block
     Fsgroup:  26

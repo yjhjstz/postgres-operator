@@ -15,11 +15,8 @@
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-echo "create the test PV and PVC using the HostPath dir"
 for i in {1..100}
 do
-   	echo "creating PV host-pv$i"
-	export COUNTER=$i
-	$PGO_CMD --namespace=$PGO_OPERATOR_NAMESPACE delete pv host-pv$i
-	expenv -f $DIR/crunchy-pv.json | $PGO_CMD --namespace=$PGO_OPERATOR_NAMESPACE create -f -
+   	echo "deleting PV crunchy-pv$i"
+	$PGO_CMD delete pv crunchy-pv$i
 done
