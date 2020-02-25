@@ -80,6 +80,12 @@ Storage:
     StorageType:  dynamic
     StorageClass:  rook-ceph-block
     Fsgroup:  26
+  adb:
+    AccessMode:  ReadWriteOnce
+    Size:  20G
+    StorageType:  dynamic
+    StorageClass:  fast-rbd
+    Fsgroup:  26
 DefaultContainerResources:
 DefaultLoadResources:
 DefaultLspvcResources:

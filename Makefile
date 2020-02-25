@@ -4,7 +4,7 @@ ifndef PGOROOT
 endif
 PGO_BASEOS=centos7
 PGO_IMAGE_PREFIX=hub.didiyun.com/postgres
-PGO_IMAGE_TAG=centos7-4.2.1
+PGO_IMAGE_TAG=centos7-4.1.1
 
 RELTMPDIR=/tmp/release.$(PGO_VERSION)
 RELFILE=/tmp/postgres-operator.$(PGO_VERSION).tar.gz
