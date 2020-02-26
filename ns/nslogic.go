@@ -29,9 +29,14 @@ import (
 	log "github.com/sirupsen/logrus"
 	v1 "k8s.io/api/core/v1"
 	rbacv1 "k8s.io/api/rbac/v1"
+	kerrors "k8s.io/apimachinery/pkg/api/errors"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/util/validation"
 	"k8s.io/client-go/kubernetes"
 )
+
+const OPERATOR_SERVICE_ACCOUNT = "postgres-operator"
+const PGO_DEFAULT_SERVICE_ACCOUNT = "pgo-default"
 
 const PGO_TARGET_ROLE = "pgo-target-role"
 const PGO_TARGET_ROLE_BINDING = "pgo-target-role-binding"
@@ -40,6 +45,15 @@ const PGO_TARGET_SERVICE_ACCOUNT = "pgo-target"
 const PGO_BACKREST_ROLE = "pgo-backrest-role"
 const PGO_BACKREST_SERVICE_ACCOUNT = "pgo-backrest"
 const PGO_BACKREST_ROLE_BINDING = "pgo-backrest-role-binding"
+
+const PGO_PG_ROLE = "pgo-pg-role"
+const PGO_PG_ROLE_BINDING = "pgo-pg-role-binding"
+const PGO_PG_SERVICE_ACCOUNT = "pgo-pg"
+
+//pgo-default-sa.json
+type PgoDefaultServiceAccount struct {
+	TargetNamespace string
+}
 
 //pgo-backrest-sa.json
 type PgoBackrestServiceAccount struct {
@@ -69,6 +83,21 @@ type PgoBackrestRoleBinding struct {
 
 //pgo-target-role.json
 type PgoTargetRole struct {
+	TargetNamespace string
+}
+
+//pgo-pg-sa.json
+type PgoPgServiceAccount struct {
+	TargetNamespace string
+}
+
+//pgo-pg-role.json
+type PgoPgRole struct {
+	TargetNamespace string
+}
+
+//pgo-pg-role-binding.json
+type PgoPgRoleBinding struct {
 	TargetNamespace string
 }
 
@@ -125,13 +154,7 @@ func CreateNamespace(clientset *kubernetes.Clientset, installationName, pgoNames
 		CreatedNamespace: newNs,
 	}
 
-	err = events.Publish(f)
-	if err != nil {
-		return err
-	}
-
-	return nil
-
+	return events.Publish(f)
 }
 
 // DeleteNamespace ...
@@ -168,59 +191,107 @@ func DeleteNamespace(clientset *kubernetes.Clientset, installationName, pgoNames
 		DeletedNamespace: ns,
 	}
 
-	err = events.Publish(f)
-	if err != nil {
+	return events.Publish(f)
+}
+
+func copySecret(clientset *kubernetes.Clientset, secretName, operatorNamespace, targetNamespace string) error {
+	secret, _, err := kubeapi.GetSecret(clientset, secretName, operatorNamespace)
+	if err == nil {
+		secret.ObjectMeta = metav1.ObjectMeta{
+			Annotations: secret.ObjectMeta.Annotations,
+			Labels:      secret.ObjectMeta.Labels,
+			Name:        secret.ObjectMeta.Name,
+		}
+		if err = kubeapi.CreateSecret(clientset, secret, targetNamespace); kerrors.IsAlreadyExists(err) {
+			err = kubeapi.UpdateSecret(clientset, secret, targetNamespace)
+		}
+	}
+	if !kerrors.IsNotFound(err) {
 		return err
 	}
-
 	return nil
-
 }
 
 func installTargetRBAC(clientset *kubernetes.Clientset, operatorNamespace, targetNamespace string) error {
 
-	var err error
+	// Use the image pull secrets of the operator service account in the new namespace.
+	operator, exists, err := kubeapi.GetServiceAccount(clientset, OPERATOR_SERVICE_ACCOUNT, operatorNamespace)
+	if !exists {
+		log.Errorf("expected the operator account to exist: %v", err)
+		return err
+	}
 
-	err = CreatePGOTargetServiceAccount(clientset, targetNamespace)
+	err = createPGODefaultServiceAccount(clientset, targetNamespace, operator.ImagePullSecrets)
 	if err != nil {
 		log.Error(err)
 		return err
 	}
 
-	err = CreatePGOBackrestServiceAccount(clientset, targetNamespace)
+	err = createPGOTargetServiceAccount(clientset, targetNamespace, operator.ImagePullSecrets)
 	if err != nil {
 		log.Error(err)
 		return err
 	}
 
-	err = CreatePGOTargetRole(clientset, targetNamespace)
+	err = createPGOBackrestServiceAccount(clientset, targetNamespace, operator.ImagePullSecrets)
 	if err != nil {
 		log.Error(err)
 		return err
 	}
 
-	err = CreatePGOTargetRoleBinding(clientset, targetNamespace, operatorNamespace)
+	err = createPGOTargetRole(clientset, targetNamespace)
 	if err != nil {
 		log.Error(err)
 		return err
 	}
 
-	err = CreatePGOBackrestRole(clientset, targetNamespace)
+	err = createPGOTargetRoleBinding(clientset, targetNamespace, operatorNamespace)
 	if err != nil {
 		log.Error(err)
 		return err
 	}
-	err = CreatePGOBackrestRoleBinding(clientset, targetNamespace)
+
+	err = createPGOBackrestRole(clientset, targetNamespace)
 	if err != nil {
 		log.Error(err)
 		return err
+	}
+	err = createPGOBackrestRoleBinding(clientset, targetNamespace)
+	if err != nil {
+		log.Error(err)
+		return err
+	}
+
+	err = createPGOPgServiceAccount(clientset, targetNamespace, operator.ImagePullSecrets)
+	if err != nil {
+		log.Error(err)
+		return err
+	}
+	err = createPGOPgRole(clientset, targetNamespace)
+	if err != nil {
+		log.Error(err)
+		return err
+	}
+	err = createPGOPgRoleBinding(clientset, targetNamespace)
+	if err != nil {
+		log.Error(err)
+		return err
+	}
+
+	// Now that the operator has permission in the new namespace, copy any existing
+	// image pull secrets to the new namespace.
+	for _, reference := range operator.ImagePullSecrets {
+		if err = copySecret(clientset, reference.Name, operatorNamespace, targetNamespace); err != nil {
+			log.Error(err)
+			return err
+		}
 	}
 
 	return nil
 
 }
 
-func CreatePGOTargetRoleBinding(clientset *kubernetes.Clientset, targetNamespace, operatorNamespace string) error {
+func createPGOTargetRoleBinding(clientset *kubernetes.Clientset, targetNamespace, operatorNamespace string) error {
 	//check for rolebinding existing
 	_, found, _ := kubeapi.GetRoleBinding(clientset, PGO_TARGET_ROLE_BINDING, targetNamespace)
 	if found {
@@ -251,16 +322,10 @@ func CreatePGOTargetRoleBinding(clientset *kubernetes.Clientset, targetNamespace
 		return err
 	}
 
-	err = kubeapi.CreateRoleBinding(clientset, &rb, targetNamespace)
-	if err != nil {
-		return err
-	}
-
-	return err
-
+	return kubeapi.CreateRoleBinding(clientset, &rb, targetNamespace)
 }
 
-func CreatePGOBackrestRole(clientset *kubernetes.Clientset, targetNamespace string) error {
+func createPGOBackrestRole(clientset *kubernetes.Clientset, targetNamespace string) error {
 	//check for role existing
 	_, found, _ := kubeapi.GetRole(clientset, PGO_BACKREST_ROLE, targetNamespace)
 	if found {
@@ -289,15 +354,10 @@ func CreatePGOBackrestRole(clientset *kubernetes.Clientset, targetNamespace stri
 		return err
 	}
 
-	err = kubeapi.CreateRole(clientset, &r, targetNamespace)
-	if err != nil {
-		return err
-	}
-
-	return err
+	return kubeapi.CreateRole(clientset, &r, targetNamespace)
 }
 
-func CreatePGOTargetRole(clientset *kubernetes.Clientset, targetNamespace string) error {
+func createPGOTargetRole(clientset *kubernetes.Clientset, targetNamespace string) error {
 	//check for role existing
 	_, found, _ := kubeapi.GetRole(clientset, PGO_TARGET_ROLE, targetNamespace)
 	if found {
@@ -327,14 +387,10 @@ func CreatePGOTargetRole(clientset *kubernetes.Clientset, targetNamespace string
 		return err
 	}
 
-	err = kubeapi.CreateRole(clientset, &r, targetNamespace)
-	if err != nil {
-		return err
-	}
-	return err
+	return kubeapi.CreateRole(clientset, &r, targetNamespace)
 }
 
-func CreatePGOBackrestRoleBinding(clientset *kubernetes.Clientset, targetNamespace string) error {
+func createPGOBackrestRoleBinding(clientset *kubernetes.Clientset, targetNamespace string) error {
 
 	//check for rolebinding existing
 	_, found, _ := kubeapi.GetRoleBinding(clientset, PGO_BACKREST_ROLE_BINDING, targetNamespace)
@@ -364,11 +420,7 @@ func CreatePGOBackrestRoleBinding(clientset *kubernetes.Clientset, targetNamespa
 		return err
 	}
 
-	err = kubeapi.CreateRoleBinding(clientset, &rb, targetNamespace)
-	if err != nil {
-		return err
-	}
-	return err
+	return kubeapi.CreateRoleBinding(clientset, &rb, targetNamespace)
 }
 
 // UpdateNamespace ...
@@ -415,16 +467,10 @@ func UpdateNamespace(clientset *kubernetes.Clientset, installationName, pgoNames
 		CreatedNamespace: ns,
 	}
 
-	err = events.Publish(f)
-	if err != nil {
-		return err
-	}
-
-	return nil
-
+	return events.Publish(f)
 }
 
-func CreatePGOBackrestServiceAccount(clientset *kubernetes.Clientset, targetNamespace string) error {
+func createPGOBackrestServiceAccount(clientset *kubernetes.Clientset, targetNamespace string, imagePullSecrets []v1.LocalObjectReference) error {
 
 	//check for serviceaccount existing
 	_, found, _ := kubeapi.GetServiceAccount(clientset, PGO_BACKREST_SERVICE_ACCOUNT, targetNamespace)
@@ -447,18 +493,14 @@ func CreatePGOBackrestServiceAccount(clientset *kubernetes.Clientset, targetName
 	}
 	log.Info(buffer.String())
 
-	rb := v1.ServiceAccount{}
-	err = json.Unmarshal(buffer.Bytes(), &rb)
-	if err != nil {
+	var sa v1.ServiceAccount
+	if err = json.Unmarshal(buffer.Bytes(), &sa); err != nil {
 		log.Error("error unmarshalling " + config.PGOBackrestServiceAccountPath + " json ServiceAccount " + err.Error())
 		return err
 	}
+	sa.ImagePullSecrets = imagePullSecrets
 
-	err = kubeapi.CreateServiceAccount(clientset, &rb, targetNamespace)
-	if err != nil {
-		return err
-	}
-	return err
+	return kubeapi.CreateServiceAccount(clientset, &sa, targetNamespace)
 }
 
 func ValidateNamespaces(clientset *kubernetes.Clientset, installationName, pgoNamespace string) error {
@@ -575,7 +617,40 @@ func WatchingNamespace(clientset *kubernetes.Clientset, requestedNS, installatio
 	return false
 }
 
-func CreatePGOTargetServiceAccount(clientset *kubernetes.Clientset, targetNamespace string) error {
+// createPGODefaultServiceAccount creates the default SA.
+func createPGODefaultServiceAccount(clientset *kubernetes.Clientset, targetNamespace string, imagePullSecrets []v1.LocalObjectReference) error {
+
+	_, found, _ := kubeapi.GetServiceAccount(clientset, PGO_DEFAULT_SERVICE_ACCOUNT, targetNamespace)
+	if found {
+		log.Infof("serviceaccount %s already exists, will delete and re-create", PGO_DEFAULT_SERVICE_ACCOUNT)
+		err := kubeapi.DeleteServiceAccount(clientset, PGO_DEFAULT_SERVICE_ACCOUNT, targetNamespace)
+		if err != nil {
+			log.Errorf("error deleting serviceaccount %s %s", PGO_DEFAULT_SERVICE_ACCOUNT, err.Error())
+			return err
+		}
+	}
+	var buffer bytes.Buffer
+	err := config.PgoDefaultServiceAccountTemplate.Execute(&buffer,
+		PgoDefaultServiceAccount{
+			TargetNamespace: targetNamespace,
+		})
+	if err != nil {
+		log.Error(err.Error() + " on " + config.PGODefaultServiceAccountPath)
+		return err
+	}
+	log.Info(buffer.String())
+
+	var sa v1.ServiceAccount
+	if err = json.Unmarshal(buffer.Bytes(), &sa); err != nil {
+		log.Error("error unmarshalling " + config.PGODefaultServiceAccountPath + " json ServiceAccount " + err.Error())
+		return err
+	}
+	sa.ImagePullSecrets = imagePullSecrets
+
+	return kubeapi.CreateServiceAccount(clientset, &sa, targetNamespace)
+}
+
+func createPGOTargetServiceAccount(clientset *kubernetes.Clientset, targetNamespace string, imagePullSecrets []v1.LocalObjectReference) error {
 
 	//check for serviceaccount existing
 	_, found, _ := kubeapi.GetServiceAccount(clientset, PGO_TARGET_SERVICE_ACCOUNT, targetNamespace)
@@ -598,16 +673,114 @@ func CreatePGOTargetServiceAccount(clientset *kubernetes.Clientset, targetNamesp
 	}
 	log.Info(buffer.String())
 
-	rb := v1.ServiceAccount{}
-	err = json.Unmarshal(buffer.Bytes(), &rb)
-	if err != nil {
+	var sa v1.ServiceAccount
+	if err = json.Unmarshal(buffer.Bytes(), &sa); err != nil {
 		log.Error("error unmarshalling " + config.PGOTargetServiceAccountPath + " json ServiceAccount " + err.Error())
 		return err
 	}
+	sa.ImagePullSecrets = imagePullSecrets
 
-	err = kubeapi.CreateServiceAccount(clientset, &rb, targetNamespace)
+	return kubeapi.CreateServiceAccount(clientset, &sa, targetNamespace)
+}
+
+// createPGOPgServiceAccount creates the SA for use by PG pods
+func createPGOPgServiceAccount(clientset *kubernetes.Clientset, targetNamespace string, imagePullSecrets []v1.LocalObjectReference) error {
+
+	//check for serviceaccount existing
+	_, found, _ := kubeapi.GetServiceAccount(clientset, PGO_PG_SERVICE_ACCOUNT, targetNamespace)
+	if found {
+		log.Infof("serviceaccount %s already exists, will delete and re-create", PGO_PG_SERVICE_ACCOUNT)
+		err := kubeapi.DeleteServiceAccount(clientset, PGO_PG_SERVICE_ACCOUNT, targetNamespace)
+		if err != nil {
+			log.Errorf("error deleting serviceaccount %s %s", PGO_PG_SERVICE_ACCOUNT, err.Error())
+			return err
+		}
+	}
+	var buffer bytes.Buffer
+	err := config.PgoPgServiceAccountTemplate.Execute(&buffer,
+		PgoPgServiceAccount{
+			TargetNamespace: targetNamespace,
+		})
 	if err != nil {
+		log.Error(err.Error() + " on " + config.PGOPgServiceAccountPath)
 		return err
 	}
-	return err
+	log.Info(buffer.String())
+
+	var sa v1.ServiceAccount
+	if err = json.Unmarshal(buffer.Bytes(), &sa); err != nil {
+		log.Error("error unmarshalling " + config.PGOPgServiceAccountPath + " json ServiceAccount " + err.Error())
+		return err
+	}
+	sa.ImagePullSecrets = imagePullSecrets
+
+	return kubeapi.CreateServiceAccount(clientset, &sa, targetNamespace)
+}
+
+// createPGOPgRole creates the role used by the 'pgo-sa' SA
+func createPGOPgRole(clientset *kubernetes.Clientset, targetNamespace string) error {
+	//check for role existing
+	_, found, _ := kubeapi.GetRole(clientset, PGO_PG_ROLE, targetNamespace)
+	if found {
+		log.Infof("role %s already exists, will delete and re-create", PGO_PG_ROLE)
+		err := kubeapi.DeleteRole(clientset, PGO_PG_ROLE, targetNamespace)
+		if err != nil {
+			log.Errorf("error deleting role %s %s", PGO_PG_ROLE, err.Error())
+			return err
+		}
+	}
+
+	var buffer bytes.Buffer
+	err := config.PgoPgRoleTemplate.Execute(&buffer,
+		PgoPgRole{
+			TargetNamespace: targetNamespace,
+		})
+
+	if err != nil {
+		log.Error(err.Error())
+		return err
+	}
+	log.Info(buffer.String())
+	r := rbacv1.Role{}
+	err = json.Unmarshal(buffer.Bytes(), &r)
+	if err != nil {
+		log.Error("error unmarshalling " + config.PGOPgRolePath + " json Role " + err.Error())
+		return err
+	}
+
+	return kubeapi.CreateRole(clientset, &r, targetNamespace)
+}
+
+// createPGOPgRoleBinding binds the 'pgo-pg-role' role to the 'pgo-sa' SA
+func createPGOPgRoleBinding(clientset *kubernetes.Clientset, targetNamespace string) error {
+	//check for rolebinding existing
+	_, found, _ := kubeapi.GetRoleBinding(clientset, PGO_PG_ROLE_BINDING, targetNamespace)
+	if found {
+		log.Infof("rolebinding %s already exists, will delete and re-create", PGO_PG_ROLE_BINDING)
+		err := kubeapi.DeleteRoleBinding(clientset, PGO_PG_ROLE_BINDING, targetNamespace)
+		if err != nil {
+			log.Errorf("error deleting rolebinding %s %s", PGO_PG_ROLE_BINDING, err.Error())
+			return err
+		}
+	}
+
+	var buffer bytes.Buffer
+	err := config.PgoPgRoleBindingTemplate.Execute(&buffer,
+		PgoPgRoleBinding{
+			TargetNamespace: targetNamespace,
+		})
+	if err != nil {
+		log.Error(err.Error())
+		return err
+	}
+	log.Info(buffer.String())
+
+	rb := rbacv1.RoleBinding{}
+	err = json.Unmarshal(buffer.Bytes(), &rb)
+	if err != nil {
+		log.Error("error unmarshalling " + config.PGOPgRoleBindingPath + " json RoleBinding " + err.Error())
+		return err
+	}
+
+	return kubeapi.CreateRoleBinding(clientset, &rb, targetNamespace)
 }

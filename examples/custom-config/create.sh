@@ -16,6 +16,7 @@
 RED="\033[0;31m"
 GREEN="\033[0;32m"
 RESET="\033[0m"
+PGO_NAMESPACE=pgo
 
 function echo_err() {
     echo -e "${RED?}$(date) ERROR: ${1?}${RESET?}"
