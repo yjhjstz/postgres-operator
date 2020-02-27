@@ -2,7 +2,7 @@ Cluster:
   PrimaryNodeLabel:
   ReplicaNodeLabel:
   CCPImagePrefix:  hub.didiyun.com/postgres
-  Metrics:  false
+  Metrics:  true
   Badger:  false
   CCPImageTag:  centos7-12.1-4.2.1
   Port:  5432
@@ -22,7 +22,7 @@ Cluster:
   BackrestS3Bucket:
   BackrestS3Endpoint:
   BackrestS3Region:
-  Autofail:  false
+  Autofail:  true
   AutofailReplaceReplica:  false
   LogStatement:  ddl
   LogMinDurationStatement:  60000
