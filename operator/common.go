@@ -83,7 +83,7 @@ func Initialize(clientset *kubernetes.Clientset) {
 
 	if Pgo.Cluster.CCPImagePrefix == "" {
 		log.Debug("pgo.yaml CCPImagePrefix not set, using default")
-		Pgo.Cluster.CCPImagePrefix = "crunchydata"
+		Pgo.Cluster.CCPImagePrefix = "hub.didiyun.com/postgres"
 	} else {
 		log.Debugf("pgo.yaml CCPImagePrefix set, using %s", Pgo.Cluster.CCPImagePrefix)
 	}
