@@ -31,7 +31,7 @@ export TLS_NO_VERIFY=true
 
 # for disabling the Operator eventing
 export DISABLE_EVENTING=false
-
+export PGO_IMAGE_PULL_SECRET=myregistrykey
 # for the pgo CLI to authenticate with using TLS
 export PGO_CA_CERT=$PGOROOT/conf/postgres-operator/server.crt
 export PGO_CLIENT_CERT=$PGOROOT/conf/postgres-operator/server.crt
