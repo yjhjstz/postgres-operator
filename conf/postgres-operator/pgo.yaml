@@ -1,6 +1,6 @@
 Cluster:
-  PrimaryNodeLabel:
-  ReplicaNodeLabel:
+  PrimaryNodeLabel: adb=true
+  ReplicaNodeLabel: adb=true
   CCPImagePrefix:  hub.didiyun.com/postgres
   Metrics:  true
   Badger:  false
@@ -26,14 +26,14 @@ Cluster:
   AutofailReplaceReplica:  false
   LogStatement:  ddl
   LogMinDurationStatement:  60000
-PrimaryStorage: nfsstoragered
-BackupStorage: nfsstoragered
-ReplicaStorage: nfsstoragered
-BackrestStorage: nfsstoragered
+PrimaryStorage: hostpathstorage
+BackupStorage: hostpathstorage
+ReplicaStorage: hostpathstorage
+BackrestStorage: hostpathstorage
 Storage:
   hostpathstorage:
     AccessMode:  ReadWriteMany
-    Size:  1G
+    Size:  20G
     StorageType:  create
   replicastorage:
     AccessMode:  ReadWriteMany
