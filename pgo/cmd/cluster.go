@@ -224,6 +224,7 @@ func createCluster(args []string, ns string) {
 	r.ReplicaStorageConfig = ReplicaStorageConfig
 	r.ContainerResources = ContainerResources
 	r.ClientVersion = msgs.PGO_VERSION
+	r.PVCSize = PVCSize
 
 	if !(len(PgBouncerUser) > 0) {
 		r.PgbouncerUser = "pgbouncer"

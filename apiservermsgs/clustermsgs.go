@@ -61,6 +61,7 @@ type CreateClusterRequest struct {
 	ReplicaStorageConfig string
 	ContainerResources   string
 	ClientVersion        string
+	PVCSize              string
 }
 
 // CreateClusterResponse ...

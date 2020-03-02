@@ -51,7 +51,7 @@ var PGBackRestType string
 var Secret string
 var PgouserPassword, PgouserRoles, PgouserNamespaces string
 var Permissions string
-
+var PVCSize string
 var Series int
 
 var CreateCmd = &cobra.Command{
@@ -281,7 +281,9 @@ func init() {
 	createClusterCmd.Flags().IntVarP(&Series, "series", "e", 1, "The number of clusters to create in a series.")
 	createClusterCmd.Flags().IntVarP(&ClusterReplicaCount, "replica-count", "", 0, "The number of replicas to create as part of the cluster.")
 	createClusterCmd.Flags().StringVarP(&ContainerResources, "resources-config", "r", "", "The name of a container resource configuration in pgo.yaml that holds CPU and memory requests and limits.")
-
+	createClusterCmd.Flags().StringVarP(&PVCSize, "pvc-size", "", "",
+		`The size of the PVC. Must follow the standard Kubernetes format, e.g. "10.1Gi"`)
+	
 	createPolicyCmd.Flags().StringVarP(&PolicyURL, "url", "u", "", "The url to use for adding a policy.")
 	createPolicyCmd.Flags().StringVarP(&PolicyFile, "in-file", "i", "", "The policy file path to use for adding a policy.")
 
