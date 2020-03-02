@@ -211,7 +211,10 @@
                     }
                 ],
                 "volumes": [
-                ]
+                ],
+                "nodeSelector": {
+                    "adb-operator": true
+                }
             }
         }
     }

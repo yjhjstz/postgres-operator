@@ -149,7 +149,7 @@ func AddClusterBase(clientset *kubernetes.Clientset, client *rest.RESTClient, cl
 
 			spec.UserLabels = cl.Spec.UserLabels
 
-			//the replica should not use the same node labels as the primary
+			//TODO(yjhjstz) the replica should not use the same node labels as the primary
 			spec.UserLabels[config.LABEL_NODE_LABEL_KEY] = ""
 			spec.UserLabels[config.LABEL_NODE_LABEL_VALUE] = ""
 

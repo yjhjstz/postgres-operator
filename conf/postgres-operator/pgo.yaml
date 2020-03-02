@@ -1,6 +1,6 @@
 Cluster:
-  PrimaryNodeLabel:
-  ReplicaNodeLabel:
+  PrimaryNodeLabel: adb=true
+  ReplicaNodeLabel: adb=true
   CCPImagePrefix:  hub.didiyun.com/postgres
   Metrics:  true
   Badger:  false
@@ -22,7 +22,7 @@ Cluster:
   BackrestS3Bucket:
   BackrestS3Endpoint:
   BackrestS3Region:
-  Autofail:  false
+  Autofail:  true
   AutofailReplaceReplica:  false
   LogStatement:  ddl
   LogMinDurationStatement:  60000
