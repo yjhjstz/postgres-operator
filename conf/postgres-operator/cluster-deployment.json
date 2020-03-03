@@ -66,6 +66,9 @@
                         "name": "PG_LOCALE",
                         "value": "en_US.UTF8"
                     }, {
+                        "name": "SHARED_BUFFERS",
+                        "value": "16GB"
+                    }, {
                         "name": "PGDATA_PATH_OVERRIDE",
                         "value": "{{.DataPathOverride}}"
                     }, {
