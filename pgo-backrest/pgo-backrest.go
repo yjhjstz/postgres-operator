@@ -39,6 +39,7 @@ const backrestInfoCommand = `info`
 const backrestStanzaCreateCommand = `stanza-create`
 const containername = "database"
 const repoTypeFlagS3 = "--repo-type=s3"
+const repoTypeSSL = "--no-repo1-s3-verify-tls"
 
 func main() {
 	log.Info("pgo-backrest starts")
@@ -134,6 +135,7 @@ func main() {
 		cmdStrs = append(cmdStrs, repoTypeFlagS3)
 		log.Info("s3 flag enabled for backrest command")
 	}
+	cmdStrs = append(cmdStrs, repoTypeSSL)
 
 	log.Infof("command to execute is [%s]", strings.Join(cmdStrs, " "))
 
