@@ -19,7 +19,10 @@ import (
 	"bytes"
 	"encoding/json"
 	"os"
+	"regexp"
+	"strings"
 	"time"
+	"fmt"
 
 	crv1 "github.com/crunchydata/postgres-operator/apis/cr/v1"
 	"github.com/crunchydata/postgres-operator/config"
@@ -51,6 +54,10 @@ type backrestJobTemplateFields struct {
 	PgbackrestRestoreVolumeMounts string
 }
 
+
+var backrestPgHostRegex = regexp.MustCompile("--db-host|--pg1-host")
+var backrestPgPathRegex = regexp.MustCompile("--db-path|--pg1-path")
+
 // Backrest ...
 func Backrest(namespace string, clientset *kubernetes.Clientset, task *crv1.Pgtask) {
 
@@ -77,8 +84,15 @@ func Backrest(namespace string, clientset *kubernetes.Clientset, task *crv1.Pgta
 		BackrestLocalAndS3Storage:     operator.IsLocalAndS3Storage(task.Spec.Parameters[config.LABEL_BACKREST_STORAGE_TYPE]),
 	}
 
+	podCommandOpts, err := getCommandOptsFromPod(clientset, task, namespace)
+	if err != nil {
+		log.Error(err.Error())
+		return
+	}
+	jobFields.CommandOpts = jobFields.CommandOpts + " " + podCommandOpts
+
 	var doc2 bytes.Buffer
-	err := config.BackrestjobTemplate.Execute(&doc2, jobFields)
+	err = config.BackrestjobTemplate.Execute(&doc2, jobFields)
 	if err != nil {
 		log.Error(err.Error())
 		return
@@ -123,4 +137,60 @@ func Backrest(namespace string, clientset *kubernetes.Clientset, task *crv1.Pgta
 		}
 	}
 
+}
+
+
+// getCommandOptsFromPod adds command line options from the primary pod to a backrest job.
+// If not already specified in the command options provided in the pgtask, add the IP of the
+// primary pod as the value for the "--db-host" parameter.  This will ensure direct
+// communication between the repo pod and the primary via the primary's IP, instead of going
+// through the primary pod's service (which could be unreliable). also if not already specified
+// in the command options provided in the pgtask, then lookup the primary pod for the cluster
+// and add the PGDATA dir of the pod as the value for the "--db-path" parameter
+func getCommandOptsFromPod(clientset *kubernetes.Clientset, task *crv1.Pgtask,
+	namespace string) (commandOpts string, err error) {
+
+	// lookup the primary pod in order to determine the IP of the primary and the PGDATA directory for
+	// the current primaty
+	selector := config.LABEL_SERVICE_NAME + "=" + task.Spec.Parameters[config.LABEL_PG_CLUSTER] + "," + config.LABEL_DEPLOYMENT_NAME
+	pods, err := kubeapi.GetPods(clientset, selector, namespace)
+	if err != nil {
+		return
+	} else if len(pods.Items) > 1 {
+		err = fmt.Errorf("More than one primary found when creating backrest job %s",
+			task.Spec.Parameters[config.LABEL_JOB_NAME])
+		return
+	} else if len(pods.Items) == 0 {
+		err = fmt.Errorf("Unable to find primary when creating backrest job %s",
+			task.Spec.Parameters[config.LABEL_JOB_NAME])
+		return
+	}
+	pod := pods.Items[0]
+
+	var cmdOpts []string
+
+	if !backrestPgHostRegex.MatchString(task.Spec.Parameters[config.LABEL_BACKREST_OPTS]) {
+		cmdOpts = append(cmdOpts, fmt.Sprintf("--db-host=%s", pod.Spec.NodeName))
+		log.Debug("Backrest primary host " + pod.Spec.NodeName)
+	}
+	if !backrestPgPathRegex.MatchString(task.Spec.Parameters[config.LABEL_BACKREST_OPTS]) {
+		var podDbPath string
+		for _, envVar := range pod.Spec.Containers[0].Env {
+			if envVar.Name == "PGBACKREST_DB_PATH" {
+				podDbPath = envVar.Value
+				break
+			}
+		}
+		if podDbPath != "" {
+			cmdOpts = append(cmdOpts, fmt.Sprintf("--db-path=%s", podDbPath))
+			log.Debug("Backrest podDbPath " + podDbPath)
+		} else {
+			log.Errorf("Unable to find PGBACKREST_DB_PATH on primary pod %s for backrest job %s",
+				pod.Name, task.Spec.Parameters[config.LABEL_JOB_NAME])
+			return
+		}
+	}
+	// join options using a space
+	commandOpts = strings.Join(cmdOpts, " ")
+	return
 }
