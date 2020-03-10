@@ -133,9 +133,9 @@ func main() {
 		log.Info("backrest command will be executed for both local and s3 storage")
 	} else if REPO_TYPE == "s3" {
 		cmdStrs = append(cmdStrs, repoTypeFlagS3)
+		cmdStrs = append(cmdStrs, repoTypeSSL)
 		log.Info("s3 flag enabled for backrest command")
 	}
-	cmdStrs = append(cmdStrs, repoTypeSSL)
 
 	log.Infof("command to execute is [%s]", strings.Join(cmdStrs, " "))
 
