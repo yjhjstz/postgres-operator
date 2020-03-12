@@ -29,6 +29,9 @@ RUN chmod +x /usr/local/bin/pgo-backrest-repo.sh /usr/local/bin/archive-push-s3.
     && chown -R pgbackrest:pgbackrest /opt/cpm
 
 ADD bin/uid_pgbackrest.sh /opt/cpm/bin
+# replace pgbackrest with pagesize 32KB
+ADD bin/pgbackrest /usr/bin
+RUN chmod 755 /usr/bin/pgbackrest
 
 RUN chmod g=u /etc/passwd && \
         chmod g=u /etc/group

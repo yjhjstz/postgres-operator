@@ -28,6 +28,10 @@ RUN mkdir -p /opt/cpm/bin /pgdata /backrestrepo && chown -R 26:26 /opt/cpm
 ADD bin/pgo-backrest/ /opt/cpm/bin
 ADD bin/uid_postgres.sh /opt/cpm/bin
 
+# replace pgbackrest with pagesize 32KB
+ADD bin/pgbackrest /usr/bin
+RUN chmod 755 /usr/bin/pgbackrest
+
 RUN chmod g=u /etc/passwd && \
         chmod g=u /etc/group
 
