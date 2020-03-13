@@ -20,6 +20,7 @@ import (
 	"fmt"
 	"os"
 	"strings"
+	"time"
 
 	"k8s.io/apimachinery/pkg/util/validation"
 
@@ -150,6 +151,58 @@ func GetPgbackrestEnvVars(backrestEnabled, clusterName, depName, port, storageTy
 	}
 	return ""
 
+}
+
+func GetPgbackrestEnvVars2(backrestEnabled string, clientset *kubernetes.Clientset, namespace string, cl *crv1.Pgcluster) string {
+	if backrestEnabled == "true" {
+		storageType := cl.Spec.UserLabels[config.LABEL_BACKREST_STORAGE_TYPE]
+		clusterName := cl.Spec.ClusterName
+		repoHost := getBackupPodName(clientset, cl, namespace)
+		fields := PgbackrestEnvVarsTemplateFields{
+			PgbackrestStanza:            "db",
+			PgbackrestRepo1Host:         repoHost,
+			PgbackrestRepo1Path:         "/backrestrepo/" + clusterName + "-backrest-shared-repo",
+			PgbackrestDBPath:            "/pgdata/" + cl.Spec.Name,
+			PgbackrestPGPort:            cl.Spec.Port,
+			PgbackrestRepo1Type:         GetRepoType(storageType),
+			PgbackrestLocalAndS3Storage: IsLocalAndS3Storage(storageType),
+		}
+
+		var doc bytes.Buffer
+		err := config.PgbackrestEnvVarsTemplate.Execute(&doc, fields)
+		if err != nil {
+			log.Error(err.Error())
+			return ""
+		}
+		return doc.String()
+	}
+	return ""
+
+}
+
+func getBackupPodName(clientset *kubernetes.Clientset, cluster *crv1.Pgcluster, ns string) string {
+	
+	//look up the backrest-repo pod name
+	repopodName := cluster.Spec.ClusterName + "-backrest-shared-repo"
+	selector := "pg-cluster=" + cluster.Spec.Name + ",pgo-backrest-repo=true"
+	for i := 0; i < 20; i++ {
+		repopods, err := kubeapi.GetPods(clientset, selector, ns)
+		if err != nil {
+			log.Debug("sleeping 5s for GetPods")
+			time.Sleep(time.Second * 5)
+		}
+		if len(repopods.Items) == 0 {
+			log.Debug("sleeping 2s for GetPods")
+			time.Sleep(time.Second * 2)
+		}
+		if len(repopods.Items) == 1 {
+			repopodName = repopods.Items[0].Spec.NodeName
+			break
+		}
+	}
+
+	log.Debug("getBackupPodName  host " + repopodName)
+	return repopodName
 }
 
 func GetBadgerAddon(clientset *kubernetes.Clientset, namespace string, cluster *crv1.Pgcluster, pgbadger_target string) string {
@@ -287,7 +340,7 @@ func GetPrimaryIp(clientset *kubernetes.Clientset, cluster *crv1.Pgcluster, name
 	}
 	
 	if primaryReady {
-		log.Debug("GetPrimaryIp  primary host " + cluster.Spec.PrimaryHost)
+	    log.Debug("GetPrimaryIp  primary host " + cluster.Spec.PrimaryHost)
 	} else {
 		log.Debug("GetPrimaryIp not found primary host " + cluster.Spec.PrimaryHost)
 	}

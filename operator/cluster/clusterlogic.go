@@ -138,8 +138,7 @@ func AddCluster(clientset *kubernetes.Clientset, client *rest.RESTClient, cl *cr
 		CollectVolume:           operator.GetCollectVolume(clientset, cl, namespace),
 		BadgerAddon:             operator.GetBadgerAddon(clientset, namespace, cl, cl.Spec.Name),
 		PgmonitorEnvVars:        operator.GetPgmonitorEnvVars(cl.Spec.UserLabels[config.LABEL_COLLECT]),
-		PgbackrestEnvVars: operator.GetPgbackrestEnvVars(cl.Labels[config.LABEL_BACKREST], cl.Spec.ClusterName, cl.Spec.Name,
-			cl.Spec.Port, cl.Spec.UserLabels[config.LABEL_BACKREST_STORAGE_TYPE]),
+		PgbackrestEnvVars:       operator.GetPgbackrestEnvVars2(cl.Labels[config.LABEL_BACKREST], clientset, namespace, cl),
 		PgbackrestS3EnvVars: operator.GetPgbackrestS3EnvVars(cl.Labels[config.LABEL_BACKREST],
 			cl.Spec.UserLabels[config.LABEL_BACKREST_STORAGE_TYPE], clientset, namespace),
 	}
