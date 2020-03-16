@@ -183,26 +183,30 @@ func GetPgbackrestEnvVars2(backrestEnabled string, clientset *kubernetes.Clients
 func getBackupPodName(clientset *kubernetes.Clientset, cluster *crv1.Pgcluster, ns string) string {
 	
 	//look up the backrest-repo pod name
-	repopodName := cluster.Spec.ClusterName + "-backrest-shared-repo"
+	nodeName := cluster.Spec.ClusterName + "-backrest-shared-repo"
 	selector := "pg-cluster=" + cluster.Spec.Name + ",pgo-backrest-repo=true"
-	for i := 0; i < 20; i++ {
-		repopods, err := kubeapi.GetPods(clientset, selector, ns)
+	for i := 0; i < 100; i++ {
+		pods, err := kubeapi.GetPods(clientset, selector, ns)
 		if err != nil {
 			log.Debug("sleeping 5s for GetPods")
 			time.Sleep(time.Second * 5)
 		}
-		if len(repopods.Items) == 0 {
-			log.Debug("sleeping 2s for GetPods")
-			time.Sleep(time.Second * 2)
-		}
-		if len(repopods.Items) == 1 {
-			repopodName = repopods.Items[0].Spec.NodeName
-			break
+
+		p := pods.Items[0]
+		nodeName = p.Spec.NodeName
+		for _, c := range p.Status.ContainerStatuses {
+			if c.Ready {
+				log.Debug("getBackupPodName host " + nodeName)
+				return nodeName
+			} else {
+				log.Debug("sleeping 5s for GetPods")
+				time.Sleep(time.Second * 5)
+			}
+			
 		}
 	}
 
-	log.Debug("getBackupPodName  host " + repopodName)
-	return repopodName
+	return nodeName
 }
 
 
