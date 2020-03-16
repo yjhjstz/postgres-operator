@@ -205,6 +205,11 @@ func getBackupPodName(clientset *kubernetes.Clientset, cluster *crv1.Pgcluster, 
 	return repopodName
 }
 
+
+func GetBackupPodName(clientset *kubernetes.Clientset, cluster *crv1.Pgcluster, ns string) string {
+	return getBackupPodName(clientset, cluster, ns)
+}
+
 func GetBadgerAddon(clientset *kubernetes.Clientset, namespace string, cluster *crv1.Pgcluster, pgbadger_target string) string {
 
 	spec := cluster.Spec
