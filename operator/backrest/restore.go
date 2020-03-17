@@ -123,13 +123,13 @@ func Restore(restclient *rest.RESTClient, namespace string, clientset *kubernete
 	}
 
 	//update backrest repo with new data path
-	targetDepName := task.Spec.Parameters[config.LABEL_BACKREST_RESTORE_TO_PVC]
-	err = UpdateDBPath(clientset, &cluster, targetDepName, namespace)
-	if err != nil {
-		log.Errorf("restore workflow error: could not bounce repo with new db path")
-		return
-	}
-	log.Debugf("restore workflow: bounced backrest-repo with new db path")
+	// targetDepName := task.Spec.Parameters[config.LABEL_BACKREST_RESTORE_TO_PVC]
+	// err = UpdateDBPath(clientset, &cluster, targetDepName, namespace)
+	// if err != nil {
+	// 	log.Errorf("restore workflow error: could not bounce repo with new db path")
+	// 	return
+	// }
+	// log.Debugf("restore workflow: bounced backrest-repo with new db path")
 
 	//sleep for a bit to give the bounce time to take effect and let
 	//the backrest repo container come back and be able to service requests
@@ -430,8 +430,7 @@ func CreateRestoredDeployment(restclient *rest.RESTClient, cluster *crv1.Pgclust
 		CollectAddon:            operator.GetCollectAddon(clientset, namespace, &cluster.Spec),
 		CollectVolume:           operator.GetCollectVolume(clientset, cluster, namespace),
 		BadgerAddon:             operator.GetBadgerAddon(clientset, namespace, cluster, restoreToName),
-		PgbackrestEnvVars: operator.GetPgbackrestEnvVars(cluster.Labels[config.LABEL_BACKREST], cluster.Spec.ClusterName, restoreToName,
-			cluster.Spec.Port, cluster.Spec.UserLabels[config.LABEL_BACKREST_STORAGE_TYPE]),
+		PgbackrestEnvVars:       operator.GetPgbackrestEnvVars2(cluster.Labels[config.LABEL_BACKREST], clientset, namespace, cluster),
 		PgbackrestS3EnvVars: operator.GetPgbackrestS3EnvVars(cluster.Labels[config.LABEL_BACKREST],
 			cluster.Spec.UserLabels[config.LABEL_BACKREST_STORAGE_TYPE], clientset, namespace),
 	}
