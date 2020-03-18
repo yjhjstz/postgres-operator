@@ -1,5 +1,5 @@
 {
-    "apiVersion": "extensions/v1beta1",
+    "apiVersion": "apps/v1",
     "kind": "Deployment",
     "metadata": {
         "name": "postgres-operator",
@@ -9,11 +9,17 @@
     },
     "spec": {
         "replicas": 1,
+        "selector": {
+            "matchLabels": {
+                "adb-operator": "true"
+            }
+        },
         "template": {
             "metadata": {
                 "labels": {
                     "name": "postgres-operator",
-                    "vendor": "crunchydata"
+                    "vendor": "crunchydata",
+                    "adb-operator": "true"
                 }
             },
             "spec": {
@@ -211,10 +217,7 @@
                     }
                 ],
                 "volumes": [
-                ],
-                "nodeSelector": {
-                    "adb-operator": true
-                }
+                ]
             }
         }
     }

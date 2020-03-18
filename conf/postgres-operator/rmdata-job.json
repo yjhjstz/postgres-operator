@@ -5,18 +5,23 @@
         "name": "{{.JobName}}",
         "labels": {
             "vendor": "crunchydata",
-            "pgrmdata": "true",
+            "adb-operator": "true",
             "pg-cluster": "{{.ClusterName}}"
         }
     },
     "spec": {
+        "selector": {
+            "matchLabels": {
+                "adb-operator": "true"
+            }
+        },
         "backoffLimit": 0,
         "template": {
             "metadata": {
                 "name": "{{.JobName}}",
                 "labels": {
                     "vendor": "crunchydata",
-                    "pgrmdata": "true",
+                    "adb-operator": "true",
                     "pg-cluster": "{{.ClusterName}}"
                 }
             },
