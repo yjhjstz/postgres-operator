@@ -193,7 +193,7 @@ func getBackupPodName(clientset *kubernetes.Clientset, cluster *crv1.Pgcluster, 
 		}
 
 		p := pods.Items[0]
-		nodeName = p.Spec.NodeName
+		nodeName = p.Status.HostIP
 		for _, c := range p.Status.ContainerStatuses {
 			if c.Ready {
 				log.Debug("getBackupPodName host " + nodeName)
@@ -343,15 +343,15 @@ func GetPrimaryIp(clientset *kubernetes.Clientset, cluster *crv1.Pgcluster, name
 	primaryReady := false
 	for _, p := range pods.Items {
 		if getType(&p,cluster.Spec.Name) == msgs.PodTypePrimary {
-			cluster.Spec.PrimaryHost = p.Spec.NodeName
+			cluster.Spec.PrimaryHost = p.Status.HostIP
 			primaryReady = true
 		}
 	}
 	
 	if primaryReady {
-	    log.Debug("GetPrimaryIp  primary host " + cluster.Spec.PrimaryHost)
+		log.Debug("GetPrimaryIp v2 primary host " + cluster.Spec.PrimaryHost)
 	} else {
-		log.Debug("GetPrimaryIp not found primary host " + cluster.Spec.PrimaryHost)
+		log.Debug("GetPrimaryIp v2 not found primary host " + cluster.Spec.PrimaryHost)
 	}
 	return cluster.Spec.PrimaryHost
 }
@@ -368,7 +368,7 @@ func GetReplicaIp(clientset *kubernetes.Clientset, cluster *crv1.Pgcluster, name
 	
 	for _, p := range pods.Items {
 		if getType(&p,cluster.Spec.Name) == msgs.PodTypeReplica {
-			return p.Spec.NodeName
+			return p.Status.HostIP
 		}
 	}
 	
