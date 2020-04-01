@@ -28,6 +28,7 @@ import (
 	"github.com/crunchydata/postgres-operator/operator/pvc"
 	"github.com/crunchydata/postgres-operator/util"
 	log "github.com/sirupsen/logrus"
+	"k8s.io/api/core/v1"
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/rest"
@@ -113,6 +114,18 @@ func AddClusterBase(clientset *kubernetes.Clientset, client *rest.RESTClient, cl
 	if err != nil {
 		log.Error(err.Error())
 	}
+
+	// wait util primary pod created
+	timeout := time.Duration(60 * time.Second)
+	lo := meta_v1.ListOptions{LabelSelector: "pg-cluster=" + cl.Spec.Name}
+	podPhase := v1.PodRunning
+	err = util.WaitUntilPod(clientset, lo, podPhase, timeout, namespace)
+	if err != nil {
+		log.Error("error waiting on primary pod to complete" + err.Error())
+	} else {
+		log.Debug("AddClusterBase waiting ok 60s")
+	}
+
 
 	log.Debugf("before pgpool check [%s]", cl.Spec.UserLabels[config.LABEL_PGPOOL])
 	//add pgpool deployment if requested
