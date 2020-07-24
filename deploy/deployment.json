@@ -18,6 +18,9 @@
             },
             "spec": {
                 "hostNetwork": true,
+                "nodeSelector": {
+                    "adb-operator": "true"
+                },
                 "serviceAccountName": "postgres-operator",
                 "containers": [
                     {
@@ -210,11 +213,7 @@
                         "imagePullPolicy": "IfNotPresent"
                     }
                 ],
-                "volumes": [
-                ],
-                "nodeSelector": {
-                    "adb-operator": true
-                }
+                "volumes": []
             }
         }
     }
