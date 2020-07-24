@@ -24,6 +24,9 @@
             },
             "spec": {
                 "hostNetwork": true,
+                "nodeSelector": {
+                    "adb-operator": "true"
+                },
                 "serviceAccountName": "postgres-operator",
                 "containers": [
                     {

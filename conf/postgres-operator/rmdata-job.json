@@ -53,6 +53,9 @@
                         }
                     }]
                 }],
+                "nodeSelector": {
+                    "adb": "true"
+                },
                 "restartPolicy": "Never"
             }
         }
