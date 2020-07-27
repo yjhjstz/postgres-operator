@@ -6,7 +6,7 @@
   },
   "spec": {
     "capacity": {
-        "storage": "10Gi"
+        "storage": "1000Gi"
     },
     "accessModes": [ "ReadWriteMany" ],
     "hostPath": {
