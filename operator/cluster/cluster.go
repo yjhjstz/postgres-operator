@@ -178,8 +178,17 @@ func AddClusterBase(clientset *kubernetes.Clientset, client *rest.RESTClient, cl
 			labels[config.LABEL_PG_CLUSTER] = cl.Spec.Name
 
 			spec.ClusterName = cl.Spec.Name
-			uniqueName := util.RandStringBytesRmndr(4)
-			labels[config.LABEL_NAME] = cl.Spec.Name + "-" + uniqueName
+
+			var uniqueName string
+			uqname, ok := spec.UserLabels["uniquename"];
+			if (ok) {
+				log.Debugf("using replica uniquename [%s].", uqname)
+				uniqueName = uqname
+			} else {
+				uniqueName = util.RandStringBytesRmndr(4)
+			}
+
+			labels[config.LABEL_NAME] = cl.Spec.Name + "-" + uniqueName + "-" + strconv.Itoa(i)
 			spec.Name = labels[config.LABEL_NAME]
 			newInstance := &crv1.Pgreplica{
 				ObjectMeta: meta_v1.ObjectMeta{
