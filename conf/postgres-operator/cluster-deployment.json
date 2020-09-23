@@ -70,7 +70,7 @@
                         "value": "16GB"
                     }, {
                         "name": "ENABLE_SSHD",
-                        "value": "true"
+                        "value": "false"
                     }, {
                         "name": "PGDATA_PATH_OVERRIDE",
                         "value": "{{.DataPathOverride}}"
