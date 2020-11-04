@@ -10,7 +10,7 @@
     },
     "accessModes": [ "ReadWriteMany" ],
     "hostPath": {
-        "path": "/data"
+        "path": "/data/postgres"
     },
     "persistentVolumeReclaimPolicy": "Retain"
   }
