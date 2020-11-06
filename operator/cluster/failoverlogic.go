@@ -26,6 +26,8 @@ import (
 	"github.com/crunchydata/postgres-operator/events"
 	"github.com/crunchydata/postgres-operator/kubeapi"
 	"github.com/crunchydata/postgres-operator/util"
+        "github.com/crunchydata/postgres-operator/operator"
+
 	log "github.com/sirupsen/logrus"
 	appsv1 "k8s.io/api/apps/v1"
 	"k8s.io/api/core/v1"
@@ -137,6 +139,7 @@ func Failover(identifier string, clientset *kubernetes.Clientset, client *rest.R
 		log.Errorf("failoverlogic: could not patch pgcluster %s with labels", clusterName)
 		return err
 	}
+        err = reloadReplica(&cluster, clusterName, clientset, namespace, restconfig)
 
 	return err
 
@@ -238,6 +241,40 @@ func waitForDelete(deploymentToDelete, podName string, clientset *kubernetes.Cli
 	return errors.New(fmt.Sprintf("timeout waiting for %s %s to delete", deploymentToDelete, podName))
 
 }
+
+func reloadReplica(
+    cluster *crv1.Pgcluster,
+    clusterName string,
+    clientset *kubernetes.Clientset,
+    namespace string, restconfig *rest.Config) error {
+    //get the target pod that matches the replica-name=target
+
+    selector := config.LABEL_PG_CLUSTER + "=" + clusterName + "," + config.LABEL_SERVICE_NAME + "=" + clusterName + "-replica"
+    log.Debugf("reloadReplica selector %s", selector)
+    pods, err := kubeapi.GetPods(clientset, selector, namespace)
+    if err != nil {
+        log.Errorf("error selecting replica pods %s %s", selector, err.Error())
+    }
+
+    primary_ip := operator.GetPrimaryIp(clientset, cluster, namespace)
+    log.Debugf("reloadReplica %d replica pods, primary %s.", len(pods.Items), primary_ip)
+
+    if len(pods.Items) > 0 {
+        for _, v := range pods.Items {
+            command := make([]string, 0)
+            command = append(command, "/opt/cpm/bin/reload_conf.sh")
+            command = append(command, primary_ip)
+            stdout, stderr, err := kubeapi.ExecToPodThroughAPI(restconfig, clientset, command, v.Spec.Containers[0].Name, v.Name, namespace, nil)
+            if err != nil {
+                log.Error(err)
+            }
+            log.Debugf("stdout=[%s] stderr=[%s]", stdout, stderr)
+        }
+    }
+
+    return err
+}
+
 
 // waitForSinglePrimary - during failover, there can exist the possibility that while one pod is in the process of
 // terminating, the Deployment will be spinning up another pod - both will appear to be a primary even though the
