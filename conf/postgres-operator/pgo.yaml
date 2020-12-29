@@ -104,12 +104,12 @@ ContainerResources:
     RequestsCPU:  2.0
     LimitsMemory:  2Gi
     LimitsCPU:  4.0
-  dc2.e1.4xlarge32:
+  adb-dc2-e1-4xlarge32:
     RequestsMemory:  8Gi
-    RequestsCPU:  8.0
+    RequestsCPU:  4.0
     LimitsMemory:  25Gi
     LimitsCPU:  25.6
-  dc2.e1.16xlarge128:
+  adb-dc2-e1-16xlarge128:
     RequestsMemory:  64Gi
     RequestsCPU:  24.0
     LimitsMemory:  102Gi
