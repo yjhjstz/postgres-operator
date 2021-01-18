@@ -66,8 +66,8 @@
                         "name": "PG_LOCALE",
                         "value": "en_US.UTF8"
                     }, {
-                        "name": "SHARED_BUFFERS",
-                        "value": "16GB"
+                        "name": "MAX_CONNECTIONS",
+                        "value": "201"
                     }, {
                         "name": "ENABLE_SSHD",
                         "value": "false"
